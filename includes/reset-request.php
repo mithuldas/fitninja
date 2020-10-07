@@ -64,10 +64,10 @@ if (isset($_POST["resetpwd-submit"])){
   $mail->Port = '465';
   $mail->isHTML();
 
-  $mail->Username = 'mithuldas@gmail.com';
-  $mail->Password = 'aeh2kpst';
+  $mail->Username = 'fitninja.in@gmail.com';
+  $mail->Password = 'Aeh2kpst1!';
 
-  $mail->SetFrom('mithuldas@gmail.com');
+  $mail->SetFrom('fitninja.in@gmail.com');
   $mail->Subject = $subject;
   $mail->Body = $message;
   $mail->AddAddress($to);

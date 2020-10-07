@@ -2,7 +2,7 @@
 
 $servername="localhost";
 $dbusername="root";
-$dbpassword="";
+$dbpassword="root";
 $dbname="fitninja";
 
 $conn=mysqli_connect($servername, $dbusername, $dbpassword, $dbname);

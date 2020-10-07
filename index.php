@@ -17,7 +17,6 @@ include "includes/autoloader.php";
 
   ?>
 
-test
 </main>
 
 

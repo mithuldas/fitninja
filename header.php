@@ -55,8 +55,8 @@
         data-trigger="focus" data-container="body" data-toggle="popover" data-placement="bottom"
         data-content= '<div id="popover-content" style="display: none">
   <ul class="list-group custom-popover">
-    <li class="list-group-item"><a href="profile.php">Profile</a></li>
-    <li class="list-group-item"><a href="includes/logout.php">Logout</a></li>
+    <li class="list-group-item proflist"><a href="profile.php" class="popover-link">Profile</a></li>
+    <li class="list-group-item"><a href="includes/logout.php" class="popover-link">Logout</a></li>
   </ul>
 </div>'>
 

@@ -2,6 +2,7 @@ html,
 body {
   height: 100%;
   padding-top: 40px;
+  font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif; ;
 
 }
 
@@ -49,8 +50,8 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px; /* Set the fixed height of the footer here */
-  line-height: 60px; /* Vertically center the text there */
+  height: 20px; /* Set the fixed height of the footer here */
+  line-height: 10px; /* Vertically center the text there */
   background-color: #f5f5f5;
 }
 
@@ -89,4 +90,20 @@ body {
 
 .custom-popover li:last-child {
   border-top: 1px solid #ccc!important;
+}
+
+.popover-body{
+  padding: 0px;
+  width: 150px;
+}
+
+li:hover { background-color:#E9ECF0; }
+
+.popover-link {
+  /* This flexbox code stretches the link's clickable
+   * area to fit its parent block. */
+  display:        block;
+  flex-grow:      1;
+  flex-shrink:    1;
+  justify-content: center;
 }

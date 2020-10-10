@@ -2,12 +2,12 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 var totalTabs = document.getElementsByClassName("tab").length;
 
 
-
-
 showTab(currentTab); // Display the current tab
 
 function showTab(n) {
   // This function will display the specified tab of the form ...
+
+  document.getElementById("errorMsg").innerHTML="";
   var x = document.getElementsByClassName("tab");
 
   x[n].style.display = "block";
@@ -46,7 +46,24 @@ function nextPrev(n) {
   showTab(currentTab);
 }
 
+
+
+function getNumChecked(checkBoxList){
+  var checkedBoxList = [];
+
+  for(var i=0; i<checkBoxList.length; i++){
+      if(checkBoxList[i].checked){
+        checkedBoxList.push(checkBoxList[i]);
+      }
+  }
+
+  return checkedBoxList.length;
+
+}
+
+
 function validateForm() {
+
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
@@ -60,6 +77,29 @@ function validateForm() {
       // and set the current valid status to false:
       valid = false;
     }
+
+
+
+  }
+
+var numDayChecked = getNumChecked(document.getElementsByClassName("daypreference"));
+var numTimeslotChecked = getNumChecked(document.getElementsByClassName("timeslot"));
+var errorMsg = document.getElementById("errorMsg");
+
+
+  if(numDayChecked==0){
+    valid = false;
+    errorMsg.innerHTML='<P class="text-danger"> * Please select at least one preferred day</p> ';
+  }
+
+  if(numTimeslotChecked==0){
+    valid = false;
+    errorMsg.innerHTML= '<P class="text-danger">* Please select at least one preferred timeslot</p> ';
+  }
+
+  if(numDayChecked==0 && numTimeslotChecked==0){
+    valid = false;
+    document.getElementById("errorMsg").innerHTML= '<P class="text-danger">* Please select at least one preferred day and timeslot</p> ';
   }
 
   return valid; // return the valid status
@@ -68,7 +108,6 @@ function validateForm() {
 function updateProgressBar(n){
   n=n+1;
   percentage = (n/totalTabs)*100 + "%";
-  console.log(percentage);
 
   x=document.getElementById("progressbar");
   document.getElementById("progressbar").style.width=percentage;

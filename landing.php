@@ -32,42 +32,43 @@
 
   <div class="tab">
   <h6>When do you generally prefer to have your sessions?</h6>
-  <div class="form-group small text-muted">
-    This will serve as a guideline for us while we find you a suitable trainer
-  </div>
+
   <hr>
 
   <div class="row">
-  <div class="col-md-3"><label for="fname"><strong>Days of the week</strong></label>
+  <div class="col-md-3"><strong>Days of the week</strong></label>
 </div>
-  <div class="col-md-3">
-    <input type="checkbox" id="weekday-mon" class="weekday" />
+  <div class="col-md-3" >
+    <input type="checkbox" name="weekday-mon" id="weekday-mon" class="daypreference"/>
     <label for="weekday-mon">Mon</label><br>
-    <input type="checkbox" id="weekday-tue" class="weekday" />
-<label for="weekday-tue">Tue</label><br>
-<input type="checkbox" id="weekday-wed" class="weekday" />
-        <label for="weekday-wed">Wed</label><br>
-        <input type="checkbox" id="weekday-thu" class="weekday" />
-        <label for="weekday-thu">Thu</label><br>
-        <input type="checkbox" id="weekday-fri" class="weekday" />
-        <label for="weekday-fri">Fri</label><br>
-        <input type="checkbox" id="weekday-sat" class="weekday" />
-        <label for="weekday-sat">Sat</label><br>
-        <input type="checkbox" id="weekday-sun" class="weekday" />
-        <label for="weekday-sun">Sun</label><br>
+    <input type="checkbox" name="weekday-tue" id="weekday-tue" class="daypreference"/>
+    <label for="weekday-tue">Tue</label><br>
+    <input type="checkbox" name="weekday-wed" id="weekday-wed" class="daypreference"/>
+    <label for="weekday-wed">Wed</label><br>
+    <input type="checkbox" name="weekday-thu" id="weekday-thu" class="daypreference"/>
+    <label for="weekday-thu">Thu</label><br>
+    <input type="checkbox" name="weekday-fri" id="weekday-fri" class="daypreference"/>
+    <label for="weekday-fri">Fri</label><br>
+    <input type="checkbox" name="weekday-sat" id="weekday-sat" class="daypreference"/>
+    <label for="weekday-sat">Sat</label><br>
+    <input type="checkbox" name="weekday-sun" id="weekday-sun" class="daypreference"/>
+    <label for="weekday-sun">Sun</label><br>
 
 
   </div>
   <div class="col-md-3"><strong>Timeslot</strong></div>
   <div class="col-md-3">
-    <input type="checkbox" id="weekday-mon" class="weekday" />
-      <label for="weekday-mon">Morning</label><br>
-      <input type="checkbox" id="weekday-mon" class="weekday" />
-      <label for="weekday-mon">Afternoon</label><br>
-      <input type="checkbox" id="weekday-mon" class="weekday" />
-      <label for="weekday-mon">Evening</label>
-
+    <input type="checkbox" id="morning" name="morning" class="timeslot"/>
+      <label for="morning">Morning</label><br>
+      <input type="checkbox" id="afternoon" name="afternoon" class="timeslot" />
+      <label for="afternoon">Afternoon</label><br>
+      <input type="checkbox" id="evening" name="evening" class="timeslot" />
+      <label for="evening">Evening</label>
   </div>
+  </div>
+<br>
+  <div class="form-group small text-muted " id="errorMsg"><br>
+
   </div>
 </div>
 

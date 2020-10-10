@@ -55,7 +55,7 @@ $passwordRepeat = $_POST['pwd-repeat'];
       }
 
       else {
-        $sql = "insert into users (username, email, user_type, password) values (?, ?, ?, ?)";
+        $sql = "insert into users (username, email, user_type_id, password) values (?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../signup.php?error=2sqlerror");
@@ -63,7 +63,7 @@ $passwordRepeat = $_POST['pwd-repeat'];
         }
         else{
 
-          $userType="C";
+          $userType="2";
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
           mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $userType, $hashedPwd );
           mysqli_stmt_execute($stmt);

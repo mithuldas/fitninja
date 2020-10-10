@@ -32,7 +32,7 @@ if (isset($_POST['login-submit'])) {
           session_start();
           $_SESSION[uid] = $row['uid'];
           $_SESSION[username] = $row['username'];
-          header("Location: ../index.php?login_success");
+          header("Location: ../landing.php");
           exit();
         }
 

@@ -4,7 +4,7 @@
 
 <?php
   if(isset($_SESSION['uid'])){
-    header("Location: ../test.php");
+    header("Location: ../user_landing.php");
   }
 
 ?>

@@ -11,7 +11,7 @@ if (isset($_POST['login-submit'])) {
     header("Location: ../?error=emptyfields");
   }
   else {
-    $sql = "select * from users where username=? OR email=?; ";
+    $sql = "select * from users, user_types where (username=? OR email=?) and users.user_type_id=user_types.user_type_id; ";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -32,6 +32,7 @@ if (isset($_POST['login-submit'])) {
           session_start();
           $_SESSION[uid] = $row['uid'];
           $_SESSION[username] = $row['username'];
+          $_SESSION[userType] = $row['user_type_desc'];
           header("Location: ../landing.php");
           exit();
         }

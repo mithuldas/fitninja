@@ -126,3 +126,13 @@ text-decoration: none !important;
 .popover .arrow {
     display: none;
 }
+
+
+.tab {
+  display: none;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}

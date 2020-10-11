@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Oct 11, 2020 at 09:58 AM
--- Server version: 5.7.26
--- PHP Version: 7.4.2
+-- Host: 127.0.0.1
+-- Generation Time: Oct 11, 2020 at 12:41 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
@@ -26,7 +27,7 @@ CREATE TABLE `pwdreset` (
   `pwdResetId` int(11) NOT NULL,
   `pwdResetEmail` text NOT NULL,
   `pwdResetSelector` text NOT NULL,
-  `pwdResetToken` longtext,
+  `pwdResetToken` longtext DEFAULT NULL,
   `pwdResetExpires` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -50,7 +51,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`) VALUES
 (1, 'mithuldas', 2, 'mithuldas@gmail.com', '$2y$10$fLFeKWxVxrBnjo/vlpYNaOzav4ro1PgZRpgCq2sG3SmAmr1E3lUJe'),
-(2, 'test1234', 2, 'mithuldas@gmail.com', '$2y$10$7rcyYBkf1FKQxLhbKcgBwOsPxiumGrDXftMV047OacAhPzY7dNfyW');
+(3, 'trainertest', 1, 'trainertest@gmail.com', '$2y$10$B6cO1n7NMC6m1beTnYxOc.6reLeMuZ.lbQ4ms5cSUJPwTaqzivhTS'),
+(4, 'admin', 3, 'admin@gmail.com', '$2y$10$ex3Gnd9qfJvG9CIYQuRi8.uh8FFz/caKpUrhMhd83auRDsGZAXUa.');
 
 -- --------------------------------------------------------
 
@@ -156,7 +158,7 @@ ALTER TABLE `pwdreset`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_attribute_definitions`
@@ -186,3 +188,4 @@ ALTER TABLE `users`
 ALTER TABLE `user_attribute_values`
   ADD CONSTRAINT `user_attribute_values_ibfk_1` FOREIGN KEY (`attribute_id`) REFERENCES `user_attribute_definitions` (`attribute_id`),
   ADD CONSTRAINT `user_attribute_values_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`);
+COMMIT;

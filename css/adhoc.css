@@ -82,19 +82,15 @@ body {
 .custom-popover li {
   border: none!important;
   text-align: center;
+
 }
 
-.custom-popover li:nth-child(2) {
-  border-top: 1px solid #ccc!important;
-}
 
-.custom-popover li:last-child {
-  border-top: 1px solid #ccc!important;
-}
 
 .popover-body{
-  padding: 0px;
-  width: 150px;
+  /*padding: 0px;*/
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 10px;
 }
 
 li:hover { background-color:#E9ECF0; }
@@ -106,4 +102,27 @@ li:hover { background-color:#E9ECF0; }
   flex-grow:      1;
   flex-shrink:    1;
   justify-content: center;
+}
+
+a:hover {
+text-decoration: none !important;
+}
+a:active {
+text-decoration: none !important;
+}
+
+.remove-padding{
+  padding: 0px;
+}
+
+/*.custom-popover li:nth-child(2) {
+  border-top: 1px solid #ccc!important;
+}
+
+.custom-popover li:last-child {
+  border-top: 1px solid #ccc!important;
+}*/
+
+.popover .arrow {
+    display: none;
 }

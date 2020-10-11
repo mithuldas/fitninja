@@ -31,10 +31,18 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
 
-  <!--    <li class="nav-item active">
-        <a class="nav-link py-0" href="#">Trainers <span class="sr-only">(current)</span></a>
-      </li> -->
 
+      <li class="nav-item active">
+         <a class="nav-link py-0" href="#">Join Us <span class="sr-only">(current)</span></a>
+       </li>
+
+        <li class="nav-item active">
+           <a class="nav-link py-0" href="#">FAQs <span class="sr-only">(current)</span></a>
+         </li>
+
+         <li class="nav-item active">
+            <a class="nav-link py-0" href="#">Our Trainers <span class="sr-only">(current)</span></a>
+          </li>
     </ul>
 
 
@@ -55,8 +63,8 @@
         data-trigger="focus" data-container="body" data-toggle="popover" data-placement="bottom"
         data-content= '<div id="popover-content" style="display: none">
   <ul class="list-group custom-popover">
-    <li class="list-group-item proflist"><a href="profile.php" class="popover-link">Profile</a></li>
-    <li class="list-group-item"><a href="includes/logout.php" class="popover-link">Logout</a></li>
+    <li class="list-group-item proflist remove-padding"><a href="profile.php" class="popover-link  float-left px-2 py-1"> Profile</a></li>
+    <li class="list-group-item remove-padding"><a href="includes/logout.php" class="popover-link float-left px-2 py-1"> Logout</a></li>
   </ul>
 </div>'>
 

@@ -2,12 +2,33 @@
 <?php
 
   include "includes/autoloader.php";
+  include "includes/dbh.php";
   require "header.php";
+
+    $uid = $_SESSION['uid'];
 
   if(!isset($_SESSION['uid'])){
     header("Location: ../index.php");
   }
 
+    $sql = 'select * from user_attributes where attribute_value = "Y" and attribute_id in 
+    (select attribute_id from user_attribute_definitions where attribute_name = "trainee_onboarding_completed") and uid = ' . $uid . ';';
+    
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      header("Location: ../index.php?error=sqlerror");
+    }
+    else{
+      mysqli_stmt_execute($stmt);
+
+      $result = mysqli_stmt_get_result($stmt);
+      if ($row = mysqli_fetch_assoc($result)){
+          header("Location: dashboard.php");
+          exit();
+	   }
+
+    }
 
 ?>
 
@@ -25,9 +46,9 @@
 <div class="card-body tab-content">
 
 
-    <form id= "regForm">
+    <form id= "regForm" method="post" action="includes/trainee_landing_submit_form.php" >
 
-  <!-- Schedule preferences entry -->
+  <!-- Schedule preferences entry
 
   <div class="tab">
   <h6>When do you typically prefer to have your sessions?</h6>
@@ -65,12 +86,11 @@
       <label for="evening">Evening</label>
   </div>
   </div>
-<br>
-  <div class="form-group small text-muted " id="errorMsg"><br>
 
-  </div>
+
+
 </div>
-
+-->
 
   <!-- Interests tab -->
     <div class="tab">
@@ -78,13 +98,12 @@
       <h6>Which of the activities below are you interested in?</h6>
       <hr>
 
-      <div class="form-group">
       <div class="row">
       <div class="col">
       <label for="aerobics" class="float-right">Aerobics</label>
       </div>
       <div class="col">
-      <input type="checkbox" class="float-left auto-width" id="aerobics">
+      <input type="checkbox" class="float-left activity mt-1 " id="aerobics" name="activities[]" value="aerobics">
       </div>
       </div>
       <div class="row">
@@ -92,7 +111,7 @@
       <label for="zumba" class="float-right">Zumba</label>
       </div>
       <div class="col">
-      <input type="checkbox" class="float-left auto-width" id="zumba">
+      <input type="checkbox" class="float-left activity mt-1" id="zumba" name="activities[]" value="zumba">
       </div>
       </div>
       <div class="row">
@@ -100,7 +119,7 @@
       <label for="yoga" class="float-right">Yoga</label>
       </div>
       <div class="col">
-      <input type="checkbox" class="float-left" id="yoga">
+      <input type="checkbox" class="float-left activity mt-1" id="yoga" name="activities[]" value="yoga">
       </div>
       </div>
       <div class="row">
@@ -108,7 +127,7 @@
       <label for="meditation" class="float-right">Meditation</label>
       </div>
       <div class="col">
-      <input type="checkbox" class="float-left" id="meditation">
+      <input type="checkbox" class="float-left activity mt-1" id="meditation" name="activities[]" value="meditation">
       </div>
       </div>
       <div class="row">
@@ -116,7 +135,7 @@
       <label for="reiki" class="float-right">Reiki</label>
       </div>
       <div class="col">
-      <input type="checkbox" class="float-left" id="reiki">
+      <input type="checkbox" class="float-left activity mt-1" id="reiki" name="activities[]" value="reiki">
       </div>
       </div>
 
@@ -125,7 +144,7 @@
       <label for="calisthenics" class="float-right">Calisthenics</label>
       </div>
       <div class="col">
-      <input type="checkbox" class="float-left" id="calisthenics">
+      <input type="checkbox" class="float-left activity mt-1" id="calisthenics" name="activities[]" value="calisthenics">
       </div>
       </div>
 
@@ -134,10 +153,8 @@
       <label for="toning" class="float-right">Toning</label>
       </div>
       <div class="col">
-      <input type="checkbox" class="float-left" id="toning">
+      <input type="checkbox" class="float-left activity mt-1" id="toning" name="activities[]" value="toning">
       </div>
-      </div>
-
       </div>
       </div>
 
@@ -151,50 +168,54 @@
   </div>
 <div class="row">
 <div class="col-md-3">
-  <label for="fname" class="float-left">First Name</label>
+  <label for="fname" class="float-left mt-1">First Name</label>
 </div>
-<div class="col-md-3"><input type="text" class="form-control " placeholder="First name" id="fname">
-</div>
-<div class="col-md-3">
-  <label for="lname" class="float-left">Last Name</label>
+<div class="col-md-3"><input type="text" class="form-control " placeholder="First name" id="fname" name="fname">
 </div>
 <div class="col-md-3">
-  <input id="lname" type="text" class="form-control" placeholder="Last name" id="lname">
+  <label for="lname" class="float-left mt-1">Last Name</label>
+</div>
+<div class="col-md-3">
+  <input id="lname" type="text" class="form-control" placeholder="Last name" id="lname" name="lname">
 </div>
 </div>
 
 <div class="row">
 <div class="col-md-3">
-  <label for="fname" class="float-left">Date of birth</label>
+
+
+  <label for="fname" class="float-left mt-1">Date of birth</label>
 </div>
-<div class="col-md-3"><input class="form-control" type="date"  id="dob" >
+<div class="col-md-3">
+
+  <input class="form-control" type="date"  id="dob" name="dob">
 </div>
 <div class="col-md-3">
   <label for="lname" class="float-left">City</label>
 </div>
 <div class="col-md-3">
-      <input type="text" class="form-control" id="location" placeholder="City">
+      <input type="text" class="form-control" id="location" placeholder="City" name="city">
 </div>
 </div>
 
 <div class="row">
 <div class="col-md-3">
-        <label for="phonenumber" class="float-left">Phone number</label>
+        <label for="phonenumber" class="float-left mt-1">Phone number</label>
 </div>
-<div class="col-md-3"><input type="text" class="form-control" id="phonenumber" placeholder="Phone number">
+<div class="col-md-3"><input type="text" class="form-control" id="phonenumber" placeholder="Phone number" name="phonenumber">
 </div>
 <div class="col-md-3">
-  <label for="lname" class="float-left">Gender</label>
+  <label for="lname" class="float-left mt-1">Gender</label>
 </div>
 <div class="col-md-3">
 
   <div class="form-check form-check-inline float-left">
-<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-<label class="form-check-label" for="inlineRadio1">Male</label>
+<input class="form-check-input mt-2" type="radio" id="male" value="Male" name="gender">
+<label class="form-check-label mt-2" for="male">Male</label>
 </div>
 <div class="form-check form-check-inline float-left">
-<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-<label class="form-check-label" for="inlineRadio2">Female</label>
+<input class="form-check-input mt-2" type="radio" id="female" value="Female" name="gender">
+<label class="form-check-label mt-2" for="female">Female</label>
 </div>
 
 </div>
@@ -203,17 +224,17 @@
 </div>
 </div>
 
-
+  <div class="form-group small text-muted " id="errorMsg">  </div>
   <div style="overflow:auto;">
     <div style="float:right;">
       <button type="button" id="prevBtn" class="btn btn-primary" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextPrev(1)">Next</button>
+      <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextPrev(1)" name = "trainee_landing_submit">Next</button>
     </div>
   </div>
 
   </form>
 
-<script src="scripts/landing_user_input.js"></script>
+<script src="scripts/trainee_landing_user_input.js"></script>
 
 </div>
 </div>

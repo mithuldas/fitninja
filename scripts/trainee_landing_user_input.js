@@ -28,6 +28,7 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
+
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
@@ -37,8 +38,10 @@ function nextPrev(n) {
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
   // if you have reached the end of the form... :
-  if (currentTab >= x.length) {
+
+    if (currentTab >= x.length) {
     //...the form gets submitted:
+    document.getElementById("nextBtn").setAttribute("type", "submit");
     document.getElementById("regForm").submit();
     return false;
   }
@@ -76,7 +79,10 @@ function validateForm() {
       y[i].className += " invalid";
       // and set the current valid status to false:
       valid = false;
+
     }
+
+
 
 
 
@@ -85,9 +91,10 @@ function validateForm() {
 var numDayChecked = getNumChecked(document.getElementsByClassName("daypreference"));
 var numTimeslotChecked = getNumChecked(document.getElementsByClassName("timeslot"));
 var errorMsg = document.getElementById("errorMsg");
+var numActivitiesChecked = getNumChecked(document.getElementsByClassName("activity"))
 
 
-  if(numDayChecked==0){
+/*   if(numDayChecked==0){
     valid = false;
     errorMsg.innerHTML='<P class="text-danger"> * Please select at least one preferred day</p> ';
   }
@@ -101,6 +108,19 @@ var errorMsg = document.getElementById("errorMsg");
     valid = false;
     document.getElementById("errorMsg").innerHTML= '<P class="text-danger">* Please select at least one preferred day and timeslot</p> ';
   }
+*/
+  if(numActivitiesChecked==0 && currentTab==0){
+    valid = false;
+    document.getElementById("errorMsg").innerHTML= '<P class="text-danger">* Please select at least one activity</p> ';
+
+    console.log(document.getElementsByClassName("activity"));
+  }
+
+
+
+
+
+
 
   return valid; // return the valid status
 }

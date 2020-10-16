@@ -1,78 +1,30 @@
 <?php
 
-# Include the Autoloader (see "Libraries" for install instructions)
-require '../vendor/autoload.php';
-use Mailgun\Mailgun;
-
+require 'token_generator.php';
+require 'send_email.php';
 
 if (isset($_POST["resetpwd-submit"])){
 
-  $selector = bin2hex(random_bytes(8));
-  $token = random_bytes(32);
-
-
-  $url = "http://localhost/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
-
-  $expires = date("U") + 1800;
-
-  require 'dbh.php';
-
+  $tokenDuration =  7200; // seconds (2 hours)
+  $tokenType = 'pwd_reset'; // store in DB as pwd_reset i.s.o email_verify
   $userEmail = $_POST["email"];
 
-  $sql = "delete from pwdreset where pwdresetemail = ?;";
-  $stmt = mysqli_stmt_init($conn);
+  // generate token and save it
+  $tokenString = getTokenStringForURL($userEmail, $tokenType, $tokenDuration);
+  $baseURL = "http://localhost/create-new-password.php";
+  $url = $baseURL . "?" . $tokenString;
 
-  if(!mysqli_stmt_prepare($stmt, $sql)){
-    echo "There was an error!";
-    exit();
-  } else {
-
-    mysqli_stmt_bind_param($stmt, "s", $userEmail);
-    mysqli_stmt_execute($stmt);
-  }
-
-  $sql = "insert into pwdreset (pwdresetemail, pwdresetselector, pwdresettoken, pwdresetexpires)
-            values (?, ?, ?, ?);";
-
-  $stmt = mysqli_stmt_init($conn);
-
-  if(!mysqli_stmt_prepare($stmt, $sql)){
-    echo "There was an error!";
-    exit();
-  } else {
-    $hashedToken = password_hash($token, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "ssss", $userEmail, $selector, $hashedToken, $expires);
-    mysqli_stmt_execute($stmt);
-  }
-
-  mysqli_stmt_close($stmt);
-  mysqli_close($conn);
-
-  $to = $userEmail;
-
+  // create the e-mail content
   $subject = 'Reset your FitNinja password';
   $message = '<p>Please click the link below to reset your password: </p>';
   $message .= '<p><a href="' . $url . '">' . $url . '</a> </p>';
   $message .= 'Regards,<br>' . 'The FitNinja Team';
 
-  // First, instantiate the SDK with your API credentials
-  $mg = Mailgun::create('9dbf4c59884d274f6b2de94cb5c38b93-2fbe671d-a5d69610'); // For US servers
+  //  use mailgun.com API to send the e-mail
+  sendEmail($userEmail, $subject, $message, $message);
 
-  // Now, compose and send your message.
-  // $mg->messages()->send($domain, $params);
-  $mg->messages()->send('mail2.fitninja.in', [
-    'from'    => 'FitNinja <no-reply@fitninja.in>',
-    'to'      => $to,
-    'subject' => $subject,
-    'text'    => $message,
-    'html' => $message
-  ]);
-
-
-  #mail($to, $subject, $message, $headers);
-
+  // redirect user to the forgot password for further handling
   header("Location: ../forgot-password.php?reset=success");
-
 }
 
 else{

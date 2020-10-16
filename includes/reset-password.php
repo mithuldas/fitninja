@@ -19,7 +19,7 @@ if(isset($_POST['pwd-change'])){
 
   require 'dbh.php';
 
-  $sql = "select * from pwdreset where pwdresetselector=? and pwdresetexpires >= ?";
+  $sql = "select * from tokens where selector=? and expiry >= ?";
   $stmt = mysqli_stmt_init($conn);
 
   if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -38,13 +38,13 @@ if(isset($_POST['pwd-change'])){
 
     else {
       $tokenBin = hex2bin($validator);
-      $tokenCheck = password_verify($tokenBin, $row["pwdResetToken"]);
+      $tokenCheck = password_verify($tokenBin, $row["token"]);
 
       if ($tokenCheck===false) {
         echo "You need to resubmit your reset request";
         exit();
       } elseif ($tokenCheck===true) {
-        $tokenEmail = $row['pwdResetEmail'];
+        $tokenEmail = $row['email'];
 
         $sql = "select * from users where email=?;";
 
@@ -76,7 +76,7 @@ if(isset($_POST['pwd-change'])){
               mysqli_stmt_execute($stmt);
 
 
-              $sql = "delete from pwdreset where pwdResetEmail = ?;";
+              $sql = "delete from tokens where email = ? and type = 'pwd_reset';";
               $stmt = mysqli_stmt_init($conn);
 
               if(!mysqli_stmt_prepare($stmt, $sql)){

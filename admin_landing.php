@@ -1,9 +1,3 @@
-
-<?php
-  session_start();
-?>
-
-
 <?php
 
   include "includes/autoloader.php";
@@ -15,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" class="init">
-	
+
 
 $(document).ready(function() {
 	$('#users').DataTable();
@@ -49,23 +43,20 @@ $(document).ready(function() {
     $result = mysqli_stmt_get_result($stmt);
     while($row = mysqli_fetch_assoc($result))
     {
-            
+
      echo "<tr>
-         
-         </td><td><a href='http://www.google.com'>" . $row['username'] . 
+
+         </td><td><a href='http://www.google.com'>" . $row['username'] .
          "</a><td>" . $row['email'] .
          "</td>
-         
+
          <td>" . $row['user_type_desc'] .
          "</td>
-         </tr>"; 
+         </tr>";
     }
-    
+
     echo "</tbody></table>";
 
   }
 
 ?>
-
-
-

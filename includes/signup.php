@@ -1,7 +1,11 @@
 <?php
 
+require 'send_verification_email.php';
+
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
+
+
 
 if(isset($_POST['signup-submit'])) {
 require 'dbh.php';
@@ -36,8 +40,8 @@ $passwordRepeat = $_POST['pwd-repeat'];
     exit();
   }
 
-// check if user already exists
-  else {
+// check if username is taken, regardless of whether e-mail verification has been completed
+
     $sql = "SELECT username from users where username=?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -50,33 +54,80 @@ $passwordRepeat = $_POST['pwd-repeat'];
       mysqli_stmt_store_result($stmt);
       $resultCheck=mysqli_stmt_num_rows($stmt);
       if($resultCheck > 0) {
-        header("Location: ../signup.php?error=userexists&email=".$email);
+        header("Location: ../signup.php?error=username_taken&username=".$username);
+        exit();
+	}
+	}
+
+
+// check if a user with verified e-mail ID already exists
+
+    $sql = "SELECT username from users where email=? and email_verified=?";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      header("Location: ../signup.php?error=1sqlerror");
+      exit();
+    }
+    else {
+      $verified="Y";
+      mysqli_stmt_bind_param($stmt, "ss", $email, $verified);
+      mysqli_stmt_execute($stmt);
+      mysqli_stmt_store_result($stmt);
+      $resultCheck=mysqli_stmt_num_rows($stmt);
+      if($resultCheck > 0) {
+        header("Location: ../signup.php?error=emailexists&email=".$email);
         exit();
       }
 
       else {
-        $sql = "insert into users (username, email, user_type_id, password) values (?, ?, ?, ?)";
+
+
+
+        // delete existing unverified user and any tokens first before inserting
+
+        $sql = "delete from tokens where email=?";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../signup.php?error=2sqlerror");
+          header("Location: ../signup.php?error=sqlerror");
           exit();
         }
         else{
+          mysqli_stmt_bind_param($stmt, "s", $email);
+          mysqli_stmt_execute($stmt);
+        }
 
+        $sql = "delete from users where email=?";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+          header("Location: ../signup.php?error=sqlerror");
+          exit();
+        }
+        else{
+          mysqli_stmt_bind_param($stmt, "s", $email);
+          mysqli_stmt_execute($stmt);
+        }
+
+        $sql = "insert into users (username, email, user_type_id, password, email_verified) values (?, ?, ?, ?, ?)";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+          header("Location: ../signup.php?error=sqlerror");
+          exit();
+        }
+        else{
+          $emailVerified = "N";
           $userType="2";
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-          mysqli_stmt_bind_param($stmt, "ssss", $username, $email, $userType, $hashedPwd );
+          mysqli_stmt_bind_param($stmt, "sssss", $username, $email, $userType, $hashedPwd, $emailVerified );
           mysqli_stmt_execute($stmt);
-          header("Location: ../signup.php?signup=success");
-          exit();
+
+          sendVerificationEmail($email);
+
         }
       }
 
 
     }
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn);
-}
+
 
 }
 else{

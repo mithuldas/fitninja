@@ -61,7 +61,7 @@ if (isset($_POST["resetpwd-submit"])){
   // Now, compose and send your message.
   // $mg->messages()->send($domain, $params);
   $mg->messages()->send('mail2.fitninja.in', [
-    'from'    => 'FitNinja <no-reply@fitninja.in>',
+    'from'    => 'Fitninja <no-reply@fitninja.in>',
     'to'      => $to,
     'subject' => $subject,
     'text'    => $message,

@@ -50,10 +50,10 @@ if (isset($_POST["resetpwd-submit"])){
 
   $to = $userEmail;
 
-  $subject = 'Reset your Fitninja password';
+  $subject = 'Reset your FitNinja password';
   $message = '<p>Please click the link below to reset your password: </p>';
   $message .= '<p><a href="' . $url . '">' . $url . '</a> </p>';
-  $message .= 'Regards,<br>' . 'The Fitninja Team';
+  $message .= 'Regards,<br>' . 'The FitNinja Team';
 
   // First, instantiate the SDK with your API credentials
   $mg = Mailgun::create('9dbf4c59884d274f6b2de94cb5c38b93-2fbe671d-a5d69610'); // For US servers
@@ -61,7 +61,7 @@ if (isset($_POST["resetpwd-submit"])){
   // Now, compose and send your message.
   // $mg->messages()->send($domain, $params);
   $mg->messages()->send('mail2.fitninja.in', [
-    'from'    => 'Fitninja <no-reply@fitninja.in>',
+    'from'    => 'FitNinja <no-reply@fitninja.in>',
     'to'      => $to,
     'subject' => $subject,
     'text'    => $message,

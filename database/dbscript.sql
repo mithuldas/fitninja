@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 16, 2020 at 05:49 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Host: localhost:3306
+-- Generation Time: Oct 16, 2020 at 04:11 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
@@ -64,12 +63,19 @@ CREATE TABLE `tokens` (
 
 CREATE TABLE `users` (
   `uid` int(11) NOT NULL,
-  `username` tinytext NOT NULL,
+  `username` varchar(64) NOT NULL,
   `user_type_id` int(11) NOT NULL,
   `email` varchar(64) NOT NULL,
   `password` longtext NOT NULL,
   `email_verified` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`) VALUES
+(3, 'mithuldas', 2, 'mithuldas@gmail.com', '$2y$10$cDNw1CfCVnFeXWsL3zDYG.ghAJHs76jTXoPZHixdK7irKCFnBt8De', 'Y');
 
 -- --------------------------------------------------------
 
@@ -201,31 +207,31 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `interests`
 --
 ALTER TABLE `interests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_attribute_definitions`
 --
 ALTER TABLE `user_attribute_definitions`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_types`
 --
 ALTER TABLE `user_types`
-  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -256,4 +262,3 @@ ALTER TABLE `user_attributes`
 ALTER TABLE `user_interests`
   ADD CONSTRAINT `user_interests_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`),
   ADD CONSTRAINT `user_interests_ibfk_2` FOREIGN KEY (`interest_id`) REFERENCES `interests` (`id`);
-COMMIT;

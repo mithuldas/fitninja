@@ -62,21 +62,20 @@ if(isset($_POST['pwd-change'])){
             echo "There was an error!";
             exit();
           } else {
-
-            $sql =  "update users set password = ? where email = ?";
+            $sql =  "update users set password = ?, email_verified = ? where email = ?";
             $stmt = mysqli_stmt_init($conn);
 
             if(!mysqli_stmt_prepare($stmt, $sql)){
               echo "There was an error!";
               exit();
             } else {
-
+              $emailVerified = "Y";
               $newPwdHash = password_hash($password, PASSWORD_DEFAULT);
-              mysqli_stmt_bind_param($stmt, "ss", $newPwdHash, $tokenEmail);
+              mysqli_stmt_bind_param($stmt, "sss", $newPwdHash, $emailVerified, $tokenEmail);
               mysqli_stmt_execute($stmt);
 
 
-              $sql = "delete from tokens where email = ? and type = 'pwd_reset';";
+              $sql = "delete from tokens where email = ? and type in ('pwd_reset', 'verify_email');";
               $stmt = mysqli_stmt_init($conn);
 
               if(!mysqli_stmt_prepare($stmt, $sql)){

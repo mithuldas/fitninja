@@ -1,6 +1,9 @@
 <?php
 
-require_once('../PHPMailer-5.2-stable/PHPMailerAutoload.php');
+# Include the Autoloader (see "Libraries" for install instructions)
+require '../vendor/autoload.php';
+use Mailgun\Mailgun;
+
 
 if (isset($_POST["resetpwd-submit"])){
 
@@ -8,7 +11,7 @@ if (isset($_POST["resetpwd-submit"])){
   $token = random_bytes(32);
 
 
-  $url = "localhost/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
+  $url = "http://localhost/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
 
   $expires = date("U") + 1800;
 
@@ -46,34 +49,24 @@ if (isset($_POST["resetpwd-submit"])){
   mysqli_close($conn);
 
   $to = $userEmail;
-  $subject = 'Reset your password for Fitninja.in';
+
+  $subject = 'Reset your FitNinja password';
   $message = '<p>Please click the link below to reset your password: </p>';
   $message .= '<p><a href="' . $url . '">' . $url . '</a> </p>';
   $message .= 'Regards,<br>' . 'The FitNinja Team';
 
-  $headers = "From: FitNinja <mithuldas@gmail.com>\r\n";
-  $headers .= "Reply-To: mithuldas@gmail.com\r\n";
-  $headers .= "Content-type: text/html\r\n";
+  // First, instantiate the SDK with your API credentials
+  $mg = Mailgun::create('9dbf4c59884d274f6b2de94cb5c38b93-2fbe671d-a5d69610'); // For US servers
 
-  $mail = new PHPMailer();
-
-  $mail->isSMTP();
-  $mail->SMTPAuth = true;
-  $mail->SMTPSecure = 'ssl';
-  $mail->Host = 'smtp.gmail.com';
-  $mail->Port = '465';
-  $mail->isHTML();
-
-  $mail->Username = 'fitninja.in@gmail.com';
-  $mail->Password = 'Aeh2kpst1!';
-
-  $mail->SetFrom('fitninja.in@gmail.com');
-  $mail->Subject = $subject;
-  $mail->Body = $message;
-  $mail->AddAddress($to);
-
-  $mail->Send();
-
+  // Now, compose and send your message.
+  // $mg->messages()->send($domain, $params);
+  $mg->messages()->send('mail2.fitninja.in', [
+    'from'    => 'FitNinja <no-reply@fitninja.in>',
+    'to'      => $to,
+    'subject' => $subject,
+    'text'    => $message,
+    'html' => $message
+  ]);
 
 
   #mail($to, $subject, $message, $headers);

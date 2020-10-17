@@ -14,7 +14,12 @@
 
 if(isset($_GET['newpwd'])){
   if ($_GET['newpwd'] == "passwordupdated") {
-    echo '<p> Success! Login with your new password: </p>';
+    echo '
+    <div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Success!</strong> Login with your new password </a>.
+</div>
+    ';
   }
 }
 

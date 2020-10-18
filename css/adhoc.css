@@ -136,3 +136,25 @@ text-decoration: none !important;
 input.invalid {
   background-color: #ffdddd;
 }
+
+.modal { background: rgba(000, 000, 000, 0.1); min-height:1000000px; }
+
+.signup_modal {
+  border-radius: 10px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 10px;
+}
+
+.greybgd{
+  background-color:#F5F5F5
+}
+
+.altbgd{
+  background-color:#42b72a;
+  border-color:#42b72a;
+}
+
+.altbgd:hover{
+  background-color:darkgreen;
+  border-color:darkgreen;
+}

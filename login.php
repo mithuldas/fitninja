@@ -51,7 +51,8 @@ if(isset($_GET['status'])){
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit" name="login-submit">Sign in</button>
         <button type="button" class="btn btn-link"><a href="forgot-password.php"> Forgot password?</a> </button>
-
+        <hr>
+        <button class="btn btn-primary altbgd" type="submit" name="login-submit">Create New Account</button>
           </form>
 <?php
 }

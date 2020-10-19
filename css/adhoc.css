@@ -158,3 +158,9 @@ input.invalid {
   background-color:darkgreen;
   border-color:darkgreen;
 }
+
+.formErrors{
+  color:red;
+}
+
+#loader { display: none; }

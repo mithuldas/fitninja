@@ -20,8 +20,7 @@ function sendVerificationEmail($email){
   $to = $email;
 
   sendEmail($to, $subject, $message, $message);
-
-  header("Location: ../signup.php?status=verify_email");
+  
   exit();
 }
 

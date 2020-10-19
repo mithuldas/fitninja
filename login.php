@@ -41,19 +41,18 @@ if(isset($_GET['status'])){
 }else {
 
 ?>
-  <form class="form-signin" action="includes/login.php" method="post">
+  <form class="form-signin" id = "login" action="includes/login.php" method="post" novalidate>
 
-    <input type="text" name="mailuid" class="form-control" placeholder="Email or Username" required autofocus>
-    <input type="password" name="pwd" class="form-control mb-1" placeholder="Password" required>
-
+    <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control" placeholder="Email or Username" required autofocus>
+    <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1" placeholder="Password" required>
+        <small id = "login-errorMsg" class = "login-error formErrors">  </small>
     <div class="checkbox mb-3">
-        <input type="checkbox" value="remember-me"> Remember me
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" name="login-submit">Sign in</button>
-        <button type="button" class="btn btn-link"><a href="forgot-password.php"> Forgot password?</a> </button>
-        <hr>
-        <button class="btn btn-primary altbgd" type="submit" name="login-submit">Create New Account</button>
-          </form>
+    <input type="checkbox" value="remember-me"> Remember me </input>
+  </div>
+    <button class="btn btn-sm btn-primary btn-block" type="submit" name="login-submit" id = "login-submit">Sign in</button>
+    <button type="button" class="btn btn-link"><a href="forgot-password.php"> Forgot password?</a> </button>
+    <hr>
+      </form>
 <?php
 }
 

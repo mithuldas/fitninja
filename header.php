@@ -36,15 +36,14 @@
   <!-- set default tabs when clicking sign up / login -->
   <script>
   $(document).ready(function(){
-    $("#loginButton").on("click",function(){
+    $("#loginButton, #pills-signin-tab").on("click",function(){
         $("#pills-signup-tab").removeClass("active");
         $("#pills-signin-tab").addClass("active");
-        pills-signin-body
         $("#pills-signup-body").removeClass("show active");
         $("#pills-signin-body").addClass("show active");
     });
 
-    $("#registerButton").on("click",function(){
+    $("#registerButton, #pills-signup-tab").on("click",function(){
         $("#pills-signin-tab").removeClass("active");
         $("#pills-signup-tab").addClass("active");
         $("#pills-signin-body").removeClass("show active");

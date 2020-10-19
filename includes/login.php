@@ -1,14 +1,15 @@
 <?php
 
-if (isset($_POST['login-submit'])) {
+if (isset($_POST['save'])) {
 
   require 'dbh.php';
 
   $mailuid = $_POST['mailuid'];
-  $password= $_POST['pwd'];
+  $password= $_POST['password'];
 
   if ( empty($mailuid) || empty($password)) {
-    header("Location: ../?error=emptyfields");
+    echo "emptyfields";
+    exit();
   }
   else {
     $sql = "select * from users, user_types where (username=? OR email=?) and users.user_type_id=user_types.user_type_id; ";
@@ -16,7 +17,8 @@ if (isset($_POST['login-submit'])) {
 
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
-      header("Location: ../index.php?error=sqlerror");
+      echo "sqlerror";
+      exit();
     }
     else{
       mysqli_stmt_bind_param($stmt, "ss", $mailuid, $mailuid);
@@ -29,31 +31,31 @@ if (isset($_POST['login-submit'])) {
         $pwdCheck = password_verify($password, $row['password']);
 
         if ($pwdCheck == false){
-          header("Location: ../login.php?error=wrongpwd");
+          echo "wrongpassword";
           exit();
         }
         else if($pwdCheck == true) {
           $verificationStatus = $row['email_verified'];
           if($verificationStatus=="Y"){
             session_start();
-            $_SESSION[uid] = $row['uid'];
-            $_SESSION[username] = $row['username'];
-            $_SESSION[userType] = $row['user_type_desc'];
-            header("Location: ../landing.php");
+            $_SESSION['uid'] = $row['uid'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['userType'] = $row['user_type_desc'];
+            echo "success";
             exit();
           } else {
-            header("Location: ../login.php?email=" . $email . "&status=verify_email");
+            echo "verifyemail";
           }
 
         }
 
         else{
-          header("Location: ../index.php?error=wrongpwd");
+          echo "nomatch";
 
        }
       }
       else{
-       header("Location: ../index.php?error=nouser");
+       echo "nouser";
        exit();
       }
 
@@ -61,7 +63,7 @@ if (isset($_POST['login-submit'])) {
   }
 }
 else{
-  header("Location: ../index.php");
+  echo "badrequest";
   exit();
 
 }

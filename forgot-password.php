@@ -12,17 +12,23 @@ if(isset($_SESSION['uid'])){
 <?php
 if(isset($_GET["reset"])){
   if($_GET["reset"] == "success"){
-    echo '<p> Check your e-mail. We have sent you a link to reset your password.</p>';
+    echo '<div class="container text-left"> <h3 class="h3 mb-3 font-weight-normal"><b>Check your email</b></h3>
+        <p> Please go to your <b>' . $_GET["email"] . '</b> email and click the password reset link we have sent for your <b>' . $_GET["username"] . '</b> FitNinja account.</p>
+        <p> It could take a few minutes to appear, and be sure to check any spam and promotional folders—just in case! </p> </div>';
+  } else if($_GET["reset"] == "nouser"){
+    echo "<div class='container'> <p> We weren't able to find an account with the email id or username <b>" . $_GET["mailuid"] . "</b><br><br>
+    <a class='btn btn-sm btn-primary' href='forgot-password.php'>Try again? </a> </div>";
+
   }
 } else if(isset($_GET["email"])){
   $populateEmail = $_GET["email"];
 
 ?>
-  <form class="form-signin" action="includes/reset-request.php" method="post">
-    <h1 class="h3 mb-3 font-weight-normal">Reset password</h1>
-    <p> An e-mail will be sent to you with a link to reset your password. </p>
-    <input type="email" name="email" class="form-control mb-1" placeholder="Email address" required autofocus value="<?php echo $populateEmail; ?>">
-    <button class="btn btn-lg btn-primary btn-block " type="submit" name="resetpwd-submit">Submit</button>
+  <form class="form-group" action="includes/reset-request.php" method="post">
+    <h4 class="h3 mb-3 font-weight-normal"> <b>Getting back into your FitNinja account</b> </h4>
+    <p> Enter your email id or username: </p>
+    <input type="text" name="mailuid" class="form-control mb-1" placeholder="" required autofocus value="<?php echo $populateEmail; ?>">
+    <button class="btn btn-sm btn-primary" type="submit" name="resetpwd-submit">Send My Password Reset Link</button>
   </form>
 <?php
 
@@ -31,11 +37,12 @@ if(isset($_GET["reset"])){
 else {
 
 ?>
-  <form class="form-signin" action="includes/reset-request.php" method="post">
-    <h1 class="h3 mb-3 font-weight-normal">Reset password</h1>
-    <p> An e-mail will be sent to you with a link to reset your password. </p>
-    <input type="email" name="email" class="form-control mb-1" placeholder="Email address" required autofocus>
-    <button class="btn btn-lg btn-primary btn-block " type="submit" name="resetpwd-submit">Submit</button>
+
+  <form class="form-group" action="includes/reset-request.php" method="post" style=" text-align:left">
+    <h4 class="h4 mb-3 font-weight-normal"><b>Getting back into your FitNinja account</b></h4>
+    <p> Enter your email id or username: </p>
+    <input type="text" name="mailuid" class="form-control mb-3" placeholder="" required autofocus>
+    <button class="btn btn-sm btn-primary" type="submit" name="resetpwd-submit">Send My Password Reset Link</button>
   </form>
 <?php
 }

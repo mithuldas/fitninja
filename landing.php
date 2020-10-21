@@ -1,8 +1,7 @@
 
 <?php
+session_start();
 
-  include "includes/autoloader.php";
-  require "header.php";
 
   if(!isset($_SESSION['uid'])){
     header("Location: ../index.php");

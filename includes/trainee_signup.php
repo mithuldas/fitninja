@@ -149,7 +149,7 @@ if(isset($_POST['save'])){
     mysqli_stmt_execute($stmt);
   }
 
-  $sql = "insert into users (username, email, user_type_id, password, email_verified) values (?, ?, ?, ?, ?)";
+  $sql = "insert into users (username, email, user_type_id, password, email_verified, source) values (?, ?, ?, ?, ?, ?)";
   $stmt = mysqli_stmt_init($conn);
   if(!mysqli_stmt_prepare($stmt, $sql)) {
     echo "sqlerror";
@@ -158,8 +158,9 @@ if(isset($_POST['save'])){
   else{
     $emailVerified = "N";
     $userType="2";
+    $source = "Web";
     $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "sssss", $username, $email, $userType, $hashedPwd, $emailVerified );
+    mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $userType, $hashedPwd, $emailVerified, $source );
     mysqli_stmt_execute($stmt);
 
     sendVerificationEmail($email);

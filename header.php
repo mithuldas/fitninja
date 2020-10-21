@@ -53,7 +53,10 @@
   });
   </script>
 
+
 </head>
+
+
 
 <body class="text-center">
 
@@ -65,15 +68,18 @@
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link py-0" href="#">Dodos <span class="sr-only">(current)</span></a>
+        <a class="nav-link py-0" href="#">Services <span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link py-0" href="#">Cut that Fat <span class="sr-only">(current)</span></a>
+        <a class="nav-link py-0" href="#"> Pricing <span class="sr-only">(current)</span></a>
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link py-0" href="#">Our Trainers <span class="sr-only">(current)</span></a>
+        <a class="nav-link py-0" href="#"> Community <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link py-0" href="#"> Support <span class="sr-only">(current)</span></a>
       </li>
     </ul>
 
@@ -87,74 +93,7 @@
 
 
       <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
-<div class="modal-dialog" role="document" style=" width: 350px;">
-<div class="modal-content signup_modal">
-  <div class="modal-header">
 
-  <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
-  <li class="nav-item"> <a class="nav-link active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab" aria-controls="pills-signin" aria-selected="true">Log In</a> </li>
-  <li class="nav-item"> <a class="nav-link" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab" aria-controls="pills-signup" aria-selected="false">Register</a> </li>
-  </ul>
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-  </button>
-  </div>
-
-  <div class="modal-body" id = "signup-body">
-    <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane show active p-0 m-0" id="pills-signin-body" role="tabpanel" aria-labelledby="pills-signin-tab">
-        <div class="col-sm-12 p-0 m-0">
-          <form class="form-signin p-0 m-0" id = "login" action="includes/login.php" method="post" novalidate>
-
-          <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-1 greybgd" placeholder="Email or Username" required autofocus>
-          <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1 greybgd" placeholder="Password" required>
-          <small id = "login-errorMsg" class = "login-error formErrors">  </small>
-          <div class="checkbox mb-3">
-          <input type="checkbox" value="remember-me"> Remember me </input>
-          </div>
-          <button class="btn btn-primary btn-block" type="submit" name="login-submit" id = "login-submit">Sign in</button>
-          <button type="button" class="btn btn-link"><a href="forgot-password.php"> Forgot password?</a> </button>
-
-          </form>
-        </div>
-      </div>
-    <div class="tab-pane p-0 m-0" id="pills-signup-body" role="tabpanel" aria-labelledby="pills-signup-tab">
-      <div class="col-sm-12 p-0 m-0">
-        <form id = "signup" class="form-signin m-0 p-0" action="includes/signup_trainee.php" method="post" novalidate>
-
-        <input id = "username" type="text" name="uid" class="form-control mb-1 greybgd " placeholder="Username" required autofocus>
-        <div id = "username-guidance" class="signup-guidance mb-1 "><small> This is the name people will know you by on FitNinja. </small></div>
-        <div id = "username-error" class="signup-error formErrors mb-1"></div>
-
-        <input id = "email" type="email" name="email" class="form-control mb-1 greybgd" placeholder="E-Mail" required>
-        <div id = "email-guidance" class="signup-guidance mb-1"><small> You'll need to verify that you own this email account. </small></div>
-        <div id = "email-error" class="signup-error formErrors mb-1"><small> </small></div>
-
-        <input id = "password" type="password" id="password" name="pwd" class="form-control mb-1 greybgd" placeholder="Password" required >
-        <div id = "password-error" class="signup-error mb-1 formErrors"><small> </small></div>
-
-        <input id = "passwordRepeat" type="password" name="pwd-repeat" class="form-control mb-1 greybgd" placeholder="Repeat Password" required>
-        <div id = "passwordRepeat-error" class="signup-error mb-1 formErrors" ><small> </small></div>
-
-        <small id = "errorMsg" class = "signup-error formErrors">  </small>
-        <button id = "submit" class="btn btn-primary btn-block mt-1 mb-1" type="submit" name="signup-submit">Sign Up</button>
-        </form>
-
-      </div>
-    </div>
-    </div>
-
-  <img id="loader" src="img/loader.svg" alt="load_animation" width="50" height="50" class="m-0 p-0">
-
-
-
-
-
-  </div>
-</div>
-</div>
-</div>
       <?php  ;
     }
 
@@ -180,3 +119,77 @@
 
 
   </nav>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style=" width: 350px;">
+  <div class="modal-content signup_modal">
+    <div class="modal-header">
+
+    <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
+    <li class="nav-item"> <a class="nav-link active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab" aria-controls="pills-signin" aria-selected="true">Log In</a> </li>
+    <li class="nav-item"> <a class="nav-link" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab" aria-controls="pills-signup" aria-selected="false">Register</a> </li>
+    </ul>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+
+    <div class="modal-body" id = "signup-body">
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane show active p-0 m-0" id="pills-signin-body" role="tabpanel" aria-labelledby="pills-signin-tab">
+          <div class="col-sm-12 p-0 m-0">
+            <form class="form-signin p-0 m-0" id = "login" action="includes/login.php" method="post" novalidate>
+            <label class = "float-left"> <b> User name or email </b> </label>
+            <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-1 greybgd" required autofocus>
+            <label class = "float-left"> <b> Password </b> </label>
+            <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1 greybgd" required>
+            <small id = "login-errorMsg" class = "login-error formErrors">  </small>
+            <div class="checkbox mb-3">
+            <input type="checkbox" value="remember-me"> Remember me </input>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit" name="login-submit" id = "login-submit">Sign in</button>
+            <button type="button" class="btn btn-link"><a href="forgot-password.php"> Forgot password?</a> </button>
+
+            </form>
+
+          </div>
+
+
+
+        </div>
+      <div class="tab-pane p-0 m-0" id="pills-signup-body" role="tabpanel" aria-labelledby="pills-signup-tab">
+        <div class="col-sm-12 p-0 m-0">
+          <form id = "signup" class="form-signin m-0 p-0" action="includes/signup_trainee.php" method="post" novalidate>
+
+          <input id = "username" type="text" name="uid" class="form-control mb-1 greybgd " placeholder="Username" required autofocus>
+          <div id = "username-guidance" class="signup-guidance mb-1 "><small> This is the name people will know you by on FitNinja. </small></div>
+          <div id = "username-error" class="signup-error formErrors mb-1"></div>
+
+          <input id = "email" type="email" name="email" class="form-control mb-1 greybgd" placeholder="E-Mail" required>
+          <div id = "email-guidance" class="signup-guidance mb-1"><small> You'll need to verify that you own this email account. </small></div>
+          <div id = "email-error" class="signup-error formErrors mb-1"><small> </small></div>
+
+          <input id = "password" type="password" id="password" name="pwd" class="form-control mb-1 greybgd" placeholder="Password" required >
+          <div id = "password-error" class="signup-error mb-1 formErrors"><small> </small></div>
+
+          <input id = "passwordRepeat" type="password" name="pwd-repeat" class="form-control mb-1 greybgd" placeholder="Repeat Password" required>
+          <div id = "passwordRepeat-error" class="signup-error mb-1 formErrors" ><small> </small></div>
+
+          <small id = "errorMsg" class = "signup-error formErrors">  </small>
+          <button id = "submit" class="btn btn-primary btn-block mt-1 mb-1" type="submit" name="signup-submit">Sign Up</button>
+          </form>
+
+        </div>
+      </div>
+      </div>
+
+    <img id="loader" src="img/loader.svg" alt="load_animation" width="50" height="50" class="m-0 p-0">
+
+
+
+
+
+    </div>
+  </div>
+  </div>
+  </div>

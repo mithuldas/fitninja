@@ -54,7 +54,7 @@ $(document).ready(function() {
         url: 'includes/login.php',
         type: 'post',
         data: {
-          'save' : 1,
+          'login-submit' : 1,
           'mailuid': mailuid,
           'password' : password,
         },
@@ -66,7 +66,6 @@ $(document).ready(function() {
 
         },
         success: function(response){
-          console.log(response);
           $("#login-errorMsg").show();
           if (response == 'sqlerror' ){
             $("#login-errorMsg").text('Database error, please try submitting again.');

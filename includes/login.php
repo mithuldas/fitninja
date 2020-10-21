@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['save'])) {
+if (isset($_POST['login-submit'])) {
 
   require 'dbh.php';
 

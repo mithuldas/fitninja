@@ -1,8 +1,10 @@
 <?php
+require 'dbh.php';
+
 
 if (isset($_POST['login-submit'])) {
 
-  require 'dbh.php';
+
 
   $mailuid = $_POST['mailuid'];
   $password= $_POST['password'];
@@ -12,7 +14,7 @@ if (isset($_POST['login-submit'])) {
     exit();
   }
   else {
-    $sql = "select * from users, user_types where (username=? OR email=?) and users.user_type_id=user_types.user_type_id; ";
+    $sql = "select * from users, user_types where (username=? OR email=?) and source = ? and users.user_type_id=user_types.user_type_id; ";
     $stmt = mysqli_stmt_init($conn);
 
 
@@ -21,7 +23,8 @@ if (isset($_POST['login-submit'])) {
       exit();
     }
     else{
-      mysqli_stmt_bind_param($stmt, "ss", $mailuid, $mailuid);
+      $source = "Web";
+      mysqli_stmt_bind_param($stmt, "sss", $mailuid, $mailuid, $source);
       mysqli_stmt_execute($stmt);
 
       $result = mysqli_stmt_get_result($stmt);

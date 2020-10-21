@@ -78,7 +78,7 @@ $(document).ready(function() {
           } else if (response == 'nouser' ){
             $("#login-errorMsg").html("The email address or username that you've entered doesn't match any account.  <a href = 'forgot-password.php'> <b><u>Sign up for an account.</u></b></a>");
           } else if (response == 'badrequest' ){
-            $("#login-errorMsg").text("Something went wrong.");
+            $("#login-errorMsg").html("Something went wrong.");
           } else if (response == 'success' ){
             window.location.href = "landing.php"
           }

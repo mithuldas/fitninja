@@ -23,8 +23,23 @@
     crossorigin="anonymous">
   </script>
 
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+<script>
+window.fbAsyncInit = function() {
+  FB.init({
+    appId            : '283787556005652',
+    autoLogAppEvents : true,
+    xfbml            : true,
+    version          : 'v8.0'
+  });
+}
+
+</script>
 <script src="scripts/trainee_signup.js"> </script>
 <script src="scripts/login.js"> </script>
+<script src="scripts/facebook_login.js"> </script>
+
 
   <!-- support script for displaying popovers -->
   <script>
@@ -52,6 +67,7 @@
 
   });
   </script>
+
 
 
 </head>
@@ -151,7 +167,9 @@
             <button type="button" class="btn btn-link"><a href="forgot-password.php"> Forgot password?</a> </button>
 
             </form>
+            <HR>
 
+            <a href="#" onclick="fb_login();"><img src="images/fb_login.png" width="225" height="54.4 " border="0" alt=""></a>
           </div>
 
 
@@ -178,12 +196,15 @@
           <small id = "errorMsg" class = "signup-error formErrors">  </small>
           <button id = "submit" class="btn btn-primary btn-block mt-1 mb-1" type="submit" name="signup-submit">Sign Up</button>
           </form>
+          <HR>
+
+          <fb:login-button scope="public_profile">    </fb:login-button>
 
         </div>
       </div>
       </div>
 
-    <img id="loader" src="img/loader.svg" alt="load_animation" width="50" height="50" class="m-0 p-0">
+    <img id="loader" src="images/loader.svg" alt="load_animation" width="50" height="50" class="m-0 p-0">
 
 
 

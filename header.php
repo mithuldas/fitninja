@@ -25,6 +25,10 @@
 
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<meta name="google-signin-client_id" content="29019688226-vrs2euoj57drdrq3krf5gs76bil3otsk.apps.googleusercontent.com">
+
 <script>
 window.fbAsyncInit = function() {
   FB.init({
@@ -37,9 +41,11 @@ window.fbAsyncInit = function() {
 }
 
 </script>
+
 <script src="scripts/trainee_signup.js"> </script>
 <script src="scripts/login.js"> </script>
 <script src="scripts/facebook_login.js"> </script>
+<script src="scripts/google_login.js"> </script>
 
 
   <!-- support script for displaying popovers -->
@@ -173,6 +179,7 @@ window.fbAsyncInit = function() {
             <HR>
 
             <a href="#" onclick="fb_login();"><img src="images/fb_login.png" width="225" height="54.4 " border="0" alt=""></a>
+            <div class="g-signin2 p-0 m-0" data-onsuccess="onSignIn"></div>
           </div>
 
 

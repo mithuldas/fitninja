@@ -18,11 +18,13 @@ function moveToRegisterTab(){ // for moving from login tab to register tab after
 function processFbLoginRequest(response){
   if(response.status=="connected"){
 
-    FB.api('/me', { locale: 'en_US', fields: 'name,email' }, function(response) {
+    FB.api('/me', { locale: 'en_US', fields: 'id,name,email' }, function(response) {
 
+      var id = response.id;
       var email = "empty";
       var name = "empty";
       var emailReceived = false;
+
       //set to true if we got an email from facebook
       if(typeof response.email != 'undefined'){
          emailReceived = true;
@@ -31,13 +33,13 @@ function processFbLoginRequest(response){
          console.log("email has been received");
        }
        // AJAX call to fb specific php login processor
-       // Possible request parameters - emailReceived, emailNotReceived
-       // response not expected
+
        $.ajax({
          url: 'includes/social_login.php',
          type: 'post',
          data: {
            'externalLogin' : 1,
+           'id' : id,
            'email' : email,
            'name' : name,
            'vendor' : 'facebook',

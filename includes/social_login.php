@@ -94,6 +94,7 @@ if (isset($_POST['externalLogin'])){
 
   // google stream
   if($vendor =='google'){
+
     $username = "GO" . $id; // artifical id stored in the username, email and password fields
 
     // check if user with this e-mail exists (ext email id) and source =

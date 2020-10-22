@@ -25,7 +25,7 @@
 
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
 <meta name="google-signin-client_id" content="29019688226-vrs2euoj57drdrq3krf5gs76bil3otsk.apps.googleusercontent.com">
 
@@ -179,7 +179,7 @@ window.fbAsyncInit = function() {
             <HR>
 
             <a href="#" onclick="fb_login();"><img src="images/fb_login.png" width="225" height="54.4 " border="0" alt=""></a>
-            <div class="g-signin2 p-0 m-0" data-onsuccess="onSignIn"></div>
+            <br><a href="#" onclick="google_login();"> Google Login</a>
           </div>
 
 

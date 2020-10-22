@@ -1,17 +1,23 @@
+function google_login(){
 
-function moveToRegisterTab(){ // for moving from login tab to register tab after ext login fail msg
-  $("#pills-signin-tab").removeClass("active");
-  $("#pills-signup-tab").addClass("active");
-  $("#pills-signin-body").removeClass("show active");
-  $("#pills-signup-body").addClass("show active");
-  $("#login-errorMsg").text(''); // clear any existing error messages
+  var googleAuth;
+    gapi.load('auth2', function() {
+        googleAuth = gapi.auth2.init({
+        client_id: '29019688226-vrs2euoj57drdrq3krf5gs76bil3otsk.apps.googleusercontent.com'
+      });
+
+      googleAuth.signIn().then(callback);
+
+      //googleAuth.then(checkForLoggedInUser);
+    });
+
+  function callback(){
+    currentUser = googleAuth.currentUser.get();
+    profile = currentUser.getBasicProfile();
+    processGoogleLoginRequest(profile)
+  }
 }
 
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  processGoogleLoginRequest(profile);
-
-}
 
 function processGoogleLoginRequest(profile){
 
@@ -24,6 +30,7 @@ function processGoogleLoginRequest(profile){
      url: 'includes/social_login.php',
      type: 'post',
      data: {
+       'emailReceived' : true,
        'externalLogin' : 1,
        'id' : id,
        'email' : email,

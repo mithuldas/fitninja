@@ -179,7 +179,7 @@ window.fbAsyncInit = function() {
             <HR>
 
             <a href="#" onclick="fb_login();"><img src="images/fb_login.png" width="225" height="54.4 " border="0" alt=""></a>
-            <br><a href="#" onclick="google_login();"> Google Login</a>
+            <br><a href="#" onclick="google_login();"> <img src="images/google_login.png"></a>
           </div>
 
 
@@ -207,8 +207,8 @@ window.fbAsyncInit = function() {
           <button id = "submit" class="btn btn-primary btn-block mt-1 mb-1" type="submit" name="signup-submit">Sign Up</button>
           </form>
           <HR>
-
-          <fb:login-button scope="public_profile">    </fb:login-button>
+            <a href="#" onclick="fb_login();"><img src="images/fb_login.png" width="225" height="54.4 " border="0" alt=""></a>
+            <br><a href="#" onclick="google_login();"> <img src="images/google_login.png"></a>
 
         </div>
       </div>

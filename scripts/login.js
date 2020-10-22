@@ -68,7 +68,7 @@ $(document).ready(function() {
         success: function(response){
           $("#login-errorMsg").show();
           if (response == 'sqlerror' ){
-            $("#login-errorMsg").text('Database error, please try submitting again.');
+            $("#login-errorMsg").text('There was a database error, please contact support.');
           } else if (response == 'emptyfields' ){
             $("#login-errorMsg").text('Fill in all the fields');
           } else if (response == 'verifyemail' ){

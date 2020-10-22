@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Oct 16, 2020 at 04:11 PM
--- Server version: 5.7.26
--- PHP Version: 7.4.2
+-- Host: 127.0.0.1
+-- Generation Time: Oct 22, 2020 at 08:00 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
@@ -55,6 +56,13 @@ CREATE TABLE `tokens` (
   `type` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tokens`
+--
+
+INSERT INTO `tokens` (`id`, `email`, `selector`, `token`, `expiry`, `type`) VALUES
+(96, 'mithuldas@gmail.com', 'abdd466d3e5ea415', '$2y$10$E578UHosbre4Lb4BBhcNReVzZgu/WSOvCcxi/XUGG7cwBkdXuHiuK', '1603320326', 'verify_email');
+
 -- --------------------------------------------------------
 
 --
@@ -67,15 +75,19 @@ CREATE TABLE `users` (
   `user_type_id` int(11) NOT NULL,
   `email` varchar(64) NOT NULL,
   `password` longtext NOT NULL,
-  `email_verified` tinytext NOT NULL
+  `email_verified` tinytext NOT NULL,
+  `reg_dt` datetime NOT NULL DEFAULT current_timestamp(),
+  `source` varchar(64) DEFAULT NULL,
+  `ext_email` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`) VALUES
-(3, 'mithuldas', 2, 'mithuldas@gmail.com', '$2y$10$cDNw1CfCVnFeXWsL3zDYG.ghAJHs76jTXoPZHixdK7irKCFnBt8De', 'Y');
+INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`, `reg_dt`, `source`, `ext_email`) VALUES
+(5, 'admin', 3, 'fitninja.in@gmail.com', '$2y$10$608f1Bmi7wuXsBzQ4VRx.eVj3cLQJDt5.c3G36ME4ArdJmh5DOEEK', 'Y', '2020-10-20 23:13:08', 'Web', NULL),
+(60, 'mithuldas', 2, 'mithuldas@gmail.com', '$2y$10$vcFc99CGOpwywGmfQKWWO.qyqvycb07LgPYgZErStgaiNU6dyk6Ze', 'N', '2020-10-22 02:15:26', 'Web', NULL);
 
 -- --------------------------------------------------------
 
@@ -169,7 +181,7 @@ ALTER TABLE `tokens`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`uid`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `username` (`username`) USING HASH,
+  ADD UNIQUE KEY `username` (`username`),
   ADD KEY `fk_users_user_types.user_type_id` (`user_type_id`);
 
 --
@@ -213,13 +225,13 @@ ALTER TABLE `interests`
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `user_attribute_definitions`
@@ -262,3 +274,4 @@ ALTER TABLE `user_attributes`
 ALTER TABLE `user_interests`
   ADD CONSTRAINT `user_interests_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`),
   ADD CONSTRAINT `user_interests_ibfk_2` FOREIGN KEY (`interest_id`) REFERENCES `interests` (`id`);
+COMMIT;

@@ -57,6 +57,7 @@ window.fbAsyncInit = function() {
         $("#pills-signin-tab").addClass("active");
         $("#pills-signup-body").removeClass("show active");
         $("#pills-signin-body").addClass("show active");
+        $("#login-errorMsg").text(''); // clear any existing error messages
     });
 
     $("#registerButton, #pills-signup-tab").on("click",function(){
@@ -64,6 +65,7 @@ window.fbAsyncInit = function() {
         $("#pills-signup-tab").addClass("active");
         $("#pills-signin-body").removeClass("show active");
         $("#pills-signup-body").addClass("show active");
+        $("#login-errorMsg").text(''); // clear any existing error messages
     });
 
   });

@@ -34,7 +34,8 @@ if (isset($_POST['externalLogin'])){
         if ($row = mysqli_fetch_assoc($result)){
           session_start();
           $_SESSION['uid'] = $row['uid'];
-          $_SESSION['username'] = $name;
+          $split_names = explode(' ', $name, 2);
+          $_SESSION['username'] = $split_names[0] . " (Facebook)";
           $_SESSION['userType'] = $row['user_type_desc'];
 
           echo "loggedInExisting";
@@ -75,7 +76,8 @@ if (isset($_POST['externalLogin'])){
               if ($row = mysqli_fetch_assoc($result)){
                 session_start();
                 $_SESSION['uid'] = $row['uid'];
-                $_SESSION['username'] = $name;
+                $split_names = explode(' ', $name, 2);
+                $_SESSION['username'] = $split_names[0] . " (Facebook)";
                 $_SESSION['userType'] = $row['user_type_desc'];
 
                 echo "loggedInNew";
@@ -117,7 +119,10 @@ if (isset($_POST['externalLogin'])){
       if ($row = mysqli_fetch_assoc($result)){
         session_start();
         $_SESSION['uid'] = $row['uid'];
-        $_SESSION['username'] = $name;
+
+        $split_names = explode(' ', $name, 2);
+        $_SESSION['username'] = $split_names[0] . " (Google)";
+
         $_SESSION['userType'] = $row['user_type_desc'];
 
         echo "loggedInExisting";
@@ -158,7 +163,10 @@ if (isset($_POST['externalLogin'])){
             if ($row = mysqli_fetch_assoc($result)){
               session_start();
               $_SESSION['uid'] = $row['uid'];
-              $_SESSION['username'] = $name;
+
+              $split_names = explode(' ', $name, 2);
+              $_SESSION['username'] = $split_names[0] . " (Google)";
+
               $_SESSION['userType'] = $row['user_type_desc'];
 
               echo "loggedInNew";

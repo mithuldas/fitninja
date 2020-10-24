@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2020 at 08:00 AM
+-- Generation Time: Oct 24, 2020 at 12:10 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -56,13 +56,6 @@ CREATE TABLE `tokens` (
   `type` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tokens`
---
-
-INSERT INTO `tokens` (`id`, `email`, `selector`, `token`, `expiry`, `type`) VALUES
-(96, 'mithuldas@gmail.com', 'abdd466d3e5ea415', '$2y$10$E578UHosbre4Lb4BBhcNReVzZgu/WSOvCcxi/XUGG7cwBkdXuHiuK', '1603320326', 'verify_email');
-
 -- --------------------------------------------------------
 
 --
@@ -86,8 +79,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`, `reg_dt`, `source`, `ext_email`) VALUES
-(5, 'admin', 3, 'fitninja.in@gmail.com', '$2y$10$608f1Bmi7wuXsBzQ4VRx.eVj3cLQJDt5.c3G36ME4ArdJmh5DOEEK', 'Y', '2020-10-20 23:13:08', 'Web', NULL),
-(60, 'mithuldas', 2, 'mithuldas@gmail.com', '$2y$10$vcFc99CGOpwywGmfQKWWO.qyqvycb07LgPYgZErStgaiNU6dyk6Ze', 'N', '2020-10-22 02:15:26', 'Web', NULL);
+(5, 'admin', 3, 'fitninja.in@gmail.com', '$2y$10$608f1Bmi7wuXsBzQ4VRx.eVj3cLQJDt5.c3G36ME4ArdJmh5DOEEK', 'Y', '2020-10-20 23:13:08', 'Web', NULL);
 
 -- --------------------------------------------------------
 
@@ -225,13 +217,13 @@ ALTER TABLE `interests`
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `user_attribute_definitions`

@@ -116,5 +116,26 @@ input.invalid {
   color:red;
 }
 
+a:hover {
+text-decoration: none !important;
+}
+a:active {
+text-decoration: none !important;
+}
+
+.remove-padding{
+  padding: 0px;
+}
+
+/*.custom-popover li:nth-child(2) {
+  border-top: 1px solid #ccc!important;
+}
+.custom-popover li:last-child {
+  border-top: 1px solid #ccc!important;
+}*/
+
+.popover .arrow {
+    display: none;
+}
 
 #loader { display: none; }

@@ -61,7 +61,7 @@ function processFbLoginRequest(response){
 
            else if(response == "noEmail"){
 
-             $("#login-errorMsg").html("We couldn't log you in through Facebook. Please <a href = \" #\" onClick= \"switchToRegister();\"> <b><u>Register</b></u> </a> to login");
+             $("#login-errorMsg").html("We couldn't log you in through Facebook. Please <a href = \" #\" onClick= \"moveToRegisterTab();\"> <b><u>Register</b></u> </a> to login");
              $("#login-errorMsg").slideDown();
 
            }

@@ -23,7 +23,7 @@ include "includes/autoloader.php";
 
     <div class="col-md">
 
-  <button type="button" class="btn  btn-primary  btn mr-1" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button>
+
 <h3 style="text-align: center"> Trainers.. </h3>
     </div>
 

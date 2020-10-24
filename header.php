@@ -9,7 +9,7 @@
 
   <!-- Bootstrap sources -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
-  <link href="css/adhoc.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
@@ -99,7 +99,7 @@
         <a class="nav-link" href="#">Trainers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Free Trial Session</a>
+
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -129,14 +129,14 @@
     // if the user is logged in, show the user profile button
     if(isset($_SESSION['uid'])){?>
 
-      <button type="button" data-html="true" class="btn btn-secondary btn-sm btn mr-1"
+      <a href="#" tabindex="0" role="button" data-html="true" class="btn btn-secondary btn-sm btn mr-1"
       data-trigger="focus" data-container="body" data-toggle="popover" data-placement="bottom"
       data-content= '<div id="popover-content" style="display: none">
       <ul class="list-group custom-popover">
       <li class="list-group-item proflist remove-padding"><a href="profile.php" class="popover-link  float-left px-2 py-1"> Profile</a></li>
       <li class="list-group-item remove-padding"><a href="includes/logout.php" class="popover-link float-left px-2 py-1"> Logout</a></li>
       </ul>
-      </div>'> <?php echo $_SESSION['username']?></button>
+    </div>'> <?php echo $_SESSION['username']?></a>
       <?php
     }
     ?>

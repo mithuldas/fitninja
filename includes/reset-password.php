@@ -86,6 +86,7 @@ if(isset($_POST['pwd-change'])){
                 mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                 mysqli_stmt_execute($stmt);
                 header("Location: ../login.php?newpwd=passwordupdated");
+                exit();
 
 
 
@@ -101,6 +102,7 @@ if(isset($_POST['pwd-change'])){
 
 } else {
   header("Location: ../index.php");
+  exit();
 }
 
 ?>

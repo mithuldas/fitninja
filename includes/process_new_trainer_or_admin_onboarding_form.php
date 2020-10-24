@@ -10,27 +10,27 @@ $passwordRepeat = $_POST['pwd-repeat'];
 $userType = $_POST['type'];
 
   if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
-    header("Location: ../onboard_landing.php?error=emptyfields&uid=".$username."&email=".$email);
+    header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=emptyfields&uid=".$username."&email=".$email);
     exit();
   }
 
   else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-    header("Location: ../onboard_landing.php?error=invalidemailusername");
+    header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=invalidemailusername");
     exit();
   }
 
   else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header("Location: ../onboard_landing.php?error=invalidemail&uid=".$username);
+    header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=invalidemail&uid=".$username);
     exit();
   }
 
   else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)){
-    header("Location: ../onboard_landing.php?error=invalidusername&email=".$email);
+    header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=invalidusername&email=".$email);
     exit();
   }
 
   else if ($password!==$passwordRepeat){
-    header("Location: ../onboard_landing.php?error=passwordcheck&uid=".$username."&email=".$email);
+    header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=passwordcheck&uid=".$username."&email=".$email);
     exit();
   }
 
@@ -39,7 +39,7 @@ $userType = $_POST['type'];
     $sql = "SELECT username from users where username=?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-      header("Location: ../onboard_landing.php?error=sqlerror");
+      header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=sqlerror");
       exit();
     }
     else {
@@ -48,7 +48,7 @@ $userType = $_POST['type'];
       mysqli_stmt_store_result($stmt);
       $resultCheck=mysqli_stmt_num_rows($stmt);
       if($resultCheck > 0) {
-        header("Location: ../onboard_landing.php?error=username_taken&username=".$username);
+        header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=username_taken&username=".$username);
         exit();
 	     }
 	}
@@ -59,7 +59,7 @@ $userType = $_POST['type'];
     $sql = "SELECT username from users where email=? and email_verified=?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-      header("Location: ../onboard_landing.php?error=sqlerror");
+      header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=sqlerror");
       exit();
     }
     else {
@@ -69,7 +69,7 @@ $userType = $_POST['type'];
       mysqli_stmt_store_result($stmt);
       $resultCheck=mysqli_stmt_num_rows($stmt);
       if($resultCheck > 0) {
-        header("Location: ../onboard_landing.php?error=emailexists&email=".$email);
+        header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=emailexists&email=".$email);
         exit();
       }
 
@@ -80,6 +80,7 @@ $userType = $_POST['type'];
 
         if(!mysqli_stmt_prepare($stmt, $sql)){
           header("Location: ../index.php?error=sqlerror");
+          exit();
         }
         else{
           mysqli_stmt_bind_param($stmt, "s", $userType);
@@ -97,7 +98,7 @@ $userType = $_POST['type'];
         $sql = "delete from tokens where email=?";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../onboard_landing.php?error=sqlerror");
+          header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=sqlerror");
           exit();
         }
         else{
@@ -108,7 +109,7 @@ $userType = $_POST['type'];
         $sql = "delete from users where email=?";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../onboard_landing.php?error=sqlerror");
+          header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=sqlerror");
           exit();
         }
         else{
@@ -116,16 +117,17 @@ $userType = $_POST['type'];
           mysqli_stmt_execute($stmt);
         }
 
-        $sql = "insert into users (username, email, user_type_id, password, email_verified) values (?, ?, ?, ?, ?)";
+        $sql = "insert into users (username, email, user_type_id, password, email_verified, source) values (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../onboard_landing.php?error=sqlerror");
+          header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php?error=sqlerror");
           exit();
         }
         else{
           $emailVerified = "Y";
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-          mysqli_stmt_bind_param($stmt, "sssss", $username, $email, $userTypeForDB, $hashedPwd, $emailVerified );
+          $source = "Web";
+          mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $userTypeForDB, $hashedPwd, $emailVerified, $source );
           mysqli_stmt_execute($stmt);
 
 
@@ -136,6 +138,7 @@ $userType = $_POST['type'];
 
           if(!mysqli_stmt_prepare($stmt, $sql)){
             header("Location: ../index.php?error=sqlerror");
+            exit();
           }
           else{
             mysqli_stmt_bind_param($stmt, "s", $username);
@@ -149,12 +152,12 @@ $userType = $_POST['type'];
 
           // start the session so that the landing page can forward appropriately
           session_start();
-          $_SESSION[uid] = $uid;
-          $_SESSION[username] = $username;
-          $_SESSION[userType] = $userType;
+          $_SESSION['uid'] = $uid;
+          $_SESSION['username'] = $username;
+          $_SESSION['userType'] = $userType;
 
-
-          header("Location: ../landing.php?status=onboarded");
+          header("Location: ../includes/post_login_landing_controller.php?status=onboarded");
+          exit();
         }
         }
       }
@@ -165,7 +168,7 @@ $userType = $_POST['type'];
 
 }
 else{
-  header("Location: ../onboard_landing.php");
+  header("Location: ../new_trainer_or_admin_onboard_email_landing.php.php");
   exit();
 
 }

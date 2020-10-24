@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+if(!isset($_SESSION)){
+  session_start();
+}
+?>
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -133,7 +137,8 @@
       data-trigger="focus" data-container="body" data-toggle="popover" data-placement="bottom"
       data-content= '<div id="popover-content" style="display: none">
       <ul class="list-group custom-popover">
-      <li class="list-group-item proflist remove-padding"><a href="profile.php" class="popover-link  float-left px-2 py-1"> Profile</a></li>
+      <li class="list-group-item proflist remove-padding"><a href="includes/post_login_landing_controller.php" class="popover-link  float-left px-2 py-1"> Dashboard</a></li>
+      <li class="list-group-item proflist remove-padding"><a href="profile.php" class="popover-link  float-left px-2 py-1"> Settings</a></li>
       <li class="list-group-item remove-padding"><a href="includes/logout.php" class="popover-link float-left px-2 py-1"> Logout</a></li>
       </ul>
     </div>'> <?php echo $_SESSION['username']?></a>

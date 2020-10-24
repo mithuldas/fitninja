@@ -82,7 +82,8 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
             }
 
 
-          header("Location: landing.php");
+          header("Location: ./includes/post_login_landing_controller.php");
+          exit();
 
 
 

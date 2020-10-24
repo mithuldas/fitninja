@@ -4,7 +4,7 @@
   function getTokenStringForURL($userEmail, $tokenType, $tokenDuration){
 
     require 'dbh.php';
-    
+
     // generate the token string to return
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
@@ -38,6 +38,7 @@
       exit();
     } else {
       $hashedToken = password_hash($token, PASSWORD_DEFAULT);
+
       mysqli_stmt_bind_param($stmt, "sssss", $userEmail, $selector, $hashedToken, $tokenExpiry, $tokenType);
       mysqli_stmt_execute($stmt);
     }

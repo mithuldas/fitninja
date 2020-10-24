@@ -4,7 +4,7 @@ require 'token_generator.php';
 require 'send_email.php';
 require 'dbh.php';
 
-if (isset($_POST["onboard_new"])){
+if (isset($_POST["onboard_new_trainer_or_admin"])){
   if($_POST["type"]=="Trainer"){
       $tokenType = 'onboard_trainer';
   } else if ($_POST["type"]=="Admin"){
@@ -16,9 +16,10 @@ if (isset($_POST["onboard_new"])){
   $userType = $_POST["type"];
 
 
+
   // generate token and save it
   $tokenString = getTokenStringForURL($userEmail, $tokenType, $tokenDuration);
-  $baseURL = "http://localhost/onboard_landing.php";
+  $baseURL = "http://localhost/new_trainer_or_admin_onboard_email_landing.php";
   $url = $baseURL . "?" . $tokenString . "&email=" . $userEmail . "&type=" .$userType;
 
   // create the e-mail content
@@ -31,9 +32,11 @@ if (isset($_POST["onboard_new"])){
   sendEmail($userEmail, $subject, $message, $message);
 
   // redirect user to the forgot password for further handling
-  header("Location: ../admin_landing.php?status=onboard_sent&email=" . $userEmail);
+  header("Location: ../admin_dashboard.php?status=onboard_sent&email=" . $userEmail);
+  exit();
 }
 
 else{
   header("Location: ../index.php");
+  exit();
 }

@@ -1,42 +1,41 @@
 <?php
 
-if(!isset($_SESSION)){
-  session_start();
-}
-
 include "includes/autoloader.php";
 include "includes/dbh.php";
 
-  if(!isset($_SESSION['uid'])){
-    header("Location: ../index.php");
-    exit();
+session_start();
+
+if(!isset($_SESSION['uid']) || $_SESSION['userType']!='Trainee'){
+  header("Location: ../index.php");
+  exit();
+}
+
+$uid = $_SESSION['uid'];
+
+$sql = 'select * from user_attributes where attribute_value = "Y" and attribute_id in
+(select attribute_id from user_attribute_definitions where attribute_name = "trainee_onboarding_completed") and uid = ' . $uid . ';';
+
+$stmt = mysqli_stmt_init($conn);
+
+if(!mysqli_stmt_prepare($stmt, $sql)){
+  header("Location: ../index.php?error=sqlerror");
+  exit();
+}
+else {
+  mysqli_stmt_execute($stmt);
+
+  $result = mysqli_stmt_get_result($stmt);
+  // if a row was returned with trainee_onboarding_completed = "Y", it means that
+  // the user has completed the onboarding form. Send them on to the dashboard.
+  if ($row = mysqli_fetch_assoc($result)){
+      header("Location: ../dashboard.php");
+      exit();
   }
+  // otherwise continue
+}
 
 
-  $uid = $_SESSION['uid'];
-
-    $sql = 'select * from user_attributes where attribute_value = "Y" and attribute_id in
-    (select attribute_id from user_attribute_definitions where attribute_name = "trainee_onboarding_completed") and uid = ' . $uid . ';';
-
-    $stmt = mysqli_stmt_init($conn);
-
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-      header("Location: ../index.php?error=sqlerror");
-    }
-    else{
-      mysqli_stmt_execute($stmt);
-
-      $result = mysqli_stmt_get_result($stmt);
-      // if onboarding complete status is Y, then move them onto the dashboard
-      if ($row = mysqli_fetch_assoc($result)){
-          header("Location: trainee_dashboard.php");
-          exit();
-	   }
-
-    }
-
-    require "header.php";
-
+  require "header.php";
 ?>
 
 

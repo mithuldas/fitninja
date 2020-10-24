@@ -52,7 +52,7 @@ function processGoogleLoginRequest(profile){
        }
 
        else if(response=="loggedInExisting" || response=="loggedInNew" ){
-         window.location.href = "../landing.php";
+         window.location.href = "../includes/post_login_landing_controller.php";
        }
      }
    });

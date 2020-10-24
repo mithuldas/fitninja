@@ -47,9 +47,11 @@ if (isset($_POST["resetpwd-submit"])){
 
       // redirect user to the forgot password for further handling
       header("Location: ../forgot-password.php?reset=success&email=" . $email . "&username=" . $username);
+      exit();
 
     } else {
       header("Location: ../forgot-password.php?reset=nouser&mailuid=" . $mailuid);
+      exit();
     }
   }
 }

@@ -80,7 +80,7 @@ $(document).ready(function() {
           } else if (response == 'badrequest' ){
             $("#login-errorMsg").html("Something went wrong.");
           } else if (response == 'success' ){
-            window.location.href = "landing.php"
+            window.location.href = "../includes/post_login_landing_controller.php"
           }
 
         }

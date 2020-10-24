@@ -15,7 +15,7 @@ require "header.php";
 
       <h4>Welcome! Let's get you started:</h4>
 
-    <form class="form-signin" action="includes/signup_onboard.php" method="post">
+    <form class="form-signin" action="includes/process_new_trainer_or_admin_onboarding_form.php" method="post">
 
       <input type="hidden" name="type" value="<?php echo $_GET["type"]; ?>" />
       <input type="email" name="email" class="form-control" value="<?php echo $_GET['email']; ?>" required autofocus readonly>

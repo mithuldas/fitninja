@@ -133,7 +133,7 @@ if (isset($_POST['trainee_landing_submit'])) {
           mysqli_stmt_execute($stmt);
         }
 
-    header("Location: ../dashboard.php");
+    header("Location: ../includes/post_login_landing_controller.php");
     exit();
 }
 

@@ -145,6 +145,18 @@ $(document).ready(function() {
       return;
     }
 
+    if(password && passwordRepeat){
+      console.log("1");
+      if(password!=passwordRepeat){
+        console.log("2");
+        passwordRepeat_valid = false;
+        $('#passwordRepeat').removeClass("is-valid");
+        $('#passwordRepeat').addClass("is-invalid");
+        $('#passwordRepeat-error').html("<small> Passwords don't match</small>");
+        $('#passwordRepeat-error').slideDown();
+      }
+    }
+
     $.ajax({
       url: 'includes/trainee_signup.php',
       type: 'post',
@@ -206,7 +218,10 @@ $(document).ready(function() {
 
       },
       success: function(response){
-        if (response == 'mismatch' ) {
+        if (password && password_valid == false){
+          passwordRepeat_valid = false;
+          $('#passwordRepeat').addClass("is-invalid");
+        } else if (password && response == 'mismatch' ) {
           passwordRepeat_valid = false;
           $('#passwordRepeat-error').slideDown();
           $('#passwordRepeat').addClass("is-invalid");

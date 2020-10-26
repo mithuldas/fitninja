@@ -1,9 +1,9 @@
-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2020 at 12:10 PM
+-- Generation Time: Oct 26, 2020 at 11:14 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -79,7 +79,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`, `reg_dt`, `source`, `ext_email`) VALUES
-(5, 'admin', 3, 'fitninja.in@gmail.com', '$2y$10$608f1Bmi7wuXsBzQ4VRx.eVj3cLQJDt5.c3G36ME4ArdJmh5DOEEK', 'Y', '2020-10-20 23:13:08', 'Web', NULL);
+(119, 'mithuldas', 3, 'mithuldas@gmail.com', '$2y$10$WcGL0cTjzlRfLUtD6oj6JuHwb70r.XnZ.qW2dFVvWQ5y27T0KACLW', 'Y', '2020-10-27 03:27:35', 'Web', NULL);
 
 -- --------------------------------------------------------
 
@@ -211,41 +211,35 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `interests`
 --
 ALTER TABLE `interests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_attribute_definitions`
 --
 ALTER TABLE `user_attribute_definitions`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_types`
 --
 ALTER TABLE `user_types`
-  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `tokens`
---
-ALTER TABLE `tokens`
-  ADD CONSTRAINT `tokens_ibfk_1` FOREIGN KEY (`email`) REFERENCES `users` (`email`);
 
 --
 -- Constraints for table `users`

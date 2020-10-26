@@ -138,7 +138,7 @@ if(!isset($_SESSION)){
       data-content= '<div id="popover-content" style="display: none">
       <ul class="list-group custom-popover">
       <li class="list-group-item proflist remove-padding"><a href="includes/post_login_landing_controller.php" class="popover-link  float-left px-2 py-1"> Dashboard</a></li>
-      <li class="list-group-item proflist remove-padding"><a href="profile.php" class="popover-link  float-left px-2 py-1"> Settings</a></li>
+      <li class="list-group-item proflist remove-padding"><a href="settings.php" class="popover-link  float-left px-2 py-1"> Settings</a></li>
       <li class="list-group-item remove-padding"><a href="includes/logout.php" class="popover-link float-left px-2 py-1"> Logout</a></li>
       </ul>
     </div>'> <?php echo $_SESSION['username']?></a>

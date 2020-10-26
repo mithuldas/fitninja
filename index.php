@@ -31,21 +31,21 @@ include "includes/autoloader.php";
 </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="images/auba.jpg" class="d-block w-100" alt="...">
+      <img src="images/auba.png" class="d-block w-100" alt="...">
       <div class="carousel-caption">
        <h3>Pierre Aubemeyang</h3>
        <p>Striker</p>
      </div>
     </div>
     <div class="carousel-item">
-      <img src="images/xhaka.jpg" class="d-block w-100" alt="...">
+      <img src="images/xhaka.png" class="d-block w-100" alt="...">
       <div class="carousel-caption">
        <h3>Granit Xhaka</h3>
        <p>Midfield</p>
      </div>
     </div>
     <div class="carousel-item">
-      <img src="images/ozil.jpg" class="d-block w-100" alt="...">
+      <img src="images/ozil.png" class="d-block w-100" alt="...">
       <div class="carousel-caption">
        <h3>Mesut Ozil</h3>
        <p>Midfield</p>

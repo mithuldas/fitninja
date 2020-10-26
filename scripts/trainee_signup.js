@@ -154,6 +154,11 @@ $(document).ready(function() {
         $('#passwordRepeat').addClass("is-invalid");
         $('#passwordRepeat-error').html("<small> Passwords don't match</small>");
         $('#passwordRepeat-error').slideDown();
+      } else {
+        $('#passwordRepeat').removeClass("is-invalid");
+        $('#passwordRepeat').addClass("is-valid");
+        $('#passwordRepeat-error').html("");
+        $('#passwordRepeat-error').hide();
       }
     }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2020 at 12:10 PM
+-- Generation Time: Oct 26, 2020 at 11:59 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -14,8 +14,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `fitninja`
 --
-CREATE DATABASE IF NOT EXISTS `fitninja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `fitninja`;
 
 -- --------------------------------------------------------
 
@@ -70,16 +68,9 @@ CREATE TABLE `users` (
   `password` longtext NOT NULL,
   `email_verified` tinytext NOT NULL,
   `reg_dt` datetime NOT NULL DEFAULT current_timestamp(),
-  `source` varchar(64) DEFAULT NULL,
+  `source` varchar(64) NOT NULL,
   `ext_email` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`, `reg_dt`, `source`, `ext_email`) VALUES
-(5, 'admin', 3, 'fitninja.in@gmail.com', '$2y$10$608f1Bmi7wuXsBzQ4VRx.eVj3cLQJDt5.c3G36ME4ArdJmh5DOEEK', 'Y', '2020-10-20 23:13:08', 'Web', NULL);
 
 -- --------------------------------------------------------
 
@@ -88,6 +79,7 @@ INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `em
 --
 
 CREATE TABLE `user_attributes` (
+  `user_attribute_id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `attribute_id` int(11) NOT NULL,
   `attribute_value` varchar(64) NOT NULL
@@ -180,6 +172,7 @@ ALTER TABLE `users`
 -- Indexes for table `user_attributes`
 --
 ALTER TABLE `user_attributes`
+  ADD PRIMARY KEY (`user_attribute_id`),
   ADD KEY `uid` (`uid`),
   ADD KEY `attribute_id` (`attribute_id`);
 
@@ -211,41 +204,41 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `interests`
 --
 ALTER TABLE `interests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user_attributes`
+--
+ALTER TABLE `user_attributes`
+  MODIFY `user_attribute_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_attribute_definitions`
 --
 ALTER TABLE `user_attribute_definitions`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_types`
 --
 ALTER TABLE `user_types`
-  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `tokens`
---
-ALTER TABLE `tokens`
-  ADD CONSTRAINT `tokens_ibfk_1` FOREIGN KEY (`email`) REFERENCES `users` (`email`);
 
 --
 -- Constraints for table `users`

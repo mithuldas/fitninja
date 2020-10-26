@@ -75,7 +75,7 @@ $(document).ready(function() {
           username_valid = false;
           $('#username').addClass("is-invalid");
           $('#username-error').slideDown();
-          $('#username-error').html("<small> This username is already taken</small>");
+          $('#username-error').html("<small> This username is already in use. Please choose another one.</small>");
         } else {
           username_valid = true;
           $('#username').removeClass("is-invalid");

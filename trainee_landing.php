@@ -171,7 +171,7 @@ include "includes/dbh.php";
 <div class="tab">
   <h6>Tell us a bit more about yourself </h6>
   <div class="form-group small text-muted">
-    Your presonal data will be stored securely and will not be shared outside of FitNinja.in
+    Your personal data will be stored securely and will not be shared outside of FitNinja.in
   </div>
 <div class="row">
 <div class="col-md-3">

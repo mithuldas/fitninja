@@ -265,7 +265,7 @@ $(document).ready(function() {
           'email': email,
           'password' : password,
         },
-        timeout:3000, //3 second timeout
+        timeout:5000, //5 second timeout
         error: function(xmlhttprequest, textstatus, message){
           if(textstatus==="timeout"){
             $("#errorMsg").text("The server didn't respond. Try clicking submit again...");
@@ -276,8 +276,7 @@ $(document).ready(function() {
           if (response == 'sqlerror' ){
             $("#errorMsg").text('Database error, please try submitting again.');
           } else {
-            $("#signup").hide();
-            $("#signup-body").html("We've sent you an email to make sure that you own the email account. Please click the link in the email to login!");
+            window.location = 'index.php?status=verification-sent&email=' + email;
           }
 
         }

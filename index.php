@@ -4,6 +4,19 @@ include "includes/autoloader.php";
 ?>
 
 <?php
+  if(isset($_GET['status'])){
+    if($_GET['status']=='verification-sent'){
+        ?>
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          We've sent you an email to make sure that you own the email account. Please click the link in it to login!
+        </div>
+        <?php
+    }
+  }
+?>
+
+<?php
   require "header.php";
 ?>
 
@@ -87,6 +100,8 @@ include "includes/autoloader.php";
 </div>
 
 </main>
+
+
 
 <?php
   require "footer.php";

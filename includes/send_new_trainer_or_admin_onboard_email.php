@@ -19,7 +19,7 @@ if (isset($_POST["onboard_new_trainer_or_admin"])){
 
   // generate token and save it
   $tokenString = getTokenStringForURL($userEmail, $tokenType, $tokenDuration);
-  $baseURL = "http://localhost/new_trainer_or_admin_onboard_email_landing.php";
+  $baseURL = "http://fitninja.in/new_trainer_or_admin_onboard_email_landing.php";
   $url = $baseURL . "?" . $tokenString . "&email=" . $userEmail . "&type=" .$userType;
 
   // create the e-mail content

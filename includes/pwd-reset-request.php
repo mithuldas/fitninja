@@ -32,7 +32,7 @@ if (isset($_POST["resetpwd-submit"])){
       $email = $row['email'];;
       $username = $row['username'];;
       $tokenString = getTokenStringForURL($email, $tokenType, $tokenDuration);
-      $baseURL = "http://localhost/create-new-password.php";
+      $baseURL = "http://fitninja.in/create-new-password.php";
       $url = $baseURL . "?" . $tokenString;
 
       // create the e-mail content

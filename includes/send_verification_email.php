@@ -8,7 +8,7 @@ function sendVerificationEmail($email){
   $tokenDuration =  7200; // seconds (2 hours)
   $tokenType = 'verify_email'; // store in DB as pwd_reset i.s.o email_verify
   $tokenString = getTokenStringForURL($email, $tokenType, $tokenDuration);
-  $baseURL = "http://localhost/verify_email.php";
+  $baseURL = "http://fitninja.in/verify_email.php";
   $url = $baseURL . "?" . $tokenString;
 
   // create the e-mail content
@@ -20,7 +20,7 @@ function sendVerificationEmail($email){
   $to = $email;
 
   sendEmail($to, $subject, $message, $message);
-  
+
   exit();
 }
 

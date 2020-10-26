@@ -1,16 +1,19 @@
 <?php
-require "header.php";
-?>
-
-<?php
 if(isset($_SESSION['uid'])){
-  header("Location: ../index.php");
+  header("Location: index.php");
   exit();
 }
 
 ?>
 
+<div class="container">
 <?php
+
+require "header.php";
+
+
+
+
 if(isset($_GET["reset"])){
   if($_GET["reset"] == "success"){
     echo '<div class="container text-left"> <h3 class="h3 mb-3 font-weight-normal"><b>Check your email</b></h3>
@@ -25,7 +28,7 @@ if(isset($_GET["reset"])){
   $populateEmail = $_GET["email"];
 
 ?>
-  <form class="form-group" action="includes/reset-request.php" method="post">
+  <form class="form-group" action="includes/pwd-reset-request.php" method="post">
     <h4 class="h3 mb-3 font-weight-normal"> <b>Getting back into your FitNinja account</b> </h4>
     <p> Enter your email id or username: </p>
     <input type="text" name="mailuid" class="form-control mb-1" placeholder="" required autofocus value="<?php echo $populateEmail; ?>">
@@ -39,7 +42,7 @@ else {
 
 ?>
 
-  <form class="form-group" action="includes/reset-request.php" method="post" style=" text-align:left">
+  <form class="form-group" action="includes/pwd-reset-request.php" method="post" style=" text-align:left">
     <h4 class="h4 mb-3 font-weight-normal"><b>Getting back into your FitNinja account</b></h4>
     <p> Enter your email id or username: </p>
     <input type="text" name="mailuid" class="form-control mb-3" placeholder="" required autofocus>
@@ -51,7 +54,7 @@ else {
 
 ?>
 
-
+</div>
 
 
 

@@ -1,7 +1,21 @@
-<?php
-  require "header.php";
-?>
 
+
+
+<?php
+
+if(!isset($_SESSION)){
+  session_start();
+}
+
+if(!isset($_SESSION['uid'])){
+  header("Location: index.php?notLoggedIn");
+  exit();
+}
+
+
+
+require "header.php";
+?>
 
 <link href="css/profile.css" rel="stylesheet">
 
@@ -13,12 +27,12 @@
             <div class="card-body">
               <nav class="nav flex-column nav-pills nav-gap-y-1">
                 <a href="#profile" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded active">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user mr-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>User Details
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user mr-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Profile
                 </a>
                 <a href="#account" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings mr-2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>Account Settings
                 </a>
-                <a href="#security" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                <a href="#security" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded" id="security-link">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield mr-2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Change Password
                 </a>
                 <a href="#notification" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
@@ -33,6 +47,7 @@
         </div>
         <div class="col-md-8">
           <div class="card">
+            <h6 id = "statusMessage"> <h6>
             <div class="card-header border-bottom mb-3 d-flex d-md-none">
               <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
                 <li class="nav-item">
@@ -106,17 +121,17 @@
                 </form>
               </div>
               <div class="tab-pane" id="security">
+                <h6>CHANGE PASSWORD</h6>
+                <hr>
 
-                <form>
+                <form action="includes/pwd-change-request.php" method="post">
                   <div class="form-group">
-                    <label class="d-block">Change Password</label>
-                    <input type="text" class="form-control" placeholder="Enter your old password">
-                    <input type="text" class="form-control mt-1" placeholder="New password">
-                    <input type="text" class="form-control mt-1" placeholder="Confirm new password">
+                    <input type="password" name="oldpwd" class="form-control" placeholder="Enter your old password">
+                    <input type="password" name="newpwd" class="form-control mt-1" placeholder="New password">
+                    <input type="password" name="newpwdrepeat"  class="form-control mt-1" placeholder="Confirm new password">
                   </div>
 
-                  <button type="button" class="btn btn-primary">Update Profile</button>
-                  <button type="reset" class="btn btn-light">Reset Changes</button>
+                  <button type="submit" name="changepwd-submit" class="btn btn-primary">Set Password</button>
                 </form>
 
 
@@ -201,8 +216,39 @@
 
     </div>
 
-
-
 <?php
   require "footer.php";
 ?>
+
+<script>
+  $('#statusMessage').hide();
+    var status = "<?php echo($_GET['status']); ?>";
+
+    if(status == "emptyfields" || status == "pwdMismatch" || status =="wrongPassword" || status =="tooShort" || status =="complexityFailed"){
+      $("*").removeClass("active");
+      $("#security, #security-link").addClass("active");
+    }
+    if (status == "emptyfields"){
+      $('#statusMessage').slideDown();
+      $('#statusMessage').html('<h6 style="color:red"> Fill in all fields </h6');
+    } else if (status == "pwdMismatch") {
+      $('#statusMessage').slideDown();
+      $('#statusMessage').html('<h6 style="color:red"> Passwords do not match </h6');
+    } else if (status == "wrongPassword") {
+      $('#statusMessage').slideDown();
+      $('#statusMessage').html('<h6 style="color:red"> The current password you have entered is incorrect </h6');
+    } else if (status == "tooShort") {
+      $('#statusMessage').slideDown();
+      $('#statusMessage').html('<h6 style="color:red"> Password must contain at least 8 characters </h6');
+    } else if (status == "complexityFailed") {
+      $('#statusMessage').slideDown();
+      $('#statusMessage').html('<h6 style="color:red"> Password should contain at least 1 upper case, 1 lowercase and 1 number </h6');
+
+    }
+      else if (status == "passwordupdated") {
+      $('#statusMessage').slideDown();
+      $('#statusMessage').html('<h6 style="color:green"> Your password has been updated </h6');
+    }
+
+
+</script>

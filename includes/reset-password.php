@@ -1,4 +1,6 @@
-<<?php
+<?php
+
+include "../classes/Password.php";
 
 if(isset($_POST['pwd-change'])){
 
@@ -7,11 +9,19 @@ if(isset($_POST['pwd-change'])){
   $password = $_POST["pwd"];
   $passwordRepeat = $_POST["pwd-repeat"];
 
-  if(empty($password) || empty($passwordRepeat)) {
-    header("Location: ../create-new-password.php?newpwd=empty&selector=" . $selector . "&validator=" . $validator);
+  $passwordObject = new Password($password, $passwordRepeat);
+
+  if($passwordObject->hasEmptyFields()) {
+    header("Location: ../create-new-password.php?status=emptyfields=" . $selector . "&validator=" . $validator);
     exit();
-  } else if ($password != $passwordRepeat) {
-    header("Location: ../create-new-password.php?newpwd=pwdnotsame&selector=" . $selector . "&validator=" . $validator);
+  } else if (!$passwordObject->doesMatch()) {
+    header("Location: ../create-new-password.php?status=pwdMismatch&selector=" . $selector . "&validator=" . $validator);
+    exit();
+  } else if (!$passwordObject->isLongEnough()){
+    header("Location: ../create-new-password.php?status=tooShort&selector=" . $selector . "&validator=" . $validator);
+    exit();
+  } else if (!$passwordObject->isComplexEnough()){
+    header("Location: ../create-new-password.php?status=complexityFailed&selector=" . $selector . "&validator=" . $validator);
     exit();
   }
 
@@ -85,7 +95,7 @@ if(isset($_POST['pwd-change'])){
 
                 mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                 mysqli_stmt_execute($stmt);
-                header("Location: ../login.php?newpwd=passwordupdated");
+                header("Location: ../create-new-password.php?status=passwordupdated");
                 exit();
 
 

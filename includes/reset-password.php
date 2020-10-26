@@ -42,7 +42,7 @@ if(isset($_POST['pwd-change'])){
 
     $result = mysqli_stmt_get_result($stmt);
     if (!$row = mysqli_fetch_assoc($result)) {
-      header("Location: ../forgot-password.php?invalidlink");
+      header("Location: ../create-new-password.php?status=invalidlink");
       exit();
     }
 

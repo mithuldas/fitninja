@@ -35,7 +35,7 @@ if (isset($_POST['externalLogin'])){
           session_start();
           $_SESSION['uid'] = $row['uid'];
           $split_names = explode(' ', $name, 2);
-          $_SESSION['username'] = $split_names[0] . " (Facebook)";
+          $_SESSION['username'] = $split_names[0];
           $_SESSION['userType'] = $row['user_type_desc'];
 
           echo "loggedInExisting";
@@ -121,7 +121,7 @@ if (isset($_POST['externalLogin'])){
         $_SESSION['uid'] = $row['uid'];
 
         $split_names = explode(' ', $name, 2);
-        $_SESSION['username'] = $split_names[0] . " (Google)";
+        $_SESSION['username'] = $split_names[0];
 
         $_SESSION['userType'] = $row['user_type_desc'];
 
@@ -165,7 +165,7 @@ if (isset($_POST['externalLogin'])){
               $_SESSION['uid'] = $row['uid'];
 
               $split_names = explode(' ', $name, 2);
-              $_SESSION['username'] = $split_names[0] . " (Google)";
+              $_SESSION['username'] = $split_names[0];
 
               $_SESSION['userType'] = $row['user_type_desc'];
 

@@ -132,16 +132,16 @@ if(!isset($_SESSION)){
 
     // if the user is logged in, show the user profile button
     if(isset($_SESSION['uid'])){?>
-
-      <a href="#" tabindex="0" role="button" data-html="true" class="btn btn-secondary btn-sm btn mr-1"
-      data-trigger="focus" data-container="body" data-toggle="popover" data-placement="bottom"
-      data-content= '<div id="popover-content" style="display: none">
-      <ul class="list-group custom-popover">
-      <li class="list-group-item proflist remove-padding"><a href="includes/post_login_landing_controller.php" class="popover-link  float-left px-5 py-1"> Dashboard</a></li>
-      <li class="list-group-item proflist remove-padding"><a href="settings.php" class="popover-link  float-left px-5 py-1"> Settings</a></li>
-      <li class="list-group-item remove-padding"><a href="includes/logout.php" class="popover-link float-left px-5 py-1"> Logout</a></li>
-      </ul>
-    </div>'> <?php echo $_SESSION['username']?></a>
+    <div class="dropdown">
+  <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+    <?php echo $_SESSION['username']?>
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="includes/post_login_landing_controller.php">Dashboard</a>
+    <a class="dropdown-item" href="settings.php">Settings</a>
+    <a class="dropdown-item" href="includes/logout.php">Logout</a>
+  </div>
+</div>
       <?php
     }
     ?>

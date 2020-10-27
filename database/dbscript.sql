@@ -12,10 +12,10 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
--- Database: `fitninja`
+-- Database: `FuNinja`
 --
-CREATE DATABASE IF NOT EXISTS `fitninja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `fitninja`;
+CREATE DATABASE IF NOT EXISTS `FuNinja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `FuNinja`;
 
 -- --------------------------------------------------------
 

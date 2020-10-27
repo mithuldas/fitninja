@@ -9,7 +9,7 @@ if(!isset($_SESSION)){
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-  <title> FitNinja </title>
+  <title> FuNinja </title>
 
   <!-- Bootstrap sources -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
@@ -84,7 +84,7 @@ if(!isset($_SESSION)){
 
   <!--navbar -->
   <nav id = "main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom boxshadoweffect">
-  <a class="navbar-brand py-0" href="index.php">FitNinja</a>
+  <a class="navbar-brand py-0" href="index.php">FuNinja</a>
 
   <!-- burger -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -195,7 +195,7 @@ if(!isset($_SESSION)){
         <form id = "signup" class="form-signin m-0 p-0" action="includes/signup_trainee.php" method="post" novalidate>
 
         <input id = "username" type="text" name="uid" class="form-control mb-1 greybgd " placeholder="Username" required>
-        <div id = "username-guidance" class="signup-guidance mb-1 "><small> This is the name people will know you by on FitNinja. </small></div>
+        <div id = "username-guidance" class="signup-guidance mb-1 "><small> This is the name people will know you by on FuNinja. </small></div>
         <div id = "username-error" class="signup-error formErrors mb-1"></div>
 
         <input id = "email" type="email" name="email" class="form-control mb-1 greybgd" placeholder="E-Mail" required>

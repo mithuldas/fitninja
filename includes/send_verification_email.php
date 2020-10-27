@@ -8,14 +8,14 @@ function sendVerificationEmail($email){
   $tokenDuration =  7200; // seconds (2 hours)
   $tokenType = 'verify_email'; // store in DB as pwd_reset i.s.o email_verify
   $tokenString = getTokenStringForURL($email, $tokenType, $tokenDuration);
-  $baseURL = "https://fitninja.in/verify_email.php";
+  $baseURL = "https://FuNinja.in/verify_email.php";
   $url = $baseURL . "?" . $tokenString;
 
   // create the e-mail content
   $subject = 'Confirm Your Email and Get Started ';
   $message = '<p>Let us know if this is really your email address, to help us keep your account secure.<br><br>Confirm your email and let’s get started! </p>';
   $message .= '<p><a href="' . $url . '">' . $url . '</a> </p>';
-  $message .= 'Regards,<br>' . 'The FitNinja Team';
+  $message .= 'Regards,<br>' . 'The FuNinja Team';
 
   $to = $email;
 

@@ -32,15 +32,15 @@ if (isset($_POST["resetpwd-submit"])){
       $email = $row['email'];;
       $username = $row['username'];;
       $tokenString = getTokenStringForURL($email, $tokenType, $tokenDuration);
-      $baseURL = "https://fitninja.in/create-new-password.php";
+      $baseURL = "https://FuNinja.in/create-new-password.php";
       $url = $baseURL . "?" . $tokenString;
 
       // create the e-mail content
-      $subject = 'Reset your FitNinja password';
+      $subject = 'Reset your FuNinja password';
       $message =  '<p> Hello, </p>';
       $message .= '<p>Please click the link below to reset your password: </p>';
       $message .= '<p><a href="' . $url . '">' . $url . '</a> </p>';
-      $message .= 'Regards,<br>' . 'The FitNinja Team';
+      $message .= 'Regards,<br>' . 'The FuNinja Team';
 
       //  use mailgun.com API to send the e-mail
       sendEmail($email, $subject, $message, $message);

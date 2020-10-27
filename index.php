@@ -85,13 +85,13 @@ include "includes/autoloader.php";
   <div class="row no-gutters" >
     <div class="col-md">
 
-  <h3 style="text-align: center"> What is FitNinja? </h3>
+  <h3 style="text-align: center"> What is FuNinja? </h3>
     </div>
 
     <div class="col-md">
 
-  <p> FitNinja is great. I love my trainer - <b>John Doe</b> </p>
-  <p> I lost a shitload of weight after joining FitNinja. My trainer keeps pushing me even when I really didn't feel like working out. - <b>Jill Bagabong</b></p>
+  <p> FuNinja is great. I love my trainer - <b>John Doe</b> </p>
+  <p> I lost a shitload of weight after joining FuNinja. My trainer keeps pushing me even when I really didn't feel like working out. - <b>Jill Bagabong</b></p>
 
     </div>
 

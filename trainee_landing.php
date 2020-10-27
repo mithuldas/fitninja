@@ -43,7 +43,7 @@ include "includes/dbh.php";
 
 <body>
 <div class="container">
-  <h4> Welcome to FitNinja! Let's get you started:  </h4><br>
+  <h4> Welcome to FuNinja! Let's get you started:  </h4><br>
 <div class="progress">
   <div id="progressbar" class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
@@ -171,7 +171,7 @@ include "includes/dbh.php";
 <div class="tab">
   <h6>Tell us a bit more about yourself </h6>
   <div class="form-group small text-muted">
-    Your personal data will be stored securely and will not be shared outside of FitNinja.in
+    Your personal data will be stored securely and will not be shared outside of FuNinja.in
   </div>
 <div class="row">
 <div class="col-md-3">

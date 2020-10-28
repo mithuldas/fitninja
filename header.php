@@ -136,9 +136,10 @@ if(!isset($_SESSION)){
   <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
     <?php echo $_SESSION['username']?>
   </button>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu dropdown-menu-right">
     <a class="dropdown-item" href="includes/post_login_landing_controller.php">Dashboard</a>
     <a class="dropdown-item" href="settings.php">Settings</a>
+    <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="includes/logout.php">Logout</a>
   </div>
 </div>

@@ -47,6 +47,10 @@ class ComposerStaticInit7c61a2b45b168bf326cae787a79f1236
             'Http\\Client\\Common\\' => 19,
             'Http\\Client\\' => 12,
         ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
         'C' => 
         array (
             'Clue\\StreamFilter\\' => 18,
@@ -115,6 +119,10 @@ class ComposerStaticInit7c61a2b45b168bf326cae787a79f1236
         'Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-http/httplug/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Clue\\StreamFilter\\' => 
         array (

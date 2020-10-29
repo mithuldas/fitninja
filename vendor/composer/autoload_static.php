@@ -25,6 +25,11 @@ class ComposerStaticInit7c61a2b45b168bf326cae787a79f1236
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\OptionsResolver\\' => 34,
         ),
+        'R' => 
+        array (
+            'Razorpay\\Tests\\' => 15,
+            'Razorpay\\Api\\' => 13,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
@@ -77,6 +82,14 @@ class ComposerStaticInit7c61a2b45b168bf326cae787a79f1236
         'Symfony\\Component\\OptionsResolver\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/options-resolver',
+        ),
+        'Razorpay\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/razorpay/razorpay/tests',
+        ),
+        'Razorpay\\Api\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/razorpay/razorpay/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
@@ -134,6 +147,16 @@ class ComposerStaticInit7c61a2b45b168bf326cae787a79f1236
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'R' => 
+        array (
+            'Requests' => 
+            array (
+                0 => __DIR__ . '/..' . '/rmccue/requests/library',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
@@ -145,6 +168,7 @@ class ComposerStaticInit7c61a2b45b168bf326cae787a79f1236
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit7c61a2b45b168bf326cae787a79f1236::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit7c61a2b45b168bf326cae787a79f1236::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit7c61a2b45b168bf326cae787a79f1236::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit7c61a2b45b168bf326cae787a79f1236::$classMap;
 
         }, null, ClassLoader::class);

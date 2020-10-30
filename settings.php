@@ -224,7 +224,7 @@ require "header.php";
   $('#statusMessage').hide();
     var status = "<?php echo($_GET['status']); ?>";
 
-    if(status == "emptyfields" || status == "pwdMismatch" || status =="wrongPassword" || status =="tooShort" || status =="complexityFailed"){
+    if(status == "emptyfields" || status == "pwdMismatch" || status =="wrongPassword" || status =="tooShort"){
       $("*").removeClass("active");
       $("#security, #security-link").addClass("active");
     }
@@ -240,12 +240,7 @@ require "header.php";
     } else if (status == "tooShort") {
       $('#statusMessage').slideDown();
       $('#statusMessage').html('<h6 style="color:red"> Password must contain at least 8 characters </h6');
-    } else if (status == "complexityFailed") {
-      $('#statusMessage').slideDown();
-      $('#statusMessage').html('<h6 style="color:red"> Password should contain at least 1 upper case, 1 lowercase and 1 number </h6');
-
-    }
-      else if (status == "passwordupdated") {
+    } else if (status == "passwordupdated") {
       $('#statusMessage').slideDown();
       $('#statusMessage').html('<h6 style="color:green"> Your password has been updated </h6');
     }

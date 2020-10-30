@@ -24,9 +24,6 @@ if(isset($_POST['changepwd-submit'])){
   } else if (!$passwordObject->isLongEnough()){
     header("Location: ../settings.php?status=tooShort");
     exit();
-  } else if (!$passwordObject->isComplexEnough()){
-    header("Location: ../settings.php?status=complexityFailed");
-    exit();
   }
 
   require 'dbh.php';

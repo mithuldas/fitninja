@@ -48,7 +48,7 @@ if (isset($_SESSION['uid'])){
   $('#statusMessage').hide();
     var status = "<?php echo($_GET['status']); ?>";
 
-    if(status == "emptyfields" || status == "pwdMismatch" || status =="wrongPassword" || status =="tooShort" || status =="complexityFailed"){
+    if(status == "emptyfields" || status == "pwdMismatch" || status =="wrongPassword" || status =="tooShort"){
       $("*").removeClass("active");
       $("#security, #security-link").addClass("active");
     }
@@ -67,12 +67,7 @@ if (isset($_SESSION['uid'])){
     } else if (status == "invalidlink") {
       $('#statusMessage').show();
       $('#statusMessage').html('<h6 style="color:red"> The link you clicked on is no longer valid. Please submit another request from the <a href="forgot-password.php"> <b><u>Forgot Password </b></u></a> page. </h6');
-    } else if (status == "complexityFailed") {
-      $('#statusMessage').show();
-      $('#statusMessage').html('<h6 style="color:red"> Password should contain at least 1 upper case, 1 lowercase and 1 number </h6');
-
-    }
-      else if (status == "passwordupdated") {
+    } else if (status == "passwordupdated") {
       $('#statusMessage').show();
       $('#statusMessage').html('<h6 style="color:green"> Your password has been updated. Please login with your new password. </h6');
     }

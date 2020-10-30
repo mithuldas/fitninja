@@ -182,10 +182,6 @@ $(document).ready(function() {
           $('#password-error').slideDown();
           $('#password').addClass("is-invalid");
           $('#password-error').html("<small> Password must contain at least 8 characters</small>");
-        } else if (response == 'complexityFailed' ){
-          $('#password-error').slideDown();
-          $('#password').addClass("is-invalid");
-          $('#password-error').html("<small> Password should contain at least 1 upper case, 1 lowercase and 1 number</small>");
         } else {
           password_valid = true;
           $('#password').removeClass("is-invalid");

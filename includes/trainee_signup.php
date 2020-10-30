@@ -96,17 +96,6 @@ if(isset($_POST['password_check'])){
     echo "invalidPasswordLength";
     exit();
   }
-
-  // check if uppercase, lower case and a number exists
-  $containsLowerCase  =   preg_match('/[a-z]/',       $password);
-  $containsUpperCase  =   preg_match('/[A-Z]/',       $password);
-  $containsDigit   =      preg_match('/\d/',          $password);
-
-  $containsAll = $containsLowerCase && $containsUpperCase && $containsDigit;
-
-  if(!$containsAll){
-    echo "complexityFailed";
-  }
 }
 
 // password repeat validation

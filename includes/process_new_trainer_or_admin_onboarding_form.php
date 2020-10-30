@@ -71,9 +71,6 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
   } else if (!$passwordObject->isLongEnough()){
     header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=tooShort&email=".$email. "&uid=".$username.$queryGiveBack);
     exit();
-  } else if (!$passwordObject->isComplexEnough()){
-    header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=complexityFailed&email=".$email. "&uid=".$username.$queryGiveBack);
-    exit();
   }
 
 

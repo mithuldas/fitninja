@@ -20,9 +20,6 @@ if(isset($_POST['pwd-change'])){
   } else if (!$passwordObject->isLongEnough()){
     header("Location: ../create-new-password.php?status=tooShort&selector=" . $selector . "&validator=" . $validator);
     exit();
-  } else if (!$passwordObject->isComplexEnough()){
-    header("Location: ../create-new-password.php?status=complexityFailed&selector=" . $selector . "&validator=" . $validator);
-    exit();
   }
 
   $currentDate = date("U");

@@ -70,9 +70,6 @@ if(isset($_GET['uid'])){
     } else if (status == "tooShort") {
       $('#statusMessage').show();
       $('#statusMessage').html('<h6 style="color:red"> Password must contain at least 8 characters </h6');
-    } else if (status == "complexityFailed") {
-      $('#statusMessage').show();
-      $('#statusMessage').html('<h6 style="color:red"> Password should contain at least 1 upper case, 1 lowercase and 1 number </h6');
     } else if (status == "username_taken") {
       $('#statusMessage').show();
       $('#statusMessage').html('<h6 style="color:red"> This username is already in use. Please choose another one. </h6');

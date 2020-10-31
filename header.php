@@ -33,7 +33,6 @@ if(!isset($_SESSION['uid']) && isset($_COOKIE['FuNinja'])){
       $result = mysqli_stmt_get_result($stmt);
       if ($row = mysqli_fetch_assoc($result)){
         $email=$row['email'];
-        session_start();
         $_SESSION['uid'] = $row['uid'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['userType'] = $row['user_type_desc'];

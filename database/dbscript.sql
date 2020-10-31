@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2020 at 11:14 PM
+-- Generation Time: Oct 31, 2020 at 07:19 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -12,10 +12,10 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
--- Database: `FuNinja`
+-- Database: `funinja`
 --
-CREATE DATABASE IF NOT EXISTS `FuNinja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `FuNinja`;
+CREATE DATABASE IF NOT EXISTS `funinja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `funinja`;
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,8 @@ CREATE TABLE `tokens` (
   `selector` text NOT NULL,
   `token` longtext NOT NULL,
   `expiry` text NOT NULL,
-  `type` tinytext NOT NULL
+  `type` tinytext NOT NULL,
+  `creation_dt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -73,13 +74,6 @@ CREATE TABLE `users` (
   `source` varchar(64) DEFAULT NULL,
   `ext_email` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`, `reg_dt`, `source`, `ext_email`) VALUES
-(119, 'mithuldas', 3, 'mithuldas@gmail.com', '$2y$10$WcGL0cTjzlRfLUtD6oj6JuHwb70r.XnZ.qW2dFVvWQ5y27T0KACLW', 'Y', '2020-10-27 03:27:35', 'Web', NULL);
 
 -- --------------------------------------------------------
 

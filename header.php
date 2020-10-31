@@ -2,8 +2,13 @@
 
 include_once "config.php";
 
+if(!isset($_SESSION)){
+  session_start();
+}
+
 // if user isn't logged-in, check if a valid cookie exists and auto-login
 if(!isset($_SESSION['uid']) && isset($_COOKIE['FuNinja'])){
+
   $extractDataFromCookie = explode(':', $_COOKIE["FuNinja"], 2);
 
   $selector = $extractDataFromCookie[0] ;
@@ -41,9 +46,6 @@ if(!isset($_SESSION['uid']) && isset($_COOKIE['FuNinja'])){
   }
 }
 
-if(!isset($_SESSION)){
-  session_start();
-}
 ?>
 
 <!DOCTYPE html>

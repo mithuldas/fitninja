@@ -1,4 +1,46 @@
 <?php
+
+include_once "config.php";
+
+// if user isn't logged-in, check if a valid cookie exists and auto-login
+if(!isset($_SESSION['uid']) && isset($_COOKIE['FuNinja'])){
+  $extractDataFromCookie = explode(':', $_COOKIE["FuNinja"], 2);
+
+  $selector = $extractDataFromCookie[0] ;
+  $validator =  $extractDataFromCookie[1];
+  include_once "includes/dbh.php";
+  if(Token::tokenIsValid($selector, $validator, "login_cookie", $conn)){
+    // fetch user data from DB and start a logged in session
+
+    $email = Token::getUserEmailFromSelector($selector, $conn);
+    $sql = "select * from users, user_types where (email='".$email."') and users.user_type_id=user_types.user_type_id; ";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      echo "sqlerror";
+      exit();
+    }
+    else{
+      $source = "Web";
+      mysqli_stmt_execute($stmt);
+
+      $result = mysqli_stmt_get_result($stmt);
+      if ($row = mysqli_fetch_assoc($result)){
+        $email=$row['email'];
+        session_start();
+        $_SESSION['uid'] = $row['uid'];
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['userType'] = $row['user_type_desc'];
+
+        //renew the token - i.e: delete the current token and create a new one
+        $newCookieString = Token::getRenewedToken($email, $selector, $conn); // passing existing selector
+        setcookie("FuNinja", $newCookieString, time() + 7776000, '/', null);
+      }
+    }
+  }
+}
+
 if(!isset($_SESSION)){
   session_start();
 }
@@ -82,8 +124,8 @@ if(!isset($_SESSION)){
 <div class="container-fluid">
 <div class="row">
   <!--navbar -->
-  <nav id = "main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom boxshadoweffect">
-  <a href="index.php" class="navbar-left"><img src="images/logo.jpg" alt="FuNinja" style="height:50px"></a>
+  <nav id = "main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0">
+  <a href="index.php" class="navbar-left"><img src="images/logo.jpg" alt="FuNinja" style="height:40px"></a>
 
   <!-- burger -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,12 +134,12 @@ if(!isset($_SESSION)){
   <!-- /burger" -->
 
   <!-- everything in here will be collapsed on smaller devices -->
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse pt-3 " id="navbarSupportedContent">
     <!-- Navbar links, dropdowns etc go here -->
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto ">
 
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Membership</a>
+      <li class="nav-item active pl-2">
+        <a class="nav-link " href="#">Membership</a>
       </li>
       <li class="nav-item active">
 
@@ -121,8 +163,8 @@ if(!isset($_SESSION)){
     <?php
     // if user user isn't logged in, show the login and register buttons
     if(!isset($_SESSION['uid'])){ ?>
-      <button type="button" class="btn btn-primary btn-sm btn mr-1" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> Login </button>
-      <button type="button" class="btn btn-secondary btn-sm btn mr-1" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> Register</button>
+      <button type="button" class="btn btn-secondary btn-sm btn mr-1 mb-1" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOG IN </button>
+      <button type="button" class="btn btn-primary btn-sm btn mr-1 mb-1" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP, IT'S FREE</button>
 
       <?php  ;
     }
@@ -130,7 +172,7 @@ if(!isset($_SESSION)){
     // if the user is logged in, show the user profile button
     if(isset($_SESSION['uid'])){?>
     <div class="dropdown">
-  <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+  <button type="button" class="btn btn-sm btn-primary dropdown-toggle mb-1" data-toggle="dropdown">
     <?php echo $_SESSION['username']?>
   </button>
   <div class="dropdown-menu dropdown-menu-right">
@@ -173,7 +215,7 @@ if(!isset($_SESSION)){
           <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1 greybgd" required>
           <small id = "login-errorMsg" class = "login-error formErrors">  </small>
           <div class="checkbox mb-3">
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me" name="remember-me" id="remember-me"> Remember me
           </div>
           <button class="btn btn-primary btn-block" type="submit" name="login-submit" id = "login-submit">Sign in</button>
           <a href="forgot-password.php" class="btn btn-link"> Forgot password?</a>

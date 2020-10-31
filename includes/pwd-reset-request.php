@@ -1,6 +1,9 @@
 <?php
 
-require 'token_generator.php';
+include "../config.php";
+require_once ( ROOT_DIR.'/classes/Token.php' );
+
+
 require 'send_email.php';
 require 'dbh.php';
 
@@ -31,7 +34,7 @@ if (isset($_POST["resetpwd-submit"])){
       // generate token and save it
       $email = $row['email'];;
       $username = $row['username'];;
-      $tokenString = getTokenStringForURL($email, $tokenType, $tokenDuration);
+      $tokenString = Token::getTokenStringForURL($email, $tokenType, $tokenDuration, $conn);
       $baseURL = "https://FuNinja.in/create-new-password.php";
       $url = $baseURL . "?" . $tokenString;
 

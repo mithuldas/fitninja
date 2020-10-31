@@ -1,6 +1,8 @@
 <?php
 
-require 'token_generator.php';
+include "../config.php";
+require_once( ROOT_DIR.'/classes/Token.php' );
+
 require 'send_email.php';
 require 'dbh.php';
 
@@ -36,7 +38,7 @@ if (isset($_POST["onboard_new_trainer_or_admin"])){
       } else {
         // generate token and save it
 
-        $tokenString = getTokenStringForURL($userEmail, $tokenType, $tokenDuration);
+        $tokenString = Token::getTokenStringForURL($userEmail, $tokenType, $tokenDuration, $conn);
         $baseURL = "https://FuNinja.in/new_trainer_or_admin_onboard_email_landing.php";
         $url = $baseURL . "?" . $tokenString . "&email=" . $userEmail . "&type=" .$userType;
 

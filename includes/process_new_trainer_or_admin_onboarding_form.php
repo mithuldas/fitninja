@@ -1,7 +1,9 @@
 <?php
 
+include "../config.php";
+require_once ( ROOT_DIR.'/classes/Token.php' );
+
 include '../classes/Password.php';
-include 'token_validator.php';
 
 if(isset($_POST['signup-onboard-submit'])) {
 require 'dbh.php';
@@ -119,7 +121,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
 
       // if token is valid, proceed, otherwise, return invalidlink erro
 
-      if(tokenIsValid($selector, $validator, $tokenType, $conn)){
+      if(Token::tokenIsValid($selector, $validator, $tokenType, $conn)){
 		          // set the user type for the DB based on the type input
         $sql = "select * from user_types where user_type_desc=?";
         $stmt = mysqli_stmt_init($conn);

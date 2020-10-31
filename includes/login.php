@@ -1,11 +1,13 @@
 <?php
-require 'dbh.php';
+include_once "../config.php";
+
+require_once ( ROOT_DIR.'/classes/Token.php' );
+require_once ( ROOT_DIR.'/includes/dbh.php' );
 
 
 if (isset($_POST['login-submit'])) {
 
-
-
+  $remember_me = $_POST['remember-me'];
   $mailuid = $_POST['mailuid'];
   $password= $_POST['password'];
 
@@ -45,6 +47,12 @@ if (isset($_POST['login-submit'])) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['userType'] = $row['user_type_desc'];
             echo "success";
+
+            // if remember me is checked, then create a cookie and store it in the DB before returning control back
+            if($remember_me=="true"){
+              $cookieString = Token::getTokenStringForCookie($email, $conn);
+              setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
+            }
             exit();
           } else {
             echo "verifyemail";

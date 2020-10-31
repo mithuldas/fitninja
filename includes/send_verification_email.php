@@ -1,13 +1,15 @@
 <?php
 require 'send_email.php';
-require 'token_generator.php';
+include "../config.php";
+require_once ( ROOT_DIR.'/classes/Token.php' );
+
 
 function sendVerificationEmail($email){
-
+  include "dbh.php";
   // generate token and save it
   $tokenDuration =  7200; // seconds (2 hours)
   $tokenType = 'verify_email'; // store in DB as pwd_reset i.s.o email_verify
-  $tokenString = getTokenStringForURL($email, $tokenType, $tokenDuration);
+  $tokenString = Token::getTokenStringForURL($email, $tokenType, $tokenDuration, $conn);
   $baseURL = "https://FuNinja.in/verify_email.php";
   $url = $baseURL . "?" . $tokenString;
 

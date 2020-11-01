@@ -44,8 +44,8 @@ $(document).ready(function() {
   }
 ?>
 
-<a href="onboard_new_trainer_or_admin.php?type=Trainer" class="btn btn-warning">New Trainer</a>
-<a href="onboard_new_trainer_or_admin.php?type=Admin" class="btn btn-warning">New Admin</a>
+<a href="onboard_new_trainer_or_admin.php?type=Trainer" class="btn-sm btn-light">New Trainer</a>
+<a href="onboard_new_trainer_or_admin.php?type=Admin" class="btn-sm btn-light">New Admin</a>
 
 <br><br>
 

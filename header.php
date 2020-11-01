@@ -8,6 +8,7 @@ if(!isset($_SESSION)){
   session_start();
 }
 
+include_once "includes/auto_login.php";
 ?>
 
 <!DOCTYPE html>

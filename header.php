@@ -6,45 +6,7 @@ if(!isset($_SESSION)){
   session_start();
 }
 
-// if user isn't logged-in, check if a valid cookie exists and auto-login
-if(!isset($_SESSION['uid']) && isset($_COOKIE['FuNinja'])){
-
-  $extractDataFromCookie = explode(':', $_COOKIE["FuNinja"], 2);
-
-  $selector = $extractDataFromCookie[0] ;
-  $validator =  $extractDataFromCookie[1];
-  include_once "includes/dbh.php";
-  if(Token::tokenIsValid($selector, $validator, "login_cookie", $conn)){
-    // fetch user data from DB and start a logged in session
-
-    $email = Token::getUserEmailFromSelector($selector, $conn);
-    $sql = "select * from users, user_types where (email='".$email."') and users.user_type_id=user_types.user_type_id; ";
-
-    $stmt = mysqli_stmt_init($conn);
-
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-      echo "sqlerror";
-      exit();
-    }
-    else{
-      $source = "Web";
-      mysqli_stmt_execute($stmt);
-
-      $result = mysqli_stmt_get_result($stmt);
-      if ($row = mysqli_fetch_assoc($result)){
-        $email=$row['email'];
-        $_SESSION['uid'] = $row['uid'];
-        $_SESSION['username'] = $row['username'];
-        $_SESSION['userType'] = $row['user_type_desc'];
-
-        //renew the token - i.e: delete the current token and create a new one
-        $newCookieString = Token::getRenewedToken($email, $selector, $conn); // passing existing selector
-        setcookie("FuNinja", $newCookieString, time() + 7776000, '/', null);
-      }
-    }
-  }
-}
-
+include_once "includes/auto_login.php"
 ?>
 
 <!DOCTYPE html>

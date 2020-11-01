@@ -50,7 +50,7 @@ if (isset($_POST['login-submit'])) {
 
             // if remember me is checked, then create a cookie and store it in the DB before returning control back
             if($remember_me=="true"){
-              $cookieString = Token::getTokenStringForCookie($email, $conn);
+              $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
               setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
             }
             exit();

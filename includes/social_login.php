@@ -1,5 +1,8 @@
 <?php
-require 'dbh.php';
+include_once "../config.php";
+
+require_once ( ROOT_DIR.'/classes/Token.php' );
+require_once ( ROOT_DIR.'/includes/dbh.php' );
 
 if (isset($_POST['externalLogin'])){
 
@@ -8,6 +11,8 @@ if (isset($_POST['externalLogin'])){
   $ext_email = $_POST['email'];
   $name = $_POST['name'];
   $id = $_POST['id'];
+  $split_names = explode(' ', $name, 2);
+  $firstName = $split_names[0];
 
 
   // facebook stream
@@ -34,9 +39,12 @@ if (isset($_POST['externalLogin'])){
         if ($row = mysqli_fetch_assoc($result)){
           session_start();
           $_SESSION['uid'] = $row['uid'];
-          $split_names = explode(' ', $name, 2);
-          $_SESSION['username'] = $split_names[0];
+          $_SESSION['username'] = $firstName;
           $_SESSION['userType'] = $row['user_type_desc'];
+
+          // set cookie
+          $cookieString = Token::getTokenStringForCookie($ext_email, "facebook_login", $conn);
+          setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
 
           echo "loggedInExisting";
         }
@@ -44,7 +52,7 @@ if (isset($_POST['externalLogin'])){
         else {
 
           // if not exists, create a new enter in users table and take them to the landing page
-          $sql = "insert into users (username, email, user_type_id, password, email_verified, source, ext_email) values (?, ?, ?, ?, ?, ?, ?)";
+          $sql = "insert into users (username, email, user_type_id, password, email_verified, source, ext_email, ext_name) values (?, ?, ?, ?, ?, ?, ?,?)";
           $stmt = mysqli_stmt_init($conn);
           if(!mysqli_stmt_prepare($stmt, $sql)) {
             echo "sqlerror";
@@ -58,7 +66,7 @@ if (isset($_POST['externalLogin'])){
             $emailVerified = "Y";
             $source = "Facebook";
 
-            mysqli_stmt_bind_param($stmt, "sssssss", $dummyUsername, $dummyEmail, $userType, $dummyPassword, $emailVerified, $source, $ext_email);
+            mysqli_stmt_bind_param($stmt, "ssssssss", $dummyUsername, $dummyEmail, $userType, $dummyPassword, $emailVerified, $source, $ext_email, $firstName);
             mysqli_stmt_execute($stmt);
             // retrieve the record to pull the uid
             $sql = "select * from users, user_types where username=? and users.user_type_id=user_types.user_type_id; ";
@@ -77,8 +85,13 @@ if (isset($_POST['externalLogin'])){
                 session_start();
                 $_SESSION['uid'] = $row['uid'];
                 $split_names = explode(' ', $name, 2);
-                $_SESSION['username'] = $split_names[0] . " (Facebook)";
+                $_SESSION['username'] = $firstName;
                 $_SESSION['userType'] = $row['user_type_desc'];
+
+                // set cookie
+                $cookieString = Token::getTokenStringForCookie($ext_email, "facebook_login", $conn);
+                setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
+
 
                 echo "loggedInNew";
               }
@@ -119,11 +132,11 @@ if (isset($_POST['externalLogin'])){
       if ($row = mysqli_fetch_assoc($result)){
         session_start();
         $_SESSION['uid'] = $row['uid'];
-
-        $split_names = explode(' ', $name, 2);
-        $_SESSION['username'] = $split_names[0];
-
+        $_SESSION['username'] = $firstName;
         $_SESSION['userType'] = $row['user_type_desc'];
+        // set cookie
+        $cookieString = Token::getTokenStringForCookie($ext_email, "google_login", $conn);
+        setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
 
         echo "loggedInExisting";
       }
@@ -131,7 +144,7 @@ if (isset($_POST['externalLogin'])){
       else {
 
         // if not exists, create a new enter in users table and take them to the landing page
-        $sql = "insert into users (username, email, user_type_id, password, email_verified, source, ext_email) values (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "insert into users (username, email, user_type_id, password, email_verified, source, ext_email, ext_name) values (?, ?, ?, ?, ?, ?, ?,?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
           echo "sqlerror";
@@ -145,7 +158,7 @@ if (isset($_POST['externalLogin'])){
           $emailVerified = "Y";
           $source = "Google";
 
-          mysqli_stmt_bind_param($stmt, "sssssss", $dummyUsername, $dummyEmail, $userType, $dummyPassword, $emailVerified, $source, $ext_email);
+          mysqli_stmt_bind_param($stmt, "ssssssss", $dummyUsername, $dummyEmail, $userType, $dummyPassword, $emailVerified, $source, $ext_email, $firstName);
           mysqli_stmt_execute($stmt);
           // retrieve the record to pull the uid
           $sql = "select * from users, user_types where username=? and users.user_type_id=user_types.user_type_id; ";
@@ -163,11 +176,12 @@ if (isset($_POST['externalLogin'])){
             if ($row = mysqli_fetch_assoc($result)){
               session_start();
               $_SESSION['uid'] = $row['uid'];
-
-              $split_names = explode(' ', $name, 2);
-              $_SESSION['username'] = $split_names[0];
-
+              $_SESSION['username'] = $firstName;
               $_SESSION['userType'] = $row['user_type_desc'];
+
+              // set cookie
+              $cookieString = Token::getTokenStringForCookie($ext_email, "google_login", $conn);
+              setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
 
               echo "loggedInNew";
             }

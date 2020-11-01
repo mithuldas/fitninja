@@ -47,12 +47,11 @@ class Token {
 
   }
 
-  static function getTokenStringForCookie($userEmail, $conn){
+  static function getTokenStringForCookie($userEmail, $tokenType, $conn){
     // generate the token string to return
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
     $tokenDuration = 7776000; // 90 days
-    $tokenType = "login_cookie";
     $tokenStringForCookie = $selector.":".bin2hex($token); // selector:bin2hex(validator) stored in login cookie
 
     // hash and save token
@@ -80,9 +79,9 @@ class Token {
     return $tokenStringForCookie;
   }
 
-  static function tokenIsValid($selector, $validator, $tokenType, $conn){
+  static function tokenIsValid($selector, $validator, $conn){
 
-    $sql = "select * from tokens where selector=? and type=?;";
+    $sql = "select * from tokens where selector=?;";
     $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -90,7 +89,7 @@ class Token {
       exit();
     } else {
 
-      mysqli_stmt_bind_param($stmt, "ss", $selector, $tokenType);
+      mysqli_stmt_bind_param($stmt, "s", $selector);
       mysqli_stmt_execute($stmt);
 
       $result = mysqli_stmt_get_result($stmt);
@@ -114,7 +113,7 @@ class Token {
 
   static function deleteToken($selector, $conn){
     $email = self::getUserEmailFromSelector($selector, $conn);
-    $sql = "delete from tokens where (email='".$email. "') and (selector='".$selector. "') and type='login_cookie';" ;
+    $sql = "delete from tokens where (email='".$email. "') and (selector='".$selector. "');" ;
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
       echo "sqlerror";
@@ -124,9 +123,9 @@ class Token {
     }
   }
 
-  static function getRenewedToken($userEmail, $selector, $conn){
+  static function getRenewedToken($userEmail, $selector, $tokenType, $conn){
     self::deleteToken($selector, $conn);
-    $newTokenString = self::getTokenStringForCookie($userEmail, $conn);
+    $newTokenString = self::getTokenStringForCookie($userEmail, $tokenType, $conn);
     return $newTokenString;
   }
 
@@ -145,6 +144,24 @@ class Token {
       $result = mysqli_stmt_get_result($stmt);
       if ($row = mysqli_fetch_assoc($result)){
         return($row['email']);
+      }
+    }
+  }
+
+  static function getTokenType($selector, $conn){
+    $sql = "select * from tokens where selector= '".$selector. "';";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      echo "sqlerror";
+      exit();
+    }
+    else{
+      mysqli_stmt_execute($stmt);
+
+      $result = mysqli_stmt_get_result($stmt);
+      if ($row = mysqli_fetch_assoc($result)){
+        return($row['type']);
       }
     }
   }

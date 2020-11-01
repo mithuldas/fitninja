@@ -5,7 +5,9 @@ include_once "../config.php";
 require_once ( ROOT_DIR.'/classes/Token.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
-session_start();
+if(!isset($_SESSION)){
+  session_start();
+}
 
 //if cookie is set, delete the cookie from DB and invalidate expiry of actual cookie itself
 if(isset($_SESSION['uid']) && isset($_COOKIE['FuNinja'])){

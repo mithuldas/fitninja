@@ -2,13 +2,12 @@
 
 
 include_once "config.php";
-include ( ROOT_DIR.'/includes/autoloader.php' );
+include_once ( ROOT_DIR.'/includes/autoloader.php' );
 
 if(!isset($_SESSION)){
   session_start();
 }
 
-include_once "includes/auto_login.php"
 ?>
 
 <!DOCTYPE html>

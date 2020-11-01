@@ -271,6 +271,8 @@ $(document).ready(function() {
         success: function(response){
           if (response == 'sqlerror' ){
             $("#errorMsg").text('Database error, please try submitting again.');
+          } else if (response == 'mergeSuccess' ) {
+            window.location.href = "../includes/post_login_landing_controller.php";
           } else {
             window.location = 'index.php?status=verification-sent&email=' + email;
           }

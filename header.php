@@ -35,7 +35,7 @@ include_once "includes/auto_login.php"
   <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId            : '283787556005652',
+      appId            : '744163999514262',
       autoLogAppEvents : true,
       cookie           : true,
       xfbml            : true,

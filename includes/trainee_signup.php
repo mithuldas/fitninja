@@ -62,7 +62,7 @@ if(isset($_POST['email_check'])){
     exit();
   }
 
-  $sql = "SELECT username from users where email=? and email_verified=?";
+  $sql = "SELECT username from users where email=? and email_verified=? and source='Web'";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
       echo "sqlerror";
@@ -98,6 +98,7 @@ if(isset($_POST['password_check'])){
   }
 }
 
+
 // password repeat validation
 if(isset($_POST['passwordRepeat_check'])){
 
@@ -109,52 +110,102 @@ if(isset($_POST['passwordRepeat_check'])){
 
 }
 
-// form submission
 if(isset($_POST['save'])){
-  $username = $_POST['username'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-  // delete existing unverified user and any tokens first before inserting
-  $sql = "delete from tokens where email=?";
-  $stmt = mysqli_stmt_init($conn);
-  if(!mysqli_stmt_prepare($stmt, $sql)) {
-    echo "sqlerror";
-    exit();
-  }
-  else{
-    mysqli_stmt_bind_param($stmt, "s", $email);
-    mysqli_stmt_execute($stmt);
-  }
+    // if the email already exists (i.e, user had already logged in via fb or google)
+    // don't actually create a new user, BUT, change the username, password and source
 
-  $sql = "delete from users where email=?";
-  $stmt = mysqli_stmt_init($conn);
-  if(!mysqli_stmt_prepare($stmt, $sql)) {
-    echo "sqlerror";
-    exit();
-  }
-  else{
-    mysqli_stmt_bind_param($stmt, "s", $email);
-    mysqli_stmt_execute($stmt);
-  }
+    $sql = "SELECT * from users, user_types where email=? and (source is null or source<>'Web') and users.user_type_id=user_types.user_type_id;";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      echo "sqlerror";
+      exit();
+    }
+    else {
+      mysqli_stmt_bind_param($stmt, "s", $email);
+      mysqli_stmt_execute($stmt);
 
-  $sql = "insert into users (username, email, user_type_id, password, email_verified, source) values (?, ?, ?, ?, ?, ?)";
-  $stmt = mysqli_stmt_init($conn);
-  if(!mysqli_stmt_prepare($stmt, $sql)) {
-    echo "sqlerror";
-    exit();
-  }
-  else{
-    $emailVerified = "N";
-    $userType="2";
-    $source = "Web";
-    $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-    mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $userType, $hashedPwd, $emailVerified, $source );
-    mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      if ($row = mysqli_fetch_assoc($result)){ // i.e non facebook or google login user already exists
 
-    sendVerificationEmail($email);
-    echo "success";
+        // merge the accounts
+          //update username to actual username
+          // set a proper password
+          // set source to Web
+          // login
 
+        $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "UPDATE users set username=?, password=?, source='Web' where email=? and (source is null or source<>'Web')";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+          echo "sqlerror";
+          exit();
+        }
+        else {
+          mysqli_stmt_bind_param($stmt, "sss", $username, $hashedPwd, $email);
+          mysqli_stmt_execute($stmt);
+          mysqli_stmt_store_result($stmt);
+
+          // set the user sessions before transferring control back to the register form for redirection
+          if(!isset($_SESSION)){
+            session_start();
+          }
+          $_SESSION['uid'] = $row['uid'];
+          $_SESSION['username'] = $username;
+          $_SESSION['userType'] = $row['user_type_desc'];
+          // remember login
+          $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
+          setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
+          echo "mergeSuccess";
+          exit();
+        }
+
+      } else {
+        // delete existing unverified user and any tokens first before inserting
+        $sql = "delete from tokens where email=?";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+          echo "sqlerror";
+          exit();
+        }
+        else{
+          mysqli_stmt_bind_param($stmt, "s", $email);
+          mysqli_stmt_execute($stmt);
+        }
+
+        $sql = "delete from users where email=?";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+          echo "sqlerror";
+          exit();
+        }
+        else{
+          mysqli_stmt_bind_param($stmt, "s", $email);
+          mysqli_stmt_execute($stmt);
+        }
+
+        $sql = "insert into users (username, email, user_type_id, password, email_verified, source) values (?, ?, ?, ?, ?, ?)";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)) {
+          echo "sqlerror";
+          exit();
+        }
+        else{
+          $emailVerified = "N";
+          $userType="2";
+          $source = "Web";
+          $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+          mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $userType, $hashedPwd, $emailVerified, $source );
+          mysqli_stmt_execute($stmt);
+
+          sendVerificationEmail($email);
+          echo "success";
+
+        }
+      }
   }
 }
 

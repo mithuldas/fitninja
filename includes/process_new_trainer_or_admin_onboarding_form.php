@@ -96,6 +96,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
 	}
 
 
+
 // check if a user with verified e-mail ID already exists
 
     $sql = "SELECT username from users where email=? and email_verified=?";
@@ -121,7 +122,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
 
       // if token is valid, proceed, otherwise, return invalidlink erro
 
-      if(Token::tokenIsValid($selector, $validator, $tokenType, $conn)){
+      if(Token::tokenIsValid($selector, $validator, $conn)){
 		          // set the user type for the DB based on the type input
         $sql = "select * from user_types where user_type_desc=?";
         $stmt = mysqli_stmt_init($conn);

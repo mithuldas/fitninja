@@ -90,7 +90,7 @@ include_once "includes/auto_login.php";
 <div class="row">
   <!--navbar -->
   <nav id = "main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0">
-  <a href="index.php" class="navbar-left"><img src="images/logo.jpg" alt="FuNinja" style="height:40px"></a>
+  <a href="index.php" class="navbar-left p-0 m-0"><img src="images/logo2.png" alt="FuNinja" style="height:40px"></a>
 
   <!-- burger -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,7 +99,7 @@ include_once "includes/auto_login.php";
   <!-- /burger" -->
 
   <!-- everything in here will be collapsed on smaller devices -->
-  <div class="collapse navbar-collapse pt-3 " id="navbarSupportedContent">
+  <div class="collapse navbar-collapse pt-1" id="navbarSupportedContent">
     <!-- Navbar links, dropdowns etc go here -->
     <ul class="navbar-nav mr-auto ">
 

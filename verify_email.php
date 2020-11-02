@@ -1,6 +1,8 @@
 <?php
 
-require 'includes/dbh.php';
+include_once (__DIR__.'/config.php');
+require_once (ROOT_DIR.'/includes/dbh.php');
+include_once (ROOT_DIR.'/includes/autoloader.php');
 
 $selector = $_GET["selector"];
 $validator = $_GET["validator"];
@@ -76,12 +78,13 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
             }
             else {
               session_start();
-              $_SESSION[uid] = $row['uid'];
-              $_SESSION[username] = $row['username'];
-              $_SESSION[userType] = $row['user_type_desc'];
+              $_SESSION['uid'] = $row['uid'];
+              $_SESSION['username'] = $row['username'];
+              $_SESSION['userType'] = $row['user_type_desc'];
             }
 
-
+          $split_names = explode('@', $tokenEmail, 2);
+          Email::sendWelcomeEmail($split_names[0], $tokenEmail);
           header("Location: ./includes/post_login_landing_controller.php");
           exit();
 

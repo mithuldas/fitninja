@@ -1,7 +1,8 @@
 <?php
 
-require 'dbh.php';
-require 'send_verification_email.php';
+include_once (__DIR__.'/../config.php');
+require_once (ROOT_DIR.'/includes/dbh.php');
+include_once (ROOT_DIR.'/includes/autoloader.php');
 
 // username validation
 if(isset($_POST['username_check'])){
@@ -10,7 +11,7 @@ if(isset($_POST['username_check'])){
 
 
   // check if username exists
-  $sql = "SELECT username from users where username=?";
+  $sql = "SELECT username from users where username=? and email_verified='Y'";
   $stmt = mysqli_stmt_init($conn);
   if(!mysqli_stmt_prepare($stmt, $sql)){
     header("Location: ../signup.php?error=1sqlerror");
@@ -201,7 +202,7 @@ if(isset($_POST['save'])){
           mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $userType, $hashedPwd, $emailVerified, $source );
           mysqli_stmt_execute($stmt);
 
-          sendVerificationEmail($email);
+          Email::sendVerificationEmail($email);
           echo "success";
 
         }

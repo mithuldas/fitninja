@@ -1,6 +1,6 @@
 <?php
 
-require '../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 use Mailgun\Mailgun;
 
   function sendEmail($to, $subject, $text, $html){

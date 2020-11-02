@@ -1,8 +1,8 @@
 <?php
-include_once "../config.php";
 
-require_once ( ROOT_DIR.'/classes/Token.php' );
-require_once ( ROOT_DIR.'/includes/dbh.php' );
+include_once (__DIR__.'/../config.php');
+require_once (ROOT_DIR.'/includes/dbh.php');
+include_once (ROOT_DIR.'/includes/autoloader.php');
 
 if (isset($_POST['externalLogin'])){
 
@@ -90,6 +90,7 @@ if (isset($_POST['externalLogin'])){
                 $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
                 setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
 
+                Email::sendWelcomeEmail($firstName, $email);
 
                 echo "loggedInNew";
               }
@@ -177,6 +178,8 @@ if (isset($_POST['externalLogin'])){
               // set cookie
               $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
               setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
+
+              Email::sendWelcomeEmail($firstName, $email);
 
               echo "loggedInNew";
             }

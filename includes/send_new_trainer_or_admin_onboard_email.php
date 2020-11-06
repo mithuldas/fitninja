@@ -1,7 +1,8 @@
 <?php
 
-include "../config.php";
-require_once( ROOT_DIR.'/classes/Token.php' );
+include_once (__DIR__.'/../config.php');
+require_once (ROOT_DIR.'/includes/dbh.php');
+include_once (ROOT_DIR.'/includes/autoloader.php');
 
 require 'send_email.php';
 require 'dbh.php';
@@ -13,7 +14,7 @@ if (isset($_POST["onboard_new_trainer_or_admin"])){
   } else if ($_POST["type"]=="Admin"){
       $tokenType = 'onboard_admin';
   }
-  $tokenDuration =  7200; // seconds (2 hours)
+
 
   $userEmail = $_POST["email"];
   $userType = $_POST["type"];
@@ -35,22 +36,9 @@ if (isset($_POST["onboard_new_trainer_or_admin"])){
       if($resultCheck > 0) {
         header("Location: ../onboard_new_trainer_or_admin.php?status=emailtaken&email=" . $userEmail."&type=".$_POST["type"]);
         exit();
-      } else {
-        // generate token and save it
-
-        $tokenString = Token::getTokenStringForURL($userEmail, $tokenType, $tokenDuration, $conn);
-        $baseURL = "https://FuNinja.in/new_trainer_or_admin_onboard_email_landing.php";
-        $url = $baseURL . "?" . $tokenString . "&email=" . $userEmail . "&type=" .$userType;
-
-        // create the e-mail content
-        $subject = 'Welcome to FuNinja!';
-        $message = '<p>Click the link below to start your onboarding steps: </p>';
-        $message .= '<p><a href="' . $url . '">' . $url . '</a> </p>';
-        $message .= 'Regards,<br>' . 'The FuNinja Team';
-
-        //  use mailgun.com API to send the e-mail
-        sendEmail($userEmail, $subject, $message, $message);
-
+      }
+      else {
+        Email::sendTrainerAdminOnboardEmail($tokenType, $userEmail, $userType, $conn);
         // redirect user to the forgot password for further handling
         header("Location: ../admin_dashboard.php?status=onboard_sent&email=" . $userEmail);
         exit();

@@ -1,13 +1,10 @@
 <?php
 
-include "../config.php";
-require_once ( ROOT_DIR.'/classes/Token.php' );
-
-include '../classes/Password.php';
+require_once (__DIR__.'/../config.php');
+require_once (ROOT_DIR.'/includes/dbh.php');
+require_once (ROOT_DIR.'/includes/autoloader.php');
 
 if(isset($_POST['signup-onboard-submit'])) {
-require 'dbh.php';
-
 
 $username = $_POST['uid'];
 $email = $_POST['email'];
@@ -181,7 +178,6 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
           $source = "Web";
           mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $userTypeForDB, $hashedPwd, $emailVerified, $source );
-
           mysqli_stmt_execute($stmt);
 
 
@@ -200,7 +196,6 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
 
             $result = mysqli_stmt_get_result($stmt);
             if ($row = mysqli_fetch_assoc($result)){
-
               $uid=$row['uid'];
             }
 
@@ -209,6 +204,10 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
           $_SESSION['uid'] = $uid;
           $_SESSION['username'] = $username;
           $_SESSION['userType'] = $userType;
+
+          $split_names = explode('@', $email, 2);
+
+          Email::sendTrainerWelcomeEmail($split_names[0], $email);
 
           header("Location: ../includes/post_login_landing_controller.php?status=onboarded");
           exit();

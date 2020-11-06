@@ -90,7 +90,7 @@ include_once "includes/auto_login.php";
 <div class="row">
   <!--navbar -->
   <nav id = "main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0">
-  <a href="index.php" class="navbar-left p-0 m-0"><img src="images/logo2.png" alt="FuNinja" style="height:40px"></a>
+  <a href="index.php" class="navbar-brand"><img src="/images/logo2.png" alt="FuNinja" style="height:40px"></a>
 
   <!-- burger -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,16 +103,14 @@ include_once "includes/auto_login.php";
     <!-- Navbar links, dropdowns etc go here -->
     <ul class="navbar-nav mr-auto ">
 
-      <li class="nav-item active pl-2">
+      <li class="nav-item active">
         <a class="nav-link " href="#">Membership</a>
       </li>
       <li class="nav-item active">
 
       </li>
-      <li class="nav-item dropdown active">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Support
-        </a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Support</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">FAQs</a>
           <a class="dropdown-item" href="#">Contact Us</a>
@@ -122,7 +120,7 @@ include_once "includes/auto_login.php";
       </li>
 
     </ul>
-
+<ul class="navbar-nav ml-auto ">
     <!-- Other stuff in the navbar goes here-->
 
     <?php
@@ -150,6 +148,7 @@ include_once "includes/auto_login.php";
       <?php
     }
     ?>
+</ul>
 </div>
 </nav>
 <!-- /navbar -->

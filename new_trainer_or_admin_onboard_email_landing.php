@@ -1,9 +1,24 @@
 <?php
 
-session_start();
+include_once (__DIR__.'/config.php');
+require_once (ROOT_DIR.'/includes/dbh.php');
+include_once (ROOT_DIR.'/includes/autoloader.php');
+
+if(!isset($_SESSION)){
+  session_start();
+}
+
+//delete cookie if exists and log-out
+if(isset($_SESSION['uid']) && isset($_COOKIE['FuNinja'])){
+  $extractDataFromCookie = explode(':', $_COOKIE["FuNinja"], 2);
+  $selector = $extractDataFromCookie[0] ;
+  $validator =  $extractDataFromCookie[1];
+  Token::deleteToken($selector, $conn);
+}
 
 session_unset();
 session_destroy();
+
 
 require "header.php";
 

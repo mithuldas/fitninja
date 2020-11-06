@@ -90,7 +90,7 @@ if (isset($_POST['externalLogin'])){
                 $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
                 setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
 
-                Email::sendWelcomeEmail($firstName, $email);
+                Email::sendTraineeWelcomeEmail($firstName, $email);
 
                 echo "loggedInNew";
               }
@@ -179,7 +179,7 @@ if (isset($_POST['externalLogin'])){
               $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
               setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
 
-              Email::sendWelcomeEmail($firstName, $email);
+              Email::sendTraineeWelcomeEmail($firstName, $email);
 
               echo "loggedInNew";
             }

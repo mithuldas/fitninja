@@ -107,17 +107,12 @@ include_once "includes/auto_login.php";
         <a class="nav-link " href="#">Membership</a>
       </li>
       <li class="nav-item active">
+        <a class="nav-link " href="#">Support</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link " href="#">Contact Us</a>
+      </li>
 
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Support</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">FAQs</a>
-          <a class="dropdown-item" href="#">Contact Us</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Feedback</a>
-        </div>
-      </li>
 
     </ul>
 <ul class="navbar-nav ml-auto ">
@@ -140,6 +135,7 @@ include_once "includes/auto_login.php";
   </button>
   <div class="dropdown-menu dropdown-menu-right">
     <a class="dropdown-item" href="includes/post_login_landing_controller.php">Dashboard</a>
+    <a class="dropdown-item" href="settings.php">Send Us Feedback</a>
     <a class="dropdown-item" href="settings.php">Settings</a>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="includes/logout.php">Logout</a>

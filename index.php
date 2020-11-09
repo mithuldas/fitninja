@@ -29,13 +29,13 @@ include "includes/autoloader.php";
 <div class="container-fluid" >
   <div class="container ">
   <div class="row " >
-    <div class="col-md pl-0 ml-0">
+    <div class="col-md">
 
   <h3 style="text-align: center"></h3>
   <p> When run of the mill personal training doesn't quite cut it. </p>
     </div>
 
-    <div class="col-md pr-0 mr-0">
+    <div class="col-md">
 
   <p> FuNinja is great. I love my trainer - <b>John Doe</b> </p>
   <p> I've lost so much weight after joining FuNinja. My trainer keeps gets me working out even when I really didn't feel like it. - <b>Jill Bagabong</b></p>

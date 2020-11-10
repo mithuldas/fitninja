@@ -139,3 +139,61 @@ text-decoration: none !important;
 }
 
 #loader { display: none; }
+
+/** dashboard **/
+
+.upcoming-sessions-area{
+}
+
+.doughnut{
+  background-color: lightgreen;
+}
+
+.trainer-facts{
+  background-color: pink;
+}
+
+.calendar{
+  background-color: orange;
+}
+
+.welcome-banner{
+  background-color: purple;
+  color:white;
+}
+
+@media screen and (max-width: 767px) {
+  .calendar {
+    display:none;
+  }
+  .doughnut {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .dashboard-carousel {
+    display:none;
+  }
+
+}
+
+.carousel .carousel-indicators li {
+  background-color: #fff;
+  background-color: rgba(70, 70, 70, 0.25);
+}
+
+.carousel .carousel-indicators .active {
+  background-color: #444;
+}
+
+.carousel-control-prev-icon{
+  color:black;
+  background-color: #fff;
+  background-color: rgba(70, 70, 70, 0.25);
+}
+
+.carousel-control-next-icon{
+  background-color: #fff;
+  background-color: rgba(70, 70, 70, 0.25);
+}

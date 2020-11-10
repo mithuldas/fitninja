@@ -32,13 +32,13 @@ include "includes/autoloader.php";
     <div class="col-md">
 
   <h3 style="text-align: center"></h3>
-  <p> When run of the mill personal training doesn't quite cut it. </p>
+  <p><center> Check back soon. </center> </p>
     </div>
 
     <div class="col-md">
 
-  <p> FuNinja is great. I love my trainer - <b>John Doe</b> </p>
-  <p> I've lost so much weight after joining FuNinja. My trainer keeps gets me working out even when I really didn't feel like it. - <b>Jill Bagabong</b></p>
+  <p> <center>FuNinja is great. I love my trainer - <b>John Doe</b> </center></p>
+  <p> <center>I've lost so much weight after joining FuNinja. My trainer keeps gets me working out even when I really didn't feel like it. - <b>Jill Bagabong</b> </center></p>
 
     </div>
 

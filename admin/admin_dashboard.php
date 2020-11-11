@@ -1,7 +1,8 @@
 <?php
 
-  include "includes/autoloader.php";
-  include "includes/dbh.php";
+require_once __DIR__.'/../config.php';
+include ROOT_DIR."/includes/autoloader.php";
+include ROOT_DIR."/includes/dbh.php";
 
   if(!isset($_SESSION)){
     session_start();
@@ -17,9 +18,11 @@
     exit();
   }
 
-  require "header.php";
+  require ROOT_DIR."/header.php";
 
 ?>
+
+<script type="text/javascript" src="/scripts/admin_dashboard.js"> </script>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -29,8 +32,8 @@ $(document).ready(function() {
 } );
 </script>
 
-<div class="container">
-
+<div class="container-fluid">
+<div class="admin-header-div">
 <?php
   if(isset($_GET['status'])){
     if($_GET['status']=='onboard_sent'){
@@ -44,12 +47,15 @@ $(document).ready(function() {
   }
 ?>
 
-<a href="onboard_new_trainer_or_admin.php?type=Trainer" class="btn-sm btn-light">New Trainer</a>
-<a href="onboard_new_trainer_or_admin.php?type=Admin" class="btn-sm btn-light">New Admin</a>
-
-<br><br>
-
-<h4> User List </h4>
+<a href="new_trainer_admin.php?type=Trainer" class="btn-sm btn-light">New Trainer</a>
+<a href="new_trainer_admin.php?type=Admin" class="btn-sm btn-light">New Admin</a>
+<a href="new_trainer_admin.php?type=Admin" class="btn-sm btn-light active">User List</a>
+<a href="new_trainer_admin.php?type=Admin" class="btn-sm btn-light">Trial Requests</a>
+<a href="new_trainer_admin.php?type=Admin" class="btn-sm btn-light">Unassigned Trainees</a>
+</div>
+<br>
+<div class="admin-main-div">
+<h4> User List </h4><br>
 <?php
 // full user list table
 
@@ -84,8 +90,14 @@ else{
 }
 
 ?>
+
+</div>
+<br>
+
+<a href="debug_functions.php?action=deleteAllUsers" class="btn-sm btn-danger">Delete Users</a>
+<a href="debug_functions.php?action=deleteUserProducts" class="btn-sm btn-danger">Delete User Products</a>
 </div>
 
 <?php
-  require "footer.php";
+  require ROOT_DIR."/footer.php";
 ?>

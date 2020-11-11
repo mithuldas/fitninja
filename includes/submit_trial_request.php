@@ -11,11 +11,6 @@ $trialType = $_POST['trialType'];
 $trialDate = $_POST['trialDate'];
 $trialTimeSlot = $_POST['trialTimeSlot'];
 
-
-// insert into user_products first with product name = trial
-// insert into session
-//
-
 $user = new Trainee($currentUser->uid, $conn);
 
 //($name, $trialType, $trialDate, $trialTimeSlot, $email, $phone, $conn)

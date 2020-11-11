@@ -27,7 +27,7 @@ if ($_SESSION['userType']=="Trainer"){
 
 // admin controller
 if ($_SESSION['userType']=="Admin"){
-  header("Location: ../admin_landing.php");
+  header("Location: /admin/admin_landing.php");
   exit();
 }
 ?>

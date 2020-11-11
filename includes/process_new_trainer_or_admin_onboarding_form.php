@@ -31,31 +31,31 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
 
 // check for empty fields
   if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
-    header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=emptyfields&uid=".$username."&email=".$email.$queryGiveBack);
+    header("Location: /admin/new_trainer_admin_landing.php?status=emptyfields&uid=".$username."&email=".$email.$queryGiveBack);
     exit();
   }
 
 // check if both email and username are invalid
   else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9._]*$/", $username.$queryGiveBack)) {
-    header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=invalidemailuid");
+    header("Location: /admin/new_trainer_admin_landing.php?status=invalidemailuid");
     exit();
   }
 
 // check if email is invalid
   else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=invalidemail&uid=".$username.$queryGiveBack);
+    header("Location: /admin/new_trainer_admin_landing.php?status=invalidemail&uid=".$username.$queryGiveBack);
     exit();
   }
 
 // check if username has valid characters
   else if (!preg_match("/^[a-zA-Z0-9_]*$/", $username)){
-    header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=invalidUsernameChars&email=".$email.$queryGiveBack);
+    header("Location: /admin/new_trainer_admin_landing.php?status=invalidUsernameChars&email=".$email.$queryGiveBack);
     exit();
   }
 
 // check if username is long enough
   else if (strlen($username)<=6){
-    header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=usernameTooShort&email=".$email.$queryGiveBack);
+    header("Location: /admin/new_trainer_admin_landing.php?status=usernameTooShort&email=".$email.$queryGiveBack);
     exit();
   }
 
@@ -65,10 +65,10 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
   $passwordObject = new Password($password, $passwordRepeat);
 
   if (!$passwordObject->doesMatch()) {
-    header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=pwdMismatch&email=".$email. "&uid=".$username.$queryGiveBack);
+    header("Location: /admin/new_trainer_admin_landing.php?status=pwdMismatch&email=".$email. "&uid=".$username.$queryGiveBack);
     exit();
   } else if (!$passwordObject->isLongEnough()){
-    header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=tooShort&email=".$email. "&uid=".$username.$queryGiveBack);
+    header("Location: /admin/new_trainer_admin_landing.php?status=tooShort&email=".$email. "&uid=".$username.$queryGiveBack);
     exit();
   }
 
@@ -78,7 +78,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
     $sql = "SELECT username from users where username=?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-      header("Location: ../new_trainer_or_admin_onboard_email_landing.php?error=sqlerror");
+      header("Location: /admin/new_trainer_admin_landing.php?error=sqlerror");
       exit();
     }
     else {
@@ -87,7 +87,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
       mysqli_stmt_store_result($stmt);
       $resultCheck=mysqli_stmt_num_rows($stmt);
       if($resultCheck > 0) {
-        header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=username_taken&email=".$email. "&uid=".$username.$queryGiveBack);
+        header("Location: /admin/new_trainer_admin_landing.php?status=username_taken&email=".$email. "&uid=".$username.$queryGiveBack);
         exit();
 	     }
 	}
@@ -99,7 +99,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
     $sql = "SELECT username from users where email=? and email_verified=?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-      header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=sqlerror");
+      header("Location: /admin/new_trainer_admin_landing.php?status=sqlerror");
       exit();
     }
     else {
@@ -109,7 +109,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
       mysqli_stmt_store_result($stmt);
       $resultCheck=mysqli_stmt_num_rows($stmt);
       if($resultCheck > 0) {
-        header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=emailexists&email=".$email.$queryGiveBack);
+        header("Location: /admin/new_trainer_admin_landing.php?status=emailexists&email=".$email.$queryGiveBack);
         exit();
       }
 
@@ -148,7 +148,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
         $sql = "delete from tokens where email=?";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../new_trainer_or_admin_onboard_email_landing.php?error=sqlerror");
+          header("Location: /admin/new_trainer_admin_landing.php?error=sqlerror");
           exit();
         }
         else{
@@ -159,7 +159,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
         $sql = "delete from users where email=?";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../new_trainer_or_admin_onboard_email_landing.php?error=sqlerror");
+          header("Location: /admin/new_trainer_admin_landing.php?error=sqlerror");
           exit();
         }
         else{
@@ -170,7 +170,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
         $sql = "insert into users (username, email, user_type_id, password, email_verified, source) values (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../new_trainer_or_admin_onboard_email_landing.php?error=sqlerror");
+          header("Location: /admin/new_trainer_admin_landing.php?error=sqlerror");
           exit();
         }
         else{
@@ -187,7 +187,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
 
 
           if(!mysqli_stmt_prepare($stmt, $sql)){
-            header("Location: ../new_trainer_or_admin_onboard_email_landing.php?error=sqlerror");
+            header("Location: /admin/new_trainer_admin_landing.php?error=sqlerror");
             exit();
           }
           else{
@@ -216,7 +216,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
       }
 
     } else {
-      header("Location: ../new_trainer_or_admin_onboard_email_landing.php?status=invalidlink&email=".$email. "&uid=".$username.$queryGiveBack);
+      header("Location: /admin/new_trainer_admin_landing.php?status=invalidlink&email=".$email. "&uid=".$username.$queryGiveBack);
     }
 
 
@@ -229,7 +229,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
 
 }
 else{
-  header("Location: ../new_trainer_or_admin_onboard_email_landing.php");
+  header("Location: /admin/new_trainer_admin_landing.php");
   exit();
 
 }

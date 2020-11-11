@@ -35,8 +35,8 @@ if (isset($_POST['trainee_landing_submit'])) {
     // add personal data to user data table
 
         //first_name
-  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value)
-    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "first_name"), ?);';
+  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "first_name"), ?,(select date(sysdate()) from dual));';
 
     $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -49,8 +49,8 @@ if (isset($_POST['trainee_landing_submit'])) {
         }
 
         //last_name
-  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value)
-    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "last_name"), ?);';
+  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "last_name"), ?,(select date(sysdate()) from dual));';
 
     $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -63,8 +63,8 @@ if (isset($_POST['trainee_landing_submit'])) {
         }
 
          //date of birth
-  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value)
-    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "date_of_birth"), ?);';
+  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "date_of_birth"), ?,(select date(sysdate()) from dual));';
 
     $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -78,8 +78,8 @@ if (isset($_POST['trainee_landing_submit'])) {
 
 
          //city
-  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value)
-    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "city"), ?);';
+  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "city"), ?,(select date(sysdate()) from dual));';
 
     $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -92,8 +92,8 @@ if (isset($_POST['trainee_landing_submit'])) {
         }
 
          //phone number
-  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value)
-    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "phone_number"), ?);';
+  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "phone_number"), ?,(select date(sysdate()) from dual));';
 
     $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -106,8 +106,8 @@ if (isset($_POST['trainee_landing_submit'])) {
         }
 
          //gender
-  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value)
-    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "gender"), ?);';
+  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "gender"), ?,(select date(sysdate()) from dual));';
 
     $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -119,8 +119,8 @@ if (isset($_POST['trainee_landing_submit'])) {
           mysqli_stmt_execute($stmt);
         }
 
-  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value)
-    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "trainee_onboarding_completed"), ?);';
+  $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+    values (?, (select attribute_id from user_attribute_definitions where attribute_name = "trainee_onboarding_completed"), ?,(select date(sysdate()) from dual));';
 
     $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {

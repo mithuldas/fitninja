@@ -8,7 +8,7 @@ if(!isset($_SESSION)){
   session_start();
 }
 
-include_once "includes/auto_login.php";
+include_once ROOT_DIR."/includes/auto_login.php";
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ include_once "includes/auto_login.php";
 
   <!-- Bootstrap sources -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
-  <link href="css/custom.css" rel="stylesheet">
+  <link href="/css/custom.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
@@ -47,10 +47,10 @@ include_once "includes/auto_login.php";
 
   </script>
 
-  <script src="scripts/trainee_signup.js"> </script>
-  <script src="scripts/login.js"> </script>
-  <script src="scripts/facebook_login.js"> </script>
-  <script src="scripts/google_login.js"> </script>
+  <script src="/scripts/trainee_signup.js"> </script>
+  <script src="/scripts/login.js"> </script>
+  <script src="/scripts/facebook_login.js"> </script>
+  <script src="/scripts/google_login.js"> </script>
 
 
     <!-- support script for displaying popovers -->
@@ -90,7 +90,7 @@ include_once "includes/auto_login.php";
 <div class="row">
   <!--navbar -->
   <nav id = "main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0">
-  <a href="index.php" class="navbar-brand"><img src="/images/logo2.png" alt="FuNinja" style="height:40px"></a>
+  <a href="/index.php" class="navbar-brand"><img src="/images/logo2.png" alt="FuNinja" style="height:40px"></a>
 
   <!-- burger -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -138,7 +138,7 @@ include_once "includes/auto_login.php";
     <a class="dropdown-item" href="settings.php">Send Us Feedback</a>
     <a class="dropdown-item" href="settings.php">Settings</a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="includes/logout.php">Logout</a>
+    <a class="dropdown-item" href="/includes/logout.php">Logout</a>
   </div>
 </div>
       <?php
@@ -183,8 +183,8 @@ include_once "includes/auto_login.php";
           </form>
           <HR>
 
-          <a href="#" onclick="fb_login();"><img src="images/fb_login.png" width="225" height="54"   alt=""></a>
-          <br><a href="#" onclick="google_login();"> <img src="images/google_login.png" alt="Google Login"></a>
+          <a href="#" onclick="fb_login();"><img src="/images/fb_login.png" width="225" height="54"   alt=""></a>
+          <br><a href="#" onclick="google_login();"> <img src="/images/google_login.png" alt="Google Login"></a>
         </div>
 
 
@@ -212,14 +212,14 @@ include_once "includes/auto_login.php";
         <button id = "submit" class="btn btn-primary btn-block mt-1 mb-1" type="submit" name="signup-submit">Sign Up</button>
         </form>
         <HR>
-          <a href="#" onclick="fb_login();"><img src="images/fb_login.png" width="225" height="54" alt="Facebook Login"></a>
-          <br><a href="#" onclick="google_login();"> <img src="images/google_login.png" alt="Google Login"></a>
+          <a href="#" onclick="fb_login();"><img src="/images/fb_login.png" width="225" height="54" alt="Facebook Login"></a>
+          <br><a href="#" onclick="google_login();"> <img src="/images/google_login.png" alt="Google Login"></a>
 
       </div>
     </div>
     </div>
 
-  <img id="loader" src="images/loader.svg" alt="load_animation" width="50" height="50" class="m-0 p-0">
+  <img id="loader" src="/images/loader.svg" alt="load_animation" width="50" height="50" class="m-0 p-0">
 
   </div>
 </div>

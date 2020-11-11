@@ -1,7 +1,7 @@
 <?php
 
-include_once (__DIR__.'/config.php');
-require_once (ROOT_DIR.'/includes/dbh.php');
+include_once __DIR__.'/../config.php';
+require_once ROOT_DIR.'/includes/dbh.php';
 include_once (ROOT_DIR.'/includes/autoloader.php');
 
 if(!isset($_SESSION)){
@@ -20,7 +20,7 @@ session_unset();
 session_destroy();
 
 
-require "header.php";
+require ROOT_DIR."/header.php";
 
 $email = "";
 $username = "";
@@ -39,7 +39,7 @@ if(isset($_GET['uid'])){
 
       <h4>Welcome! Let's get you started:</h4>
 
-    <form class="form-signin" action="includes/process_new_trainer_or_admin_onboarding_form.php" method="post">
+    <form class="form-signin" action="/includes/process_new_trainer_or_admin_onboarding_form.php" method="post">
       <h6 id = "statusMessage"> <h6>
       <input type="hidden" name="type" value="<?php echo $_GET["type"]; ?>" />
       <input type="hidden" name="selector" value="<?php echo $_GET["selector"]; ?>" />
@@ -57,7 +57,7 @@ if(isset($_GET['uid'])){
 </div>
 
 <?php
-  require "footer.php";
+  require ROOT_DIR."/footer.php";
 ?>
 
 <script>
@@ -90,7 +90,7 @@ if(isset($_GET['uid'])){
       $('#statusMessage').html('<h6 style="color:red"> This username is already in use. Please choose another one. </h6');
     } else if (status == "emailexists") {
       $('#statusMessage').show();
-      $('#statusMessage').html('<h6 style="color:red"> User with this e-mail already exists. Would you like to <a href="../forgot-password.php"><u> reset your password </u></a> instead? </h6');
+      $('#statusMessage').html('<h6 style="color:red"> User with this e-mail already exists. Would you like to <a href="/forgot-password.php"><u> reset your password </u></a> instead? </h6');
     } else if (status == "invalidlink") {
       $('#statusMessage').show();
       $('#statusMessage').html('<h6 style="color:red"> Your link is no longer valid. Please get in touch with the support team. </h6');

@@ -231,7 +231,7 @@ class Email{
   static function sendTrainerAdminOnboardEmail($tokenType, $email, $userType, $conn){
 
     self::setBaseURL();
-    $URLQualifier = "new_trainer_or_admin_onboard_email_landing.php";
+    $URLQualifier = "/admin/new_trainer_admin_landing.php";
 
     $tokenDuration =  7200; // seconds (2 hours)
     $tokenString = Token::getTokenStringForURL($email, $tokenType, $tokenDuration, $conn);

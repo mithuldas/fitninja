@@ -33,7 +33,7 @@ class Trainee extends User{
   function submitTrialRequest($trialType, $trialDate, $trialTimeSlot){
     // insert user_products entry for Trial
     $sql = "INSERT INTO user_products (id, uid, product_id, valid_from, valid_to) VALUES (NULL,".
-       $this->uid .", '1', current_timestamp(), NULL);";
+       $this->uid .", '1', (select date(sysdate()) from dual), NULL);";
     $stmt = mysqli_stmt_init($this->conn);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
       return false;
@@ -91,9 +91,9 @@ class Trainee extends User{
 
     // now that we have the session id, insert the session attributes (viewable by admin for assignment tips)
 
-    $sql1 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialType'), '".$trialType."', current_timestamp(), NULL);";
-    $sql2 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialDate'), '".$trialDate."', current_timestamp(), NULL);";
-    $sql3 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialTimeSlot'), '".$trialTimeSlot."', current_timestamp(), NULL);";
+    $sql1 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialType'), '".$trialType."', (select date(sysdate()) from dual), NULL);";
+    $sql2 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialDate'), '".$trialDate."', (select date(sysdate()) from dual), NULL);";
+    $sql3 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialTimeSlot'), '".$trialTimeSlot."', (select date(sysdate()) from dual), NULL);";
 
     $stmt = mysqli_stmt_init($this->conn);
 

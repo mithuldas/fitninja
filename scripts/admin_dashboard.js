@@ -1,5 +1,4 @@
 $(document).ready(function(){
 
-  $(".admin-main-div").slideUp();
-  $(".admin-main-div").slideDown();
+  console.log("hi");
 });

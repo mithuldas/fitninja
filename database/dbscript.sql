@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2020 at 08:16 AM
+-- Generation Time: Nov 11, 2020 at 07:45 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -126,13 +126,6 @@ CREATE TABLE `sessions` (
   `notes` varchar(512) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `sessions`
---
-
-INSERT INTO `sessions` (`id`, `sequence`, `user_product_id`, `planned_trainers`, `planned_trainees`, `filled_trainers`, `filled_trainees`, `notes`) VALUES
-(41, 1, 62, 1, 1, 0, 0, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -146,15 +139,6 @@ CREATE TABLE `session_attributes` (
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `session_attributes`
---
-
-INSERT INTO `session_attributes` (`session_id`, `attribute_id`, `attribute_value`, `valid_from`, `valid_to`) VALUES
-(41, 1, 'Aerobics', '2020-11-11 00:00:00', NULL),
-(41, 2, 'Thu 12 Nov', '2020-11-11 00:00:00', NULL),
-(41, 3, '9 AM - 12 PM', '2020-11-11 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -192,13 +176,6 @@ CREATE TABLE `tokens` (
   `creation_dt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tokens`
---
-
-INSERT INTO `tokens` (`id`, `email`, `selector`, `token`, `expiry`, `type`, `creation_dt`) VALUES
-(286, 'mithuldas@gmail.com', '91791eec8d6e3b29', '$2y$10$2WBpPRgtniJUniXsJOjfIOV1claEs4OKzLEA7LNUzBmYeGk6wDZF.', '1612854617', 'funinja_login', '2020-11-11 12:40:17');
-
 -- --------------------------------------------------------
 
 --
@@ -217,14 +194,6 @@ CREATE TABLE `users` (
   `ext_name` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`, `reg_dt`, `source`, `ext_name`) VALUES
-(206, 'trainee', 2, 'mithuldas@gmail.com', '$2y$10$wMhesRfDDsbocCXEB5VSz.fEFaB1tLWTsyPHZYtjINwGc7rFaLt8C', 'Y', '2020-11-11 11:50:42', 'Web', NULL),
-(207, 'mithuldas', 1, 'funinja.in@gmail.com', '$2y$10$XzN0Z3TujdJxI5uX.fY/8eT9ktQSSdOO.pTXaffGaMELReO3Wst32', 'Y', '2020-11-11 11:56:07', 'Web', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -238,19 +207,6 @@ CREATE TABLE `user_attributes` (
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_attributes`
---
-
-INSERT INTO `user_attributes` (`uid`, `attribute_id`, `attribute_value`, `valid_from`, `valid_to`) VALUES
-(206, 1, 'Mithul', '2020-11-11 00:00:00', NULL),
-(206, 2, 'Mangaldas', '2020-11-11 00:00:00', NULL),
-(206, 3, 'Bengaluru', '2020-11-11 00:00:00', NULL),
-(206, 4, '9972166212', '2020-11-11 00:00:00', NULL),
-(206, 5, '2020-11-18', '2020-11-11 00:00:00', NULL),
-(206, 6, 'Male', '2020-11-11 00:00:00', NULL),
-(206, 7, 'Y', '2020-11-11 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -289,13 +245,6 @@ CREATE TABLE `user_interests` (
   `end_dt` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `user_interests`
---
-
-INSERT INTO `user_interests` (`uid`, `interest_id`, `str_dt`, `end_dt`) VALUES
-(206, 1, '2020-11-11', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -309,13 +258,6 @@ CREATE TABLE `user_products` (
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_products`
---
-
-INSERT INTO `user_products` (`id`, `uid`, `product_id`, `valid_from`, `valid_to`) VALUES
-(62, 206, 1, '2020-11-11 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -520,13 +462,6 @@ ALTER TABLE `product_attributes`
 --
 ALTER TABLE `sessions`
   ADD CONSTRAINT `sessions_ibfk_1` FOREIGN KEY (`user_product_id`) REFERENCES `user_products` (`id`);
-
---
--- Constraints for table `session_attributes`
---
-ALTER TABLE `session_attributes`
-  ADD CONSTRAINT `session_attributes_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`),
-  ADD CONSTRAINT `session_attributes_ibfk_2` FOREIGN KEY (`attribute_id`) REFERENCES `session_attribute_definitions` (`attribute_id`);
 
 --
 -- Constraints for table `users`

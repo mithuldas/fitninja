@@ -1,22 +1,6 @@
 $(document).ready(function(){
   populateUpcomingDivContent();
 
-  function populateUpcomingDivContent(){
-    if(currentUser.isNew){
-      $(".upcoming-sessions-area").html
-        ("You don't have any upcoming sessions yet. \
-        <br><small>Your next session will always appear here,\
-        </small><br>\
-        <a onclick=\"viewTrialForm()\" class=\"btn btn-primary btn-sm btn mr mb\
-        \" id =\"loginButton\"> Request a Free Trial </a>\
-        <a href=\"membership.php\" class=\"btn btn-primary btn-sm btn mr mb\
-        \" id =\"loginButton\"> Membership </a>\
-        ");
-    } else {
-      $(".upcoming-sessions-area").html("Existing user");
-    }
-  }
-
   $("#trialSubmit").submit(function(event){
     event.preventDefault();
   });
@@ -27,6 +11,22 @@ $(document).ready(function(){
   //});
 
 });
+
+function populateUpcomingDivContent(){
+  if(currentUser.isNew){
+    $(".upcoming-sessions-area").html
+      ("You don't have any upcoming sessions yet. \
+      <br><small>Your next session will always appear here,\
+      </small><br>\
+      <a onclick=\"viewTrialForm()\" class=\"btn btn-primary btn-sm btn mr mb\
+      \" id =\"loginButton\"> Request a Free Trial </a>\
+      <a href=\"membership.php\" class=\"btn btn-primary btn-sm btn mr mb\
+      \" id =\"loginButton\"> Membership </a>\
+      ");
+  } else {
+    $(".upcoming-sessions-area").html("Existing user");
+  }
+}
 
 function viewTrialForm(){ // form with the following options - type dropdown, date dropdown with the next 5 days, and preferred timeslot dropdown
   $(".upcoming-sessions-area").html("<form id=\"requestTrialForm\">\
@@ -92,6 +92,8 @@ function viewTrialForm(){ // form with the following options - type dropdown, da
 
 function submitTrialRequestForm(){
 
+  $("#trialSubmit").prop('disabled', true);
+
   var trialType = $("#typeSelect").val();
   var trialDate = $("#dateSelect").val();
   var trialTimeSlot = $("#timeSlot").val();
@@ -114,7 +116,12 @@ function submitTrialRequestForm(){
 
     },
     success: function(response){
-      console.log(response);
+      if(response=="success"){
+        currentUser.isNew=false;
+        populateUpcomingDivContent();
+        var successMessage = "We've received your request for a "+trialType+" trial for "+trialDate+ " between "+trialTimeSlot+". Sit tight and one of us will be in touch!";
+        alert(successMessage);
+      }
     }
   });
 }

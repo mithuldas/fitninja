@@ -18,8 +18,11 @@ $trialTimeSlot = $_POST['trialTimeSlot'];
 
 $user = new Trainee($currentUser->uid, $conn);
 
+//($name, $trialType, $trialDate, $trialTimeSlot, $email, $phone, $conn)
 if($user->submitTrialRequest($trialType, $trialDate, $trialTimeSlot)){
+  Email::sendTrialRequestConfirmationEmail($currentUser->firstName, $trialType, $trialDate, $trialTimeSlot, $currentUser->email, $currentUser->phoneNumber, $conn);
   echo "success";
+
 } else {
   echo "failure";
 }

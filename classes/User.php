@@ -12,11 +12,30 @@ class User {
   public $userAttributes;
   public $phoneNumber;
   public $gender;
+  public $email;
 
   function __construct($uid, $conn) {
     $this->uid = $uid;
     $this->conn = $conn;
     $this->setUserAttributes();
+    $this->setEmailId();
+  }
+
+  function setEmailId(){
+    $sql = "select email from users where uid = ".$this->uid.";";
+
+    $stmt = mysqli_stmt_init($this->conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return "sqlerror";
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+        $this->email=$row['email'];
+      }
+    }
   }
 
   function setUserAttributes(){

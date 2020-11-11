@@ -202,7 +202,7 @@ if(isset($_POST['save'])){
           mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $userType, $hashedPwd, $emailVerified, $source );
           mysqli_stmt_execute($stmt);
 
-          Email::sendVerificationEmail($email);
+          Email::sendVerificationEmail($email, $conn);
           echo "success";
 
         }

@@ -65,7 +65,7 @@ include ROOT_DIR."/includes/dbh.php";
 
 ?>
 
-<h4> Requests for Trial </h4><br>
+<h4> Trial Requests </h4><br>
   <table id='users' class='display' style='width:100%'><thead>
     <tr>
     <th> Date submitted </th>
@@ -73,13 +73,15 @@ include ROOT_DIR."/includes/dbh.php";
     <th> Phone </th>
     <th> Email </th>
     <th> Type </th>
-    <th> Date </th>
-    <th> Time Slot </th>
+    <th> Requested Date</th>
+    <th> Requested Time</th>
     <th>  </th>
     </tr><thead><tbody>
 
 <?php
   foreach ($unassignedTrialSessions as $value) {
+
+    $sessionJSON = json_encode($value);
 
     $trainee = new Trainee($value->uid, $conn);
     echo "<tr>
@@ -87,9 +89,9 @@ include ROOT_DIR."/includes/dbh.php";
         "</td>
         <td>" . $trainee->firstName .
         "</td>
-        <td>" . $trainee->email .
-        "</td>
         <td>" . $trainee->phoneNumber .
+        "</td>
+        <td>" . $trainee->email .
         "</td>
         <td>" . $value->trialType .
         "</td>
@@ -97,7 +99,11 @@ include ROOT_DIR."/includes/dbh.php";
         "</td>
         <td>" . $value->trialTimeSlot .
         "</td>
-        <td> <a href='new_trainer_admin.php?type=Admin' class='btn-sm btn-light active'>Process</a>
+        <td>
+        <form action='/admin/process_trial_request.php' method='post'>
+        <input type='hidden' name='trialSession' value='". $sessionJSON."'>
+        <button class='btn-sm btn-light' type='submit' name='process-trial'>Process</button>
+        </form>
         </td>
         </tr>";
   }

@@ -9,7 +9,6 @@ class User {
   public $firstName;
   public $lastName;
   public $dateOfBirth;
-  public $userAttributes;
   public $phoneNumber;
   public $gender;
   public $email;

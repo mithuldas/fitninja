@@ -402,8 +402,8 @@ class Email{
                           <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$name.'</b>,</p>
 
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We just received a request from you for a <b>'. $trialType. '</b> trial session for <b>'.$trialDate. '</b> between <b>'.$trialTimeSlot. '</b></p>
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> Shortly, one of us will give you a call on your number <b>' .$phone. '</b> to schedule the session and finalize timings. Hang tight!</p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We just received your request on a <b>'. $trialType. '</b> trial session for <b>'.$trialDate. '</b> between <b>'.$trialTimeSlot. '</b></p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> Please give us some time to co-ordinate with our team of trainers. Please expect a call from us on your number <b>' .$phone. '</b> to lock the date and time. Talk to you soon!</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
                           </td>

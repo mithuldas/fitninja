@@ -45,7 +45,16 @@ if(isset($_GET['uid'])){
       <input type="hidden" name="selector" value="<?php echo $_GET["selector"]; ?>" />
       <input type="hidden" name="validator" value="<?php echo $_GET["validator"]; ?>" />
       <input type="email" name="email" class="form-control" value="<?php echo $email; ?>" required autofocus readonly>
-      <input type="text" name="uid" class="form-control" placeholder="Choose a username" value="<?php echo $username; ?>" required autofocus>
+      <input type="text" name="uid" class="form-control" placeholder="Choose a username" value="<?php echo $username; ?>" required>
+      <input type="text" name="firstName" class="form-control" placeholder="First Name" required>
+      <input type="text" name="lastName" class="form-control" placeholder="Last Name" required>
+      <input type="text" name="phone" class="form-control" placeholder="Phone Number" required>
+      <input type="date" name="dob" class="form-control" placeholder="Date of Birth" required>
+      <select class="form-control" name="gender">
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+      <input type="text" name="city" class="form-control" placeholder="City" required>
       <input type="password" name="pwd" class="form-control" placeholder="Password" required>
       <input type="password" name="pwd-repeat" class="form-control" placeholder="Repeat Password" required>
 

@@ -13,6 +13,12 @@ $passwordRepeat = $_POST['pwd-repeat'];
 $userType = $_POST['type'];
 $selector = $_POST['selector'];
 $validator = $_POST['validator'];
+$firstName = $_POST['firstName'];
+$lastName = $_POST['lastName'];
+$phoneNumber = $_POST['phone'];
+$dob = $_POST['dob'];
+$gender = $_POST['gender'];
+$city = $_POST['city'];
 
 
 
@@ -199,6 +205,7 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
               $uid=$row['uid'];
             }
 
+
           // start the session so that the landing page can forward appropriately
           session_start();
           $_SESSION['uid'] = $uid;
@@ -206,6 +213,93 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
           $_SESSION['userType'] = $userType;
 
           $split_names = explode('@', $email, 2);
+
+          // insert user attributes
+
+          //first_name
+          $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+            values (?, (select attribute_id from user_attribute_definitions where attribute_name = "first_name"), ?,(select date(sysdate()) from dual));';
+
+          $stmt = mysqli_stmt_init($conn);
+            if(!mysqli_stmt_prepare($stmt, $sql)) {
+              header("Location: ../index.php?error=sqlerror");
+              exit();
+            }
+            else{
+              mysqli_stmt_bind_param($stmt, "ss", $uid, $firstName);
+              mysqli_stmt_execute($stmt);
+            }
+
+          //last_name
+          $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+            values (?, (select attribute_id from user_attribute_definitions where attribute_name = "last_name"), ?,(select date(sysdate()) from dual));';
+
+          $stmt = mysqli_stmt_init($conn);
+            if(!mysqli_stmt_prepare($stmt, $sql)) {
+              header("Location: ../index.php?error=sqlerror");
+              exit();
+            }
+            else{
+              mysqli_stmt_bind_param($stmt, "ss", $uid, $lastName);
+              mysqli_stmt_execute($stmt);
+            }
+
+           //date of birth
+          $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+            values (?, (select attribute_id from user_attribute_definitions where attribute_name = "date_of_birth"), ?,(select date(sysdate()) from dual));';
+
+          $stmt = mysqli_stmt_init($conn);
+            if(!mysqli_stmt_prepare($stmt, $sql)) {
+              header("Location: ../index.php?error=sqlerror");
+              exit();
+            }
+            else{
+              mysqli_stmt_bind_param($stmt, "ss", $uid, $dob);
+              mysqli_stmt_execute($stmt);
+            }
+
+            //city
+           $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+             values (?, (select attribute_id from user_attribute_definitions where attribute_name = "city"), ?,(select date(sysdate()) from dual));';
+
+           $stmt = mysqli_stmt_init($conn);
+             if(!mysqli_stmt_prepare($stmt, $sql)) {
+               header("Location: ../index.php?error=sqlerror");
+               exit();
+             }
+             else{
+               mysqli_stmt_bind_param($stmt, "ss", $uid, $city);
+               mysqli_stmt_execute($stmt);
+             }
+
+            //phone number
+           $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+             values (?, (select attribute_id from user_attribute_definitions where attribute_name = "phone_number"), ?,(select date(sysdate()) from dual));';
+
+           $stmt = mysqli_stmt_init($conn);
+             if(!mysqli_stmt_prepare($stmt, $sql)) {
+               header("Location: ../index.php?error=sqlerror");
+               exit();
+             }
+             else{
+               mysqli_stmt_bind_param($stmt, "ss", $uid, $phoneNumber);
+               mysqli_stmt_execute($stmt);
+             }
+
+            //gender
+           $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+             values (?, (select attribute_id from user_attribute_definitions where attribute_name = "gender"), ?,(select date(sysdate()) from dual));';
+
+           $stmt = mysqli_stmt_init($conn);
+             if(!mysqli_stmt_prepare($stmt, $sql)) {
+               header("Location: ../index.php?error=sqlerror");
+               exit();
+             }
+             else{
+               mysqli_stmt_bind_param($stmt, "ss", $uid, $gender);
+               mysqli_stmt_execute($stmt);
+             }
+
 
           Email::sendTrainerWelcomeEmail($split_names[0], $email);
 

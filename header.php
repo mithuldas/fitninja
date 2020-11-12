@@ -134,7 +134,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
     <?php echo $_SESSION['username']?>
   </button>
   <div class="dropdown-menu dropdown-menu-right">
-    <a class="dropdown-item" href="includes/post_login_landing_controller.php">Dashboard</a>
+    <a class="dropdown-item" href="/includes/post_login_landing_controller.php">Dashboard</a>
     <a class="dropdown-item" href="settings.php">Send Us Feedback</a>
     <a class="dropdown-item" href="settings.php">Settings</a>
     <div class="dropdown-divider"></div>

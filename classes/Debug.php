@@ -72,17 +72,17 @@ class Debug{
     }
   }
 
-  static function makeMeAdmin($conn){
-    $sql =  "update users set user_type_id=3";
+  static function makeMeAdmin($username, $conn){
+    $sql =  "update users set user_type_id=3 where username='".$username."';";
     $stmt = mysqli_stmt_init($conn);
 
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_execute($stmt);
 
     if(mysqli_stmt_affected_rows($stmt)<1){
-      return 0;
+      return "failed";
     } else {
-      return 1;
+      return "success";
     }
   }
 }

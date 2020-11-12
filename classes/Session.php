@@ -14,6 +14,7 @@ class Session {
   public $plannedTrainees;
   public $filledTrainers;
   public $filledTrainees;
+  public $dateCreated;
   public $notes;
 
   function __construct($id, $conn) { // construct a session object (i.e a row in the session table, given an id )
@@ -42,6 +43,7 @@ class Session {
         $this->filledTrainers=$row['filled_trainers'];
         $this->filledTrainees=$row['filled_trainees'];
         $this->notes=$row['notes'];
+        $this->dateCreated=$row['creation_dt'];
       }
     }
   }

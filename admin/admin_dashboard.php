@@ -9,12 +9,12 @@ include ROOT_DIR."/includes/dbh.php";
   }
 
   if(!isset($_SESSION['uid'])){
-    header("Location: index.php?notLoggedIn");
+    header("Location: /index.php?notLoggedIn");
     exit();
   }
 
   if($_SESSION['userType']!="Admin"){
-    header("Location: includes/post_login_landing_controller.php");
+    header("Location: /includes/post_login_landing_controller.php");
     exit();
   }
 
@@ -32,7 +32,7 @@ $(document).ready(function() {
 } );
 </script>
 
-<div class="container-fluid">
+<div class="container">
 <div class="admin-header-div">
 <?php
   if(isset($_GET['status'])){
@@ -63,7 +63,7 @@ $sql = 'select * from users a, user_types b where a.user_type_id=b.user_type_id'
 $stmt = mysqli_stmt_init($conn);
 
 if(!mysqli_stmt_prepare($stmt, $sql)){
-  header("Location: ../index.php?error=sqlerror");
+  header("Location: /index.php?error=sqlerror");
   exit();
 }
 else{

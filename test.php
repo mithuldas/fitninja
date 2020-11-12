@@ -5,10 +5,9 @@ require_once __DIR__.'/config.php';
 require_once ( ROOT_DIR.'/includes/autoloader.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
-if(isset($_GET['username'])){
-  echo (Debug::makeMeAdmin($_GET['username'], $conn));
-} else {
-  echo "You need to provide username in the URL-  makemeadmin.php?username=xyz";
-}
+$session = new TrialSession(1, $conn);
+
+echo("<pre>".json_encode($session, JSON_PRETTY_PRINT))."</pre>";
+
 
 ?>

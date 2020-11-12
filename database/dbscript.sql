@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2020 at 07:45 PM
+-- Generation Time: Nov 12, 2020 at 03:59 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -123,7 +123,8 @@ CREATE TABLE `sessions` (
   `planned_trainees` int(11) NOT NULL,
   `filled_trainers` int(11) NOT NULL,
   `filled_trainees` int(11) NOT NULL,
-  `notes` varchar(512) DEFAULT NULL
+  `notes` varchar(512) DEFAULT NULL,
+  `creation_dt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

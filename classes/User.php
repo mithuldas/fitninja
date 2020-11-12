@@ -5,7 +5,6 @@ require_once ( ROOT_DIR.'/includes/autoloader.php' );
 
 class User {
   public $uid;
-  public $conn;
   public $firstName;
   public $lastName;
   public $dateOfBirth;
@@ -15,15 +14,14 @@ class User {
 
   function __construct($uid, $conn) {
     $this->uid = $uid;
-    $this->conn = $conn;
-    $this->setUserAttributes();
-    $this->setEmailId();
+    $this->setUserAttributes($conn);
+    $this->setEmailId($conn);
   }
 
-  function setEmailId(){
+  function setEmailId($conn){
     $sql = "select email from users where uid = ".$this->uid.";";
 
-    $stmt = mysqli_stmt_init($this->conn);
+    $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
       return "sqlerror";
@@ -37,12 +35,12 @@ class User {
     }
   }
 
-  function setUserAttributes(){
+  function setUserAttributes($conn){
     $sql = "select uad.attribute_name, ua.attribute_value from users u, user_attribute_definitions uad, user_attributes ua
             where u.uid = ".$this->uid." and u.uid=ua.uid and ua.attribute_id=uad.attribute_id and sysdate() BETWEEN ua.valid_from and
             IFNULL(ua.valid_to,  DATE_ADD(sysdate(), INTERVAL 1 YEAR) );";
 
-    $stmt = mysqli_stmt_init($this->conn);
+    $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
       return "sqlerror";

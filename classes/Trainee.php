@@ -8,14 +8,14 @@ class Trainee extends User{
 
   function __construct($uid, $conn) {
     parent::__construct($uid, $conn);
-    $this->setIsNew();
+    $this->setIsNew($conn);
   }
 
-  function setIsNew(){ //
+  function setIsNew($conn){ //
     $sql = "select * from user_products, products where user_products.product_id=products.id and
             uid=".$this->uid.";";
 
-    $stmt = mysqli_stmt_init($this->conn);
+    $stmt = mysqli_stmt_init($conn);
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
       return "sqlerror";
@@ -30,11 +30,11 @@ class Trainee extends User{
     }
   }
 
-  function submitTrialRequest($trialType, $trialDate, $trialTimeSlot){
+  function submitTrialRequest($trialType, $trialDate, $trialTimeSlot, $conn){
     // insert user_products entry for Trial
     $sql = "INSERT INTO user_products (id, uid, product_id, valid_from, valid_to) VALUES (NULL,".
        $this->uid .", '1', (select date(sysdate()) from dual), NULL);";
-    $stmt = mysqli_stmt_init($this->conn);
+    $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
       return false;
       exit();
@@ -49,7 +49,7 @@ class Trainee extends User{
     // insert session but first get the user_product id first
     $sql = "select id from user_products where uid = ".$this->uid." and sysdate() between valid_from and IFNULL(valid_to,  DATE_ADD(sysdate(), INTERVAL 1 YEAR));";
 
-    $stmt = mysqli_stmt_init($this->conn);
+    $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
       return false;
       exit();
@@ -65,7 +65,7 @@ class Trainee extends User{
     $sql = "INSERT INTO sessions (sequence, user_product_id, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
             VALUES (1,".$userProductId.", 1, 1, 0, 0)";
 
-    $stmt = mysqli_stmt_init($this->conn);
+    $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
       return false;
       exit();
@@ -78,7 +78,7 @@ class Trainee extends User{
 
     // insert session but first get the user_product id first
     $sql = "select id from sessions where user_product_id =".$userProductId;
-    $stmt = mysqli_stmt_init($this->conn);
+    $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
       return false;
       exit();
@@ -95,7 +95,7 @@ class Trainee extends User{
     $sql2 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialDate'), '".$trialDate."', (select date(sysdate()) from dual), NULL);";
     $sql3 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialTimeSlot'), '".$trialTimeSlot."', (select date(sysdate()) from dual), NULL);";
 
-    $stmt = mysqli_stmt_init($this->conn);
+    $stmt = mysqli_stmt_init($conn);
 
     mysqli_stmt_prepare($stmt, $sql1);
     mysqli_stmt_execute($stmt);

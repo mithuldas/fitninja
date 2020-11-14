@@ -51,8 +51,9 @@ class Debug{
 
   static function deleteUserProducts($conn){
     $sql1 = "DELETE from session_attributes;";
-    $sql2 = "DELETE from sessions;";
-    $sql3 = "DELETE from user_products;";
+    $sql2 = "DELETE from user_assignments;";
+    $sql3 = "DELETE from sessions;";
+    $sql4 = "DELETE from user_products;";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -63,6 +64,9 @@ class Debug{
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_prepare($stmt, $sql3);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_prepare($stmt, $sql4);
     mysqli_stmt_execute($stmt);
 
     if(mysqli_stmt_affected_rows($stmt)<1){

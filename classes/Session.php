@@ -10,6 +10,7 @@ class Session {
   public $sequence;
   public $productName;
   public $uid;
+  public $scheduledDateTime;
   public $plannedTrainers;
   public $plannedTrainees;
   public $filledTrainers;
@@ -38,12 +39,32 @@ class Session {
         $this->productName=$row['name'];
         $this->uid=$row['uid'];
         $this->sequence=$row['sequence'];
+        $this->scheduledDateTime=$row['sch_dt_tm'];
         $this->plannedTrainers=$row['planned_trainers'];
         $this->plannedTrainees=$row['planned_trainees'];
         $this->filledTrainers=$row['filled_trainers'];
         $this->filledTrainees=$row['filled_trainees'];
         $this->notes=$row['notes'];
         $this->dateCreated=$row['creation_dt'];
+      }
+    }
+  }
+
+  function setScheduledDateTime($scheduledDateTime, $conn){
+    $this->scheduledDateTime=$scheduledDateTime;
+    $sql = "update sessions set sch_dt_tm='".$this->scheduledDateTime. "' where id=". $this->id.";";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+      return 0;
+      exit();
+    }
+    else {
+      mysqli_stmt_execute($stmt);
+      if(mysqli_stmt_affected_rows($stmt)<1){
+        return 0;
+        exit();
+      } else {
+        return 1;
       }
     }
   }

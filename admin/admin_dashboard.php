@@ -79,8 +79,8 @@ else{
   while($row = mysqli_fetch_assoc($result))
   {
    echo "<tr>
-       </td><td><a href='http://www.google.com'>" . $row['username'] .
-       "</a><td>" . $row['email'] .
+       </td><td>" . $row['username'] .
+       "<td>" . $row['email'] .
        "</td>
        <td>" . $row['user_type_desc'] .
        "</td>

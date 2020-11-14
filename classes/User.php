@@ -11,11 +11,13 @@ class User {
   public $phoneNumber;
   public $gender;
   public $email;
+  public $type;
 
   function __construct($uid, $conn) {
     $this->uid = $uid;
     $this->setUserAttributes($conn);
     $this->setEmailId($conn);
+    $this->setUserType($conn);
   }
 
   function setEmailId($conn){
@@ -31,6 +33,24 @@ class User {
 
       while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
         $this->email=$row['email'];
+      }
+    }
+  }
+
+  function setUserType($conn){
+
+    $sql = "select ut.user_type_desc from users u, user_types ut where u.user_type_id=ut.user_type_id and u.uid= ".$this->uid.";";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return "sqlerror";
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+        $this->type=$row['user_type_desc'];
       }
     }
   }
@@ -69,6 +89,26 @@ class User {
           }
       }
     }
+  }
+
+  function getUpcomingSessions($numberOfSessions, $conn){
+    $upcomingSessions=[];
+    $sql = "select * from user_assignments where delete_ind='N' and uid = " .$this->uid. ";";
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    $count=0;
+
+    while($row = $result->fetch_assoc() and $count<$numberOfSessions) { // loop through the array and set all user attributes
+      $sessionID=$row['session_id'];
+      array_push($upcomingSessions, new Session($sessionID, $conn));
+      $count=$count+1;
+    }
+
+    return $upcomingSessions;
   }
 }
 ?>

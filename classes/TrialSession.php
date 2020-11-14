@@ -33,7 +33,9 @@ class TrialSession extends Session {
             $this->trialType = $row['attribute_value'];
             break;
           case "preferredTrialDate":
-            $this->trialDate = $row['attribute_value'];
+            $date = date_create($row['attribute_value']);
+            $dateString= date_format($date,"Y-m-d");
+            $this->trialDate = $dateString;
             break;
           case "preferredTrialTimeSlot":
             $this->trialTimeSlot = $row['attribute_value'];

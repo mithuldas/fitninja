@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2020 at 03:59 PM
+-- Generation Time: Nov 14, 2020 at 06:58 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -119,6 +119,7 @@ CREATE TABLE `sessions` (
   `id` int(11) NOT NULL,
   `sequence` int(11) NOT NULL,
   `user_product_id` int(11) NOT NULL,
+  `sch_dt_tm` datetime DEFAULT NULL,
   `planned_trainers` int(11) NOT NULL,
   `planned_trainees` int(11) NOT NULL,
   `filled_trainers` int(11) NOT NULL,
@@ -193,6 +194,19 @@ CREATE TABLE `users` (
   `reg_dt` datetime NOT NULL DEFAULT current_timestamp(),
   `source` varchar(64) DEFAULT NULL,
   `ext_name` varchar(64) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_assignments`
+--
+
+CREATE TABLE `user_assignments` (
+  `id` int(11) NOT NULL,
+  `session_id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `delete_ind` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -348,6 +362,14 @@ ALTER TABLE `users`
   ADD KEY `fk_users_user_types.user_type_id` (`user_type_id`);
 
 --
+-- Indexes for table `user_assignments`
+--
+ALTER TABLE `user_assignments`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `session_id` (`session_id`,`uid`,`delete_ind`),
+  ADD KEY `uid` (`uid`);
+
+--
 -- Indexes for table `user_attributes`
 --
 ALTER TABLE `user_attributes`
@@ -430,6 +452,12 @@ ALTER TABLE `users`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `user_assignments`
+--
+ALTER TABLE `user_assignments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `user_attribute_definitions`
 --
 ALTER TABLE `user_attribute_definitions`
@@ -469,6 +497,13 @@ ALTER TABLE `sessions`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_user_types.user_type_id` FOREIGN KEY (`user_type_id`) REFERENCES `user_types` (`user_type_id`);
+
+--
+-- Constraints for table `user_assignments`
+--
+ALTER TABLE `user_assignments`
+  ADD CONSTRAINT `user_assignments_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`),
+  ADD CONSTRAINT `user_assignments_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`);
 
 --
 -- Constraints for table `user_attributes`

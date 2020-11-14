@@ -389,7 +389,6 @@ class Email{
 
   static function sendTrialRequestConfirmationEmail($name, $trialType, $trialDate, $trialTimeSlot, $email, $phone, $conn){
 
-
     // create the e-mail content
     $subject = 'We received your Trial request';
     $message = self::$header . '
@@ -402,8 +401,72 @@ class Email{
                           <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$name.'</b>,</p>
 
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We just received your request on a <b>'. $trialType. '</b> trial session for <b>'.$trialDate. '</b> between <b>'.$trialTimeSlot. '</b></p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We just received your request for a <b>'. $trialType. '</b> trial session on <b>'.$trialDate. '</b> between <b>'.$trialTimeSlot. '</b></p>
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> Please give us some time to co-ordinate with our team of trainers. Please expect a call from us on your number <b>' .$phone. '</b> to lock the date and time. Talk to you soon!</p>
+
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                <!-- END MAIN CONTENT AREA -->
+                </table> ' . self::$footer;
+
+    $to = $email;
+    self::sendEmail($to, $subject, $message, $message);
+
+  }
+
+  static function sendTrialScheduledEmailtoTrainee($traineeName, $trainerName, $trialType, $finalTrialDate, $finalTrialTime, $email, $phone, $conn){
+
+    // create the e-mail content
+    $subject = 'Your Trial has been scheduled';
+    $message = self::$header . '
+                  <!-- START MAIN CONTENT AREA -->
+                  <tr>
+                    <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
+            <center><a href="https://funinja.in/" class="navbar-left p-0 m-0"><img src="https://funinja.in/images/logo2.png" alt="" style="height:40px"></a></center>
+                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+                        <tr>
+                          <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$traineeName.'</b>,</p>
+
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Great news! Your <b>'. $trialType. '</b> trial has been scheduled with <b>'. $trainerName. '</b> on <b>'.$finalTrialDate. '</b> at <b>'.$finalTrialTime. '</b></p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> <b>NOTE:</b> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
+
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                <!-- END MAIN CONTENT AREA -->
+                </table> ' . self::$footer;
+
+    $to = $email;
+    self::sendEmail($to, $subject, $message, $message);
+  }
+
+  static function sendTrialScheduledEmailtoTrainer($trainerName, $traineeName, $trialType, $finalTrialDate, $finalTrialTime, $email, $phone, $conn){
+
+    // create the e-mail content
+    $subject = 'Your Trial has been scheduled';
+    $message = self::$header . '
+                  <!-- START MAIN CONTENT AREA -->
+                  <tr>
+                    <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
+            <center><a href="https://funinja.in/" class="navbar-left p-0 m-0"><img src="https://funinja.in/images/logo2.png" alt="" style="height:40px"></a></center>
+                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+                        <tr>
+                          <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$trainerName.'</b>,</p>
+
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We\'ve scheduled a <b>'. $trialType. '</b> trial with you for new trainee <b>'. $traineeName. '</b> on <b>'.$finalTrialDate. '</b> at <b>'.$finalTrialTime. '</b></p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> <b>NOTE:</b> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
+
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
                           </td>

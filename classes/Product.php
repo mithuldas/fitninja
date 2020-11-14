@@ -61,7 +61,12 @@ class Product {
     } else {
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
-      $productList = $result->fetch_all();
+      $productList = [];
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+        array_push($productList, $row['name']);
+      }
+
       return $productList;
     }
 

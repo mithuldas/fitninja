@@ -109,6 +109,24 @@ class Trainee extends User{
     return true;
 
   }
+
+  function getUnassignedProducts($conn){ // return a list of UserProduct objects containing at least product name and from date
+    $unassignedProducts = [];
+
+    $sql = "select up.id from user_products up, sessions s, products p where p.id=up.product_id and up.id=s.user_product_id and s.sequence=1 and s.filled_trainers=0 and up.uid=".$this->uid.";";
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    while($row = $result->fetch_assoc()) {
+      $userProductId=$row['id'];
+      array_push($unassignedProducts, new UserProduct($userProductId, $conn));
+    }
+
+    return $unassignedProducts;
+  }
 }
 
  ?>

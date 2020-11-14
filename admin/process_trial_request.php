@@ -4,31 +4,96 @@ require_once __DIR__.'/../config.php';
 include ROOT_DIR."/includes/autoloader.php";
 include ROOT_DIR."/includes/dbh.php";
 
+require ROOT_DIR."/header.php";
 
-// display request property in table at the top
+?>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" class="init">
+  $(document).ready(function() {
+  	$('#users').DataTable();
+  } );
+</script>
+
+<?php
 
 // receive a trial session object in json format
 // convert json to php object
 $session = json_decode($_POST['trialSession']);
 
-echo("<pre>".json_encode($session, JSON_PRETTY_PRINT))."</pre>";
+$date = date_create($session->trialDate);
+$dateString= date_format($date,"Y-m-d");
 
 $trainers = getTrainerList($conn);
 $timeSlots = array('6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM');
+$trialProductList = Product::getProductsAvailableForTrial($conn);
 
+?>
 
+<div class="container">
+  <h5> Process trial request </h5><br>
+<form action = "assign_trial.php" method="post">
+<div class="form-group">
+  1) Trial Date:
+<input class="form-control" type="date"  id="trialDate" name="trialDate" value = <?php echo $dateString; ?>><br>
+  2) Trial Time:
+<select class="form-control" name="time">
+  <?php
+  foreach ($timeSlots as $value) {
+    echo "<option>".$value."</option>";
+  }
+  ?>
+</select>
+<br>
+  3) Select a trainer: <br><br>
 
-// admin to choose a final time and trainer (form inputs)
-  // trainer list dropdown
-  // datepicker (calendar) and time dropdowns (every hour of the day)
+  <table id='users' class='display' style='width:100%'><thead>
+    <tr>
+    <th> First Name </th>
+    <th> Last Name </th>
+    <th> Email </th>
+    <th> Phone </th>
+    <th> </th>
+    </tr><thead><tbody>
 
-// call trial session's assign function, which will take time and trainer input
-  // session fills to be updated, along with the scheduled time attribute
-  // create assignment rows in assignments table for trainee and trainer
+<?php
+  foreach ($trainers as $value) {
+    echo "<tr>
+        <td>" . $value->firstName .
+        "</td>
+        <td>" . $value->lastName .
+        "</td>
+        <td>" . $value->email .
+        "</td>
+        <td>" . $value->phoneNumber .
+        "</td>
+        <td>
+        <input class='form-check-input' type='radio' name='trainerSelect' id='trainerSelect' value='" . $value->uid . "' checked>
+        </td>
+        </tr>";
+  }
 
-// send confirmation email to trainee and trainer (in the future, SMS)
+  echo "</tbody></table>";
+?>
+  <br>
 
+</select>
+  4) Trial type: <br>
+<select class="form-control" name="trialProduct">
+  <?php
+  foreach ($trialProductList as $value) {
+    echo "<option>".$value."</option>";
+  }
+  ?>
+</select>
+<input type='hidden' name='trialSession' value='<?php echo $_POST['trialSession']; ?>'>
+<br><button class="btn-sm btn-primary mt-1" type="submit" name="scheduleTrial">Schedule the Trial</button>
+</div>
+</form>
+</div>
 
+<?php
 
 function getTrainerList($conn){
   $trainerUidList=[];

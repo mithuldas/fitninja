@@ -24,7 +24,60 @@ function populateUpcomingDivContent(){
       \" id =\"loginButton\"> Membership </a>\
       ");
   } else {
-    $(".upcoming-sessions-area").html("Existing user");
+
+    var finalHTML ='';
+
+    if(upcomingSessions.length>0){ // if there are upcoming sessions, display them in a table
+      var title="<h6>Your upcoming sessions</h6>";
+      var tableHeader=
+      " <table id='upcomingSessions' class='table-sm table' style='width:100%'><thead>\
+        <tr>\
+        <th> Date and time </th>\
+        <th> Type </th>\
+        <th> Notes </th>\
+        </tr><thead>";
+
+      var tableBody='';
+      var tableFooter =
+      "</table>";
+
+        upcomingSessions.forEach(function (session, index) {
+          if(session.notes==null){
+            session.notes='';
+          }
+          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.productName+'</td><td>'+session.notes+'</td></tr>';
+        });
+
+      var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;
+      finalHTML = finalHTML+finalUpcomingSessions;
+    }
+
+    console.log(unassignedProducts);
+
+    if(unassignedProducts.length>0){ // if there are products that haven't been scheduled yet, display them next
+      var title="<h6> Unscheduled Plans</h6>";
+      var tableHeader=
+      " <table id='unassignedProducts' class='table-sm table' style='width:100%'><thead>\
+        <tr>\
+        <th> Type </th>\
+        <th> Date Added </th>\
+        <th> Status </th>\
+        </tr><thead>";
+
+      var tableBody='';
+      var tableFooter =
+      "</table>";
+
+        unassignedProducts.forEach(function (product, index) {
+          tableBody=tableBody+'<tr><td>'+product.productName+'</td><td>'+product.validFrom+'</td><td>'+'The FuNinja team is working on finding you a trainer'+'</td></tr>';
+        });
+
+        var finalUnassignedProducts = title+tableHeader+tableBody+tableFooter;
+        finalHTML=finalHTML+finalUnassignedProducts;
+    }
+
+
+    $(".upcoming-sessions-area").html(finalHTML);
   }
 }
 
@@ -60,7 +113,7 @@ function viewTrialForm(){ // form with the following options - type dropdown, da
 
   for(i=1; i<=5; i++){
     newDate.setDate(date.getDate()+i);
-    availableDates.push(days[newDate.getDay()]+' '+newDate.getDate()+' '+months[newDate.getMonth()]);
+    availableDates.push(days[newDate.getDay()]+' '+newDate.getDate()+' '+months[newDate.getMonth()]+' '+newDate.getFullYear());
   }
 
 
@@ -98,7 +151,6 @@ function submitTrialRequestForm(){
   var trialDate = $("#dateSelect").val();
   var trialTimeSlot = $("#timeSlot").val();
 
-
   $.ajax({
     url: '/includes/submit_trial_request.php',
     type: 'post',
@@ -121,6 +173,7 @@ function submitTrialRequestForm(){
         populateUpcomingDivContent();
         var successMessage = "We've received your request for a "+trialType+" trial for "+trialDate+ " between "+trialTimeSlot+". Sit tight and one of us will be in touch!";
         alert(successMessage);
+        window.location.href = "/trainee_dashboard.php";
       }
     }
   });

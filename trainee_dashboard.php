@@ -22,18 +22,22 @@ if($_SESSION['userType']!="Trainee"){
 
 <?php
 require "header.php";
-$currentUser = new Trainee($_SESSION['uid'], $conn);
-$currentUserJSON = json_encode($currentUser);
 
+$currentUser = new Trainee($_SESSION['uid'], $conn);
+$upcomingSessions=json_encode($currentUser->getUpcomingSessions(3, $conn));
+$currentUserJSON = json_encode($currentUser);
 $productListForTrial = json_encode(Product::getProductsAvailableForTrial($conn));
+$unassignedProducts = json_encode($currentUser->getUnassignedProducts($conn));
 ?>
 
 <script type="text/javascript">
   var currentUser = <?php echo $currentUserJSON; ?>;
   var productListForTrial = <?php echo $productListForTrial; ?>;
+  var upcomingSessions = <?php echo $upcomingSessions; ?>;
+  var unassignedProducts = <?php echo $unassignedProducts; ?>;
 </script>
 
-<script type="text/javascript" src="scripts/trainee_dashboard.js"> </script>
+<script type="text/javascript" src="scripts/dashboard.js"> </script>
 
 <div class="container-fluid">
 

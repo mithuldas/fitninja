@@ -191,7 +191,7 @@ include "includes/dbh.php";
 <div class="col-md-3">
 
 
-  <label for="fname" class="float-left mt-1">Date of birth</label>
+  <label for="dob" class="float-left mt-1">Date of birth</label>
 </div>
 <div class="col-md-3">
 

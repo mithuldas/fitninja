@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2020 at 06:58 PM
+-- Generation Time: Nov 17, 2020 at 02:46 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -137,7 +137,7 @@ CREATE TABLE `sessions` (
 CREATE TABLE `session_attributes` (
   `session_id` int(11) NOT NULL,
   `attribute_id` int(11) NOT NULL,
-  `attribute_value` varchar(64) NOT NULL,
+  `attribute_value` varchar(1024) NOT NULL,
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -160,7 +160,9 @@ CREATE TABLE `session_attribute_definitions` (
 INSERT INTO `session_attribute_definitions` (`attribute_id`, `attribute_name`) VALUES
 (1, 'preferredTrialType'),
 (2, 'preferredTrialDate'),
-(3, 'preferredTrialTimeSlot');
+(3, 'preferredTrialTimeSlot'),
+(4, 'Zoom Join URL'),
+(5, 'Zoom Start URL');
 
 -- --------------------------------------------------------
 
@@ -206,7 +208,8 @@ CREATE TABLE `user_assignments` (
   `id` int(11) NOT NULL,
   `session_id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `delete_ind` varchar(2) NOT NULL
+  `delete_ind` varchar(2) NOT NULL,
+  `notified` varchar(1) NOT NULL COMMENT 'Y if link / SMS is sent to the user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -245,7 +248,8 @@ INSERT INTO `user_attribute_definitions` (`attribute_id`, `attribute_name`) VALU
 (6, 'gender'),
 (2, 'last_name'),
 (4, 'phone_number'),
-(7, 'trainee_onboarding_completed');
+(7, 'trainee_onboarding_completed'),
+(8, 'Zoom ID');
 
 -- --------------------------------------------------------
 

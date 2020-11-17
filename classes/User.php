@@ -12,6 +12,7 @@ class User {
   public $gender;
   public $email;
   public $type;
+  public $zoomID;
 
   function __construct($uid, $conn) {
     $this->uid = $uid;
@@ -85,6 +86,9 @@ class User {
             break;
           case "gender":
             $this->gender = $row['attribute_value'];
+            break;
+          case "Zoom ID":
+            $this->zoomID = $row['attribute_value'];
             break;
           }
       }

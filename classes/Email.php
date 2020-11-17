@@ -434,7 +434,7 @@ class Email{
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$traineeName.'</b>,</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Great news! Your <b>'. $trialType. '</b> trial has been scheduled with <b>'. $trainerName. '</b> on <b>'.$finalTrialDate. '</b> at <b>'.$finalTrialTime. '</b></p>
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> <b>NOTE:</b> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
                           </td>
@@ -465,7 +465,7 @@ class Email{
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$trainerName.'</b>,</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We\'ve scheduled a <b>'. $trialType. '</b> trial with you for new trainee <b>'. $traineeName. '</b> on <b>'.$finalTrialDate. '</b> at <b>'.$finalTrialTime. '</b></p>
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> <b>NOTE:</b> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
 
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
@@ -479,6 +479,102 @@ class Email{
                 </table> ' . self::$footer;
 
     $to = $email;
+    self::sendEmail($to, $subject, $message, $message);
+  }
+
+  static function sendZoomStartLinktoTrainer($session, $uid, $conn){
+    $sessionDateTime = strtotime ( $session->scheduledDateTime. ' -10 minute');
+    $readableTime= date('h:i A' , $sessionDateTime );
+
+    $subject = 'Zoom link for your '.$session->productName. ' session #'.$session->sequence;
+    $trainer = new User($uid, $conn);
+    $message = self::$header . '
+    <!-- START MAIN CONTENT AREA -->
+    <tr>
+      <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
+    <center><a href="index.php" class="navbar-left p-0 m-0"><img src="https://funinja.in/images/logo2.png" alt="" style="height:40px"></a></center>
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+          <tr>
+            <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi '.$trainer->firstName.',</p>
+              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">The Zoom link to start your session is below. Please make sure you open the room by <b>'.$readableTime.'</b> (10 minutes before the session starts).</p>
+
+              <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
+                <tbody>
+                  <tr>
+                    <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;">
+                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
+                        <tbody>
+                          <tr>
+                            <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color: #EA5421; border-radius: 5px; text-align: center;"> <a href="' .$session->startURL. '" target="_blank" style="display: inline-block; color: #ffffff; background-color: #EA5421; border: solid 1px #EA5421; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #EA5421;">Start the session</a> </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+    <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- END MAIN CONTENT AREA -->
+    </table>
+    ' . self::$footer;
+
+    $to = $trainer->email;
+    self::sendEmail($to, $subject, $message, $message);
+  }
+
+  static function sendZoomJoinLinktoTrainee($session, $uid, $conn){
+    $sessionDateTime = strtotime ( $session->scheduledDateTime. ' -5 minute');
+    $readableTime= date('h:i A' , $sessionDateTime );
+
+    $subject = 'Zoom link for your '.$session->productName. ' session #'.$session->sequence;
+    $trainee = new Trainee($uid, $conn);
+    $message = self::$header . '
+    <!-- START MAIN CONTENT AREA -->
+    <tr>
+      <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
+    <center><a href="index.php" class="navbar-left p-0 m-0"><img src="https://funinja.in/images/logo2.png" alt="" style="height:40px"></a></center>
+        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+          <tr>
+            <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi '.$trainee->firstName.',</p>
+              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">The Zoom link to join your session is below. Please ensure you join the room by <b>'.$readableTime.'</b> </p>
+
+              <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
+                <tbody>
+                  <tr>
+                    <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;">
+                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
+                        <tbody>
+                          <tr>
+                            <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color: #EA5421; border-radius: 5px; text-align: center;"> <a href="' .$session->joinURL. '" target="_blank" style="display: inline-block; color: #ffffff; background-color: #EA5421; border: solid 1px #EA5421; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #EA5421;">Join the session</a> </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+    <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- END MAIN CONTENT AREA -->
+    </table>
+    ' . self::$footer;
+
+    $to = $trainee->email;
     self::sendEmail($to, $subject, $message, $message);
   }
 

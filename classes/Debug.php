@@ -89,4 +89,27 @@ class Debug{
       return "success";
     }
   }
+
+
+  static function resetSessionTimes($conn){
+    $sql1="update user_assignments set notified='N';";
+    $sql2="delete from session_attributes where attribute_id in (4,5);";
+    $sql3="update sessions set sch_dt_tm=date_add(sysdate(), interval 30 minute);";
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql1);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_prepare($stmt, $sql2);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_prepare($stmt, $sql3);
+    mysqli_stmt_execute($stmt);
+
+    if(mysqli_stmt_affected_rows($stmt)<1){
+      return 0;
+    } else {
+      return 1;
+    }
+  }
 }

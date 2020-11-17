@@ -20,23 +20,15 @@ $trainerUID = $_POST['trainerSelect'];
 $traineeUID = $originalTrialSession->uid;
 $trialType = $_POST['trialProduct'];
 
-$traineeAssignment = createAssignmentObject($originalTrialSession->id, $traineeUID, "trainee", $finalTrialDate.$finalTrialTime);
-$trainerAssignment = createAssignmentObject($originalTrialSession->id, $trainerUID, "trainer", $finalTrialDate.$finalTrialTime);
-
-//echo("<pre>".json_encode($traineeAssignment, JSON_PRETTY_PRINT))."</pre>";
-//echo("<pre>".json_encode($trainerAssignment, JSON_PRETTY_PRINT))."</pre>";
-
-
-
-// now that we have the assignment objects, save them to the DB
-$traineeAssignment->insertToDB($conn);
-$trainerAssignment->insertToDB($conn);
+// insert trainee assignment
+insertAssignmentToDB($originalTrialSession->id, $traineeUID, "trainee", $conn);
+// insert trainer assignment
+insertAssignmentToDB($originalTrialSession->id, $trainerUID, "trainer", $conn);
 
 // update the scheduled date and time of the session
 $trialSession = new TrialSession($originalTrialSession->id, $conn);
 $dateAndTimeForDB = getDateTimeValue($finalTrialDate, $finalTrialTime);
 $trialSession->setScheduledDateTime($dateAndTimeForDB, $conn);
-
 
 // send confirmation e-mail to the trainer and trainee
 $trainee = new Trainee($traineeUID, $conn);
@@ -47,20 +39,57 @@ Email::sendTrialScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName
 
 header("Location: /admin/trial_requests.php");
 
-function createAssignmentObject($sessionID, $uid, $type){
-  $assignment = new Assignment();
-
-  $assignment->sessionID=$sessionID;
-  $assignment->uid=$uid;
-  $assignment->type=$type;
-
-  return $assignment;
-}
-
 function getDateTimeValue($finalTrialDate, $finalTrialTime){
   $time24h= date("G:i", strtotime($finalTrialTime));
 
   return $finalTrialDate.' '.$time24h;
+}
+
+function insertAssignmentToDB($sessionID, $uid, $type, $conn){
+  // insert row into user_assignment table
+  $sql = "INSERT INTO user_assignments (session_id, uid, delete_ind, notified) VALUES (" . $sessionID . ", " . $uid . ", 'N', 'N');";
+
+  $stmt = mysqli_stmt_init($conn);
+  if(!mysqli_stmt_prepare($stmt, $sql)) {
+    return 0;
+    exit();
+  }
+  else{
+    mysqli_stmt_execute($stmt);
+    if(mysqli_stmt_affected_rows($stmt)<1){
+      return 0;
+      exit();
+    }
+
+    // determine whether to increment trainer or trainee fill
+    $fillColumnName;
+    if($type=="trainer"){
+      $fillColumnName='filled_trainers';
+    } else if ($type=="trainee"){
+      $fillColumnName='filled_trainees';
+    }
+    // increment fill value appropriately in session
+    if($type=="trainer"){
+      $sql = "update sessions s set ". $fillColumnName . "=(select count(*) from user_assignments ua, users u where s.id=ua.session_id and ua.uid=u.uid and ua.delete_ind='N' and user_type_id=1) where id=". $sessionID.";";
+    } else if ($type=="trainee"){
+      $sql = "update sessions s set ". $fillColumnName . "=(select count(*) from user_assignments ua, users u where s.id=ua.session_id and ua.uid=u.uid and ua.delete_ind='N' and user_type_id=2) where id=". $sessionID.";";
+    }
+
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+      return 0;
+      exit();
+    }
+    else {
+      mysqli_stmt_execute($stmt);
+      if(mysqli_stmt_affected_rows($stmt)<1){
+        return 0;
+        exit();
+      } else {
+        return 1;
+      }
+    }
+
+  }
 }
 
 

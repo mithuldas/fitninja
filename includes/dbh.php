@@ -4,7 +4,7 @@ $servername="localhost";
 $dbusername="root";
 $dbname="funinja";
 
-if($_SERVER['HTTP_HOST']=="localhost"){
+if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
 
   $dbpassword="";
   $dbname="funinja";

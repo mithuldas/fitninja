@@ -228,14 +228,14 @@ class Email{
     exit();
   }
 
-  static function sendTrainerAdminOnboardEmail($tokenType, $email, $userType, $conn){
+  static function sendTrainerAdminOnboardEmail($tokenType, $email, $userType, $zoomID, $conn){
 
     self::setBaseURL();
     $URLQualifier = "/admin/new_trainer_admin_landing.php";
 
     $tokenDuration =  7200; // seconds (2 hours)
     $tokenString = Token::getTokenStringForURL($email, $tokenType, $tokenDuration, $conn);
-    $url = self::$baseURL.$URLQualifier."?" . $tokenString . "&email=" . $email . "&type=" .$userType;
+    $url = self::$baseURL.$URLQualifier."?" . $tokenString . "&email=" . $email . "&type=" .$userType. "&zoomID=" .$zoomID;
 
     $split_names = explode('@', $email, 2);
     $name = $split_names[0];
@@ -421,6 +421,12 @@ class Email{
 
   static function sendTrialScheduledEmailtoTrainee($traineeName, $trainerName, $trialType, $finalTrialDate, $finalTrialTime, $email, $phone, $conn){
 
+    if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+      $tzOffset = 0;
+    } else {
+      $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+    }
+
     // create the e-mail content
     $subject = 'Your Trial has been scheduled';
     $message = self::$header . '
@@ -433,7 +439,7 @@ class Email{
                           <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$traineeName.'</b>,</p>
 
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Great news! Your <b>'. $trialType. '</b> trial has been scheduled with <b>'. $trainerName. '</b> on <b>'.$finalTrialDate. '</b> at <b>'.$finalTrialTime. '</b></p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Good news. Your <b>'. $trialType. '</b> trial has been scheduled with <b>'. $trainerName. '</b> on <b>'.$finalTrialDate. '</b> at <b>'.$finalTrialTime. '</b></p>
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
@@ -451,6 +457,12 @@ class Email{
   }
 
   static function sendTrialScheduledEmailtoTrainer($trainerName, $traineeName, $trialType, $finalTrialDate, $finalTrialTime, $email, $phone, $conn){
+
+    if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+      $tzOffset = 0;
+    } else {
+      $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+    }
 
     // create the e-mail content
     $subject = 'Your Trial has been scheduled';
@@ -483,7 +495,18 @@ class Email{
   }
 
   static function sendZoomStartLinktoTrainer($session, $uid, $conn){
-    $sessionDateTime = strtotime ( $session->scheduledDateTime. ' -10 minute');
+
+    if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+      $tzOffset = 0;
+    } else {
+      $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+    }
+
+    $checkInMinsBefore = -10; // tell trainer to join x minutes prior to session start
+    $finalTimeAdjustment = $tzOffset + $checkInMinsBefore;
+
+    $sessionDateTime = strtotime ( $session->scheduledDateTime. ' '.$finalTimeAdjustment.' minute');
+
     $readableTime= date('h:i A' , $sessionDateTime );
 
     $subject = 'Zoom link for your '.$session->productName. ' session #'.$session->sequence;
@@ -531,8 +554,16 @@ class Email{
   }
 
   static function sendZoomJoinLinktoTrainee($session, $uid, $conn){
-    $sessionDateTime = strtotime ( $session->scheduledDateTime. ' -5 minute');
-    $readableTime= date('h:i A' , $sessionDateTime );
+
+    if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+      $tzOffset = 0;
+    } else {
+      $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+    }
+
+    $finalTimeAdjustment = $tzOffset;
+
+    $sessionDateTime = strtotime ( $session->scheduledDateTime. ' '.$finalTimeAdjustment.' minute');
 
     $subject = 'Zoom link for your '.$session->productName. ' session #'.$session->sequence;
     $trainee = new Trainee($uid, $conn);
@@ -545,7 +576,7 @@ class Email{
           <tr>
             <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi '.$trainee->firstName.',</p>
-              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">The Zoom link to join your session is below. Please ensure you join the room by <b>'.$readableTime.'</b> </p>
+              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">The Zoom link to join your session is below. Please ensure you join the room by <b>'.$sessionDateTime.'</b> </p>
 
               <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
                 <tbody>

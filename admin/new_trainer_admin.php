@@ -11,6 +11,7 @@ require_once ROOT_DIR."/header.php";
     <p id="statusMessage" style="color:red"> <p>
     <input type="hidden" name="type" value="<?php echo $_GET["type"]; ?>" />
     <input type="email" name="email" class="form-control" placeholder="E-Mail ID" required autofocus>
+    <input type="text" name="zoomID" class="form-control" placeholder="Zoom username" required autofocus>
     <button class="btn btn-primary mt-2" type="submit" name="new_trainer_admin">Send a Link</button>
   </form>
 </div>

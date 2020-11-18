@@ -15,7 +15,7 @@ if (isset($_POST["new_trainer_admin"])){
       $tokenType = 'onboard_admin';
   }
 
-
+  $zoomID = $_POST['zoomID'];
   $userEmail = $_POST["email"];
   $userType = $_POST["type"];
 
@@ -38,7 +38,7 @@ if (isset($_POST["new_trainer_admin"])){
         exit();
       }
       else {
-        Email::sendTrainerAdminOnboardEmail($tokenType, $userEmail, $userType, $conn);
+        Email::sendTrainerAdminOnboardEmail($tokenType, $userEmail, $userType, $zoomID, $conn);
         // redirect user to the forgot password for further handling
         header("Location: /admin/admin_dashboard.php?status=onboard_sent&email=" . $userEmail);
         exit();

@@ -40,9 +40,20 @@ Email::sendTrialScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName
 header("Location: /admin/trial_requests.php");
 
 function getDateTimeValue($finalTrialDate, $finalTrialTime){
+
   $time24h= date("G:i", strtotime($finalTrialTime));
 
-  return $finalTrialDate.' '.$time24h;
+  $dateTime = $finalTrialDate.' '.$time24h;
+
+  if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+    $tzOffset = 0;
+    $adjustedDateTime= (date('Y-m-d G:i',strtotime($dateTime. ' -'.$tzOffset.' minute')));
+  } else {
+    $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+    $adjustedDateTime= (date('Y-m-d G:i',strtotime($dateTime. ' -'.$tzOffset.' minute')));
+  }
+
+  return $adjustedDateTime;
 }
 
 function insertAssignmentToDB($sessionID, $uid, $type, $conn){

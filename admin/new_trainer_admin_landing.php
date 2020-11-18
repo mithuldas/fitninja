@@ -44,6 +44,7 @@ if(isset($_GET['uid'])){
       <input type="hidden" name="type" value="<?php echo $_GET["type"]; ?>" />
       <input type="hidden" name="selector" value="<?php echo $_GET["selector"]; ?>" />
       <input type="hidden" name="validator" value="<?php echo $_GET["validator"]; ?>" />
+      <input type="hidden" name="zoomID" value="<?php echo $_GET["zoomID"]; ?>" />
       <input type="email" name="email" class="form-control" value="<?php echo $email; ?>" required autofocus readonly>
       <input type="text" name="uid" class="form-control" placeholder="Choose a username" value="<?php echo $username; ?>" required>
       <input type="text" name="firstName" class="form-control" placeholder="First Name" required>

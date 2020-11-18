@@ -19,7 +19,7 @@ $phoneNumber = $_POST['phone'];
 $dob = $_POST['dob'];
 $gender = $_POST['gender'];
 $city = $_POST['city'];
-
+$zoomID= $_POST['zoomID'];
 
 
 if($userType=="Admin"){
@@ -32,7 +32,7 @@ if($userType=="Admin"){
 
 $currentDate = date("U");
 
-$queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userType;
+$queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userType."&zoomID=".$zoomID;
 
 
 // check for empty fields
@@ -300,6 +300,19 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
                mysqli_stmt_execute($stmt);
              }
 
+             //Zoom ID
+            $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+              values (?, (select attribute_id from user_attribute_definitions where attribute_name = "Zoom ID"), ?,(select date(sysdate()) from dual));';
+
+            $stmt = mysqli_stmt_init($conn);
+              if(!mysqli_stmt_prepare($stmt, $sql)) {
+                header("Location: ../index.php?error=sqlerror");
+                exit();
+              }
+              else{
+                mysqli_stmt_bind_param($stmt, "ss", $uid, $zoomID);
+                mysqli_stmt_execute($stmt);
+              }
 
           Email::sendTrainerWelcomeEmail($split_names[0], $email);
 

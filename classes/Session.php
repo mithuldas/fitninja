@@ -125,7 +125,7 @@ class Session {
   }
 
   function addAttribute($attributeName, $attributeValue, $conn){
-    $sql="insert into session_attributes (session_id, attribute_id, attribute_value, valid_from) values (57, (select sad.attribute_id from session_attribute_definitions sad where sad.attribute_name='".$attributeName."'), '".$attributeValue."', (select date(sysdate()) from dual));";
+    $sql="insert into session_attributes (session_id, attribute_id, attribute_value, valid_from) values (".$this->id.", (select sad.attribute_id from session_attribute_definitions sad where sad.attribute_name='".$attributeName."'), '".$attributeValue."', (select date(sysdate()) from dual));";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_execute($stmt);
@@ -137,6 +137,12 @@ class Session {
   }
 
   function createZoomMeeting($conn){
+
+    $converToDateTime = strtotime($this->scheduledDateTime);
+    $date= date('Y-m-d',$converToDateTime);
+    $time= date('H:i',$converToDateTime);
+    $dateTimeForZoom= $date . 'T' . $time.':00Z';
+
     $topic = $this->productName." session # ".$this->sequence;
     $trainer = new User($this->getTrainerUID($conn), $conn);
 
@@ -168,7 +174,7 @@ class Session {
       CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => "{\"topic\":\"".$topic."  \",\"type\":\"2\",\"start_time\":\"2020-17-28T08:30:00Z\",\"duration\":\"60\",\"timezone\":\"UTC\",\"agenda\":\"".$agenda."\",\"settings\":{\"host_video\":\"true\",\"participant_video\":\"true\",\"join_before_host\":\"false\",\"mute_upon_entry\":\"false\",\"approval_type\":\"2\",\"audio\":\"both\",\"auto_recording\":\"none\",\"waiting_room\":\"false\"}}",
+        CURLOPT_POSTFIELDS => "{\"topic\":\"".$topic."  \",\"type\":\"2\",\"start_time\":\"".$dateTimeForZoom."\",\"duration\":\"60\",\"timezone\":\"UTC\",\"agenda\":\"".$agenda."\",\"settings\":{\"host_video\":\"true\",\"participant_video\":\"true\",\"join_before_host\":\"false\",\"mute_upon_entry\":\"false\",\"approval_type\":\"2\",\"audio\":\"both\",\"auto_recording\":\"none\",\"waiting_room\":\"false\"}}",
       CURLOPT_HTTPHEADER => array(
         "authorization: Bearer {$jwt}", // You provide your JWT token in the Authorization header.
         "content-type: application/json"
@@ -184,7 +190,7 @@ class Session {
     if(is_null($zoomMeeting->start_url) or is_null($zoomMeeting->join_url)){
       return 0;
     }
-    
+
     if ($err) {
       return 0;
     } else {

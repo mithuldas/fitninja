@@ -24,7 +24,7 @@ USE `funinja`;
 --
 
 CREATE TABLE `interests` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `interest` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -48,7 +48,7 @@ INSERT INTO `interests` (`id`, `interest`) VALUES
 --
 
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -72,8 +72,8 @@ INSERT INTO `products` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `product_attributes` (
-  `product_id` int(11) NOT NULL,
-  `attribute_id` int(11) NOT NULL,
+  `product_id` int NOT NULL,
+  `attribute_id` int NOT NULL,
   `attribute_value` varchar(64) NOT NULL,
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
@@ -98,7 +98,7 @@ INSERT INTO `product_attributes` (`product_id`, `attribute_id`, `attribute_value
 --
 
 CREATE TABLE `product_attribute_definitions` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `attribute_name` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -116,14 +116,14 @@ INSERT INTO `product_attribute_definitions` (`id`, `attribute_name`) VALUES
 --
 
 CREATE TABLE `sessions` (
-  `id` int(11) NOT NULL,
-  `sequence` int(11) NOT NULL,
-  `user_product_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `sequence` int NOT NULL,
+  `user_product_id` int NOT NULL,
   `sch_dt_tm` datetime DEFAULT NULL,
-  `planned_trainers` int(11) NOT NULL,
-  `planned_trainees` int(11) NOT NULL,
-  `filled_trainers` int(11) NOT NULL,
-  `filled_trainees` int(11) NOT NULL,
+  `planned_trainers` int NOT NULL,
+  `planned_trainees` int NOT NULL,
+  `filled_trainers` int NOT NULL,
+  `filled_trainees` int NOT NULL,
   `notes` varchar(512) DEFAULT NULL,
   `creation_dt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -135,8 +135,8 @@ CREATE TABLE `sessions` (
 --
 
 CREATE TABLE `session_attributes` (
-  `session_id` int(11) NOT NULL,
-  `attribute_id` int(11) NOT NULL,
+  `session_id` int NOT NULL,
+  `attribute_id` int NOT NULL,
   `attribute_value` varchar(1024) NOT NULL,
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
@@ -149,7 +149,7 @@ CREATE TABLE `session_attributes` (
 --
 
 CREATE TABLE `session_attribute_definitions` (
-  `attribute_id` int(11) NOT NULL,
+  `attribute_id` int NOT NULL,
   `attribute_name` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -171,7 +171,7 @@ INSERT INTO `session_attribute_definitions` (`attribute_id`, `attribute_name`) V
 --
 
 CREATE TABLE `tokens` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `email` varchar(64) NOT NULL,
   `selector` text NOT NULL,
   `token` longtext NOT NULL,
@@ -187,9 +187,9 @@ CREATE TABLE `tokens` (
 --
 
 CREATE TABLE `users` (
-  `uid` int(11) NOT NULL,
+  `uid` int NOT NULL,
   `username` varchar(64) NOT NULL,
-  `user_type_id` int(11) NOT NULL,
+  `user_type_id` int NOT NULL,
   `email` varchar(64) NOT NULL,
   `password` longtext NOT NULL,
   `email_verified` tinytext NOT NULL,
@@ -205,9 +205,9 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `user_assignments` (
-  `id` int(11) NOT NULL,
-  `session_id` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `session_id` int NOT NULL,
+  `uid` int NOT NULL,
   `delete_ind` varchar(2) NOT NULL,
   `notified` varchar(1) NOT NULL COMMENT 'Y if link / SMS is sent to the user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -219,8 +219,8 @@ CREATE TABLE `user_assignments` (
 --
 
 CREATE TABLE `user_attributes` (
-  `uid` int(11) NOT NULL,
-  `attribute_id` int(11) NOT NULL,
+  `uid` int NOT NULL,
+  `attribute_id` int NOT NULL,
   `attribute_value` varchar(64) NOT NULL,
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
@@ -233,7 +233,7 @@ CREATE TABLE `user_attributes` (
 --
 
 CREATE TABLE `user_attribute_definitions` (
-  `attribute_id` int(11) NOT NULL,
+  `attribute_id` int NOT NULL,
   `attribute_name` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -258,8 +258,8 @@ INSERT INTO `user_attribute_definitions` (`attribute_id`, `attribute_name`) VALU
 --
 
 CREATE TABLE `user_interests` (
-  `uid` int(11) NOT NULL,
-  `interest_id` int(11) NOT NULL,
+  `uid` int NOT NULL,
+  `interest_id` int NOT NULL,
   `str_dt` date NOT NULL,
   `end_dt` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -271,9 +271,9 @@ CREATE TABLE `user_interests` (
 --
 
 CREATE TABLE `user_products` (
-  `id` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `uid` int NOT NULL,
+  `product_id` int NOT NULL,
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -285,7 +285,7 @@ CREATE TABLE `user_products` (
 --
 
 CREATE TABLE `user_types` (
-  `user_type_id` int(11) NOT NULL,
+  `user_type_id` int NOT NULL,
   `user_type_desc` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -417,67 +417,67 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `interests`
 --
 ALTER TABLE `interests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_attribute_definitions`
 --
 ALTER TABLE `product_attribute_definitions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `session_attribute_definitions`
 --
 ALTER TABLE `session_attribute_definitions`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attribute_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `uid` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_assignments`
 --
 ALTER TABLE `user_assignments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_attribute_definitions`
 --
 ALTER TABLE `user_attribute_definitions`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attribute_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_products`
 --
 ALTER TABLE `user_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_types`
 --
 ALTER TABLE `user_types`
-  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_type_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

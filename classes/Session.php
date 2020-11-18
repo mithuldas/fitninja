@@ -180,6 +180,11 @@ class Session {
 
     curl_close($curl);
     $zoomMeeting = json_decode($response);
+
+    if(is_null($zoomMeeting->start_url) or is_null($zoomMeeting->join_url)){
+      return 0;
+    }
+    
     if ($err) {
       return 0;
     } else {

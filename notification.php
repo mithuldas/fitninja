@@ -28,7 +28,7 @@ while($row = $result->fetch_assoc()) {
 }
 
 foreach ($sessionsToBeProcessed as $session) { // for each session to be processed, create the zoom meeting
-  processSession($session, $conn);
+  echo (processSession($session, $conn));
 }
 
 function processSession($session, $conn){ // attempt to create a zoom meeting and then send notifications. 1 = success, 0 = failed

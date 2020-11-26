@@ -18,26 +18,20 @@ require ROOT_DIR."/header.php";
 
 <?php
 
-// receive a trial session object in json format
 // convert json to php object
-$session = json_decode($_POST['trialSession']);
-
-$date = date_create($session->trialDate);
-$dateString= date_format($date,"Y-m-d");
+$session = json_decode($_POST['session']);
 
 $trainers = getTrainerList($conn);
 $timeSlots = array('6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM');
-$trialProductList = Product::getProductsAvailableForTrial($conn);
-
 ?>
 
 <div class="container">
-  <h5> Process trial request </h5><br>
-<form action = "assign_trial.php" method="post">
+  <h5> Assign Trainee to Trainer </h5><br>
+<form action = "process_trial_assignment.php" method="post">
 <div class="form-group">
-  1) Trial Date:
-<input class="form-control" type="date"  id="trialDate" name="trialDate" value = <?php echo $dateString; ?>><br>
-  2) Trial Time:
+  1) First session date:
+<input class="form-control" type="date"  id="trialDate" name="trialDate">
+  2) First session time:
 <select class="form-control" name="time">
   <?php
   foreach ($timeSlots as $value) {
@@ -79,16 +73,9 @@ $trialProductList = Product::getProductsAvailableForTrial($conn);
   <br>
 
 </select>
-  4) Trial type: <br>
-<select class="form-control" name="trialProduct">
-  <?php
-  foreach ($trialProductList as $value) {
-    echo "<option>".$value."</option>";
-  }
-  ?>
-</select>
+
 <input type='hidden' name='trialSession' value='<?php echo $_POST['trialSession']; ?>'>
-<br><button class="btn-sm btn-primary mt-1" type="submit" name="scheduleTrial">Schedule the Trial</button>
+<br><button class="btn-sm btn-primary mt-1" type="submit" name="scheduleTrial">Schedule the first session</button>
 </div>
 </form>
 </div>

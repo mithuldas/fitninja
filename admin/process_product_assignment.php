@@ -37,7 +37,7 @@ $trainer = new User($trainerUID, $conn);
 Email::sendTrialScheduledEmailtoTrainee($trainee->firstName, $trainer->firstName. ' '.$trainer->lastName, $trialType, $finalTrialDate, $finalTrialTime, $trainee->email, $trainee->phoneNumber, $conn);
 Email::sendTrialScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName. ' '.$trainee->lastName, $trialType, $finalTrialDate, $finalTrialTime, $trainer->email, $trainer->phoneNumber, $conn);
 
-header("Location: /admin/trial_requests.php");
+header("Location: /admin/view_trial_requests.php");
 
 function getDateTimeValue($finalTrialDate, $finalTrialTime){
 

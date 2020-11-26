@@ -96,7 +96,7 @@ include ROOT_DIR."/includes/dbh.php";
         <td>" . $trainee->email .
         "</td>
         <td>
-        <form action='/admin/assign_trainee_to_trainer.php' method='post'>
+        <form action='/admin/assign_product.php' method='post'>
         <input type='hidden' name='session' value='". $sessionJSON."'>
         <button class='btn-sm btn-light' type='submit' name='process-trial'>Process</button>
         </form>

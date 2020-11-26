@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2020 at 02:46 PM
+-- Generation Time: Nov 26, 2020 at 02:46 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -24,7 +24,7 @@ USE `funinja`;
 --
 
 CREATE TABLE `interests` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `interest` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -44,11 +44,26 @@ INSERT INTO `interests` (`id`, `interest`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `product_price_id` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `comments` varchar(512) DEFAULT NULL,
+  `external_id` varchar(512) NOT NULL COMMENT 'id returned by payment gateway vendor'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -57,13 +72,17 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`) VALUES
-(1, 'Trial'),
 (2, 'Aerobics'),
-(3, 'Zumba'),
+(10, 'All Access'),
+(8, 'Basic'),
 (4, 'Calisthenics'),
-(5, 'Yoga'),
+(11, 'Couple'),
 (6, 'Meditation'),
-(7, 'Reiki');
+(7, 'Reiki'),
+(9, 'Standard'),
+(1, 'Trial'),
+(5, 'Yoga'),
+(3, 'Zumba');
 
 -- --------------------------------------------------------
 
@@ -72,8 +91,8 @@ INSERT INTO `products` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `product_attributes` (
-  `product_id` int NOT NULL,
-  `attribute_id` int NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `attribute_id` int(11) NOT NULL,
   `attribute_value` varchar(64) NOT NULL,
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
@@ -89,7 +108,11 @@ INSERT INTO `product_attributes` (`product_id`, `attribute_id`, `attribute_value
 (4, 1, 'Y', '2020-11-10 00:00:00', NULL),
 (5, 1, 'Y', '2020-11-10 00:00:00', NULL),
 (6, 1, 'Y', '2020-11-10 00:00:00', NULL),
-(7, 1, 'Y', '2020-11-10 00:00:00', NULL);
+(7, 1, 'Y', '2020-11-10 00:00:00', NULL),
+(8, 2, '10', '2020-11-24 00:00:00', NULL),
+(9, 2, '20', '2020-11-24 00:00:00', NULL),
+(10, 2, '20', '2020-11-24 00:00:00', NULL),
+(11, 2, '20', '2020-11-24 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -98,7 +121,7 @@ INSERT INTO `product_attributes` (`product_id`, `attribute_id`, `attribute_value
 --
 
 CREATE TABLE `product_attribute_definitions` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `attribute_name` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -107,7 +130,34 @@ CREATE TABLE `product_attribute_definitions` (
 --
 
 INSERT INTO `product_attribute_definitions` (`id`, `attribute_name`) VALUES
-(1, 'valid for trial');
+(1, 'valid for trial'),
+(2, 'number of sessions'),
+(3, 'course span');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_prices`
+--
+
+CREATE TABLE `product_prices` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `valid_from` datetime NOT NULL,
+  `valid_to` datetime DEFAULT NULL,
+  `currency` varchar(10) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_prices`
+--
+
+INSERT INTO `product_prices` (`id`, `product_id`, `valid_from`, `valid_to`, `currency`, `amount`) VALUES
+(1, 8, '2020-11-21 10:11:31', NULL, 'INR', 1),
+(2, 9, '2020-11-21 10:11:56', NULL, 'INR', 2),
+(3, 10, '2020-11-21 10:12:09', NULL, 'INR', 3),
+(4, 11, '2020-11-21 10:12:25', NULL, 'INR', 4);
 
 -- --------------------------------------------------------
 
@@ -116,14 +166,14 @@ INSERT INTO `product_attribute_definitions` (`id`, `attribute_name`) VALUES
 --
 
 CREATE TABLE `sessions` (
-  `id` int NOT NULL,
-  `sequence` int NOT NULL,
-  `user_product_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `sequence` int(11) NOT NULL,
+  `user_product_id` int(11) NOT NULL,
   `sch_dt_tm` datetime DEFAULT NULL,
-  `planned_trainers` int NOT NULL,
-  `planned_trainees` int NOT NULL,
-  `filled_trainers` int NOT NULL,
-  `filled_trainees` int NOT NULL,
+  `planned_trainers` int(11) NOT NULL,
+  `planned_trainees` int(11) NOT NULL,
+  `filled_trainers` int(11) NOT NULL,
+  `filled_trainees` int(11) NOT NULL,
   `notes` varchar(512) DEFAULT NULL,
   `creation_dt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -135,8 +185,8 @@ CREATE TABLE `sessions` (
 --
 
 CREATE TABLE `session_attributes` (
-  `session_id` int NOT NULL,
-  `attribute_id` int NOT NULL,
+  `session_id` int(11) NOT NULL,
+  `attribute_id` int(11) NOT NULL,
   `attribute_value` varchar(1024) NOT NULL,
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
@@ -149,7 +199,7 @@ CREATE TABLE `session_attributes` (
 --
 
 CREATE TABLE `session_attribute_definitions` (
-  `attribute_id` int NOT NULL,
+  `attribute_id` int(11) NOT NULL,
   `attribute_name` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -171,7 +221,7 @@ INSERT INTO `session_attribute_definitions` (`attribute_id`, `attribute_name`) V
 --
 
 CREATE TABLE `tokens` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `email` varchar(64) NOT NULL,
   `selector` text NOT NULL,
   `token` longtext NOT NULL,
@@ -183,13 +233,48 @@ CREATE TABLE `tokens` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `type_id` int(11) NOT NULL,
+  `external_id` varchar(512) NOT NULL,
+  `method` varchar(64) DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `comments` varchar(512) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction_types`
+--
+
+CREATE TABLE `transaction_types` (
+  `id` int(11) NOT NULL,
+  `type` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transaction_types`
+--
+
+INSERT INTO `transaction_types` (`id`, `type`) VALUES
+(1, 'payment'),
+(2, 'refund');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `uid` int NOT NULL,
+  `uid` int(11) NOT NULL,
   `username` varchar(64) NOT NULL,
-  `user_type_id` int NOT NULL,
+  `user_type_id` int(11) NOT NULL,
   `email` varchar(64) NOT NULL,
   `password` longtext NOT NULL,
   `email_verified` tinytext NOT NULL,
@@ -205,9 +290,9 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `user_assignments` (
-  `id` int NOT NULL,
-  `session_id` int NOT NULL,
-  `uid` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `session_id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
   `delete_ind` varchar(2) NOT NULL,
   `notified` varchar(1) NOT NULL COMMENT 'Y if link / SMS is sent to the user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -219,8 +304,8 @@ CREATE TABLE `user_assignments` (
 --
 
 CREATE TABLE `user_attributes` (
-  `uid` int NOT NULL,
-  `attribute_id` int NOT NULL,
+  `uid` int(11) NOT NULL,
+  `attribute_id` int(11) NOT NULL,
   `attribute_value` varchar(64) NOT NULL,
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
@@ -233,7 +318,7 @@ CREATE TABLE `user_attributes` (
 --
 
 CREATE TABLE `user_attribute_definitions` (
-  `attribute_id` int NOT NULL,
+  `attribute_id` int(11) NOT NULL,
   `attribute_name` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -258,8 +343,8 @@ INSERT INTO `user_attribute_definitions` (`attribute_id`, `attribute_name`) VALU
 --
 
 CREATE TABLE `user_interests` (
-  `uid` int NOT NULL,
-  `interest_id` int NOT NULL,
+  `uid` int(11) NOT NULL,
+  `interest_id` int(11) NOT NULL,
   `str_dt` date NOT NULL,
   `end_dt` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -271,9 +356,10 @@ CREATE TABLE `user_interests` (
 --
 
 CREATE TABLE `user_products` (
-  `id` int NOT NULL,
-  `uid` int NOT NULL,
-  `product_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -285,7 +371,7 @@ CREATE TABLE `user_products` (
 --
 
 CREATE TABLE `user_types` (
-  `user_type_id` int NOT NULL,
+  `user_type_id` int(11) NOT NULL,
   `user_type_desc` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -309,10 +395,19 @@ ALTER TABLE `interests`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`),
+  ADD KEY `product_price_id` (`product_price_id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `product_attributes`
@@ -328,11 +423,18 @@ ALTER TABLE `product_attribute_definitions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product_prices`
+--
+ALTER TABLE `product_prices`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `product_id` (`product_id`,`valid_from`,`currency`);
+
+--
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`,`sequence`,`user_product_id`),
+  ADD UNIQUE KEY `sequence` (`sequence`,`user_product_id`),
   ADD KEY `user_product_id` (`user_product_id`);
 
 --
@@ -355,6 +457,21 @@ ALTER TABLE `session_attribute_definitions`
 ALTER TABLE `tokens`
   ADD PRIMARY KEY (`id`),
   ADD KEY `email` (`email`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type_id` (`type_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `transaction_types`
+--
+ALTER TABLE `transaction_types`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `type` (`type`);
 
 --
 -- Indexes for table `users`
@@ -401,7 +518,8 @@ ALTER TABLE `user_interests`
 ALTER TABLE `user_products`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `uid` (`uid`,`product_id`,`valid_from`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `user_types`
@@ -417,71 +535,102 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `interests`
 --
 ALTER TABLE `interests`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_attribute_definitions`
 --
 ALTER TABLE `product_attribute_definitions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `product_prices`
+--
+ALTER TABLE `product_prices`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `session_attribute_definitions`
 --
 ALTER TABLE `session_attribute_definitions`
-  MODIFY `attribute_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transaction_types`
+--
+ALTER TABLE `transaction_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int NOT NULL AUTO_INCREMENT;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_assignments`
 --
 ALTER TABLE `user_assignments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_attribute_definitions`
 --
 ALTER TABLE `user_attribute_definitions`
-  MODIFY `attribute_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_products`
 --
 ALTER TABLE `user_products`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_types`
 --
 ALTER TABLE `user_types`
-  MODIFY `user_type_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_price_id`) REFERENCES `product_prices` (`id`);
 
 --
 -- Constraints for table `product_attributes`
@@ -491,10 +640,30 @@ ALTER TABLE `product_attributes`
   ADD CONSTRAINT `product_attributes_ibfk_2` FOREIGN KEY (`attribute_id`) REFERENCES `product_attribute_definitions` (`id`);
 
 --
+-- Constraints for table `product_prices`
+--
+ALTER TABLE `product_prices`
+  ADD CONSTRAINT `product_prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
 -- Constraints for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD CONSTRAINT `sessions_ibfk_1` FOREIGN KEY (`user_product_id`) REFERENCES `user_products` (`id`);
+
+--
+-- Constraints for table `session_attributes`
+--
+ALTER TABLE `session_attributes`
+  ADD CONSTRAINT `session_attributes_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`),
+  ADD CONSTRAINT `session_attributes_ibfk_2` FOREIGN KEY (`attribute_id`) REFERENCES `session_attribute_definitions` (`attribute_id`);
+
+--
+-- Constraints for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`type_id`) REFERENCES `transaction_types` (`id`),
+  ADD CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
 
 --
 -- Constraints for table `users`
@@ -528,5 +697,6 @@ ALTER TABLE `user_interests`
 --
 ALTER TABLE `user_products`
   ADD CONSTRAINT `user_products_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `user_products_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`);
+  ADD CONSTRAINT `user_products_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`),
+  ADD CONSTRAINT `user_products_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
 COMMIT;

@@ -20,7 +20,7 @@ function populateUpcomingDivContent(){
       </small><br>\
       <a onclick=\"viewTrialForm()\" class=\"btn btn-primary btn-sm btn mr mb\
       \" id =\"loginButton\"> Request a Free Trial </a>\
-      <a href=\"membership.php\" class=\"btn btn-primary btn-sm btn mr mb\
+      <a href=\"plans.php\" class=\"btn btn-primary btn-sm btn mr mb\
       \" id =\"loginButton\"> Membership </a>\
       ");
   } else {

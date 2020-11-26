@@ -9,7 +9,7 @@ var options = {
     "currency": "INR",
     "name": "FuNinja",
     "description": "Test Transaction",
-    "order_id": "order_Fujxra0ge1v6AT", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "order_id": "order_G476ep3yVXRweK", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     "handler": function (response){
         alert(response.razorpay_payment_id);
         alert(response.razorpay_order_id);

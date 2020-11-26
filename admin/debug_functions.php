@@ -6,10 +6,10 @@ require_once ( ROOT_DIR.'/includes/dbh.php' );
 
 switch ($_GET['action']) {
   case "deleteAllUsers":
-    echo (Debug::deleteAllUsers($conn));
+    echo (Helper::deleteAllUsers($conn));
     exit();
   case "deleteUserProducts":
-    echo (Debug::deleteUserProducts($conn));
+    echo (Helper::deleteUserProducts($conn));
     exit();
 }
 ?>

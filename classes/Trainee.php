@@ -3,6 +3,8 @@
 require_once __DIR__.'/../config.php';
 require_once ( ROOT_DIR.'/includes/autoloader.php' );
 
+Controller::startSession();
+
 class Trainee extends User{
   public $isNew;
 
@@ -60,7 +62,7 @@ class Trainee extends User{
       $userProductId=$row['id'];
 
     }
-    // insert session attributes
+    // insert sessions
 
     $sql = "INSERT INTO sessions (sequence, user_product_id, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
             VALUES (1,".$userProductId.", 1, 1, 0, 0)";
@@ -76,7 +78,7 @@ class Trainee extends User{
 
     // now get the session id so that we can insert session attributes
 
-    // insert session but first get the user_product id first
+    // insert session attributes but first get the session id first
     $sql = "select id from sessions where user_product_id =".$userProductId;
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -126,6 +128,60 @@ class Trainee extends User{
     }
 
     return $unassignedProducts;
+  }
+
+  function addNewOrder($productPriceID, $externalOrderID, $conn){ // function only called when successful order object received from payment gateway
+    // insert order details into order table
+
+    $sql = "insert into orders (uid, product_price_id, date, external_id) values (?, ?, (select sysdate() from dual), ?)";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "sss", $this->uid, $productPriceID, $externalOrderID);
+
+    mysqli_stmt_execute($stmt);
+    if(mysqli_stmt_affected_rows($stmt)<1){
+      return 0;
+      exit();
+    } else {
+      return 1;
+    }
+  }
+
+  function addProduct($externalPaymentID, $conn){
+    // determine the product to be added as well as start date and, //add the product to user_products
+    $sql = "insert into user_products (uid, product_id, order_id, valid_from) (select o.uid, pp.product_id, o.id, t.date from transactions t, orders o, product_prices pp, products p where t.order_id=o.id and o.product_price_id=pp.id and pp.product_id=p.id and t.external_id=?)";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $externalPaymentID);
+
+    mysqli_stmt_execute($stmt);
+    if(mysqli_stmt_affected_rows($stmt)<1){
+      echo "couldn't add user product";
+      exit();
+    }
+
+    // get number of sessions to add
+
+    $product = Helper::getProductLinkedToPaymentId($externalPaymentID, $conn);
+    $sessionCount = $product->numberOfSessions;
+
+    // insert sessions
+    for ($i=1; $i <= $sessionCount; $i++) {
+      $sql = "INSERT INTO sessions (sequence, user_product_id, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
+              (select $i, up.id, 1, 1, 0, 0 from transactions t, orders o, user_products up where t.order_id=o.id and up.order_id=o.id and t.external_id=?)";
+
+      $stmt = mysqli_stmt_init($conn);
+      if(!mysqli_stmt_prepare($stmt, $sql)) {
+        return false;
+        exit();
+      }
+      else{
+        mysqli_stmt_bind_param($stmt, "s", $externalPaymentID);
+        mysqli_stmt_execute($stmt);
+      }
+    }
+
+    return true;
   }
 }
 

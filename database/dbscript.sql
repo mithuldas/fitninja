@@ -107,7 +107,7 @@ CREATE TABLE `product_attribute_definitions` (
 --
 
 INSERT INTO `product_attribute_definitions` (`id`, `attribute_name`) VALUES
-(1, 'available_for_trial');
+(1, 'valid for trial');
 
 -- --------------------------------------------------------
 

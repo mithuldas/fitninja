@@ -4,7 +4,7 @@ require_once __DIR__.'/../config.php';
 require_once ROOT_DIR.'/includes/autoloader.php';
 require_once ROOT_DIR.'/includes/dbh.php';
 
-class Debug{
+class Helper{
 
   static function deleteAllUsers($conn){
     $sql1 = "DELETE from user_interests;";
@@ -54,6 +54,8 @@ class Debug{
     $sql2 = "DELETE from user_assignments;";
     $sql3 = "DELETE from sessions;";
     $sql4 = "DELETE from user_products;";
+    $sql5 = "DELETE from transactions;";
+    $sql6 = "DELETE from orders;";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -67,6 +69,12 @@ class Debug{
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_prepare($stmt, $sql4);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_prepare($stmt, $sql5);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_prepare($stmt, $sql6);
     mysqli_stmt_execute($stmt);
 
     if(mysqli_stmt_affected_rows($stmt)<1){
@@ -111,5 +119,25 @@ class Debug{
     } else {
       return 1;
     }
+  }
+
+  static function getProductLinkedToPaymentId($externalPaymentID, $conn){
+    $sql = "select p.name from transactions t, orders o, product_prices pp, products p where t.order_id=o.id and o.product_price_id=pp.id and pp.product_id=p.id and t.external_id=?";
+
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $externalPaymentID);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    while($row = $result->fetch_assoc()) { // loop through the array and set all session properties
+      $productName=$row['name'];
+      $product = new Product($productName, $conn);
+      return $product;
+    }
+
+    return 0;
+
+
   }
 }

@@ -5,6 +5,6 @@ require_once __DIR__.'/config.php';
 require_once ( ROOT_DIR.'/includes/autoloader.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
-echo (Debug::resetSessionTimes($conn));
+echo (Helper::resetSessionTimes($conn));
 
 ?>

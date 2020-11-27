@@ -23,14 +23,15 @@ $session = json_decode($_POST['session']);
 
 $trainers = getTrainerList($conn);
 $timeSlots = array('6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM');
+$trialProductList = Product::getProductsAvailableForTrial($conn);
 ?>
 
 <div class="container">
   <h5> Assign Trainee to Trainer </h5><br>
-<form action = "process_trial_assignment.php" method="post">
+<form action = "process_product_assignment.php" method="post">
 <div class="form-group">
   1) First session date:
-<input class="form-control" type="date"  id="trialDate" name="trialDate">
+<input class="form-control" type="date"  id="firstSessionDate" name="firstSessionDate">
   2) First session time:
 <select class="form-control" name="time">
   <?php
@@ -73,9 +74,18 @@ $timeSlots = array('6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2
   <br>
 
 </select>
+</select>
+  4) Session type: <br>
+<select class="form-control" name="sessionType">
+  <?php
+  foreach ($trialProductList as $value) {
+    echo "<option>".$value."</option>";
+  }
+  ?>
+</select>
 
-<input type='hidden' name='trialSession' value='<?php echo $_POST['trialSession']; ?>'>
-<br><button class="btn-sm btn-primary mt-1" type="submit" name="scheduleTrial">Schedule the first session</button>
+<input type='hidden' name='firstSession' value='<?php echo $_POST['session']; ?>'>
+<br><button class="btn-sm btn-primary mt-1" type="submit" name="scheduleFirstSession">Schedule the first session</button>
 </div>
 </form>
 </div>

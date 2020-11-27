@@ -4,40 +4,38 @@ require_once __DIR__.'/../config.php';
 require_once ( ROOT_DIR.'/includes/autoloader.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
-// call trial session's assign function, which will take time and trainer input
+// call session's assign function, which will take time and trainer input
   // session fills to be updated, along with the scheduled time attribute
   // create assignment rows in assignments table for trainee and trainer
 
 // send confirmation email to trainee and trainer (in the future, SMS)
 
-$originalTrialSession = json_decode($_POST['trialSession']);
+$firstSession = json_decode($_POST['firstSession']);
 
-//echo("<pre>".json_encode($originalTrialSession, JSON_PRETTY_PRINT))."</pre>";
-
-$finalTrialDate = $_POST['trialDate'];
-$finalTrialTime = $_POST['time'];
+$firstSessionDate = $_POST['firstSessionDate'];
+$firstSessionTime = $_POST['time'];
 $trainerUID = $_POST['trainerSelect'];
-$traineeUID = $originalTrialSession->uid;
-$trialType = $_POST['trialProduct'];
+$traineeUID = $firstSession->uid;
+$sessionType = $_POST['sessionType'];
 
 // insert trainee assignment
-insertAssignmentToDB($originalTrialSession->id, $traineeUID, "trainee", $conn);
+insertAssignmentToDB($firstSession->id, $traineeUID, "trainee", $conn);
 // insert trainer assignment
-insertAssignmentToDB($originalTrialSession->id, $trainerUID, "trainer", $conn);
+insertAssignmentToDB($firstSession->id, $trainerUID, "trainer", $conn);
 
 // update the scheduled date and time of the session
-$trialSession = new TrialSession($originalTrialSession->id, $conn);
-$dateAndTimeForDB = getDateTimeValue($finalTrialDate, $finalTrialTime);
-$trialSession->setScheduledDateTime($dateAndTimeForDB, $conn);
+$session = new Session($firstSession->id, $conn);
+$dateAndTimeForDB = getDateTimeValue($firstSessionDate, $firstSessionTime);
+$session->setScheduledDateTime($dateAndTimeForDB, $conn);
 
 // send confirmation e-mail to the trainer and trainee
 $trainee = new Trainee($traineeUID, $conn);
 $trainer = new User($trainerUID, $conn);
 
-Email::sendTrialScheduledEmailtoTrainee($trainee->firstName, $trainer->firstName. ' '.$trainer->lastName, $trialType, $finalTrialDate, $finalTrialTime, $trainee->email, $trainee->phoneNumber, $conn);
-Email::sendTrialScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName. ' '.$trainee->lastName, $trialType, $finalTrialDate, $finalTrialTime, $trainer->email, $trainer->phoneNumber, $conn);
+Email::sendFirstSessionScheduledEmailtoTrainee($trainee->firstName, $trainer->firstName. ' '.$trainer->lastName, $sessionType, $firstSessionDate, $firstSessionTime, $trainee->email, $trainee->phoneNumber, $conn);
+Email::sendFirstSessionScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName. ' '.$trainee->lastName, $sessionType, $firstSessionDate, $firstSessionTime, $trainer->email, $trainer->phoneNumber, $conn);
 
-header("Location: /admin/view_trial_requests.php");
+header("Location: /admin/view_unassigned_products.php");
 
 function getDateTimeValue($finalTrialDate, $finalTrialTime){
 

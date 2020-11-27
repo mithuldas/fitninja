@@ -419,6 +419,81 @@ class Email{
 
   }
 
+  static function sendFirstSessionScheduledEmailtoTrainee($traineeName, $trainerName, $sessionType, $firstSessionDate, $firstSessionTime, $email, $phone, $conn){
+
+    if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+      $tzOffset = 0;
+    } else {
+      $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+    }
+
+    // create the e-mail content
+    $subject = 'Your First Session has been scheduled!';
+    $message = self::$header . '
+                  <!-- START MAIN CONTENT AREA -->
+                  <tr>
+                    <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
+            <center><a href="https://funinja.in/" class="navbar-left p-0 m-0"><img src="https://funinja.in/images/logo2.png" alt="" style="height:40px"></a></center>
+                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+                        <tr>
+                          <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$traineeName.'</b>,</p>
+
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Your first <b>'. $sessionType. '</b> session has been scheduled with <b>'. $trainerName. '</b> on <b>'.$firstSessionDate. '</b> at <b>'.$firstSessionTime. '</b></p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link 30 minutes before the session starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
+
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                <!-- END MAIN CONTENT AREA -->
+                </table> ' . self::$footer;
+
+    $to = $email;
+    self::sendEmail($to, $subject, $message, $message);
+  }
+
+  static function sendFirstSessionScheduledEmailtoTrainer($trainerName, $traineeName, $sessionType, $firstSessionDate, $firstSessionTime, $email, $phone, $conn){
+
+    if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+      $tzOffset = 0;
+    } else {
+      $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+    }
+
+    // create the e-mail content
+    $subject = 'You\'ve been assigned a new trainee - First Session scheduled';
+    $message = self::$header . '
+                  <!-- START MAIN CONTENT AREA -->
+                  <tr>
+                    <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
+            <center><a href="https://funinja.in/" class="navbar-left p-0 m-0"><img src="https://funinja.in/images/logo2.png" alt="" style="height:40px"></a></center>
+                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+                        <tr>
+                          <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$trainerName.'</b>,</p>
+
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We\'ve scheduled a <b>'. $sessionType. '</b> session with you for new trainee <b>'. $traineeName. '</b> on <b>'.$firstSessionDate. '</b> at <b>'.$firstSessionTime. '</b></p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
+
+
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                <!-- END MAIN CONTENT AREA -->
+                </table> ' . self::$footer;
+
+    $to = $email;
+    self::sendEmail($to, $subject, $message, $message);
+  }
+
   static function sendTrialScheduledEmailtoTrainee($traineeName, $trainerName, $trialType, $finalTrialDate, $finalTrialTime, $email, $phone, $conn){
 
     if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
@@ -465,7 +540,7 @@ class Email{
     }
 
     // create the e-mail content
-    $subject = 'Your Trial has been scheduled';
+    $subject = 'New Trial Request Assigned';
     $message = self::$header . '
                   <!-- START MAIN CONTENT AREA -->
                   <tr>

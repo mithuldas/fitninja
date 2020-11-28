@@ -52,6 +52,7 @@ $(document).ready(function() {
 <a href="new_trainer_admin.php?type=Admin" class="btn-sm btn-light active">User List</a>
 <a href="view_trial_requests.php" class="btn-sm btn-light">Trial Requests</a>
 <a href="view_unassigned_products.php" class="btn-sm btn-light">Unassigned Trainees</a>
+<a href="view_assigned_sessions.php" class="btn-sm btn-light">Assigned Sessions</a>
 </div>
 <br>
 <div class="admin-main-div">

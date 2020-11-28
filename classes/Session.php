@@ -10,6 +10,7 @@ class Session {
 
 
   public $id;
+  public $nextSessionId;
   public $sequence;
   public $productName;
   public $uid;
@@ -23,11 +24,15 @@ class Session {
   public $assignments=[];
   public $startURL;
   public $joinURL;
+  public $status;
+  public $nextSessionScheduled;
 
   function __construct($id, $conn) { // construct a session object (i.e a row in the session table, given an id )
     $this->id = $id;
     $this->initSessionData($conn);
     $this->setAttributes($conn);
+    $this->setNextSessionId($conn);
+    $this->setNextSessionScheduledStatus($conn);
   }
 
   function initSessionData($conn){
@@ -53,6 +58,7 @@ class Session {
         $this->filledTrainees=$row['filled_trainees'];
         $this->notes=$row['notes'];
         $this->dateCreated=$row['creation_dt'];
+        $this->completed=$row['completed'];
       }
     }
 
@@ -207,6 +213,41 @@ class Session {
       }
     }
 
+  }
+
+
+  function setNextSessionId($conn){
+    $nextSequenceNr = $this->sequence+1;
+    $sql="select id from sessions where user_product_id in (select user_product_id from sessions where id='".$this->id."') and sequence='".$nextSequenceNr."'";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return "sqlerror";
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all session properties
+        $this->nextSessionId=$row['id'];
+      }
+    }
+  }
+
+  function setNextSessionScheduledStatus($conn){
+    $this->nextSessionScheduled=false;
+    $sql = "select * from sessions where id='".$this->nextSessionId."' and sch_dt_tm is not null;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return "sqlerror";
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all session properties
+        $this->nextSessionScheduled=true;
+      }
+    }
   }
 }
 ?>

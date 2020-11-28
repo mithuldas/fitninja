@@ -14,7 +14,7 @@ $pollingWindow = 30; // polling window - i.e, determines how many minutes before
 
 
 $sql = "select * from sessions s where s.sch_dt_tm between sysdate() and date_add(sysdate(), interval 30 minute)
-      and exists (select 1 from user_assignments ua where s.id=ua.session_id and ua.delete_ind='N' and notified='N');";
+      and s.completed is null and exists (select 1 from user_assignments ua where s.id=ua.session_id and ua.delete_ind='N' and notified='N');";
 
 $stmt = mysqli_stmt_init($conn);
 mysqli_stmt_prepare($stmt, $sql);

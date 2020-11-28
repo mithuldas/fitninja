@@ -96,7 +96,7 @@ include ROOT_DIR."/includes/dbh.php";
     $sessionJSON = json_encode($value);
 
     $trainee = new Trainee($value->uid, $conn);
-    echo "<tr>
+    $a = "<tr>
         <td>" . $value->scheduledDateTime .
         "</td>
         <td>" . $value->productName .
@@ -113,14 +113,20 @@ include ROOT_DIR."/includes/dbh.php";
         <input type='hidden' name='session' value='". $sessionJSON."'>
         <button class='btn-sm btn-light' type='submit' name='edit_session'>Edit</button>
         </form>
-        </td>
-        <td>
-        <form action='/admin/assign_next_session.php' method='post'>
-        <input type='hidden' name='session' value='". $sessionJSON."'>
-        <button class='btn-sm btn-light' type='submit' name='assign_next'>Assign Next</button>
-        </form>
-        </td>
-        </tr>";
+        </td>";
+    if(is_null($value->nextSessionId)){
+      $b="<td></td>";
+    } else {
+      $b = "<td>
+      <form action='/admin/assign_next_session.php' method='post'>
+      <input type='hidden' name='session' value='". $sessionJSON."'>
+      <button class='btn-sm btn-light' type='submit' name='assign_next'>Assign Next</button>
+      </form>
+      </td>";
+    }
+      $c = "</tr>";
+
+      echo $a.$b.$c;
   }
 
   echo "</tbody></table>";

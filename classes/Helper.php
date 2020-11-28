@@ -102,7 +102,7 @@ class Helper{
   static function resetSessionTimes($conn){
     $sql1="update user_assignments set notified='N';";
     $sql2="delete from session_attributes where attribute_id in (4,5);";
-    $sql3="update sessions set sch_dt_tm=date_add(sysdate(), interval 30 minute);";
+    $sql3="update sessions set sch_dt_tm=date_add(sysdate(), interval 30 minute) where sch_dt_tm is not null;";
     $stmt = mysqli_stmt_init($conn);
 
     mysqli_stmt_prepare($stmt, $sql1);
@@ -137,7 +137,9 @@ class Helper{
     }
 
     return 0;
+  }
 
-
+  static function view($object){
+    echo("<pre>".json_encode($object, JSON_PRETTY_PRINT))."</pre>";
   }
 }

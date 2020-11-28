@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2020 at 02:46 PM
+-- Generation Time: Nov 28, 2020 at 03:10 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -175,7 +175,8 @@ CREATE TABLE `sessions` (
   `filled_trainers` int(11) NOT NULL,
   `filled_trainees` int(11) NOT NULL,
   `notes` varchar(512) DEFAULT NULL,
-  `creation_dt` datetime NOT NULL DEFAULT current_timestamp()
+  `creation_dt` datetime NOT NULL DEFAULT current_timestamp(),
+  `completed` varchar(1) DEFAULT NULL COMMENT 'Y if completed'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

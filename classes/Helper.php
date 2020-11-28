@@ -14,7 +14,7 @@ class Helper{
     $sql5 = "DELETE from user_interests;";
     $sql6 = "DELETE from user_attributes;";
     $sql7 = "DELETE from tokens;";
-    $sql8 = "DELETE from users;";
+    $sql8 = "DELETE from users where username<>'admin';";
 
     $stmt = mysqli_stmt_init($conn);
 

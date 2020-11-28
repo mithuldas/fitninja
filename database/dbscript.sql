@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 28, 2020 at 03:19 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Host: localhost:3306
+-- Generation Time: Nov 28, 2020 at 02:35 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
@@ -175,7 +174,7 @@ CREATE TABLE `sessions` (
   `filled_trainers` int(11) NOT NULL,
   `filled_trainees` int(11) NOT NULL,
   `notes` varchar(512) DEFAULT NULL,
-  `creation_dt` datetime NOT NULL DEFAULT current_timestamp(),
+  `creation_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `completed` varchar(1) DEFAULT NULL COMMENT 'Y if completed'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -228,7 +227,7 @@ CREATE TABLE `tokens` (
   `token` longtext NOT NULL,
   `expiry` text NOT NULL,
   `type` tinytext NOT NULL,
-  `creation_dt` datetime NOT NULL DEFAULT current_timestamp()
+  `creation_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -243,7 +242,7 @@ CREATE TABLE `transactions` (
   `type_id` int(11) NOT NULL,
   `external_id` varchar(512) NOT NULL,
   `method` varchar(64) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `comments` varchar(512) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -279,7 +278,7 @@ CREATE TABLE `users` (
   `email` varchar(64) NOT NULL,
   `password` longtext NOT NULL,
   `email_verified` tinytext NOT NULL,
-  `reg_dt` datetime NOT NULL DEFAULT current_timestamp(),
+  `reg_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `source` varchar(64) DEFAULT NULL,
   `ext_name` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -289,7 +288,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`, `reg_dt`, `source`, `ext_name`) VALUES
-(1, 'admin', 3, 'admin@admin.com', '$2y$10$S3qhUssWxwrgUBCl0tIW2OHvyZ1z.U0QGXVbmhDrp3FnFT5sEEo/W', 'Y', '2020-11-28 19:42:41', 'Web', NULL);
+(1, 'admin', 3, 'admin@admin.com', '$2y$10$S3qhUssWxwrgUBCl0tIW2OHvyZ1z.U0QGXVbmhDrp3FnFT5sEEo/W', 'Y', '2020-11-28 19:42:41', 'Web', NULL),
+(2, 'trainer', 1, 'funinja.in@gmail.com', '$2y$10$S3qhUssWxwrgUBCl0tIW2OHvyZ1z.U0QGXVbmhDrp3FnFT5sEEo/W', 'Y', '2020-11-28 20:00:16', 'Web', NULL);
 
 -- --------------------------------------------------------
 
@@ -318,6 +318,19 @@ CREATE TABLE `user_attributes` (
   `valid_from` datetime NOT NULL,
   `valid_to` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_attributes`
+--
+
+INSERT INTO `user_attributes` (`uid`, `attribute_id`, `attribute_value`, `valid_from`, `valid_to`) VALUES
+(2, 1, 'Test', '2020-11-28 00:00:00', NULL),
+(2, 2, 'Trainer', '2020-11-28 00:00:00', NULL),
+(2, 3, 'Mumbai', '2020-11-28 00:00:00', NULL),
+(2, 4, '987654321', '2020-11-28 00:00:00', NULL),
+(2, 5, '1988-06-14', '2020-11-28 00:00:00', NULL),
+(2, 6, 'Male', '2020-11-28 00:00:00', NULL),
+(2, 8, 'funinja.in@gmail.com', '2020-11-28 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -543,7 +556,7 @@ ALTER TABLE `user_types`
 -- AUTO_INCREMENT for table `interests`
 --
 ALTER TABLE `interests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -555,19 +568,19 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_attribute_definitions`
 --
 ALTER TABLE `product_attribute_definitions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_prices`
 --
 ALTER TABLE `product_prices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sessions`
@@ -579,13 +592,13 @@ ALTER TABLE `sessions`
 -- AUTO_INCREMENT for table `session_attribute_definitions`
 --
 ALTER TABLE `session_attribute_definitions`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `transactions`
@@ -597,13 +610,13 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `transaction_types`
 --
 ALTER TABLE `transaction_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_assignments`
@@ -615,7 +628,7 @@ ALTER TABLE `user_assignments`
 -- AUTO_INCREMENT for table `user_attribute_definitions`
 --
 ALTER TABLE `user_attribute_definitions`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_products`
@@ -627,7 +640,7 @@ ALTER TABLE `user_products`
 -- AUTO_INCREMENT for table `user_types`
 --
 ALTER TABLE `user_types`
-  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_type_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -707,4 +720,3 @@ ALTER TABLE `user_products`
   ADD CONSTRAINT `user_products_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `user_products_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`),
   ADD CONSTRAINT `user_products_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
-COMMIT;

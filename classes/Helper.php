@@ -12,9 +12,9 @@ class Helper{
     $sql3 = "DELETE from sessions;";
     $sql4 = "DELETE from user_products;";
     $sql5 = "DELETE from user_interests;";
-    $sql6 = "DELETE from user_attributes;";
+    $sql6 = "DELETE from user_attributes where uid not in ('2');";
     $sql7 = "DELETE from tokens;";
-    $sql8 = "DELETE from users where username<>'admin';";
+    $sql8 = "DELETE from users where username not in ('admin','trainer');";
 
     $stmt = mysqli_stmt_init($conn);
 

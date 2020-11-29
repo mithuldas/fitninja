@@ -21,28 +21,48 @@ require ROOT_DIR."/header.php";
 // convert json to php object
 $session = json_decode($_POST['session']);
 
+$date = date_create($session->trialDate);
+$dateString= date_format($date,"Y-m-d");
+
 $trainers = getTrainerList($conn);
-$timeSlots = array('6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', '10PM', '11PM');
-$trialProductList = Product::getProductsAvailableForTrial($conn);
+
+$allMinutes = [];
+$allHours = [];
+
+for ($i=0; $i <60 ; $i++) {
+  array_push($allMinutes,str_pad($i, 2, "0", STR_PAD_LEFT));
+}
+
+for ($i=0; $i <24 ; $i++) {
+  array_push($allHours,str_pad($i, 2, "0", STR_PAD_LEFT));
+}
+
+$trainers = getTrainerList($conn);
 ?>
 
 <div class="container">
   <h5> Assign Trainee to Trainer </h5><br>
 <form action = "process_product_assignment.php" method="post">
-<div class="form-group">
-  1) First session date:
-<input class="form-control" type="date"  id="firstSessionDate" name="firstSessionDate">
-  2) First session time:
-<select class="form-control" name="time">
-  <?php
-  foreach ($timeSlots as $value) {
-    echo "<option>".$value."</option>";
-  }
-  ?>
-</select>
-<br>
-  3) Select a trainer: <br><br>
 
+  <div class="form-group">
+    <fieldset class="form-inline">
+      <input class="form-control" type="date"  id="date" name="date" value="<?php echo $dateString;?>">
+    <select class="form-control" name="hour">
+      <?php
+      foreach ($allHours as $value) {
+        echo "<option>".$value."</option>";
+      }
+      ?>
+    </select>
+    <select class="form-control" name="minute">
+      <?php
+      foreach ($allMinutes as $value) {
+        echo "<option>".$value."</option>";
+      }
+      ?>
+    </select>
+    </fieldset>
+  </div>
   <table id='users' class='display' style='width:100%'><thead>
     <tr>
     <th> First Name </th>

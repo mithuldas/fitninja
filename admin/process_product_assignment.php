@@ -11,9 +11,8 @@ require_once ( ROOT_DIR.'/includes/dbh.php' );
 // send confirmation email to trainee and trainer (in the future, SMS)
 
 $firstSession = json_decode($_POST['firstSession']);
+$scheduledDateTime = $_POST['date'].' '.$_POST['hour'].':'.$_POST['minute']; // date/time for next session
 
-$firstSessionDate = $_POST['firstSessionDate'];
-$firstSessionTime = $_POST['time'];
 $trainerUID = $_POST['trainerSelect'];
 $traineeUID = $firstSession->uid;
 $sessionType = $_POST['sessionType'];
@@ -25,7 +24,7 @@ insertAssignmentToDB($firstSession->id, $trainerUID, "trainer", $conn);
 
 // update the scheduled date and time of the session
 $session = new Session($firstSession->id, $conn);
-$dateAndTimeForDB = getDateTimeValue($firstSessionDate, $firstSessionTime);
+$dateAndTimeForDB = getDateTimeValue($scheduledDateTime);
 $session->setScheduledDateTime($dateAndTimeForDB, $conn);
 
 // send confirmation e-mail to the trainer and trainee
@@ -37,20 +36,14 @@ Email::sendFirstSessionScheduledEmailtoTrainer($trainer->firstName, $trainee->fi
 
 header("Location: /admin/view_unassigned_products.php");
 
-function getDateTimeValue($finalTrialDate, $finalTrialTime){
-
-  $time24h= date("G:i", strtotime($finalTrialTime));
-
-  $dateTime = $finalTrialDate.' '.$time24h;
-
+function getDateTimeValue($scheduledDateTime){
   if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
     $tzOffset = 0;
-    $adjustedDateTime= (date('Y-m-d G:i',strtotime($dateTime. ' -'.$tzOffset.' minute')));
+    $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' -'.$tzOffset.' minute')));
   } else {
     $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
-    $adjustedDateTime= (date('Y-m-d G:i',strtotime($dateTime. ' -'.$tzOffset.' minute')));
+    $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' -'.$tzOffset.' minute')));
   }
-
   return $adjustedDateTime;
 }
 

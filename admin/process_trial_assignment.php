@@ -12,22 +12,18 @@ require_once ( ROOT_DIR.'/includes/dbh.php' );
 
 $originalTrialSession = json_decode($_POST['trialSession']);
 
-//echo("<pre>".json_encode($originalTrialSession, JSON_PRETTY_PRINT))."</pre>";
+$scheduledDateTime = $_POST['date'].' '.$_POST['hour'].':'.$_POST['minute']; // date/time for next session
 
-$finalTrialDate = $_POST['trialDate'];
-$finalTrialTime = $_POST['time'];
 $trainerUID = $_POST['trainerSelect'];
 $traineeUID = $originalTrialSession->uid;
 $trialType = $_POST['trialProduct'];
 
-// insert trainee assignment
 insertAssignmentToDB($originalTrialSession->id, $traineeUID, "trainee", $conn);
-// insert trainer assignment
 insertAssignmentToDB($originalTrialSession->id, $trainerUID, "trainer", $conn);
 
 // update the scheduled date and time of the session
 $trialSession = new TrialSession($originalTrialSession->id, $conn);
-$dateAndTimeForDB = getDateTimeValue($finalTrialDate, $finalTrialTime);
+$dateAndTimeForDB = getDateTimeValue($scheduledDateTime);
 $trialSession->setScheduledDateTime($dateAndTimeForDB, $conn);
 
 // send confirmation e-mail to the trainer and trainee
@@ -39,20 +35,14 @@ Email::sendTrialScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName
 
 header("Location: /admin/view_trial_requests.php");
 
-function getDateTimeValue($finalTrialDate, $finalTrialTime){
-
-  $time24h= date("G:i", strtotime($finalTrialTime));
-
-  $dateTime = $finalTrialDate.' '.$time24h;
-
+function getDateTimeValue($scheduledDateTime){
   if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
     $tzOffset = 0;
-    $adjustedDateTime= (date('Y-m-d G:i',strtotime($dateTime. ' -'.$tzOffset.' minute')));
+    $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' -'.$tzOffset.' minute')));
   } else {
     $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
-    $adjustedDateTime= (date('Y-m-d G:i',strtotime($dateTime. ' -'.$tzOffset.' minute')));
+    $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' -'.$tzOffset.' minute')));
   }
-
   return $adjustedDateTime;
 }
 

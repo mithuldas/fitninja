@@ -19,6 +19,8 @@ $date = strtotime($session->scheduledDateTime);
 $hours= date('H', $date);
 $minutes = date('i', $date);
 
+$activities = Product::getActivities($conn);
+
 $allMinutes = [];
 $allHours = [];
 
@@ -63,6 +65,7 @@ $(document).ready(function(){
     <label class="form-check-label" for="completed">Session completed</label>
   </div>
 
+<div class="form-group">
 <fieldset class="form-inline">
   <input class="form-control" type="date"  id="date" name="date" value = <?php echo $dateString; ?>>
 <select class="form-control" name="hour">
@@ -89,7 +92,21 @@ $(document).ready(function(){
   ?>
 </select>
 </fieldset>
+</div>
+<div class="form-group">
+<select class="form-control" name="activity" value='<?php echo $session->activity; ?>'>
+  <?php
+  foreach ($activities as $value) {
+    if($value==$session->activity){
+      echo "<option selected>".$value."</option>";
+    } else {
+      echo "<option>".$value."</option>";
+    }
+  }
+  ?>
+</select>
+</div>
 <input type='hidden' name='session' value='<?php echo $_POST['session']; ?>'>
-<br><button class="btn-sm btn-primary mt-1" type="submit" name="edit_session">Save changes</button>
+<button class="btn-sm btn-primary mt-1" type="submit" name="edit_session">Save changes</button>
 
 </form>

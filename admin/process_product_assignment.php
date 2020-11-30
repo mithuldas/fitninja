@@ -10,9 +10,10 @@ require_once ( ROOT_DIR.'/includes/dbh.php' );
 
 // send confirmation email to trainee and trainer (in the future, SMS)
 
+
 $firstSession = json_decode($_POST['firstSession']);
 $scheduledDateTime = $_POST['date'].' '.$_POST['hour'].':'.$_POST['minute']; // date/time for next session
-
+$activity=$_POST['activity'];
 $trainerUID = $_POST['trainerSelect'];
 $traineeUID = $firstSession->uid;
 $sessionType = $_POST['sessionType'];
@@ -26,6 +27,9 @@ insertAssignmentToDB($firstSession->id, $trainerUID, "trainer", $conn);
 $session = new Session($firstSession->id, $conn);
 $dateAndTimeForDB = getDateTimeValue($scheduledDateTime);
 $session->setScheduledDateTime($dateAndTimeForDB, $conn);
+
+// set activity of the session
+$session->setActivity($activity, $conn);
 
 // send confirmation e-mail to the trainer and trainee
 $trainee = new Trainee($traineeUID, $conn);

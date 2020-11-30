@@ -33,7 +33,8 @@ function populateUpcomingDivContent(){
       " <table id='upcomingSessions' class='table-sm table' style='width:100%'><thead>\
         <tr>\
         <th> Date and time </th>\
-        <th> Type </th>\
+        <th> Plan </th>\
+        <th> Activity </th>\
         <th> Notes </th>\
         </tr><thead>";
 
@@ -45,14 +46,12 @@ function populateUpcomingDivContent(){
           if(session.notes==null){
             session.notes='';
           }
-          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.productName+'</td><td>'+session.notes+'</td></tr>';
+          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.productName+'</td><td>'+session.activity+'</td><td>'+session.notes+'</td></tr>';
         });
 
       var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;
       finalHTML = finalHTML+finalUpcomingSessions;
     }
-
-    console.log(unassignedProducts);
 
     if(unassignedProducts.length>0){ // if there are products that haven't been scheduled yet, display them next
       var title="<h6> Unscheduled Plans</h6>";

@@ -68,8 +68,9 @@ include ROOT_DIR."/includes/dbh.php";
   <table id='users' class='display' style='width:100%'><thead>
     <tr>
     <th> Scheduled for </th>
-    <th> Product </th>
     <th> Name </th>
+    <th> Product </th>
+    <th> Activity </th>
     <th> Completed </th>
     <th> Next Sch</th>
     <th> Edit </th>
@@ -99,9 +100,11 @@ include ROOT_DIR."/includes/dbh.php";
     $a = "<tr>
         <td>" . $value->scheduledDateTime .
         "</td>
+        <td>" . $trainee->firstName .
+        "</td>
         <td>" . $value->productName .
         "</td>
-        <td>" . $trainee->firstName .
+        <td>" . $value->activity .
         "</td>
         <td>" . $completed .
         "</td>

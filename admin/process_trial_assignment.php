@@ -11,9 +11,8 @@ require_once ( ROOT_DIR.'/includes/dbh.php' );
 // send confirmation email to trainee and trainer (in the future, SMS)
 
 $originalTrialSession = json_decode($_POST['trialSession']);
-
 $scheduledDateTime = $_POST['date'].' '.$_POST['hour'].':'.$_POST['minute']; // date/time for next session
-
+$activity=$_POST['activity'];
 $trainerUID = $_POST['trainerSelect'];
 $traineeUID = $originalTrialSession->uid;
 $trialType = $_POST['trialProduct'];
@@ -25,6 +24,9 @@ insertAssignmentToDB($originalTrialSession->id, $trainerUID, "trainer", $conn);
 $trialSession = new TrialSession($originalTrialSession->id, $conn);
 $dateAndTimeForDB = getDateTimeValue($scheduledDateTime);
 $trialSession->setScheduledDateTime($dateAndTimeForDB, $conn);
+
+// set activity of the session
+$trialSession->setActivity($activity, $conn);
 
 // send confirmation e-mail to the trainer and trainee
 $trainee = new Trainee($traineeUID, $conn);

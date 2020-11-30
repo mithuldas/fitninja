@@ -1,0 +1,30 @@
+<?php
+
+require_once __DIR__.'/../config.php';
+require_once ( ROOT_DIR.'/includes/autoloader.php' );
+
+Controller::startSession();
+
+class Trainer extends User{
+  function __construct($uid, $conn) {
+    parent::__construct($uid, $conn);
+  }
+
+  function getTraineeList($conn){
+    $trainees=[];
+    $sql="select distinct up.uid from user_assignments ua, sessions s, user_products up where s.id=ua.session_id and s.user_product_id=up.id and ua.uid='".$this->uid."' and s.completed is null;";
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+      $traineeUID=$row['uid'];
+      array_push($trainees, new Trainee($traineeUID, $conn));
+    }
+    return $trainees;
+  }
+}
+
+ ?>

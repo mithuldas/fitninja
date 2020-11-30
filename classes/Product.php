@@ -44,10 +44,8 @@ class Product {
     }
   }
 
-  static function getProductsAvailableForTrial($conn){
-    $sql = "select p.name from products p, product_attribute_definitions pad, product_attributes pa
-            where p.id=pa.product_id and pa.attribute_id=pad.id and sysdate() BETWEEN pa.valid_from and
-            IFNULL(pa.valid_to,  DATE_ADD(sysdate(), INTERVAL 1 YEAR)) and pa.attribute_value=\"Y\" and pad.attribute_name=\"valid for trial\";";
+  static function getActivities($conn){
+    $sql = "select * from activity_types;";
 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){

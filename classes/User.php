@@ -97,7 +97,7 @@ class User {
 
   function getUpcomingSessions($numberOfSessions, $conn){
     $upcomingSessions=[];
-    $sql = "select * from user_assignments where delete_ind='N' and uid = " .$this->uid. ";";
+    $sql = "select * from user_assignments u, sessions s where u.session_id=s.id and delete_ind='N' and s.completed is null and uid = " .$this->uid. " order by s.sch_dt_tm;";
     $stmt = mysqli_stmt_init($conn);
 
     mysqli_stmt_prepare($stmt, $sql);

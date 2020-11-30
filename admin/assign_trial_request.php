@@ -38,7 +38,7 @@ for ($i=0; $i <24 ; $i++) {
   array_push($allHours,str_pad($i, 2, "0", STR_PAD_LEFT));
 }
 
-$trialProductList = Product::getProductsAvailableForTrial($conn);
+$activities = Product::getActivities($conn);
 
 ?>
 
@@ -98,9 +98,9 @@ $trialProductList = Product::getProductsAvailableForTrial($conn);
 
 </select>
 
-<select class="form-control" name="trialProduct">
+<select class="form-control" name="activity">
   <?php
-  foreach ($trialProductList as $value) {
+  foreach ($activities as $value) {
     echo "<option>".$value."</option>";
   }
   ?>

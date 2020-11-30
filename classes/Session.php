@@ -12,7 +12,6 @@ class Session {
   public $id;
   public $nextSessionId;
   public $sequence;
-  public $productName;
   public $uid;
   public $scheduledDateTime;
   public $plannedTrainers;
@@ -26,6 +25,7 @@ class Session {
   public $joinURL;
   public $status;
   public $nextSessionScheduled;
+  public $activity;
 
   function __construct($id, $conn) { // construct a session object (i.e a row in the session table, given an id )
     $this->id = $id;
@@ -59,6 +59,8 @@ class Session {
         $this->notes=$row['notes'];
         $this->dateCreated=$row['creation_dt'];
         $this->completed=$row['completed'];
+        // activity name
+        $this->activity = Activity::getName($row['activity_type_id'], $conn);
       }
     }
 
@@ -248,6 +250,25 @@ class Session {
         $this->nextSessionScheduled=true;
       }
     }
+  }
+
+  function setActivity($activity, $conn){
+    $sql = "update sessions set activity_type_id=(select id from activity_types where name='".$activity."') where id='".$this->id."';";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+      return 0;
+      exit();
+    }
+    else {
+      mysqli_stmt_execute($stmt);
+      if(mysqli_stmt_affected_rows($stmt)<1){
+        return 0;
+        exit();
+      } else {
+        return 1;
+      }
+    }
+
   }
 }
 ?>

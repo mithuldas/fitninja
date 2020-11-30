@@ -21,6 +21,8 @@ require ROOT_DIR."/header.php";
 // convert json to php object
 $session = json_decode($_POST['session']);
 
+$activities = Product::getActivities($conn);
+
 $date = date_create($session->trialDate);
 $dateString= date_format($date,"Y-m-d");
 
@@ -95,10 +97,10 @@ $trainers = getTrainerList($conn);
 
 </select>
 </select>
-  4) Session type: <br>
-<select class="form-control" name="sessionType">
+  4) Activity: <br>
+<select class="form-control" name="activity">
   <?php
-  foreach ($trialProductList as $value) {
+  foreach ($activities as $value) {
     echo "<option>".$value."</option>";
   }
   ?>

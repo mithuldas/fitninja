@@ -14,6 +14,7 @@ $session = json_decode($_POST['session']);
 
 $date = date_create($session->scheduledDateTime);
 $dateString= date_format($date,"Y-m-d");
+$activities = Product::getActivities($conn);
 
 $date = strtotime($session->scheduledDateTime);
 $hours= date('H', $date);
@@ -74,6 +75,13 @@ $(document).ready(function(){
   ?>
 </select>
 </fieldset>
+<select class="form-control" name="activity">
+  <?php
+  foreach ($activities as $value) {
+    echo "<option>".$value."</option>";
+  }
+  ?>
+</select>
 <input type='hidden' name='session' value='<?php echo $_POST['session']; ?>'>
 <br><button class="btn-sm btn-primary mt-1" type="submit" name="edit_session">Save changes</button>
 

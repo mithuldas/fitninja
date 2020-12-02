@@ -1,5 +1,6 @@
 $(document).ready(function(){
   populateUpcomingDivContent();
+  populateProgressDivContent();
 
   $("#trialSubmit").submit(function(event){
     event.preventDefault();
@@ -35,7 +36,6 @@ function populateUpcomingDivContent(){
         <th> Date and time </th>\
         <th> Plan </th>\
         <th> Activity </th>\
-        <th> Notes </th>\
         </tr><thead>";
 
       var tableBody='';
@@ -43,10 +43,7 @@ function populateUpcomingDivContent(){
       "</table>";
 
         upcomingSessions.forEach(function (session, index) {
-          if(session.notes==null){
-            session.notes='';
-          }
-          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.productName+'</td><td>'+session.activity+'</td><td>'+session.notes+'</td></tr>';
+          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.productName+'</td><td>'+session.activity+'</tr>';
         });
 
       var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;
@@ -79,6 +76,36 @@ function populateUpcomingDivContent(){
     $(".upcoming-sessions-area").html(finalHTML);
   }
 }
+
+
+function populateProgressDivContent(){
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'pie',
+
+    // The data for our dataset
+    data: {
+        labels: ['Completed','Remaining'],
+        datasets: [{
+            label: 'Yoga',
+            backgroundColor: ['rgb(255, 99, 132)','grey'],
+            borderColor: ['rgb(255, 99, 132)','grey'],
+            data: [1,19],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+      cutoutPercentage: 80
+    }
+});
+
+}
+
+
+
 
 function viewTrialForm(){ // form with the following options - type dropdown, date dropdown with the next 5 days, and preferred timeslot dropdown
   $(".upcoming-sessions-area").html("<form id=\"requestTrialForm\">\

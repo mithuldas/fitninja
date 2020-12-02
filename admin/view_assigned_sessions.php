@@ -70,6 +70,7 @@ include ROOT_DIR."/includes/dbh.php";
     <th> Scheduled for </th>
     <th> Name </th>
     <th> Product </th>
+    <th> Session # </th>
     <th> Activity </th>
     <th> Completed </th>
     <th> Next Sch</th>
@@ -103,6 +104,8 @@ include ROOT_DIR."/includes/dbh.php";
         <td>" . $trainee->firstName .
         "</td>
         <td>" . $value->productName .
+        "</td>
+        <td>" . $value->sequence .
         "</td>
         <td>" . $value->activity .
         "</td>

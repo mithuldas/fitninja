@@ -145,9 +145,6 @@ text-decoration: none !important;
 .upcoming-sessions-area{
 }
 
-.doughnut{
-  background-color: lightgreen;
-}
 
 .trainer-facts{
   background-color: pink;
@@ -157,16 +154,12 @@ text-decoration: none !important;
   background-color: orange;
 }
 
-.welcome-banner{
-  background-color: purple;
-  color:white;
-}
 
 @media screen and (max-width: 767px) {
   .calendar {
     display:none;
   }
-  .doughnut {
+  .progressArea {
     display: none;
   }
 }

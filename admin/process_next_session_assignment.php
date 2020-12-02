@@ -8,6 +8,7 @@ $session = json_decode($_POST['session']); // convert this to an actual session 
 $session = new Session($session->id, $conn);
 
 $scheduledDateTime = $_POST['date'].' '.$_POST['hour'].':'.$_POST['minute']; // date/time for next session
+$activity=$_POST['activity'];
 
 $trainerUID = $session->getTrainerUID($conn);
 $traineeUID = $session->uid;
@@ -19,13 +20,28 @@ insertAssignmentToDB($session->nextSessionId, $trainerUID, "trainer", $conn);
 
 // update the scheduled date and time of the session
 $session = new Session($session->nextSessionId, $conn);
-$session->setScheduledDateTime($scheduledDateTime, $conn);
+$dateAndTimeForDB = getDateTimeValue($scheduledDateTime);
+$session->setScheduledDateTime($dateAndTimeForDB, $conn);
+
+// set activity of the session
+$session->setActivity($activity, $conn);
 
 // send confirmation e-mail to the trainer and trainee
 $trainee = new Trainee($traineeUID, $conn);
 $trainer = new User($trainerUID, $conn);
 
 header("Location: /admin/view_assigned_sessions.php");
+
+function getDateTimeValue($scheduledDateTime){
+  if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+    $tzOffset = 0;
+    $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' -'.$tzOffset.' minute')));
+  } else {
+    $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+    $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' -'.$tzOffset.' minute')));
+  }
+  return $adjustedDateTime;
+}
 
 function insertAssignmentToDB($sessionID, $uid, $type, $conn){
   // insert row into user_assignment table

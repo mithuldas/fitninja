@@ -103,7 +103,7 @@ $currentUserJSON = json_encode($currentUser);
   <!-- row 2 -->
   <div class="row">
     <div class="col-md">
-      <div class="trainee-details">
+      <div class="trainee-details" align="center">
       Trainee list and status here
       </div>
     </div>

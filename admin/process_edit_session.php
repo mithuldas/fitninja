@@ -4,10 +4,11 @@ require_once __DIR__.'/../config.php';
 require_once ( ROOT_DIR.'/includes/autoloader.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
+
 $session = json_decode($_POST['session']); // convert this to an actual session object next
 $session = new Session($session->id, $conn);
 
-$date = strtotime($session->scheduledDateTime);
+$date = strtotime($session->scheduledDateTime)  ;
 
 $oldDateTime= date('Y-m-d H:i', $date);
 $newDateTime = $_POST['date'].' '.$_POST['hour'].':'.$_POST['minute'];
@@ -52,7 +53,8 @@ if($oldDateTime!=$newDateTime){
   }
 }
 
-if($session->activity!=$_POST['activity']){
+if($session->activity!==$_POST['activity']){
+
   $activityId = Activity::getId($_POST['activity'], $conn);
 
   $sql = "update sessions set activity_type_id='".$activityId."' where id=".$session->id.";";

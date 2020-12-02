@@ -37,6 +37,8 @@ $unassignedProducts = json_encode($currentUser->getUnassignedProducts($conn));
   var unassignedProducts = <?php echo $unassignedProducts; ?>;
 </script>
 
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"> </script>
 <script type="text/javascript" src="scripts/trainee_dashboard.js"> </script>
 
 <div class="container-fluid">
@@ -46,7 +48,7 @@ $unassignedProducts = json_encode($currentUser->getUnassignedProducts($conn));
   <div class="row">
     <div class="col-md">
       <div class="welcome-banner">
-        <center>Welcome back, <?php echo $currentUser->firstName;?>!</center>
+        Welcome back, <?php echo $currentUser->firstName;?>!
       </div>
     </div>
   </div>
@@ -58,8 +60,8 @@ $unassignedProducts = json_encode($currentUser->getUnassignedProducts($conn));
       </div>
     </div>
     <div class="col-md">
-      <div class="doughnut">
-        <center>Doughnut here</center>
+      <div class="progressArea">
+        <canvas id="myChart"></canvas>
       </div>
     </div>
   </div>

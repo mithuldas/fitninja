@@ -6,11 +6,16 @@ require_once ( ROOT_DIR.'/includes/autoloader.php' );
 Controller::startSession();
 
 class Trainee extends User{
+
+  public $plans=[];
+  public $activePlan;
   public $isNew;
 
   function __construct($uid, $conn) {
     parent::__construct($uid, $conn);
     $this->setIsNew($conn);
+    $this->loadPlans($conn);
+    $this->setActivePlan($conn);
   }
 
   function setIsNew($conn){ //
@@ -167,7 +172,7 @@ class Trainee extends User{
 
     // insert sessions
     for ($i=1; $i <= $sessionCount; $i++) {
-      $sql = "INSERT INTO sessions (sequence, user_product_id, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
+      $sql = "insert into sessions (sequence, user_product_id, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
               (select $i, up.id, 1, 1, 0, 0 from transactions t, orders o, user_products up where t.order_id=o.id and up.order_id=o.id and t.external_id=?)";
 
       $stmt = mysqli_stmt_init($conn);
@@ -182,6 +187,27 @@ class Trainee extends User{
     }
 
     return true;
+  }
+
+  function loadPlans($conn){
+    $sql="select * from user_products where uid=" .$this->uid. " and product_id<>'1';";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+      $userProductId=$row['id'];
+      array_push($this->plans, new UserProduct($userProductId, $conn));
+    }
+  }
+
+  function setActivePlan($conn){
+    foreach ($this->plans as $value) {
+      if($value->isActive){
+        $this->activePlan=$value;
+      }
+    }
   }
 }
 

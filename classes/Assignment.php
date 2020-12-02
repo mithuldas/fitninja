@@ -8,9 +8,17 @@ class Assignment {
   public $sessionID;
   public $uid;
   public $type; // trainer, trainee etc, determines the fill to update in sessions table
+  public $scheduledDateTime;
+  public $activity;
 
   public function __construct($id, $conn){
     $this->id=$id;
+    $this->initAssignmentData($conn);
+    $this->setScheduledDateTime($conn);
+    $this->setActivity($conn);
+  }
+
+  public function initAssignmentData($conn){
     $sql = "select * from user_assignments where id=".$this->id.";";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
@@ -21,6 +29,28 @@ class Assignment {
       $this->uid=$row['uid'];
     }
     $this->setType($this->uid, $conn);
+  }
+
+  public function setScheduledDateTime($conn){
+    $sql="select sch_dt_tm from sessions where id=".$this->sessionID.";";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    while($row = $result->fetch_assoc()) {
+      $this->scheduledDateTime=$row['sch_dt_tm'];
+    }
+  }
+
+  public function setActivity($conn){
+    $sql="select activity_type_id from sessions where id=".$this->sessionID.";";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    while($row = $result->fetch_assoc()) {
+      $this->activity=Activity::getName($row['activity_type_id'],$conn);
+    }
   }
 
   public function setType($uid, $conn){

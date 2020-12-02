@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 28, 2020 at 02:35 PM
+-- Generation Time: Dec 02, 2020 at 09:57 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -15,6 +15,28 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `funinja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `funinja`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activity_types`
+--
+
+CREATE TABLE `activity_types` (
+  `id` int(11) NOT NULL,
+  `name` varchar(512) NOT NULL,
+  `description` varchar(512) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `activity_types`
+--
+
+INSERT INTO `activity_types` (`id`, `name`, `description`) VALUES
+(1, 'Aerobics', NULL),
+(2, 'Zumba', NULL),
+(3, 'Yoga', NULL),
+(4, 'Meditation', NULL);
 
 -- --------------------------------------------------------
 
@@ -71,17 +93,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`) VALUES
-(2, 'Aerobics'),
-(10, 'All Access'),
-(8, 'Basic'),
-(4, 'Calisthenics'),
-(11, 'Couple'),
-(6, 'Meditation'),
-(7, 'Reiki'),
-(9, 'Standard'),
-(1, 'Trial'),
-(5, 'Yoga'),
-(3, 'Zumba');
+(4, 'All Access'),
+(2, 'Basic'),
+(5, 'Couple'),
+(3, 'Standard'),
+(1, 'Trial');
 
 -- --------------------------------------------------------
 
@@ -102,16 +118,10 @@ CREATE TABLE `product_attributes` (
 --
 
 INSERT INTO `product_attributes` (`product_id`, `attribute_id`, `attribute_value`, `valid_from`, `valid_to`) VALUES
-(2, 1, 'Y', '2020-11-10 00:00:00', NULL),
-(3, 1, 'Y', '2020-11-10 00:00:00', NULL),
-(4, 1, 'Y', '2020-11-10 00:00:00', NULL),
-(5, 1, 'Y', '2020-11-10 00:00:00', NULL),
-(6, 1, 'Y', '2020-11-10 00:00:00', NULL),
-(7, 1, 'Y', '2020-11-10 00:00:00', NULL),
-(8, 2, '10', '2020-11-24 00:00:00', NULL),
-(9, 2, '20', '2020-11-24 00:00:00', NULL),
-(10, 2, '20', '2020-11-24 00:00:00', NULL),
-(11, 2, '20', '2020-11-24 00:00:00', NULL);
+(2, 2, '10', '2020-11-24 00:00:00', NULL),
+(3, 2, '20', '2020-11-24 00:00:00', NULL),
+(4, 2, '20', '2020-11-24 00:00:00', NULL),
+(5, 2, '20', '2020-11-24 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -153,10 +163,10 @@ CREATE TABLE `product_prices` (
 --
 
 INSERT INTO `product_prices` (`id`, `product_id`, `valid_from`, `valid_to`, `currency`, `amount`) VALUES
-(1, 8, '2020-11-21 10:11:31', NULL, 'INR', 1),
-(2, 9, '2020-11-21 10:11:56', NULL, 'INR', 2),
-(3, 10, '2020-11-21 10:12:09', NULL, 'INR', 3),
-(4, 11, '2020-11-21 10:12:25', NULL, 'INR', 4);
+(1, 2, '2020-11-21 10:11:31', NULL, 'INR', 1),
+(2, 3, '2020-11-21 10:11:56', NULL, 'INR', 2),
+(3, 4, '2020-11-21 10:12:09', NULL, 'INR', 3),
+(4, 5, '2020-11-21 10:12:25', NULL, 'INR', 4);
 
 -- --------------------------------------------------------
 
@@ -169,6 +179,7 @@ CREATE TABLE `sessions` (
   `sequence` int(11) NOT NULL,
   `user_product_id` int(11) NOT NULL,
   `sch_dt_tm` datetime DEFAULT NULL,
+  `activity_type_id` int(11) DEFAULT NULL,
   `planned_trainers` int(11) NOT NULL,
   `planned_trainees` int(11) NOT NULL,
   `filled_trainers` int(11) NOT NULL,
@@ -410,6 +421,13 @@ INSERT INTO `user_types` (`user_type_id`, `user_type_desc`) VALUES
 --
 
 --
+-- Indexes for table `activity_types`
+--
+ALTER TABLE `activity_types`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
 -- Indexes for table `interests`
 --
 ALTER TABLE `interests`
@@ -456,7 +474,8 @@ ALTER TABLE `product_prices`
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `sequence` (`sequence`,`user_product_id`),
-  ADD KEY `user_product_id` (`user_product_id`);
+  ADD KEY `user_product_id` (`user_product_id`),
+  ADD KEY `activity_type_id` (`activity_type_id`);
 
 --
 -- Indexes for table `session_attributes`
@@ -551,6 +570,12 @@ ALTER TABLE `user_types`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `activity_types`
+--
+ALTER TABLE `activity_types`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `interests`
@@ -657,8 +682,8 @@ ALTER TABLE `orders`
 -- Constraints for table `product_attributes`
 --
 ALTER TABLE `product_attributes`
-  ADD CONSTRAINT `product_attributes_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `product_attributes_ibfk_2` FOREIGN KEY (`attribute_id`) REFERENCES `product_attribute_definitions` (`id`);
+  ADD CONSTRAINT `product_attributes_ibfk_2` FOREIGN KEY (`attribute_id`) REFERENCES `product_attribute_definitions` (`id`),
+  ADD CONSTRAINT `product_attributes_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
 -- Constraints for table `product_prices`
@@ -670,7 +695,8 @@ ALTER TABLE `product_prices`
 -- Constraints for table `sessions`
 --
 ALTER TABLE `sessions`
-  ADD CONSTRAINT `sessions_ibfk_1` FOREIGN KEY (`user_product_id`) REFERENCES `user_products` (`id`);
+  ADD CONSTRAINT `sessions_ibfk_1` FOREIGN KEY (`user_product_id`) REFERENCES `user_products` (`id`),
+  ADD CONSTRAINT `sessions_ibfk_2` FOREIGN KEY (`activity_type_id`) REFERENCES `activity_types` (`id`);
 
 --
 -- Constraints for table `session_attributes`

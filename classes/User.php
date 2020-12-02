@@ -13,12 +13,14 @@ class User {
   public $email;
   public $type;
   public $zoomID;
+  public $nextSession;
 
   function __construct($uid, $conn) {
     $this->uid = $uid;
     $this->setUserAttributes($conn);
     $this->setEmailId($conn);
     $this->setUserType($conn);
+    $this->setNextSession($conn);
   }
 
   function setEmailId($conn){
@@ -114,5 +116,42 @@ class User {
 
     return $upcomingSessions;
   }
+
+  function setNextSession($conn){
+    $nextSesssion;
+    $sql="select s.* from sessions s, user_products up where s.user_product_id=up.id
+     and s.sch_dt_tm is not null and s.completed is null and up.uid = '".$this->uid."' order by sch_dt_tm";
+     $stmt = mysqli_stmt_init($conn);
+
+     mysqli_stmt_prepare($stmt, $sql);
+     mysqli_stmt_execute($stmt);
+     $result = mysqli_stmt_get_result($stmt);
+
+     $count=0;
+
+     while($row = $result->fetch_assoc() and $count<1) { // loop through the array and set all user attributes
+       $sessionID=$row['id'];
+       $this->nextSession= new Session($sessionID, $conn);
+       $count=$count+1;
+     }
+  }
+
+  function getAllAssignments($conn){
+    $assignments=[];
+    $sql="select * from user_assignments where delete_ind='N' and uid='".$this->uid."';";
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+      $assignmentId=$row['id'];
+      array_push($assignments, new Assignment($assignmentId, $conn));
+    }
+
+    return $assignments;
+  }
+
 }
 ?>

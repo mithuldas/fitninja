@@ -1,6 +1,7 @@
 $(document).ready(function(){
   populateUpcomingDivContent();
   populateProgressDivContent();
+  populateTrainerDetailsDivContent();
 
   $("#trialSubmit").submit(function(event){
     event.preventDefault();
@@ -34,7 +35,6 @@ function populateUpcomingDivContent(){
       " <table id='upcomingSessions' class='table-sm table' style='width:100%'><thead>\
         <tr>\
         <th> Date and time </th>\
-        <th> Plan </th>\
         <th> Activity </th>\
         </tr><thead>";
 
@@ -43,7 +43,7 @@ function populateUpcomingDivContent(){
       "</table>";
 
         upcomingSessions.forEach(function (session, index) {
-          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.productName+'</td><td>'+session.activity+'</tr>';
+          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.activity+'</tr>';
         });
 
       var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;
@@ -75,6 +75,32 @@ function populateUpcomingDivContent(){
 
     $(".upcoming-sessions-area").html(finalHTML);
   }
+}
+
+function populateTrainerDetailsDivContent(){
+  var finalHTML ='';
+  var title="<h6>Your Trainers</h6>";
+
+  var tableHeader=
+  " <table id='trainerList' class='table-sm table' style='width:100%'><thead>\
+    <tr>\
+    <th> Name </th>\
+    <th> Age </th>\
+    <th> Qualification </th>\
+    </tr><thead>";
+
+  var tableBody='';
+  var tableFooter =
+  "</table>";
+
+
+  trainers.forEach(function (trainer, index) {
+    tableBody=tableBody+'<tr><td>'+trainer.firstName+' '+trainer.lastName+'</td><td>'+'99'+'</td><td>'+trainer.qualifiedActivitiesString+'</td></tr>';
+  });
+
+  var finalTrainerList = title+tableHeader+tableBody+tableFooter;
+  finalHTML = finalHTML+finalTrainerList;
+  $(".trainer-facts").html(finalHTML);
 }
 
 

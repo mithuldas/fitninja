@@ -209,6 +209,22 @@ class Trainee extends User{
       }
     }
   }
+
+  function getTrainerList($conn){
+    $trainers=[];
+    $sql="select distinct ua.uid from user_products up,  sessions s, user_assignments ua where up.id=s.user_product_id and ua.session_id=s.id and ua.uid<>$this->uid;";
+    $stmt = mysqli_stmt_init($conn);
+
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+      $trainerUID=$row['uid'];
+      array_push($trainers, new Trainer($trainerUID, $conn));
+    }
+    return $trainers;
+  }
 }
 
  ?>

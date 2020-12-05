@@ -34,7 +34,7 @@ if (isset($_POST["new_trainer_admin"])){
       mysqli_stmt_store_result($stmt);
       $resultCheck=mysqli_stmt_num_rows($stmt);
       if($resultCheck > 0) {
-        header("Location: ../new_trainer_admin.php?status=emailtaken&email=" . $userEmail."&type=".$_POST["type"]);
+        header("Location: /admin/new_trainer_admin.php?status=emailtaken&email=" . $userEmail."&type=".$_POST["type"]);
         exit();
       }
       else {

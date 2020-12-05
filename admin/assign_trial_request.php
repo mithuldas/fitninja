@@ -72,6 +72,7 @@ $activities = Product::getActivities($conn);
     <th> Last Name </th>
     <th> Email </th>
     <th> Phone </th>
+    <th> Qualifications </th>
     <th> </th>
     </tr><thead><tbody>
 
@@ -85,6 +86,8 @@ $activities = Product::getActivities($conn);
         <td>" . $value->email .
         "</td>
         <td>" . $value->phoneNumber .
+        "</td>
+        <td>" . $value->qualifiedActivitiesString .
         "</td>
         <td>
         <input class='form-check-input' type='radio' name='trainerSelect' id='trainerSelect' value='" . $value->uid . "' checked>
@@ -132,7 +135,7 @@ function getTrainerList($conn){
   }
 
   foreach ($trainerUidList as $value) {
-    array_push($trainerList, new User($value, $conn));
+    array_push($trainerList, new Trainer($value, $conn));
   }
 
   return $trainerList;

@@ -67,7 +67,7 @@ function populateTraineeDetailsDivContent(){
     tableBody=tableBody+'<tr><td>'+trainee.firstName+' '+trainee.lastName+'</td><td>'+'99'+'</td><td>'+"err"+'</td></tr>';
   });
 
-  var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;
-  finalHTML = finalHTML+finalUpcomingSessions;
+  var finalTraineeList = title+tableHeader+tableBody+tableFooter;
+  finalHTML = finalHTML+finalTraineeList;
   $(".trainee-details").html(finalHTML);
 }

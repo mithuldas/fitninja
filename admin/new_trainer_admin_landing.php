@@ -33,38 +33,94 @@ if(isset($_GET['uid'])){
   $username = $_GET['uid'];
 }
 
+  $activityNames=Activity::getAllActivityNames($conn);
 ?>
 
 <div class="container">
+    <center><h4>New Trainer Onboarding</h4></center>
+    <center><small>Fill in the details below to get started. All fields are mandatory. </small></center>
+<form action="/includes/process_new_trainer_or_admin_onboarding_form.php" method="post">
+  <input type="hidden" name="type" value="<?php echo $_GET["type"]; ?>" />
+  <input type="hidden" name="selector" value="<?php echo $_GET["selector"]; ?>" />
+  <input type="hidden" name="validator" value="<?php echo $_GET["validator"]; ?>" />
+  <input type="hidden" name="zoomID" value="<?php echo $_GET["zoomID"]; ?>" />
+  <h6 id = "statusMessage"> </h6>
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label class="pt-2" for="phone">1. What do you train? Select at least 1. </label><br>
+      <?php
+        foreach ($activityNames as $activityName) {
+          echo "
+          <input  type='checkbox' value='$activityName' id='$activityName' name='$activityName'>
+          <label class='form-check-label' for='$activityName'> $activityName </label>
+          <br>
+          ";
+        }
+      ?>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="uid">2. Select a username</label>
+      <input id="uid" type="text" name="uid" class="form-control" value="<?php echo $username; ?>" required>
+    </div>
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="email">3. Email</label>
+      <input id="email" type="email" name="email" class="form-control" value="<?php echo $email; ?>" required autofocus readonly>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="firstName">4. First name</label>
+      <input id="firstName" type="text" name="firstName" class="form-control" required>
+    </div>
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="lastName">5. Last name</label>
+      <input type="text" name="lastName" class="form-control" required>
+    </div>
 
-      <h4>Welcome! Let's get you started:</h4>
-
-    <form class="form-signin" action="/includes/process_new_trainer_or_admin_onboarding_form.php" method="post">
-      <h6 id = "statusMessage"> <h6>
-      <input type="hidden" name="type" value="<?php echo $_GET["type"]; ?>" />
-      <input type="hidden" name="selector" value="<?php echo $_GET["selector"]; ?>" />
-      <input type="hidden" name="validator" value="<?php echo $_GET["validator"]; ?>" />
-      <input type="hidden" name="zoomID" value="<?php echo $_GET["zoomID"]; ?>" />
-      <input type="email" name="email" class="form-control" value="<?php echo $email; ?>" required autofocus readonly>
-      <input type="text" name="uid" class="form-control" placeholder="Choose a username" value="<?php echo $username; ?>" required>
-      <input type="text" name="firstName" class="form-control" placeholder="First Name" required>
-      <input type="text" name="lastName" class="form-control" placeholder="Last Name" required>
-      <input type="text" name="phone" class="form-control" placeholder="Phone Number" required>
-      <input type="date" name="dob" class="form-control" placeholder="Date of Birth" required>
-      <select class="form-control" name="gender">
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="gender">6. Gender</label>
+      <select id="gender" class="form-control" name="gender">
         <option>Male</option>
         <option>Female</option>
       </select>
-      <input type="text" name="city" class="form-control" placeholder="City" required>
-      <input type="password" name="pwd" class="form-control" placeholder="Password" required>
-      <input type="password" name="pwd-repeat" class="form-control" placeholder="Repeat Password" required>
-
-      <button class="btn btn-lg btn-primary btn-block mt-1" type="submit" name="signup-onboard-submit">Begin</button>
-    </form>
-
-
-
+    </div>
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="dob">7. Date of Birth</label>
+      <input id="dob" type="date" name="dob" class="form-control" placeholder="Date of Birth" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="phone">8. Phone number</label>
+      <input id="phone" type="text" name="phone" class="form-control" required>
+    </div>
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="city">9. Town/City</label>
+      <input id="city" type="text" name="city" class="form-control" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="phone">10. Password</label>
+      <input id="pwd" type="password" name="pwd" class="form-control" required>
+    </div>
+    <div class="form-group col-xs-4 col-md-4">
+      <label for="pwd-repeat">11. Repeat your password</label>
+      <input id="pwd-repeat" type="password" name="pwd-repeat" class="form-control" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-xs-4 col-md-4">
+      <button class="btn btn-primary mt-1" type="submit" name="signup-onboard-submit">Begin</button>
+    </div>
+  </div>
+</form>
 </div>
+
 
 <?php
   require ROOT_DIR."/footer.php";
@@ -77,6 +133,9 @@ if(isset($_GET['uid'])){
     if (status == "emptyfields"){
       $('#statusMessage').slideDown();
       $('#statusMessage').html('<h6 style="color:red"> Fill in all fields </h6');
+    } else if (status == "noactivities") {
+      $('#statusMessage').show();
+      $('#statusMessage').html('<h6 style="color:red"> Pick at least one activity that you can train </h6');
     } else if (status == "invalidemailuid") {
       $('#statusMessage').show();
       $('#statusMessage').html('<h6 style="color:red"> Enter a valid username and e-mail ID. Your username must be at least 6 characters long, must only have letters, numbers, _ and . </h6');

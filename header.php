@@ -104,10 +104,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
     <ul class="navbar-nav mr-auto ">
 
       <li class="nav-item active">
-        <a class="nav-link " href="plans.php">Plans</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link " href="#">Support</a>
+        <a class="nav-link " href="plans.php">Membership</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link " href="#">Contact Us</a>

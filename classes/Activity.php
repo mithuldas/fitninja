@@ -38,5 +38,22 @@ class Activity {
       return 0;
     }
   }
+
+  static function getAllActivityNames($conn){
+    $activityNames = [];
+    $sql = "select name from activity_types order by name;";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return "sqlerror";
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all session properties
+        array_push($activityNames, $row['name']) ;
+      }
+      return $activityNames;
+    }
+  }
 }
 ?>

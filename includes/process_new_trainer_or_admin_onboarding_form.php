@@ -20,6 +20,7 @@ $dob = $_POST['dob'];
 $gender = $_POST['gender'];
 $city = $_POST['city'];
 $zoomID= $_POST['zoomID'];
+$selectedActivitiesList=[];
 
 
 if($userType=="Admin"){
@@ -34,6 +35,23 @@ $currentDate = date("U");
 
 $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userType."&zoomID=".$zoomID;
 
+// check if at least one activity is selected
+
+$activityNames = Activity::getAllActivityNames($conn);
+$selectedActivitiesCount=0;
+foreach ($activityNames as $activityName) {
+  foreach ($_POST as $postVariable) {
+    if($activityName===$postVariable){
+      $selectedActivitiesCount+=1;
+      array_push($selectedActivitiesList, $activityName);
+    }
+  }
+}
+
+if($selectedActivitiesCount===0){
+  header("Location: /admin/new_trainer_admin_landing.php?status=noactivities&uid=".$username."&email=".$email.$queryGiveBack);
+  exit();
+}
 
 // check for empty fields
   if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
@@ -313,6 +331,20 @@ $queryGiveBack = "&selector=".$selector."&validator=".$validator."&type=".$userT
                 mysqli_stmt_bind_param($stmt, "ss", $uid, $zoomID);
                 mysqli_stmt_execute($stmt);
               }
+
+            // insert selected activities to the qualifications table
+            foreach ($selectedActivitiesList as $selectedActivity) {
+              $activityId = Activity::getId($selectedActivity, $conn);
+              $sql="insert into qualifications (uid, activity_type_id, valid_from) values ($uid, $activityId, date(sysdate()) );";
+              $stmt = mysqli_stmt_init($conn);
+                if(!mysqli_stmt_prepare($stmt, $sql)) {
+                  header("Location: ../index.php?error=sqlerror");
+                  exit();
+                }
+                else{
+                  mysqli_stmt_execute($stmt);
+                }
+            }
 
           Email::sendTrainerWelcomeEmail($split_names[0], $email);
 

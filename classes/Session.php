@@ -8,11 +8,11 @@ use \Firebase\JWT\JWT;
 
 class Session {
 
-
   public $id;
   public $nextSessionId;
   public $sequence;
-  public $uid;
+  public $uid; // uid of the trainee who purchased the product (user_products.uid)
+
   public $scheduledDateTime;
   public $plannedTrainers;
   public $plannedTrainees;
@@ -26,6 +26,7 @@ class Session {
   public $status;
   public $nextSessionScheduled;
   public $activity;
+  public $completed; // completion flag (either null for not complete or Y for completed)
 
   function __construct($id, $conn) { // construct a session object (i.e a row in the session table, given an id )
     $this->id = $id;
@@ -269,6 +270,46 @@ class Session {
       }
     }
 
+  }
+
+  function initTrainerDetails($conn){
+    $sql = "select u.uid from sessions s, user_assignments ua, users u
+    where s.id=ua.session_id and ua.uid=u.uid and u.user_type_id=1 and s.id = $this->id;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return "sqlerror";
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all session properties
+        $this->trainerUid=$row['uid'];
+        $trainer = new Trainer($this->trainerUid, $conn);
+        $this->trainerFirstName = $trainer->firstName;
+        $this->trainerLastName = $trainer->lastName;
+      }
+    }
+  }
+
+  function initTraineeDetails($conn){
+    $sql = "select u.uid from sessions s, user_assignments ua, users u
+    where s.id=ua.session_id and ua.uid=u.uid and u.user_type_id=2 and s.id = $this->id;";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return "sqlerror";
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all session properties
+        $this->trainerUid=$row['uid'];
+        $trainee = new Trainee($this->trainerUid, $conn);
+        $this->traineeFirstName = $trainee->firstName;
+        $this->traineeLastName = $trainee->lastName;
+      }
+    }
   }
 }
 ?>

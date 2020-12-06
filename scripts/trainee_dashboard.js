@@ -15,6 +15,7 @@ $(document).ready(function(){
 });
 
 function populateUpcomingDivContent(){
+  console.log(upcomingSessions);
   if(currentUser.isNew){
     $(".upcoming-sessions-area").html
       ("You don't have any upcoming sessions yet. \
@@ -36,6 +37,7 @@ function populateUpcomingDivContent(){
         <tr>\
         <th> Date and time </th>\
         <th> Activity </th>\
+        <th> Trainer </th>\
         </tr><thead>";
 
       var tableBody='';
@@ -43,7 +45,7 @@ function populateUpcomingDivContent(){
       "</table>";
 
         upcomingSessions.forEach(function (session, index) {
-          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.activity+'</tr>';
+          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.activity+'<td>'+session.trainerFirstName+'</td></td></tr>';
         });
 
       var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;
@@ -85,8 +87,7 @@ function populateTrainerDetailsDivContent(){
   " <table id='trainerList' class='table-sm table' style='width:100%'><thead>\
     <tr>\
     <th> Name </th>\
-    <th> Age </th>\
-    <th> Qualification </th>\
+    <th> Speciality </th>\
     </tr><thead>";
 
   var tableBody='';
@@ -95,7 +96,7 @@ function populateTrainerDetailsDivContent(){
 
 
   trainers.forEach(function (trainer, index) {
-    tableBody=tableBody+'<tr><td>'+trainer.firstName+' '+trainer.lastName+'</td><td>'+'99'+'</td><td>'+trainer.qualifiedActivitiesString+'</td></tr>';
+    tableBody=tableBody+'<tr><td>'+trainer.firstName+' '+trainer.lastName+'</td><td>'+trainer.qualifiedActivitiesString+'</td></tr>';
   });
 
   var finalTrainerList = title+tableHeader+tableBody+tableFooter;

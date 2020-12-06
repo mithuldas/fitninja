@@ -25,7 +25,14 @@ require "header.php";
 
 $currentUser = new Trainee($_SESSION['uid'], $conn);
 $allAssignments = json_encode($currentUser->getAllAssignments($conn));
-$upcomingSessions=json_encode($currentUser->getUpcomingSessions(3, $conn));
+$upcomingSessions=$currentUser->getUpcomingSessions(3, $conn);
+
+foreach ($upcomingSessions as $upcomingSession) {
+  $upcomingSession->initTrainerDetails($conn);
+}
+
+$upcomingSessions=json_encode($upcomingSessions);
+
 $currentUserJSON = json_encode($currentUser);
 $trialActivities = json_encode(Product::getActivities($conn));
 $unassignedProducts = json_encode($currentUser->getUnassignedProducts($conn));

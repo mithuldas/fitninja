@@ -12,9 +12,10 @@ class Helper{
     $sql3 = "DELETE from sessions;";
     $sql4 = "DELETE from user_products;";
     $sql5 = "DELETE from user_interests;";
-    $sql6 = "DELETE from user_attributes where uid not in ('2');";
+    $sql6 = "DELETE from user_attributes where uid not in ('2');"; // preserve dummy trainer's details
     $sql7 = "DELETE from tokens;";
-    $sql8 = "DELETE from users where username not in ('admin','trainer');";
+    $sql8 = "DELETE from qualifications where uid not in ('2');"; // preserve dummy trainer's quals
+    $sql9 = "DELETE from users where username not in ('admin','trainer');"; // preserve dummy trainer and admin accounts
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -40,6 +41,9 @@ class Helper{
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_prepare($stmt, $sql8);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_prepare($stmt, $sql9);
     mysqli_stmt_execute($stmt);
 
     if(mysqli_stmt_affected_rows($stmt)<1){

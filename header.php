@@ -119,7 +119,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
     // if user user isn't logged in, show the login and register buttons
     if(!isset($_SESSION['uid'])){ ?>
       <button type="button" class="btn btn-secondary btn-sm btn mr-1 mb-1" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOG IN </button>
-      <button type="button" class="btn btn-primary btn-sm btn mr-1 mb-1" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP, IT'S FREE</button>
+      <button type="button" class="btn btn-primary btn-sm btn mr-1 mb-1" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
 
       <?php  ;
     }

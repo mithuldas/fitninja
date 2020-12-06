@@ -4,9 +4,7 @@ include_once __DIR__.'/../config.php';
 require_once ROOT_DIR.'/includes/dbh.php';
 include_once (ROOT_DIR.'/includes/autoloader.php');
 
-if(!isset($_SESSION)){
-  session_start();
-}
+FlowControl::startSession();
 
 //delete cookie if exists and log-out
 if(isset($_SESSION['uid']) && isset($_COOKIE['FuNinja'])){
@@ -33,6 +31,7 @@ if(isset($_GET['uid'])){
   $username = $_GET['uid'];
 }
 
+  $months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   $activityNames=Activity::getAllActivityNames($conn);
 ?>
 
@@ -82,17 +81,29 @@ if(isset($_GET['uid'])){
   </div>
   <div class="row">
     <div class="form-group col-xs-4 col-md-4">
-      <label for="gender">6. Gender</label>
+      <label for="gender">4. Gender</label>
       <select id="gender" class="form-control" name="gender">
-        <option>Male</option>
         <option>Female</option>
+        <option>Male</option>
       </select>
     </div>
     <div class="form-group col-xs-4 col-md-4">
-      <label for="dob">7. Date of Birth</label>
-      <input id="dob" type="date" name="dob" class="form-control" placeholder="Date of Birth" required>
+      <div class="row pl-3">
+        <label for="dobDay">5. Date of Birth</label>
+      </div>
+      <div class="row form-inline pl-3">
+      <input id="dobDay" type="text" name="dobDay" class="form-control mr-1" placeholder="DD" required style="width: 50px">
+      <select class="form-control mr-1" name="dobMonth" style="width: 75px">
+        <?php
+        foreach ($months as $value) {
+          echo "<option>".$value."</option>";
+        }
+        ?>
+      </select>
+      <input id="dobYear" type="text" name="dobYear" class="form-control" placeholder="YYYY" style="width: 70px" required>
     </div>
   </div>
+</div>
   <div class="row">
     <div class="form-group col-xs-4 col-md-4">
       <label for="phone">8. Phone number</label>

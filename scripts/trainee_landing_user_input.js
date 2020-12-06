@@ -88,8 +88,6 @@ function validateForm() {
 
   }
 
-var numDayChecked = getNumChecked(document.getElementsByClassName("daypreference"));
-var numTimeslotChecked = getNumChecked(document.getElementsByClassName("timeslot"));
 var errorMsg = document.getElementById("errorMsg");
 var numActivitiesChecked = getNumChecked(document.getElementsByClassName("activity"))
 

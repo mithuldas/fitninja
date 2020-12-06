@@ -16,7 +16,7 @@ $validator = $_POST['validator'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $phoneNumber = $_POST['phone'];
-$dob = $_POST['dob'];
+$dateOfBirth = $_POST['dobDay'].'-'.$_POST['dobMonth'].'-'.$_POST['dobYear'];
 $gender = $_POST['gender'];
 $city = $_POST['city'];
 $zoomID= $_POST['zoomID'];
@@ -272,7 +272,7 @@ if($selectedActivitiesCount===0){
               exit();
             }
             else{
-              mysqli_stmt_bind_param($stmt, "ss", $uid, $dob);
+              mysqli_stmt_bind_param($stmt, "ss", $uid, $dateOfBirth);
               mysqli_stmt_execute($stmt);
             }
 

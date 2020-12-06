@@ -3,19 +3,43 @@
 require_once __DIR__.'/../config.php';
 require_once ( ROOT_DIR.'/includes/autoloader.php' );
 
-Controller::startSession();
+FlowControl::startSession();
 
 class Trainee extends User{
 
   public $plans=[];
   public $activePlan;
   public $isNew;
+  public $onboardingComplete;
 
   function __construct($uid, $conn) {
     parent::__construct($uid, $conn);
     $this->setIsNew($conn);
     $this->loadPlans($conn);
     $this->setActivePlan($conn);
+    $this->setOnboardingStatus($conn);
+  }
+
+  function setOnboardingStatus($conn){
+    $sql = "select * from user_attributes where attribute_value = 'Y' and attribute_id in
+    (select attribute_id from user_attribute_definitions where attribute_name = 'trainee_onboarding_completed') and uid = $this->uid;";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return 0;
+    }
+    else{
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      // if onboarding complete status is Y, then move them onto the dashboard
+      if ($row = mysqli_fetch_assoc($result)){
+          $this->onboardingComplete=true;
+     } else {
+          $this->onboardingComplete=false;
+     }
+
+    }
   }
 
   function setIsNew($conn){ //

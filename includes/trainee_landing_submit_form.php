@@ -1,38 +1,63 @@
 <?php
 
-require 'dbh.php';
-session_start();
+include_once __DIR__.'/../config.php';
+require_once ROOT_DIR.'/includes/dbh.php';
+include_once ROOT_DIR.'/includes/autoloader.php';
+
+FlowControl::startSession();
 
 if (isset($_POST['trainee_landing_submit'])) {
 
-  $uid = $_SESSION['uid'];
+  // form DOB string
 
-  $firstName = $_POST['fname'];
-  $lastName = $_POST['lname'];
-  $dateOfBirth = $_POST['dob'];
+  $dateOfBirth = $_POST['dobDay'].'-'.$_POST['dobMonth'].'-'.$_POST['dobYear'];
+  $uid = $_SESSION['uid'];
+  $firstName = $_POST['firstName'];
+  $lastName = $_POST['lastName'];
   $city = $_POST['city'];
   $phoneNumber = $_POST['phonenumber'];
   $gender = $_POST['gender'];
   $activities = $_POST['activities'];
 
-    // insert activities into user_interests table
-    foreach($_POST['activities'] as $activity) {
+  $selectedActivitiesList=[];
+  $activityNames = Activity::getAllActivityNames($conn);
+  $selectedActivitiesCount=0;
+  foreach ($activityNames as $activityName) {
+    foreach ($_POST as $postVariable) {
+      if($activityName===$postVariable){
+        $selectedActivitiesCount+=1;
+        array_push($selectedActivitiesList, $activityName);
+      }
+    }
+  }
 
-         $sql=
-            'insert into user_interests (uid, interest_id, str_dt, end_dt)
-            values (?, (select id from interests where interest = ?), sysdate(), null);';
-        $stmt = mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../index.php?error=sqlerror");
-          exit();
-        }
-        else{
-          mysqli_stmt_bind_param($stmt, "ss", $uid, $activity);
-          mysqli_stmt_execute($stmt);
-        }
+// convert interested activities into a string to store in user attributes
+
+  $interestedActivitiesString = '';
+  foreach ($selectedActivitiesList as $selectedActivity) {
+    if($interestedActivitiesString!==''){
+      $interestedActivitiesString.=', '.$selectedActivity;
+    } else {
+      $interestedActivitiesString.=$selectedActivity;
+    }
+  }
+
+// add user attributes
+
+    //activities interested in
+$sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+values (?, (select attribute_id from user_attribute_definitions where attribute_name = "interested activities"), ?,(select date(sysdate()) from dual));';
+
+$stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+      header("Location: ../index.php?error=sqlerror");
+      exit();
+    }
+    else{
+      mysqli_stmt_bind_param($stmt, "ss", $uid, $interestedActivitiesString);
+      mysqli_stmt_execute($stmt);
     }
 
-    // add personal data to user data table
 
         //first_name
   $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)

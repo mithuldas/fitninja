@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 02, 2020 at 09:57 AM
+-- Generation Time: Dec 06, 2020 at 06:56 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -36,31 +36,7 @@ INSERT INTO `activity_types` (`id`, `name`, `description`) VALUES
 (1, 'Aerobics', NULL),
 (2, 'Zumba', NULL),
 (3, 'Yoga', NULL),
-(4, 'Meditation', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `interests`
---
-
-CREATE TABLE `interests` (
-  `id` int(11) NOT NULL,
-  `interest` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `interests`
---
-
-INSERT INTO `interests` (`id`, `interest`) VALUES
-(1, 'aerobics'),
-(2, 'zumba'),
-(3, 'yoga'),
-(4, 'meditation'),
-(5, 'reiki'),
-(6, 'calisthenics'),
-(7, 'toning');
+(4, 'Strength and Conditioning', NULL);
 
 -- --------------------------------------------------------
 
@@ -167,6 +143,30 @@ INSERT INTO `product_prices` (`id`, `product_id`, `valid_from`, `valid_to`, `cur
 (2, 3, '2020-11-21 10:11:56', NULL, 'INR', 2),
 (3, 4, '2020-11-21 10:12:09', NULL, 'INR', 3),
 (4, 5, '2020-11-21 10:12:25', NULL, 'INR', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `qualifications`
+--
+
+CREATE TABLE `qualifications` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `activity_type_id` int(11) NOT NULL,
+  `valid_from` datetime NOT NULL,
+  `valid_to` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `qualifications`
+--
+
+INSERT INTO `qualifications` (`id`, `uid`, `activity_type_id`, `valid_from`, `valid_to`) VALUES
+(1, 2, 1, '2020-12-06 00:00:00', NULL),
+(2, 2, 2, '2020-12-06 00:00:00', NULL),
+(3, 2, 3, '2020-12-06 00:00:00', NULL),
+(4, 2, 4, '2020-12-06 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -335,11 +335,11 @@ CREATE TABLE `user_attributes` (
 --
 
 INSERT INTO `user_attributes` (`uid`, `attribute_id`, `attribute_value`, `valid_from`, `valid_to`) VALUES
-(2, 1, 'Test', '2020-11-28 00:00:00', NULL),
-(2, 2, 'Trainer', '2020-11-28 00:00:00', NULL),
+(2, 1, 'Harish', '2020-11-28 00:00:00', NULL),
+(2, 2, 'Kumar', '2020-11-28 00:00:00', NULL),
 (2, 3, 'Mumbai', '2020-11-28 00:00:00', NULL),
 (2, 4, '987654321', '2020-11-28 00:00:00', NULL),
-(2, 5, '1988-06-14', '2020-11-28 00:00:00', NULL),
+(2, 5, '1-Jan-1980', '2020-11-28 00:00:00', NULL),
 (2, 6, 'Male', '2020-11-28 00:00:00', NULL),
 (2, 8, 'funinja.in@gmail.com', '2020-11-28 00:00:00', NULL);
 
@@ -363,23 +363,11 @@ INSERT INTO `user_attribute_definitions` (`attribute_id`, `attribute_name`) VALU
 (5, 'date_of_birth'),
 (1, 'first_name'),
 (6, 'gender'),
+(9, 'interested activities'),
 (2, 'last_name'),
 (4, 'phone_number'),
 (7, 'trainee_onboarding_completed'),
 (8, 'Zoom ID');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_interests`
---
-
-CREATE TABLE `user_interests` (
-  `uid` int(11) NOT NULL,
-  `interest_id` int(11) NOT NULL,
-  `str_dt` date NOT NULL,
-  `end_dt` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -428,12 +416,6 @@ ALTER TABLE `activity_types`
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `interests`
---
-ALTER TABLE `interests`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -467,6 +449,14 @@ ALTER TABLE `product_attribute_definitions`
 ALTER TABLE `product_prices`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `product_id` (`product_id`,`valid_from`,`currency`);
+
+--
+-- Indexes for table `qualifications`
+--
+ALTER TABLE `qualifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `activity_type_id` (`activity_type_id`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `sessions`
@@ -546,13 +536,6 @@ ALTER TABLE `user_attribute_definitions`
   ADD UNIQUE KEY `attribute_ame` (`attribute_name`);
 
 --
--- Indexes for table `user_interests`
---
-ALTER TABLE `user_interests`
-  ADD UNIQUE KEY `uid` (`uid`,`interest_id`,`str_dt`),
-  ADD KEY `interest_id` (`interest_id`);
-
---
 -- Indexes for table `user_products`
 --
 ALTER TABLE `user_products`
@@ -578,12 +561,6 @@ ALTER TABLE `activity_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `interests`
---
-ALTER TABLE `interests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
@@ -605,6 +582,12 @@ ALTER TABLE `product_attribute_definitions`
 -- AUTO_INCREMENT for table `product_prices`
 --
 ALTER TABLE `product_prices`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `qualifications`
+--
+ALTER TABLE `qualifications`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -692,6 +675,13 @@ ALTER TABLE `product_prices`
   ADD CONSTRAINT `product_prices_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
+-- Constraints for table `qualifications`
+--
+ALTER TABLE `qualifications`
+  ADD CONSTRAINT `qualifications_ibfk_1` FOREIGN KEY (`activity_type_id`) REFERENCES `activity_types` (`id`),
+  ADD CONSTRAINT `qualifications_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`);
+
+--
 -- Constraints for table `sessions`
 --
 ALTER TABLE `sessions`
@@ -731,13 +721,6 @@ ALTER TABLE `user_assignments`
 ALTER TABLE `user_attributes`
   ADD CONSTRAINT `user_attributes_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`),
   ADD CONSTRAINT `user_attributes_ibfk_2` FOREIGN KEY (`attribute_id`) REFERENCES `user_attribute_definitions` (`attribute_id`);
-
---
--- Constraints for table `user_interests`
---
-ALTER TABLE `user_interests`
-  ADD CONSTRAINT `user_interests_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`),
-  ADD CONSTRAINT `user_interests_ibfk_2` FOREIGN KEY (`interest_id`) REFERENCES `interests` (`id`);
 
 --
 -- Constraints for table `user_products`

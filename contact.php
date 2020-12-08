@@ -12,9 +12,10 @@ require "header.php";
 
 <div class="container">
 
-
+<br><br>
 <center>We would <span style="color:red">♥</span> to hear from you</center>
 <center><small>Support. Feedback. Enquiries</small></center></p>
+<br>
 
 <div class="row">
   <div class="col-md-3 mb-4">

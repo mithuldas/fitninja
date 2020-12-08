@@ -686,7 +686,7 @@ class Email{
   }
 
   static function sendContactEmail($subject, $message, $name, $email, $phone){
-    $to="hello@funinja.in;mithuldas@gmail.com";
+    $to="hello@funinja.in;mithuldas@gmail.com;athuldas@gmail.com";
     self::sendEmail($to, $subject, $message, $message);
   }
 }

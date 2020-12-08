@@ -107,7 +107,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
         <a class="nav-link " href="plans.php">Membership</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link " href="#">Contact Us</a>
+        <a class="nav-link " href="contact.php">Contact Us</a>
       </li>
 
 

@@ -201,8 +201,12 @@ function populateProgressDivContent(){
 
   var title = ['Completed: ' + completedSessionsForPie, 'Remaining: ' + (scheduledSessionsForPie+unscheduledSessionsForPie)];
   var ctx = document.getElementById('myChart').getContext('2d');
-  console.log(currentUser.nextSession);
-  var donutCenterText = "Next: "+currentUser.nextSession.scheduledDateTimeLocal+' ('+currentUser.nextSession.activity+')';
+
+  var donutNextDate = new Date(currentUser.nextSession.scheduledDateTimeLocal);
+  var momentDate = moment(donutNextDate);
+  var momentDateString = momentDate.format('Do MMM') + ' at ' + momentDate.format('h:mm A');
+
+  var donutCenterText = "Next: "+currentUser.nextSession.activity+' on '+momentDateString;
 
   var chart = new Chart(ctx, {
     // The type of chart we want to create

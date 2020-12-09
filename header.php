@@ -215,12 +215,12 @@ if(isset($_SESSION['uid'])){ ?>
           <small id = "login-errorMsg" class = "login-error formErrors">  </small>
           <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-1 greybgd" placeholder="Username or Email" required>
           <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1 greybgd" placeholder="Password" required>
+          <center><button class="btn btn-primary btn-sm btn-block" type="submit" name="login-submit" id = "login-submit">Login</button></center>
 
           <div class="checkbox mt-1 mb-1">
           <input type="checkbox" value="remember-me" name="remember-me" id="remember-me">
           <label for="remember-me"> <small>Remember me</small> </label>
           </div>
-          <center><button class="btn btn-primary btn" type="submit" name="login-submit" id = "login-submit">Login</button></center>
 
           </form>
           <div class="mt-1 mb-1">
@@ -230,7 +230,7 @@ if(isset($_SESSION['uid'])){ ?>
             <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">
             Login with Facebook
           </button><br>
-            <button onclick="google_login();" class="loginBtn loginBtn--google">
+            <button onclick="google_login();" class="loginBtn loginBtn--google boxshadoweffect">
               Login with Google
             </button></center>
             <center><a href="forgot-password.php" class="btn btn-link"> <small>Forgot password?</small></a></center>
@@ -259,7 +259,7 @@ if(isset($_SESSION['uid'])){ ?>
         <div id = "passwordRepeat-error" class="signup-error mb-1 formErrors" ><small> </small></div>
 
         <small id = "errorMsg" class = "signup-error formErrors">  </small>
-        <center><button id = "submit" class="btn btn-primary mt-1 mb-1" type="submit" name="signup-submit">Sign Up</button></center>
+        <center><button id = "submit" class="btn btn-primary btn-sm mt-1 mb-1 btn-block" type="submit" name="signup-submit">Sign Up</button></center>
         </form>
         <div class="mt-1 mb-1">
           <center><small>Or</center></small>
@@ -268,7 +268,7 @@ if(isset($_SESSION['uid'])){ ?>
           <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">
           Login with Facebook
         </button><br>
-          <button onclick="google_login();" class="loginBtn loginBtn--google">
+          <button onclick="google_login();" class="loginBtn loginBtn--google boxshadoweffect">
             Login with Google
           </button></center>
         </div>
@@ -310,5 +310,15 @@ if(isset($_SESSION['uid'])){ ?>
     $(window).resize(function () {
       $('body').css('margin-bottom', parseInt($('#standard_footer').css("height"))+10);
     });
+
+    $(document).ready(function () {
+       $(document).click(function (event) {
+           var clickover = $(event.target);
+           var _opened = $(".navbar-collapse").hasClass("show");
+           if (_opened === true && !clickover.hasClass("navbar-toggler")) {
+               $(".navbar-toggler").click();
+           }
+       });
+   });
 
 </script>

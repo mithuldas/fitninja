@@ -23,6 +23,7 @@ insertAssignmentToDB($originalTrialSession->id, $trainerUID, "trainer", $conn);
 // update the scheduled date and time of the session
 $trialSession = new TrialSession($originalTrialSession->id, $conn);
 $dateAndTimeForDB = getDateTimeValue($scheduledDateTime);
+$dateAndTimeForDisplay = $scheduledDateTime;
 $trialSession->setScheduledDateTime($dateAndTimeForDB, $conn);
 
 // set activity of the session
@@ -32,8 +33,11 @@ $trialSession->setActivity($activity, $conn);
 $trainee = new Trainee($traineeUID, $conn);
 $trainer = new User($trainerUID, $conn);
 
-Email::sendTrialScheduledEmailtoTrainee($trainee->firstName, $trainer->firstName. ' '.$trainer->lastName, $trialType, $finalTrialDate, $finalTrialTime, $trainee->email, $trainee->phoneNumber, $conn);
-Email::sendTrialScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName. ' '.$trainee->lastName, $trialType, $finalTrialDate, $finalTrialTime, $trainer->email, $trainer->phoneNumber, $conn);
+$dateForEmail = date("d-M", strtotime($dateAndTimeForDisplay));
+$timeForEmail = date("h:i a", strtotime($dateAndTimeForDisplay));
+
+Email::sendTrialScheduledEmailtoTrainee($trainee->firstName, $trainer->firstName. ' '.$trainer->lastName, $trialType, $dateForEmail, $timeForEmail, $trainee->email, $trainee->phoneNumber, $conn);
+Email::sendTrialScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName. ' '.$trainee->lastName, $trialType, $dateForEmail, $timeForEmail, $trainer->email, $trainer->phoneNumber, $conn);
 
 header("Location: /admin/view_trial_requests.php");
 

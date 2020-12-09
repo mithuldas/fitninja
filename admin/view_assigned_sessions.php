@@ -83,6 +83,7 @@ include ROOT_DIR."/includes/dbh.php";
   $completed;
 
   foreach ($assignedSessions as $value) {
+    $prettyDateTime = date('jS M y @ g:i A', strtotime($value->scheduledDateTimeLocal));
     if( $value->nextSessionScheduled){
       $nextScheduled="Yes";
     } else {
@@ -99,7 +100,7 @@ include ROOT_DIR."/includes/dbh.php";
 
     $trainee = new Trainee($value->uid, $conn);
     $a = "<tr>
-        <td>" . $value->scheduledDateTime .
+        <td>" . $prettyDateTime .
         "</td>
         <td>" . $trainee->firstName .
         "</td>

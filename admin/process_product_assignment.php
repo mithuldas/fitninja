@@ -26,6 +26,7 @@ insertAssignmentToDB($firstSession->id, $trainerUID, "trainer", $conn);
 // update the scheduled date and time of the session
 $session = new Session($firstSession->id, $conn);
 $dateAndTimeForDB = getDateTimeValue($scheduledDateTime);
+$dateAndTimeForDisplay = $scheduledDateTime;
 $session->setScheduledDateTime($dateAndTimeForDB, $conn);
 
 // set activity of the session
@@ -35,8 +36,11 @@ $session->setActivity($activity, $conn);
 $trainee = new Trainee($traineeUID, $conn);
 $trainer = new User($trainerUID, $conn);
 
-Email::sendFirstSessionScheduledEmailtoTrainee($trainee->firstName, $trainer->firstName. ' '.$trainer->lastName, $sessionType, $firstSessionDate, $firstSessionTime, $trainee->email, $trainee->phoneNumber, $conn);
-Email::sendFirstSessionScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName. ' '.$trainee->lastName, $sessionType, $firstSessionDate, $firstSessionTime, $trainer->email, $trainer->phoneNumber, $conn);
+$dateForEmail = date("d-M", strtotime($dateAndTimeForDisplay));
+$timeForEmail = date("h:i a", strtotime($dateAndTimeForDisplay));
+
+Email::sendFirstSessionScheduledEmailtoTrainee($trainee->firstName, $trainer->firstName. ' '.$trainer->lastName, $sessionType, $dateForEmail, $timeForEmail, $trainee->email, $trainee->phoneNumber, $conn);
+Email::sendFirstSessionScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName. ' '.$trainee->lastName, $sessionType, $dateForEmail, $timeForEmail, $trainer->email, $trainer->phoneNumber, $conn);
 
 header("Location: /admin/view_unassigned_products.php");
 

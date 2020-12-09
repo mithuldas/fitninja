@@ -14,6 +14,7 @@ class Session {
   public $uid; // uid of the trainee who purchased the product (user_products.uid)
 
   public $scheduledDateTime;
+  public $scheduledDateTimeLocal;
   public $plannedTrainers;
   public $plannedTrainees;
   public $filledTrainers;
@@ -34,6 +35,7 @@ class Session {
     $this->setAttributes($conn);
     $this->setNextSessionId($conn);
     $this->setNextSessionScheduledStatus($conn);
+    $this->setScheduledDateTimeLocal($this->scheduledDateTime);
   }
 
   function initSessionData($conn){
@@ -310,6 +312,17 @@ class Session {
         $this->traineeLastName = $trainee->lastName;
       }
     }
+  }
+
+  function setScheduledDateTimeLocal($scheduledDateTime){ // conversion of UTC time stored in AWS db to IST local time
+    if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+      $tzOffset = 0;
+      $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' -'.$tzOffset.' minute')));
+    } else {
+      $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+      $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' +'.$tzOffset.' minute')));
+    }
+    $this->scheduledDateTimeLocal=$adjustedDateTime;
   }
 }
 ?>

@@ -148,7 +148,7 @@ $currentUserJSON = json_encode($currentUser);
     </div>
     <div class="col-md">
       <div class="calendar">
-      
+
       </div>
     </div>
   </div>
@@ -171,12 +171,12 @@ $currentUserJSON = json_encode($currentUser);
     <div class="events">
       <div class="headers">
         <div class="x-button">x</div>
-        <div class="event-header">Session details</div>
+        <div class="event-header">Sessions</div>
       </div>
       <div class="events-list">
         <% _.each(eventsThisMonth, function(event) { %>
           <div class="event eventday event-<%=moment(event.date).format('YYYY-MM-DD')%>">
-            <a href="<%= event.url %>"><%=moment(event.date).format('MMMM Do') %>: <%= event.title %></a>
+            <a href="<%= event.url %>"><%=moment(event.date).format('Do') %>: <%= event.title %></a>
           </div>
         <% }); %>
       </div>
@@ -194,10 +194,10 @@ $( function() {
   var assignmentEvents = [];
 
   assignments.forEach(function (assignment, index) {
-        var jsDate = new Date(assignment.scheduledDateTime);
+        var jsDate = new Date(assignment.scheduledDateTimeLocal);
         var momentDate = moment(jsDate);
         var momentDateString = momentDate.format('YYYY-MM-DD');
-        var momentTimeString = momentDate.format('hh:mm A');
+        var momentTimeString = momentDate.format('h:mm A');
         var assignmentEvent = {
           date: momentDateString,
           title: assignment.traineeName+' @ '+momentTimeString,

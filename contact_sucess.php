@@ -13,7 +13,7 @@ require "header.php";
 <div class="container">
 
 
-<center>Thanks for your inquiry. One of us will get in touch with you shortly.</center>
+<center>Thanks for your inquiry. Our team will get in touch with you shortly.</center>
 
 </center>
 </div>

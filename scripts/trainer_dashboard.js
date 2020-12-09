@@ -32,10 +32,11 @@ function populateUpcomingDivContent(){
     "</table>";
 
     upcomingSessions.forEach(function (session, index) {
-      if(session.notes==null){
-        session.notes='';
-      }
-      tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.activity+'</td><td>'+session.traineeFirstName+'</td></tr>';
+      var jsDate = new Date(session.scheduledDateTimeLocal);
+      var momentDate = moment(jsDate);
+      var momentDateString = momentDate.format('Do MMM');
+      var momentTimeString = momentDate.format('h:mm A');
+      tableBody=tableBody+'<tr><td>'+momentDateString+' @ '+ momentTimeString+'</td><td>'+session.activity+'</td><td>'+session.traineeFirstName+'</td></tr>';
     });
 
     var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;

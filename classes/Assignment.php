@@ -9,12 +9,14 @@ class Assignment {
   public $uid;
   public $type; // trainer, trainee etc, determines the fill to update in sessions table
   public $scheduledDateTime;
+  public $scheduledDateTimeLocal;
   public $activity;
 
   public function __construct($id, $conn){
     $this->id=$id;
     $this->initAssignmentData($conn);
     $this->setScheduledDateTime($conn);
+    $this->setScheduledDateTimeLocal($this->scheduledDateTime);
     $this->setActivity($conn);
   }
 
@@ -40,6 +42,17 @@ class Assignment {
     while($row = $result->fetch_assoc()) {
       $this->scheduledDateTime=$row['sch_dt_tm'];
     }
+  }
+
+  public function setScheduledDateTimeLocal($scheduledDateTime){
+    if(isset($_SERVER['HTTP_HOST']) and $_SERVER['HTTP_HOST']=="localhost"){
+      $tzOffset = 0;
+      $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' -'.$tzOffset.' minute')));
+    } else {
+      $tzOffset = 330; // 5h30 mins offset forward for AWS server that's on UTC TZ
+      $adjustedDateTime= (date('Y-m-d G:i',strtotime($scheduledDateTime. ' +'.$tzOffset.' minute')));
+    }
+    $this->scheduledDateTimeLocal=$adjustedDateTime;
   }
 
   public function setActivity($conn){

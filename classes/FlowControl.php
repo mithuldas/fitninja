@@ -25,4 +25,12 @@ class FlowControl {
     }
   }
 
+  static function echoHomePageLink(){
+    if(!isset($_SESSION['uid'])){
+      echo "/index.php";
+    } else {
+      echo "/includes/post_login_landing_controller.php";
+    }
+  }
+
 }

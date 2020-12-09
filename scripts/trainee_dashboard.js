@@ -45,7 +45,11 @@ function populateUpcomingDivContent(){
       "</table>";
 
         upcomingSessions.forEach(function (session, index) {
-          tableBody=tableBody+'<tr><td>'+session.scheduledDateTime+'</td><td>'+session.activity+'<td>'+session.trainerFirstName+'</td></td></tr>';
+          var jsDate = new Date(session.scheduledDateTimeLocal);
+          var momentDate = moment(jsDate);
+          var momentDateString = momentDate.format('Do MMM');
+          var momentTimeString = momentDate.format('h:mm A');
+          tableBody=tableBody+'<tr><td>'+momentDateString+' @ '+ momentTimeString+'</td><td>'+session.activity+'<td>'+session.trainerFirstName+'</td></td></tr>';
         });
 
       var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;
@@ -198,7 +202,7 @@ function populateProgressDivContent(){
   var title = ['Completed: ' + completedSessionsForPie, 'Remaining: ' + (scheduledSessionsForPie+unscheduledSessionsForPie)];
   var ctx = document.getElementById('myChart').getContext('2d');
   console.log(currentUser.nextSession);
-  var donutCenterText = "Next: "+currentUser.nextSession.scheduledDateTime+' ('+currentUser.nextSession.activity+')';
+  var donutCenterText = "Next: "+currentUser.nextSession.scheduledDateTimeLocal+' ('+currentUser.nextSession.activity+')';
 
   var chart = new Chart(ctx, {
     // The type of chart we want to create

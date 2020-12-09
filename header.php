@@ -89,9 +89,19 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <div class="container-fluid">
 <div class="row">
   <!--navbar -->
-  <nav id = "main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0">
-  <a href="/index.php" class="navbar-brand"><img src="/images/logo2.png" alt="FuNinja" style="height:40px"></a>
+  <nav id = "main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0 navbar-expand-md ">
+  <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand"><img src="/images/logo2.png" alt="FuNinja" style="height:40px"></a>
 
+  <div>
+  <?php
+  // if user user isn't logged in, show the login and register buttons
+  if(!isset($_SESSION['uid'])){ ?>
+    <button type="button" class="btn btn-secondary btn-sm btn hide-on-nonmobile_nav" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
+    <button type="button" class="btn btn-primary btn-sm btn hide-on-nonmobile_nav" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
+
+    <?php  ;
+  } ?>
+</div>
   <!-- burger -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -101,14 +111,49 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <!-- everything in here will be collapsed on smaller devices -->
   <div class="collapse navbar-collapse pt-1" id="navbarSupportedContent">
     <!-- Navbar links, dropdowns etc go here -->
-    <ul class="navbar-nav mr-auto ">
+    <ul class="navbar-nav mr-auto">
 
-      <li class="nav-item active">
-        <a class="nav-link " href="plans.php">Membership</a>
+
+<!-- mobile navbar items logged-in only-->
+<?php
+if(isset($_SESSION['uid'])){ ?>
+      <li class="nav-item active hide-on-nonmobile_nav pl-5 pt-4">
+        <a class="nav-link " href="/profile.php"><?php echo $_SESSION['username']?></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link " href="contact.php">Contact Us</a>
+      <li class="nav-item active hide-on-nonmobile_nav pl-5 ml-4">
+        <a class="nav-link " href="/includes/post_login_landing_controller.php">Dashboard</a>
       </li>
+      <li class="nav-item active hide-on-nonmobile_nav pl-5 ml-4">
+        <a class="nav-link " href="/settings.php">Settings</a>
+      </li>
+      <li class="nav-item active hide-on-nonmobile_nav pl-5 ml-4 pb-2">
+        <a class="nav-link " href="/includes/logout.php">Logout</a>
+      </li>
+<?php
+}
+?>
+<!-- mobile navbar items state-independent -->
+
+      <li class="nav-item active hide-on-nonmobile_nav pl-5 pt-2">
+        <a class="nav-link " href="/contact.php">Contact</a>
+      </li>
+      <li class="nav-item active hide-on-nonmobile_nav pl-5">
+        <a class="nav-link " href="/contact.php">Feedback</a>
+      </li>
+
+      <li class="nav-item active hide-on-nonmobile_nav pl-5 pb-4">
+        <a class="nav-link " href="/plans.php">Membership</a>
+      </li>
+
+
+<!-- desktop navbar items -->
+      <li class="nav-item active hide-on-mobile_nav">
+        <a class="nav-link pl-5" href="/plans.php">Membership</a>
+      </li>
+      <li class="nav-item active hide-on-mobile_nav">
+        <a class="nav-link pl-2" href="/contact.php">Contact</a>
+      </li>
+
 
 
     </ul>
@@ -118,8 +163,8 @@ include_once ROOT_DIR."/includes/auto_login.php";
     <?php
     // if user user isn't logged in, show the login and register buttons
     if(!isset($_SESSION['uid'])){ ?>
-      <button type="button" class="btn btn-secondary btn-sm btn mr-1 mb-1" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOG IN </button>
-      <button type="button" class="btn btn-primary btn-sm btn mr-1 mb-1" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
+      <button type="button" class="btn btn-secondary btn-sm btn mr-1 mb-1 hide-on-mobile_nav" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
+      <button type="button" class="btn btn-primary btn-sm btn mr-1 mb-1 hide-on-mobile_nav" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
 
       <?php  ;
     }
@@ -127,15 +172,16 @@ include_once ROOT_DIR."/includes/auto_login.php";
     // if the user is logged in, show the user profile button
     if(isset($_SESSION['uid'])){?>
     <div class="dropdown">
-  <button type="button" class="btn btn-sm btn-primary dropdown-toggle mb-1" data-toggle="dropdown">
-    <?php echo $_SESSION['username']?>
+  <button type="button" class="btn btn-sm btn-primary dropdown-toggle mb-1 hide-on-mobile_nav" data-toggle="dropdown">
+    <img class="svg m-0 p-0" src="/images/profile.svg" width="18" />
   </button>
   <div class="dropdown-menu dropdown-menu-right">
     <a class="dropdown-item" href="/includes/post_login_landing_controller.php">Dashboard</a>
-    <a class="dropdown-item" href="settings.php">Send Us Feedback</a>
+    <a class="dropdown-item" href="profile.php">Profile</a>
     <a class="dropdown-item" href="settings.php">Settings</a>
+    <a class="dropdown-item" href="contact.php">Feedback</a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="/includes/logout.php">Logout</a>
+    <a class="dropdown-item" href="/includes/logout.php"><img class="svg m-0 pr-1" src="/images/logout.svg" width="20" />Logout</a>
   </div>
 </div>
       <?php
@@ -153,8 +199,8 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <div class="modal-header">
 
   <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
-  <li class="nav-item"> <a class="nav-link active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab"  aria-selected="true">Log In</a> </li>
-  <li class="nav-item"> <a class="nav-link" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"  aria-selected="false">Register</a> </li>
+  <li class="nav-item"> <a class="nav-link btn-sm active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab"  aria-selected="true">Login</a> </li>
+  <li class="nav-item"> <a class="nav-link btn-sm" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"  aria-selected="false">Register</a> </li>
   </ul>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
   <span aria-hidden="true">&times;</span>
@@ -166,22 +212,29 @@ include_once ROOT_DIR."/includes/auto_login.php";
       <div class="tab-pane show active p-0 m-0" id="pills-signin-body" role="tabpanel">
         <div class="col-sm-12 p-0 m-0">
           <form class="form-signin p-0 m-0" id = "login" action="includes/login.php" method="post" novalidate>
-          <label class = "float-left"> <b> User name or email </b> </label>
-          <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-1 greybgd" required>
-          <label class = "float-left"> <b> Password </b> </label>
-          <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1 greybgd" required>
           <small id = "login-errorMsg" class = "login-error formErrors">  </small>
-          <div class="checkbox mb-3">
-          <input type="checkbox" value="remember-me" name="remember-me" id="remember-me"> Remember me
+          <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-1 greybgd" placeholder="Username or Email" required>
+          <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1 greybgd" placeholder="Password" required>
+
+          <div class="checkbox mt-1 mb-1">
+          <input type="checkbox" value="remember-me" name="remember-me" id="remember-me">
+          <label for="remember-me"> <small>Remember me</small> </label>
           </div>
-          <button class="btn btn-primary btn-block" type="submit" name="login-submit" id = "login-submit">Sign in</button>
-          <a href="forgot-password.php" class="btn btn-link"> Forgot password?</a>
+          <center><button class="btn btn-primary btn" type="submit" name="login-submit" id = "login-submit">Login</button></center>
 
           </form>
-          <HR>
-
-          <a href="#" onclick="fb_login();"><img src="/images/fb_login.png" width="225" height="54"   alt=""></a>
-          <br><a href="#" onclick="google_login();"> <img src="/images/google_login.png" alt="Google Login"></a>
+          <div class="mt-1 mb-1">
+            <center><small>Or</center></small>
+          </div>
+          <div>
+            <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">
+            Login with Facebook
+          </button><br>
+            <button onclick="google_login();" class="loginBtn loginBtn--google">
+              Login with Google
+            </button></center>
+            <center><a href="forgot-password.php" class="btn btn-link"> <small>Forgot password?</small></a></center>
+          </div>
         </div>
 
 
@@ -206,12 +259,19 @@ include_once ROOT_DIR."/includes/auto_login.php";
         <div id = "passwordRepeat-error" class="signup-error mb-1 formErrors" ><small> </small></div>
 
         <small id = "errorMsg" class = "signup-error formErrors">  </small>
-        <button id = "submit" class="btn btn-primary btn-block mt-1 mb-1" type="submit" name="signup-submit">Sign Up</button>
+        <center><button id = "submit" class="btn btn-primary mt-1 mb-1" type="submit" name="signup-submit">Sign Up</button></center>
         </form>
-        <HR>
-          <a href="#" onclick="fb_login();"><img src="/images/fb_login.png" width="225" height="54" alt="Facebook Login"></a>
-          <br><a href="#" onclick="google_login();"> <img src="/images/google_login.png" alt="Google Login"></a>
-
+        <div class="mt-1 mb-1">
+          <center><small>Or</center></small>
+        </div>
+        <div>
+          <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">
+          Login with Facebook
+        </button><br>
+          <button onclick="google_login();" class="loginBtn loginBtn--google">
+            Login with Google
+          </button></center>
+        </div>
       </div>
     </div>
     </div>

@@ -15,6 +15,7 @@ class Session {
 
   public $scheduledDateTime;
   public $scheduledDateTimeLocal;
+  public $duration; // minutes
   public $plannedTrainers;
   public $plannedTrainees;
   public $filledTrainers;
@@ -26,6 +27,7 @@ class Session {
   public $joinURL;
   public $status;
   public $nextSessionScheduled;
+  public $nextSessionAssigned;
   public $activity;
   public $completed; // completion flag (either null for not complete or Y for completed)
 
@@ -55,6 +57,7 @@ class Session {
         $this->uid=$row['uid'];
         $this->sequence=$row['sequence'];
         $this->scheduledDateTime=$row['sch_dt_tm'];
+        $this->duration=$row['duration'];
         $this->plannedTrainers=$row['planned_trainers'];
         $this->plannedTrainees=$row['planned_trainees'];
         $this->filledTrainers=$row['filled_trainers'];

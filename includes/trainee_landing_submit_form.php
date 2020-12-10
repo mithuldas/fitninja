@@ -15,7 +15,7 @@ if (isset($_POST['trainee_landing_submit'])) {
   $firstName = $_POST['firstName'];
   $lastName = $_POST['lastName'];
   $city = $_POST['city'];
-  $phoneNumber = $_POST['phonenumber'];
+  $phoneNumber = $_POST['phone'];
   $gender = $_POST['gender'];
   $activities = $_POST['activities'];
 

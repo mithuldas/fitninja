@@ -135,7 +135,7 @@ if(isset($_SESSION['uid'])){ ?>
 <!-- mobile navbar items state-independent -->
 
       <li class="nav-item active hide-on-nonmobile_nav pl-5 pt-2">
-        <a class="nav-link " href="/contact.php">Contact</a>
+        <a class="nav-link " href="/contact.php">Contact Us</a>
       </li>
       <li class="nav-item active hide-on-nonmobile_nav pl-5">
         <a class="nav-link " href="/contact.php">Feedback</a>
@@ -147,12 +147,20 @@ if(isset($_SESSION['uid'])){ ?>
 
 
 <!-- desktop navbar items -->
+
       <li class="nav-item active hide-on-mobile_nav">
-        <a class="nav-link pl-5" href="/plans.php">Membership</a>
+        <a class="nav-link pl-5" href="/contact.php">About Us</a>
       </li>
       <li class="nav-item active hide-on-mobile_nav">
-        <a class="nav-link pl-2" href="/contact.php">Contact</a>
+        <a class="nav-link pl-2" href="/contact.php">Our Trainers</a>
       </li>
+      <li class="nav-item active hide-on-mobile_nav">
+        <a class="nav-link pl-2" href="/plans.php">Membership</a>
+      </li>
+      <li class="nav-item active hide-on-mobile_nav">
+        <a class="nav-link pl-2" href="/contact.php">Contact Us</a>
+      </li>
+
 
 
 
@@ -179,7 +187,7 @@ if(isset($_SESSION['uid'])){ ?>
     <a class="dropdown-item" href="/includes/post_login_landing_controller.php">Dashboard</a>
     <a class="dropdown-item" href="profile.php">Profile</a>
     <a class="dropdown-item" href="settings.php">Settings</a>
-    <a class="dropdown-item" href="contact.php">Feedback</a>
+    <a class="dropdown-item" href="contact.php">Support</a>
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="/includes/logout.php"><img class="svg m-0 pr-1" src="/images/logout.svg" width="20" />Logout</a>
   </div>

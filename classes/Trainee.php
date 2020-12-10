@@ -93,8 +93,8 @@ class Trainee extends User{
     }
     // insert sessions
 
-    $sql = "INSERT INTO sessions (sequence, user_product_id, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
-            VALUES (1,".$userProductId.", 1, 1, 0, 0)";
+    $sql = "INSERT INTO sessions (sequence, user_product_id, duration, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
+            VALUES (1,".$userProductId.", (select attribute_value from product_attribute_definitions pad, product_attributes pa where pad.id=pa.attribute_id and pad.attribute_name='standard session duration' and product_id=1), 1, 1, 0, 0)";
 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -196,8 +196,8 @@ class Trainee extends User{
 
     // insert sessions
     for ($i=1; $i <= $sessionCount; $i++) {
-      $sql = "insert into sessions (sequence, user_product_id, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
-              (select $i, up.id, 1, 1, 0, 0 from transactions t, orders o, user_products up where t.order_id=o.id and up.order_id=o.id and t.external_id=?)";
+      $sql = "insert into sessions (sequence, user_product_id, duration, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
+              (select $i, up.id, pa.attribute_value, 1, 1, 0, 0 from transactions t, orders o, user_products up, product_attributes pa, product_attribute_definitions pad where up.product_id = pa.product_id and pa.attribute_id=pad.id and pad.attribute_name='standard session duration' and t.order_id=o.id and up.order_id=o.id and t.external_id=?)";
 
       $stmt = mysqli_stmt_init($conn);
       if(!mysqli_stmt_prepare($stmt, $sql)) {

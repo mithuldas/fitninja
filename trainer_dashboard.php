@@ -176,7 +176,8 @@ $currentUserJSON = json_encode($currentUser);
       <div class="events-list">
         <% _.each(eventsThisMonth, function(event) { %>
           <div class="event eventday event-<%=moment(event.date).format('YYYY-MM-DD')%>">
-            <a href="<%= event.url %>"><%=moment(event.date).format('Do') %>: <%= event.title %></a>
+            <!--<a href="<%= event.url %>"><%=moment(event.date).format('Do') %>: <%= event.title %></a>-->
+            <a href="<%= event.url %>"><%= event.title %></a>
           </div>
         <% }); %>
       </div>

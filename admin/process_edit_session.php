@@ -8,10 +8,25 @@ require_once ( ROOT_DIR.'/includes/dbh.php' );
 $session = json_decode($_POST['session']); // convert this to an actual session object next
 $session = new Session($session->id, $conn);
 
-$date = strtotime($session->scheduledDateTime)  ;
+$date = strtotime($session->scheduledDateTime);
 
 $oldDateTime= date('Y-m-d H:i', $date);
 $newDateTime = $_POST['date'].' '.$_POST['hour'].':'.$_POST['minute'];
+
+$oldDuration = $session->duration;
+$newDuration = $_POST['duration'];
+
+if($oldDuration!=$newDuration){
+  $sql = "update sessions set duration='".$newDuration."' where id=".$session->id.";";
+  $stmt = mysqli_stmt_init($conn);
+  mysqli_stmt_prepare($stmt, $sql);
+  mysqli_stmt_execute($stmt);
+  if(mysqli_stmt_affected_rows($stmt)==1){
+    echo "success";
+  } else {
+    echo "failed";
+  }
+}
 
 $completedInDB = $session->completed;
 

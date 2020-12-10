@@ -5,12 +5,13 @@ require_once ( ROOT_DIR.'/includes/autoloader.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
 $session = json_decode($_POST['session']); // convert this to an actual session object next
+
 $session = new Session($session->id, $conn);
 
 $scheduledDateTime = $_POST['date'].' '.$_POST['hour'].':'.$_POST['minute']; // date/time for next session
 $activity=$_POST['activity'];
 
-$trainerUID = $session->getTrainerUID($conn);
+$trainerUID = $_POST['trainerSelect'];
 $traineeUID = $session->uid;
 
 // insert trainee assignment

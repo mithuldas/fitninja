@@ -153,7 +153,8 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
       <div class="events-list">
         <% _.each(eventsThisMonth, function(event) { %>
           <div class="event eventday event-<%=moment(event.date).format('YYYY-MM-DD')%>">
-            <a href="<%= event.url %>"><%=moment(event.date).format('Do') %>: <%= event.title %></a>
+            <!--<a href="<%= event.url %>"><%=moment(event.date).format('Do') %>: <%= event.title %></a>-->
+            <a href="<%= event.url %>"><%= event.title %></a>
           </div>
         <% }); %>
       </div>
@@ -171,9 +172,6 @@ $( function() {
   var assignmentEvents = [];
 
   assignments.forEach(function (assignment, index) {
-
-      console.log(assignment);
-
         var jsDate = new Date(assignment.scheduledDateTimeLocal);
         var momentDate = moment(jsDate);
         var momentDateString = momentDate.format('YYYY-MM-DD');

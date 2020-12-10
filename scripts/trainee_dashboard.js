@@ -7,15 +7,9 @@ $(document).ready(function(){
     event.preventDefault();
   });
 
-  // click submit and validate everything
-  //$('#trialSubmit').on('click', function(){
-  //  console.log("hi");
-  //});
-
 });
 
 function populateUpcomingDivContent(){
-  console.log(upcomingSessions);
   if(currentUser.isNew){
     $(".upcoming-sessions-area").html
       ("You don't have any upcoming sessions yet. \
@@ -36,6 +30,7 @@ function populateUpcomingDivContent(){
       " <table id='upcomingSessions' class='table-sm table' style='width:100%'><thead>\
         <tr>\
         <th> Date and time </th>\
+        <th> Duration </th>\
         <th> Activity </th>\
         <th> Trainer </th>\
         </tr><thead>";
@@ -49,7 +44,7 @@ function populateUpcomingDivContent(){
           var momentDate = moment(jsDate);
           var momentDateString = momentDate.format('ddd D MMM');
           var momentTimeString = momentDate.format('h:mm A');
-          tableBody=tableBody+'<tr><td>'+momentDateString+' @ '+ momentTimeString+'</td><td>'+session.activity+'<td>'+session.trainerFirstName+'</td></td></tr>';
+          tableBody=tableBody+'<tr><td>'+momentDateString+' @ '+ momentTimeString+'</td><td>'+session.duration+' minutes'+ '</td><td>'+session.activity+'<td>'+session.trainerFirstName+'</td></td></tr>';
         });
 
       var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;
@@ -199,14 +194,18 @@ function populateProgressDivContent(){
   var scheduledSessionsForPie=currentUser.activePlan.sessionsScheduled-completedSessionsForPie;
   var unscheduledSessionsForPie=currentUser.activePlan.totalSessions-currentUser.activePlan.sessionsScheduled;
 
-  var title = ['Completed: ' + completedSessionsForPie, 'Remaining: ' + (scheduledSessionsForPie+unscheduledSessionsForPie)];
+  var status = completedSessionsForPie+' out of ' +(scheduledSessionsForPie+unscheduledSessionsForPie)+' sessions completed';
   var ctx = document.getElementById('myChart').getContext('2d');
 
-  var donutNextDate = new Date(currentUser.nextSession.scheduledDateTimeLocal);
-  var momentDate = moment(donutNextDate);
-  var momentDateString = momentDate.format('Do MMM') + ' at ' + momentDate.format('h:mm A');
+  if(!currentUser.nextSession){
+    var donutCenterText = status;
+  } else {
+    var donutNextDate = new Date(currentUser.nextSession.scheduledDateTimeLocal);
+    var momentDate = moment(donutNextDate);
+    var momentDateString = momentDate.format('Do MMM') + ' at ' + momentDate.format('h:mm A');
+    var donutCenterText = status;
+  }
 
-  var donutCenterText = "Next: "+currentUser.nextSession.activity+' on '+momentDateString;
 
   var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -237,8 +236,8 @@ function populateProgressDivContent(){
 
       cutoutPercentage: 80,
       title: {
-        display: true,
-        text: title,
+        display: false,
+        text: status,
         position: 'bottom',
     },
     legend: {

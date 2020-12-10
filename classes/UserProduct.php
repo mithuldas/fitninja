@@ -13,12 +13,14 @@ class UserProduct{
   public $sessionsScheduled;
   public $sessionsCompleted;
   public $isActive;
+  public $trainerStats=[];
 
   function __construct($id, $conn) {
     $this->userProductId=$id;
     $this->setProperties($id, $conn);
     $this->setSessionStatistics($conn);
     $this->setCompleted($conn);
+    $this->setTrainerStats($conn);
   }
 
   function setProperties($id, $conn){
@@ -66,6 +68,54 @@ class UserProduct{
       $this->isActive=false;
     } else {
       $this->isActive=true;
+    }
+  }
+
+  function setTrainerStats($conn){
+    //uid:
+      //total: x
+      //completed: y
+    //...
+
+    // first get list of trainer uids who are on the user product
+    $trainerUids=[];
+    $sql = "select distinct u.uid from user_products up, sessions s, user_assignments ua, users u
+        where up.id=s.user_product_id and s.id=ua.session_id and u.uid=ua.uid and u.user_type_id=1 and up.id=$this->userProductId";
+    $stmt = mysqli_stmt_init($conn); mysqli_stmt_prepare($stmt, $sql); mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    while($row = $result->fetch_assoc()) {
+      array_push($trainerUids, $row['uid']);
+    }
+
+    // then cycle through each trainer uid, collecting stats and creating the final object and pushing to
+    // $this->trainerStats array for each trainer uid
+
+
+    foreach ($trainerUids as $trainerUid) {
+
+      $trainerStat = new stdClass();
+      $trainerStat->uid=$trainerUid;
+      $trainerStat->totalSessions=0;
+      $trainerStat->completedSessions=0;
+
+
+      $sql= "select count(*) as total from sessions s, user_assignments ua
+            where s.id=ua.session_id and ua.uid=$trainerUid and s.user_product_id=$this->userProductId";
+      $stmt = mysqli_stmt_init($conn); mysqli_stmt_prepare($stmt, $sql); mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      while($row = $result->fetch_assoc()) {
+        $trainerStat->totalSessions= $row['total'];
+      }
+
+      $sql= "select count(*) as completed from sessions s, user_assignments ua
+            where s.id=ua.session_id and s.completed='Y' and ua.uid=$trainerUid and s.user_product_id=$this->userProductId";
+      $stmt = mysqli_stmt_init($conn); mysqli_stmt_prepare($stmt, $sql); mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      while($row = $result->fetch_assoc()) {
+        $trainerStat->completedSessions= $row['completed'];
+      }
+
+      array_push($this->trainerStats, $trainerStat);
     }
   }
 }

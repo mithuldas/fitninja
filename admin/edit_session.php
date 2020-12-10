@@ -32,7 +32,6 @@ for ($i=0; $i <24 ; $i++) {
   array_push($allHours,str_pad($i, 2, "0", STR_PAD_LEFT));
 }
 
-
 ?>
 
 <script>
@@ -106,6 +105,9 @@ $(document).ready(function(){
   ?>
 </select>
 </div>
+<label for="duration">Duration</label>
+<input class="form-control" type='number' name='duration' id='duration' value='<?php echo $session->duration; ?>'>
+<br>
 <input type='hidden' name='session' value='<?php echo $_POST['session']; ?>'>
 <button class="btn-sm btn-primary mt-1" type="submit" name="edit_session">Save changes</button>
 

@@ -68,6 +68,7 @@ include ROOT_DIR."/includes/dbh.php";
   <table id='users' class='display' style='width:100%'><thead>
     <tr>
     <th> Scheduled for </th>
+    <th> Duration </th>
     <th> Name </th>
     <th> Product </th>
     <th> Session # </th>
@@ -102,6 +103,8 @@ include ROOT_DIR."/includes/dbh.php";
     $a = "<tr>
         <td>" . $prettyDateTime .
         "</td>
+        <td>" . $value->duration .
+        "</td>
         <td>" . $trainee->firstName .
         "</td>
         <td>" . $value->productName .
@@ -123,7 +126,11 @@ include ROOT_DIR."/includes/dbh.php";
         </td>";
     if(is_null($value->nextSessionId)){
       $b="<td></td>";
-    } else {
+    }
+    else if (!is_null($value->assignments) and $nextScheduled=="Yes"){
+      $b="<td></td>";
+    }
+    else {
       $b = "<td>
       <form action='/admin/assign_next_session.php' method='post'>
       <input type='hidden' name='session' value='". $sessionJSON."'>

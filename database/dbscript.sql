@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 06, 2020 at 06:56 PM
+-- Generation Time: Dec 10, 2020 at 05:42 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -36,7 +36,7 @@ INSERT INTO `activity_types` (`id`, `name`, `description`) VALUES
 (1, 'Aerobics', NULL),
 (2, 'Zumba', NULL),
 (3, 'Yoga', NULL),
-(4, 'Strength and Conditioning', NULL);
+(4, 'Slimnastics', NULL);
 
 -- --------------------------------------------------------
 
@@ -94,10 +94,15 @@ CREATE TABLE `product_attributes` (
 --
 
 INSERT INTO `product_attributes` (`product_id`, `attribute_id`, `attribute_value`, `valid_from`, `valid_to`) VALUES
+(1, 4, '60', '2020-11-24 00:00:00', NULL),
 (2, 2, '10', '2020-11-24 00:00:00', NULL),
+(2, 4, '60', '2020-11-24 00:00:00', NULL),
 (3, 2, '20', '2020-11-24 00:00:00', NULL),
+(3, 4, '60', '2020-11-24 00:00:00', NULL),
 (4, 2, '20', '2020-11-24 00:00:00', NULL),
-(5, 2, '20', '2020-11-24 00:00:00', NULL);
+(4, 4, '60', '2020-11-24 00:00:00', NULL),
+(5, 2, '20', '2020-11-24 00:00:00', NULL),
+(5, 4, '60', '2020-11-24 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -117,7 +122,8 @@ CREATE TABLE `product_attribute_definitions` (
 INSERT INTO `product_attribute_definitions` (`id`, `attribute_name`) VALUES
 (1, 'valid for trial'),
 (2, 'number of sessions'),
-(3, 'course span');
+(3, 'valid days'),
+(4, 'standard session duration');
 
 -- --------------------------------------------------------
 
@@ -165,7 +171,6 @@ CREATE TABLE `qualifications` (
 INSERT INTO `qualifications` (`id`, `uid`, `activity_type_id`, `valid_from`, `valid_to`) VALUES
 (1, 2, 1, '2020-12-06 00:00:00', NULL),
 (2, 2, 2, '2020-12-06 00:00:00', NULL),
-(3, 2, 3, '2020-12-06 00:00:00', NULL),
 (4, 2, 4, '2020-12-06 00:00:00', NULL);
 
 -- --------------------------------------------------------
@@ -179,6 +184,7 @@ CREATE TABLE `sessions` (
   `sequence` int(11) NOT NULL,
   `user_product_id` int(11) NOT NULL,
   `sch_dt_tm` datetime DEFAULT NULL,
+  `duration` int(11) NOT NULL,
   `activity_type_id` int(11) DEFAULT NULL,
   `planned_trainers` int(11) NOT NULL,
   `planned_trainees` int(11) NOT NULL,
@@ -223,7 +229,8 @@ INSERT INTO `session_attribute_definitions` (`attribute_id`, `attribute_name`) V
 (2, 'preferredTrialDate'),
 (3, 'preferredTrialTimeSlot'),
 (4, 'Zoom Join URL'),
-(5, 'Zoom Start URL');
+(5, 'Zoom Start URL'),
+(6, 'duration');
 
 -- --------------------------------------------------------
 
@@ -300,7 +307,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`uid`, `username`, `user_type_id`, `email`, `password`, `email_verified`, `reg_dt`, `source`, `ext_name`) VALUES
 (1, 'admin', 3, 'admin@admin.com', '$2y$10$S3qhUssWxwrgUBCl0tIW2OHvyZ1z.U0QGXVbmhDrp3FnFT5sEEo/W', 'Y', '2020-11-28 19:42:41', 'Web', NULL),
-(2, 'trainer', 1, 'funinja.in@gmail.com', '$2y$10$S3qhUssWxwrgUBCl0tIW2OHvyZ1z.U0QGXVbmhDrp3FnFT5sEEo/W', 'Y', '2020-11-28 20:00:16', 'Web', NULL);
+(2, 'trainer', 1, 'funinja.in@gmail.com', '$2y$10$rvX2xCfWdF9EcXQl0eqCIuMlXTQc/B3yLqCKBEW0ipkeFppWnNxoy', 'Y', '2020-11-28 20:00:16', 'Web', NULL);
 
 -- --------------------------------------------------------
 

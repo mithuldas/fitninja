@@ -33,8 +33,8 @@ $trialSession->setActivity($activity, $conn);
 $trainee = new Trainee($traineeUID, $conn);
 $trainer = new User($trainerUID, $conn);
 
-$dateForEmail = date("d-M", strtotime($dateAndTimeForDisplay));
-$timeForEmail = date("h:i a", strtotime($dateAndTimeForDisplay));
+$dateForEmail = date("l jS M", strtotime($dateAndTimeForDisplay));
+$timeForEmail = date("g:i a", strtotime($dateAndTimeForDisplay));
 
 Email::sendTrialScheduledEmailtoTrainee($trainee->firstName, $trainer->firstName. ' '.$trainer->lastName, $trialType, $dateForEmail, $timeForEmail, $trainee->email, $trainee->phoneNumber, $conn);
 Email::sendTrialScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName. ' '.$trainee->lastName, $trialType, $dateForEmail, $timeForEmail, $trainer->email, $trainer->phoneNumber, $conn);

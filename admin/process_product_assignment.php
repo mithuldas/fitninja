@@ -36,8 +36,8 @@ $session->setActivity($activity, $conn);
 $trainee = new Trainee($traineeUID, $conn);
 $trainer = new User($trainerUID, $conn);
 
-$dateForEmail = date("d-M", strtotime($dateAndTimeForDisplay));
-$timeForEmail = date("h:i a", strtotime($dateAndTimeForDisplay));
+$dateForEmail = date("l jS M", strtotime($dateAndTimeForDisplay));
+$timeForEmail = date("g:i a", strtotime($dateAndTimeForDisplay));
 
 Email::sendFirstSessionScheduledEmailtoTrainee($trainee->firstName, $trainer->firstName. ' '.$trainer->lastName, $sessionType, $dateForEmail, $timeForEmail, $trainee->email, $trainee->phoneNumber, $conn);
 Email::sendFirstSessionScheduledEmailtoTrainer($trainer->firstName, $trainee->firstName. ' '.$trainee->lastName, $sessionType, $dateForEmail, $timeForEmail, $trainer->email, $trainer->phoneNumber, $conn);

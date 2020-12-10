@@ -34,7 +34,7 @@ function populateUpcomingDivContent(){
     upcomingSessions.forEach(function (session, index) {
       var jsDate = new Date(session.scheduledDateTimeLocal);
       var momentDate = moment(jsDate);
-      var momentDateString = momentDate.format('Do MMM');
+      var momentDateString = momentDate.format('ddd D MMM');
       var momentTimeString = momentDate.format('h:mm A');
       tableBody=tableBody+'<tr><td>'+momentDateString+' @ '+ momentTimeString+'</td><td>'+session.activity+'</td><td>'+session.traineeFirstName+'</td></tr>';
     });

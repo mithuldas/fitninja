@@ -47,7 +47,7 @@ function populateUpcomingDivContent(){
         upcomingSessions.forEach(function (session, index) {
           var jsDate = new Date(session.scheduledDateTimeLocal);
           var momentDate = moment(jsDate);
-          var momentDateString = momentDate.format('Do MMM');
+          var momentDateString = momentDate.format('ddd D MMM');
           var momentTimeString = momentDate.format('h:mm A');
           tableBody=tableBody+'<tr><td>'+momentDateString+' @ '+ momentTimeString+'</td><td>'+session.activity+'<td>'+session.trainerFirstName+'</td></td></tr>';
         });
@@ -91,7 +91,7 @@ function populateTrainerDetailsDivContent(){
   " <table id='trainerList' class='table-sm table' style='width:100%'><thead>\
     <tr>\
     <th> Name </th>\
-    <th> Speciality </th>\
+    <th> Specialization </th>\
     </tr><thead>";
 
   var tableBody='';

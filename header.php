@@ -89,24 +89,45 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <div class="container-fluid">
 <div class="row">
   <!--navbar -->
-  <nav id = "main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0 navbar-expand-md ">
+  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0">
+
+    <!-- burger -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- /burger" -->
   <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand"><img src="/images/logo2.png" alt="FuNinja" style="height:40px"></a>
 
   <div>
   <?php
   // if user user isn't logged in, show the login and register buttons
   if(!isset($_SESSION['uid'])){ ?>
-    <button type="button" class="btn btn-secondary btn-sm btn hide-on-nonmobile_nav" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
-    <button type="button" class="btn btn-primary btn-sm btn hide-on-nonmobile_nav" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
+    <button type="button" class="btn btn-secondary btn-sm btn" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
+    <button type="button" class="btn btn-primary btn-sm btn" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
 
     <?php  ;
   } ?>
+
+<?php
+  if(isset($_SESSION['uid'])){?>
+  <div class="dropdown">
+<button type="button" class="btn btn-sm btn-primary dropdown-toggle mb-1" data-toggle="dropdown">
+  <img class="svg m-0 p-0" src="/images/profile.svg" width="18" />
+</button>
+<div class="dropdown-menu dropdown-menu-right">
+  <a class="dropdown-item" href="/includes/post_login_landing_controller.php">Dashboard</a>
+  <a class="dropdown-item" href="profile.php">Profile</a>
+  <a class="dropdown-item" href="settings.php">Settings</a>
+  <a class="dropdown-item" href="contact.php">Support</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="/includes/logout.php"><img class="svg m-0 pr-1" src="/images/logout.svg" width="20" />Logout</a>
 </div>
-  <!-- burger -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <!-- /burger" -->
+</div>
+    <?php
+  }
+  ?>
+</div>
+
 
   <!-- everything in here will be collapsed on smaller devices -->
   <div class="collapse navbar-collapse pt-1" id="navbarSupportedContent">
@@ -114,88 +135,31 @@ include_once ROOT_DIR."/includes/auto_login.php";
     <ul class="navbar-nav mr-auto">
 
 
-<!-- mobile navbar items logged-in only-->
-<?php
-if(isset($_SESSION['uid'])){ ?>
-      <li class="nav-item active hide-on-nonmobile_nav pl-5 pt-4">
-        <a class="nav-link " href="/profile.php"><?php echo $_SESSION['username']?></a>
-      </li>
-      <li class="nav-item active hide-on-nonmobile_nav pl-5 ml-4">
-        <a class="nav-link " href="/includes/post_login_landing_controller.php">Dashboard</a>
-      </li>
-      <li class="nav-item active hide-on-nonmobile_nav pl-5 ml-4">
-        <a class="nav-link " href="/settings.php">Settings</a>
-      </li>
-      <li class="nav-item active hide-on-nonmobile_nav pl-5 ml-4 pb-2">
-        <a class="nav-link " href="/includes/logout.php">Logout</a>
-      </li>
-<?php
-}
-?>
+
 <!-- mobile navbar items state-independent -->
 
-      <li class="nav-item active hide-on-nonmobile_nav pl-5 pt-2">
+      <li class="nav-item active pl-5 pt-3">
+        <a class="nav-link " href="/contact.php">About FuNinja</a>
+      </li>
+      <li class="nav-item active pl-5">
+        <a class="nav-link " href="/contact.php">Our Trainers</a>
+      </li>
+      <li class="nav-item active pl-5">
+        <a class="nav-link" href="/plans.php">Membership</a>
+      </li>
+      <li class="nav-item active pl-5 pb-4">
         <a class="nav-link " href="/contact.php">Contact Us</a>
       </li>
-      <li class="nav-item active hide-on-nonmobile_nav pl-5">
-        <a class="nav-link " href="/contact.php">Feedback</a>
-      </li>
-
-      <li class="nav-item active hide-on-nonmobile_nav pl-5 pb-4">
-        <a class="nav-link " href="/plans.php">Membership</a>
-      </li>
 
 
-<!-- desktop navbar items -->
 
-      <li class="nav-item active hide-on-mobile_nav">
-        <a class="nav-link pl-5" href="/contact.php">About Us</a>
-      </li>
-      <li class="nav-item active hide-on-mobile_nav">
-        <a class="nav-link pl-2" href="/contact.php">Our Trainers</a>
-      </li>
-      <li class="nav-item active hide-on-mobile_nav">
-        <a class="nav-link pl-2" href="/plans.php">Membership</a>
-      </li>
-      <li class="nav-item active hide-on-mobile_nav">
-        <a class="nav-link pl-2" href="/contact.php">Contact Us</a>
-      </li>
+
 
 
 
 
     </ul>
-<ul class="navbar-nav ml-auto ">
-    <!-- Other stuff in the navbar goes here-->
 
-    <?php
-    // if user user isn't logged in, show the login and register buttons
-    if(!isset($_SESSION['uid'])){ ?>
-      <button type="button" class="btn btn-secondary btn-sm btn mr-1 mb-1 hide-on-mobile_nav" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
-      <button type="button" class="btn btn-primary btn-sm btn mr-1 mb-1 hide-on-mobile_nav" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
-
-      <?php  ;
-    }
-
-    // if the user is logged in, show the user profile button
-    if(isset($_SESSION['uid'])){?>
-    <div class="dropdown">
-  <button type="button" class="btn btn-sm btn-primary dropdown-toggle mb-1 hide-on-mobile_nav" data-toggle="dropdown">
-    <img class="svg m-0 p-0" src="/images/profile.svg" width="18" />
-  </button>
-  <div class="dropdown-menu dropdown-menu-right">
-    <a class="dropdown-item" href="/includes/post_login_landing_controller.php">Dashboard</a>
-    <a class="dropdown-item" href="profile.php">Profile</a>
-    <a class="dropdown-item" href="settings.php">Settings</a>
-    <a class="dropdown-item" href="contact.php">Support</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="/includes/logout.php"><img class="svg m-0 pr-1" src="/images/logout.svg" width="20" />Logout</a>
-  </div>
-</div>
-      <?php
-    }
-    ?>
-</ul>
 </div>
 </nav>
 <!-- /navbar -->

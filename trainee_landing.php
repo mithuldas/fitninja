@@ -68,11 +68,17 @@ $activityNames=Activity::getAllActivityNames($conn);
   </div>
   <div class="row">
     <div class="form-group col-xs-4 col-md-4">
-      <label for="gender">4. Gender</label>
-      <select id="gender" class="form-control" name="gender">
-        <option>Female</option>
-        <option>Male</option>
-      </select>
+      <div class="row pl-3">
+        <label for="gender">4. Gender</label>
+      </div>
+      <div class="row form-inline pl-3">
+      <input  type='radio' value='Male' id='maleGender' name='gender' class="mr-1" required>
+      <label for="maleGender" class="mr-3">Male</label>
+      <input  type='radio' value='Female' id='femaleGender' name='gender' class="mr-1" required>
+      <label for="femaleGender" class="mr-3">Female</label>
+      <input  type='radio' value='Other' id='otherGender' name='gender' class="mr-1" required>
+      <label for="otherGender" >Other</label>
+    </div>
     </div>
     <div class="form-group col-xs-4 col-md-4">
       <div class="row pl-3">

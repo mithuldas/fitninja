@@ -7,6 +7,7 @@ class User {
   public $uid;
   public $firstName;
   public $lastName;
+  public $fullName;
   public $dateOfBirth;
   public $phoneNumber;
   public $gender;
@@ -94,6 +95,8 @@ class User {
             break;
           }
       }
+
+      $this->fullName = $this->firstName.' '.$this->lastName;
     }
   }
 

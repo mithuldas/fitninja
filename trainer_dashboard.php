@@ -158,7 +158,7 @@ $currentUserJSON = json_encode($currentUser);
 
 <script id="mini-clndr-template" type="text/template">
   <div class="controls">
-    <div class="clndr-previous-button">&lsaquo;</div><div class="month"><%= month %></div><div class="clndr-next-button">&rsaquo;</div>
+    <div class="clndr-previous-button">&lsaquo;</div><div class="month"><%= month %> <%= year %></div><div class="clndr-next-button">&rsaquo;</div>
   </div>
 
   <div class="days-container">

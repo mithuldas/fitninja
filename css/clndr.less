@@ -41,50 +41,10 @@ strong
   transition: @props;
 }
 
-// some colors
-
-@red: #ff5a45;
-@blue: #71bbd2;
-@dark-blue: #3883a3;
-@dark-green:  #69a776;
-@light-green: #97ce7f;
+@header-color: #EFEEFA;
 @dark-gray: #414141;
 @light-gray: #ebebeb;
-@yellow: #ddca9a;
 
-.bg-gray
-{
-  background-color: @dark-gray;
-}
-
-.bg-red
-{
-  background-color: @red;
-  a
-  {
-    color: @red;
-    &:hover
-    {
-      background-color: lighten(@red, 20%);
-      color: #212121;
-    }
-  }
-}
-
-.bg-blue
-{
-  background-color: @blue;
-}
-
-.bg-green
-{
-  background-color: @light-green;
-}
-
-.bg-yellow
-{
-  background-color: @yellow;
-}
 
 // @light-gray:  #dedede;
 @black-text:  #212121;
@@ -105,25 +65,37 @@ strong
   padding-bottom: @size;
 }
 
-#mini-clndr
+#mini-clndr, #large-clndr
 {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   font-family: Asap, Helvetica, Arial;
   margin: 0 auto;
   width: 294px;
-  -moz-box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
-  -webkit-box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
-  box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+  //-moz-box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+  //-webkit-box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+  //box-shadow: 4px 4px 0 darken(@dark-gray, 5%);
+  box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
 }
 
-#mini-clndr .clndr
+#mini-clndr, #large-clndr .clndr
 {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   overflow: hidden;
-  border-bottom: 7px solid @dark-green;
 
   .controls
   {
-    background-color: @dark-green;
-    color: white;
+    background-color: @header-color;
+    color: black;
 
     .clndr-previous-button, .clndr-next-button
     {
@@ -136,7 +108,7 @@ strong
       .transition(background-color @time);
       &:hover
       {
-        background-color: darken(@dark-green, 10%);
+        background-color: darken(@header-color, 10%);
       }
     }
     .month
@@ -145,7 +117,6 @@ strong
       .vertical-padding;
       display: inline-block;
       text-align: center;
-      text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 1px;
     }
@@ -153,9 +124,10 @@ strong
 
   .days-container
   {
+
     position: relative;
     width: 294px;
-    height: 213px;
+    height: 209px;
     .clearfix;
 
     .days
@@ -165,7 +137,7 @@ strong
       width: 294px;
       height: 217px;
       .transition(left @time);
-      background-color: @light-gray;
+      background-color: white;
 
       .day, .empty
       {
@@ -178,12 +150,13 @@ strong
         text-align: center;
         color: @black-text;
 
-        border-right: 1px solid @trans-white;
-        border-bottom: 1px solid @trans-white;
-
         &.event
         {
-          background-color: darken(@light-gray, 10%);
+          background-color: #B873FC;
+          border-radius: 20px;
+          color: white;
+          font-weight:bold;
+
           .transition(background-color @time);
           cursor: pointer;
           &:hover
@@ -206,7 +179,7 @@ strong
 
       .headers
       {
-        background-color: @light-green;
+        background-color: @header-color;
         .vertical-padding;
 
         .day-header
@@ -214,7 +187,9 @@ strong
           width: 42px;
           display: inline-block;
           text-align: center;
-          color: white;
+          color: #7C798A;
+            font-size: 12px;
+            font-weight: bold;
         }
       }
     }
@@ -223,10 +198,10 @@ strong
     {
       position: absolute;
       left: 294px;
-      width: 294px;
+      width: 310px;
       height: 217px;
       .transition(left @time);
-      background-color: @light-gray;
+      background-color: white;
 
       .headers
       {
@@ -236,10 +211,10 @@ strong
       .event-header
       {
         width: 100%;
-        background-color: @light-green;
+        background-color: @header-color;
         .vertical-padding;
         text-align: center;
-        color: white;
+        color: #7C798A;
       }
 
       .x-button
@@ -259,7 +234,7 @@ strong
       .events-list
       {
         overflow: scroll;
-        height: 185px;
+        height: 217px;
 
         .event
         {
@@ -286,7 +261,7 @@ strong
             &:hover
             {
               background-color: transparent;
-              color: @dark-green;
+              color: @header-color;
             }
           }
         }

@@ -110,7 +110,7 @@ $trainers = getTrainerList($conn);
 </select>
 
 <input type='hidden' name='firstSession' value='<?php echo $_POST['session']; ?>'>
-<br><button class="btn-sm btn-primary mt-1" type="submit" name="scheduleFirstSession">Schedule the first session</button>
+<br><button class="btn btn-sm btn-primary mt-1" type="submit" name="scheduleFirstSession">Schedule the first session</button>
 </div>
 </form>
 </div>

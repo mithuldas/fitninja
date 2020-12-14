@@ -100,7 +100,7 @@ var options = {
     "amount": orderAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
     "name": "FuNinja",
-    "description": "Test Transaction",
+    "description": "Purchase <?php echo $product->productName; ?>",
     "order_id": orderID, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
     "handler": function (response){ // add callback handler here (AJAX)
       paymentGatewayResponse=response.razorpay_payment_id;
@@ -127,13 +127,13 @@ var options = {
 
     },
     "prefill": {
-        "name": "Test User",
-        "email": "mithuldas@gmail.com",
-        "contact": "9972166212"
+        "name": "<?php echo $trainee->fullName; ?>",
+        "email": "<?php echo $trainee->email; ?>",
+        "contact": "<?php echo $trainee->phoneNumber; ?>"
     },
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
+  //  "notes": {
+    //    "address": "Razorpay Corporate Office"
+    //},
     "theme": {
         "color": "#F37254"
     }

@@ -126,7 +126,7 @@ echo "</tbody></table>";
 
 
 <input type='hidden' name='session' value='<?php echo $_POST['session']; ?>'>
-<br><button class="btn-sm btn-primary mt-1" type="submit" name="edit_session">Save changes</button>
+<br><button class="btn btn-sm btn-primary mt-1" type="submit" name="edit_session">Save changes</button>
 
 </form>
 

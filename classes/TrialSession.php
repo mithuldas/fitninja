@@ -8,6 +8,7 @@ class TrialSession extends Session {
   public $trialType;
   public $trialDate;
   public $trialTimeSlot;
+  public $comments;
 
   function __construct($id, $conn) {
     parent::__construct($id, $conn);
@@ -32,6 +33,9 @@ class TrialSession extends Session {
           case "preferredTrialType":
             $this->trialType = $row['attribute_value'];
             break;
+            case "trialRequestComments":
+              $this->comments = $row['attribute_value'];
+              break;
           case "preferredTrialDate":
             $date = date_create($row['attribute_value']);
             $dateString= date_format($date,"Y-m-d");

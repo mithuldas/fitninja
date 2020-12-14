@@ -123,7 +123,7 @@ INSERT INTO `product_attribute_definitions` (`id`, `attribute_name`) VALUES
 (1, 'valid for trial'),
 (2, 'number of sessions'),
 (3, 'valid days'),
-(4, 'standard session duration');
+(4, 'default session duration');
 
 -- --------------------------------------------------------
 

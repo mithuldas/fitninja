@@ -3,9 +3,6 @@ $(document).ready(function(){
   populateProgressDivContent();
   populateTrainerDetailsDivContent();
 
-  $("#trialSubmit").submit(function(event){
-    event.preventDefault();
-  });
 
 });
 
@@ -13,13 +10,14 @@ function populateUpcomingDivContent(){
   if(currentUser.isNew){
     $(".upcoming-sessions-area").html
       ("You don't have any upcoming sessions yet. \
-      <br><small>Your next session will always appear here,\
-      </small><br>\
-      <a onclick=\"viewTrialForm()\" class=\"btn btn-primary btn-sm btn mr mb\
+      <br>\
+      <a href=\"/request_trial.php\" class=\"btn btn-primary btn-sm btn mr mb\
       \" id =\"loginButton\"> Request a Free Trial </a>\
-      <a href=\"plans.php\" class=\"btn btn-primary btn-sm btn mr mb\
-      \" id =\"loginButton\"> Membership </a>\
       ");
+  } else if (currentUser.activePlan.productName=="Trial" && currentUser.trialCompleted){
+    var finalHTML ="<p>Now that you\'ve completed your trial, we would love to hear your <a href=\"contact.php\">feedback.</a></p>\
+    <p> Explore <a href=\"about_us.php\">FuNinja,</a> our <a href=\"trainers.php\">Trainers</a> and our exciting <a href=\"plans.php\">Membership Plans </a></p>";
+
   } else {
 
     var finalHTML ='';
@@ -57,7 +55,7 @@ function populateUpcomingDivContent(){
       " <table id='unassignedProducts' class='table-sm table' style='width:100%'><thead>\
         <tr>\
         <th> Type </th>\
-        <th> Date Added </th>\
+        <th> Added On </th>\
         <th> Status </th>\
         </tr><thead>";
 
@@ -66,7 +64,10 @@ function populateUpcomingDivContent(){
       "</table>";
 
         unassignedProducts.forEach(function (product, index) {
-          tableBody=tableBody+'<tr><td>'+product.productName+'</td><td>'+product.validFrom+'</td><td>'+'We\'re working on finding you the right trainer'+'</td></tr>';
+          var productValidFromDate = new Date(product.validFrom);
+          var momentDate = moment(productValidFromDate);
+          var momentDateString = momentDate.format('Do MMM');
+          tableBody=tableBody+'<tr><td>'+product.productName+'</td><td>'+momentDateString+'</td><td>'+'We\'re working on finding you the right trainer'+'</td></tr>';
         });
 
         var finalUnassignedProducts = title+tableHeader+tableBody+tableFooter;
@@ -74,33 +75,44 @@ function populateUpcomingDivContent(){
     }
 
 
-    $(".upcoming-sessions-area").html(finalHTML);
+
   }
+
+  $(".upcoming-sessions-area").html(finalHTML);
 }
 
 function populateTrainerDetailsDivContent(){
-  var finalHTML ='';
-  var title="<h6>Your Trainers</h6>";
 
-  var tableHeader=
-  " <table id='trainerList' class='table-sm table' style='width:100%'><thead>\
-    <tr>\
-    <th> Name </th>\
-    <th> Specialization </th>\
-    </tr><thead>";
+  if(trainers.length>0){
+    var finalHTML ='';
+    var title="<h6>Your Trainers</h6>";
 
-  var tableBody='';
-  var tableFooter =
-  "</table>";
+    var tableHeader=
+    " <table id='trainerList' class='table-sm table' style='width:100%'><thead>\
+      <tr>\
+      <th> Name </th>\
+      <th> Specialization </th>\
+      </tr><thead>";
+
+    var tableBody='';
+    var tableFooter =
+    "</table>";
 
 
-  trainers.forEach(function (trainer, index) {
-    tableBody=tableBody+'<tr><td>'+trainer.firstName+' '+trainer.lastName+'</td><td>'+trainer.qualifiedActivitiesString+'</td></tr>';
-  });
+    trainers.forEach(function (trainer, index) {
+      tableBody=tableBody+'<tr><td>'+trainer.firstName+' '+trainer.lastName+'</td><td>'+trainer.qualifiedActivitiesString+'</td></tr>';
+    });
 
-  var finalTrainerList = title+tableHeader+tableBody+tableFooter;
-  finalHTML = finalHTML+finalTrainerList;
-  $(".trainer-facts").html(finalHTML);
+    var finalTrainerList = title+tableHeader+tableBody+tableFooter;
+    finalHTML = finalHTML+finalTrainerList;
+    $(".trainer-facts").html(finalHTML);
+  } else {
+    var finalHTML ='';
+    finalHTML = '<center>Explore <a href="/about_us.php">FuNinja,</a> our <a href="/trainers.php">Trainers</a> and our exciting <a href="/plans.php">Membership Plans </a></center>';
+    $(".trainer-facts").html(finalHTML);
+  }
+
+
 }
 
 
@@ -190,11 +202,28 @@ function populateProgressDivContent(){
   }
 });
 
-  var completedSessionsForPie=currentUser.activePlan.sessionsCompleted;
-  var scheduledSessionsForPie=currentUser.activePlan.sessionsScheduled-completedSessionsForPie;
-  var unscheduledSessionsForPie=currentUser.activePlan.totalSessions-currentUser.activePlan.sessionsScheduled;
+  if(!currentUser.activePlan){
+    var completedSessionsForPie=0
+    var scheduledSessionsForPie=0;
+    var unscheduledSessionsForPie=1;
+    var status = "Kickstart Your Fitness Journey";
+  } else {
+    var completedSessionsForPie=currentUser.activePlan.sessionsCompleted;
+    var scheduledSessionsForPie=currentUser.activePlan.sessionsScheduled-completedSessionsForPie;
+    var unscheduledSessionsForPie=currentUser.activePlan.totalSessions-currentUser.activePlan.sessionsScheduled;
 
-  var status = completedSessionsForPie+' out of ' +(scheduledSessionsForPie+unscheduledSessionsForPie)+' sessions completed';
+    var status = completedSessionsForPie+' out of ' +(completedSessionsForPie+scheduledSessionsForPie+unscheduledSessionsForPie)+' sessions completed';
+
+    if(currentUser.activePlan.productName=="Trial" && !currentUser.trialCompleted){
+      var status = "Trial Scheduled";
+    }
+
+    if(currentUser.activePlan.productName=="Trial" && currentUser.trialCompleted){
+      var status = "Trial Completed";
+    }
+  }
+
+// donut for desktop view
   var ctx = document.getElementById('myChart').getContext('2d');
 
   if(!currentUser.nextSession){
@@ -246,112 +275,57 @@ function populateProgressDivContent(){
     }
 });
 
+// donut for mobile
+
+var ctxMobile = document.getElementById('myMobileChart').getContext('2d');
+
+if(!currentUser.nextSession){
+  var donutCenterText = status;
+} else {
+  var donutNextDate = new Date(currentUser.nextSession.scheduledDateTimeLocal);
+  var momentDate = moment(donutNextDate);
+  var momentDateString = momentDate.format('Do MMM') + ' at ' + momentDate.format('h:mm A');
+  var donutCenterText = status;
 }
 
 
+var chart = new Chart(ctxMobile, {
+  // The type of chart we want to create
+  type: 'pie',
 
+  // The data for our dataset
+  data: {
+      labels: ['Completed', 'Scheduled', 'Unscheduled'],
+      datasets: [{
+          backgroundColor: ['rgb(255, 99, 132)','grey'],
+          borderColor: ['rgb(255, 99, 132)','grey'],
+          data: [completedSessionsForPie, scheduledSessionsForPie, unscheduledSessionsForPie],
+      }]
+  },
 
-function viewTrialForm(){ // form with the following options - type dropdown, date dropdown with the next 5 days, and preferred timeslot dropdown
-  $(".upcoming-sessions-area").html("<form id=\"requestTrialForm\">\
-    <div class=\"form-group\">\
-      <label for=\"typeSelect\">Type:</label> <small> Which trial are you interested in? </small>\
-      <select class=\"form-control\" id=\"typeSelect\">\
-      </select>\
-      <label for=\"dateSelect\">Date:</label> <small> Pick from the list of available dates </small>\
-      <select class=\"form-control\" id=\"dateSelect\">\
-      </select>\
-      <label for=\"timeSlot\">Time:</label><small> This is just a guideline. Don't worry, one of us will get in touch with you to finalize a timeslot.</small>\
-      <select class=\"form-control\" id=\"timeSlot\">\
-      </select>\
-       <button type=\"submit\" class=\"btn btn-primary\" id=\"trialSubmit\" name=\"trialSubmit\" onclick=\"submitTrialRequestForm()\">Submit Request</button>\
-    </div>\
-  </form>");
+  // Configuration options go here
+  options: {
+    elements: {
+center: {
+  text: donutCenterText,
+  color: '#FF6384', // Default is #000000
+  fontStyle: 'Arial', // Default is Arial
+  sidePadding: 20, // Default is 20 (as a percentage)
+  minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
+  lineHeight: 25 // Default is 25 (in px), used for when text wraps
+}
+},
 
-  $("#requestTrialForm").submit(false);
-
-  var date = new Date();
-  var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-
-  var newDate = new Date();
-
-  var availableDates=[];
-  var timeSlots = ['9 AM - 12 PM', '12 PM - 3 PM', '3 PM - 6 PM','6 PM - 9 PM'];
-
-  var i;
-
-  for(i=1; i<=5; i++){
-    newDate.setDate(date.getDate()+i);
-    availableDates.push(days[newDate.getDay()]+' '+newDate.getDate()+' '+months[newDate.getMonth()]+' '+newDate.getFullYear());
+    cutoutPercentage: 80,
+    title: {
+      display: false,
+      text: status,
+      position: 'bottom',
+  },
+  legend: {
+   onClick: (e) => e.stopPropagation()
+},
   }
-
-
-  var typeSelect = document.getElementById('typeSelect');
-  for(var i = 0; i < productListForTrial.length; i++) {
-    var opt = document.createElement('option');
-    opt.innerHTML = productListForTrial[i];
-    opt.value = productListForTrial[i];
-    typeSelect.appendChild(opt);
-  }
-
-  var dateSelect = document.getElementById('dateSelect');
-  for(var i = 0; i < availableDates.length; i++) {
-    var opt = document.createElement('option');
-    opt.innerHTML = availableDates[i];
-    opt.value = availableDates[i];
-    dateSelect.appendChild(opt);
-  }
-
-  var timeSelect = document.getElementById('timeSlot');
-  for(var i = 0; i < timeSlots.length; i++) {
-    var opt = document.createElement('option');
-    opt.innerHTML = timeSlots[i];
-    opt.value = timeSlots[i];
-    timeSelect.appendChild(opt);
-  }
+});
 
 }
-
-function submitTrialRequestForm(){
-
-  $("#trialSubmit").prop('disabled', true);
-
-  var trialType = $("#typeSelect").val();
-  var trialDate = $("#dateSelect").val();
-  var trialTimeSlot = $("#timeSlot").val();
-
-  $.ajax({
-    url: '/includes/submit_trial_request.php',
-    type: 'post',
-    data: {
-      'currentUser' : currentUser,
-      'trialType': trialType,
-      'trialDate' : trialDate,
-      'trialTimeSlot' : trialTimeSlot
-    },
-    timeout:5000, //5 second timeout
-    error: function(xmlhttprequest, textstatus, message){
-      if(textstatus==="timeout"){
-        $("#errorMsg").text("The server didn't respond. Try clicking submit again...");
-      }
-
-    },
-    success: function(response){
-      if(response=="success"){
-        currentUser.isNew=false;
-        populateUpcomingDivContent();
-        var successMessage = "We've received your request for a "+trialType+" trial for "+trialDate+ " between "+trialTimeSlot+". Sit tight and one of us will be in touch!";
-        alert(successMessage);
-        window.location.href = "/trainee_dashboard.php";
-      }
-    }
-  });
-}
-
-
-
-
-
-//You don't have any scheduled sessions yet. <br>
-//<button type="button" class="btn btn-primary btn-sm btn mr-1 mb-1" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SCHEDULE A FREE TRIAL</button>

@@ -5,22 +5,10 @@ require_once __DIR__.'/config.php';
 require_once ( ROOT_DIR.'/includes/autoloader.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
-if(!isset($_SESSION)){
-  session_start();
-}
+FlowControl::startSession();
+FlowControl::redirectIfNotLoggedIn();
+FlowControl::redirectIfWrongUserType("Trainee");
 
-if(!isset($_SESSION['uid'])){
-  header("Location: index.php?notLoggedIn");
-  exit();
-}
-
-if($_SESSION['userType']!="Trainee"){
-  header("Location: includes/post_login_landing_controller.php");
-  exit();
-}
-?>
-
-<?php
 require "header.php";
 
 $currentUser = new Trainee($_SESSION['uid'], $conn);
@@ -34,7 +22,6 @@ foreach ($upcomingSessions as $upcomingSession) {
 $upcomingSessions=json_encode($upcomingSessions);
 
 $currentUserJSON = json_encode($currentUser);
-$trialActivities = json_encode(Product::getActivities($conn));
 $unassignedProducts = json_encode($currentUser->getUnassignedProducts($conn));
 $trainers = json_encode($currentUser->getTrainerList($conn));
 ?>
@@ -43,11 +30,11 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="ext_scripts/clndr.min.js"></script>
 <link rel="stylesheet/less" type="text/css" href="/css/clndr.less" />
-<script src="//cdn.jsdelivr.net/npm/less" ></script>
+<script src="https://cdn.jsdelivr.net/npm/less/dist/less.min.js" ></script>
+<link href="/css/main.css" rel="stylesheet">
 
 <script type="text/javascript">
   var currentUser = <?php echo $currentUserJSON; ?>;
-  var productListForTrial = <?php echo $trialActivities; ?>;
   var upcomingSessions = <?php echo $upcomingSessions; ?>;
   var unassignedProducts = <?php echo $unassignedProducts; ?>;
   var trainers = <?php echo $trainers; ?>;
@@ -63,70 +50,50 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 
   <div class="row">
     <div class="col-md">
-      <div class="welcome-banner">
-        <center>Welcome back, <?php echo $currentUser->firstName;?>! </center>
+      <div class="welcome-banner mt-2 mb-4">
+        <center><h6>Hey <?php echo $currentUser->firstName;?>! </h6></center>
       </div>
     </div>
   </div>
 
-    <!-- row 2 - upcoming and donut on pc -->
+    <!-- row 2 - upcoming and calendar on pc -->
   <div class="row">
     <div class="col-md">
       <div class="upcoming-sessions-area" align="center">
       </div>
     </div>
     <div class="col-md">
-      <div class="progressArea">
-        <canvas id="myChart"></canvas>
+      <div class="calendar hide-on-mobile mt-2 mb-5" id ="large-clndr">
       </div>
     </div>
   </div>
 
   <!-- row - visible only on mobile that'll contain carousel with pie and calendar-->
 
-  <div class="row">
+  <div class="row hide-on-nonmobile ">
     <div class="col">
-      <div class="dashboard-carousel">
-
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <center><img src="../images/donut-chart.png" style="width: 80%"></center>
-          </div>
-          <div class="carousel-item">
-            <center><img src="../images/calendar.png" style="width: 90%"></center>
-          </div>
+      <div class="row pt-3">
+          <div id ="mini-clndr"> </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+      <div class="row pt-4">
+          <canvas id="myMobileChart"></canvas>
       </div>
-
-
-
       </div>
     </div>
-  </div>
 
   <!-- row 2 -->
   <div class="row">
     <div class="col-md">
-      <div class="trainer-facts">
-      Trainer info here
+      <div class="progressArea hide-on-mobile mb-2">
+        <canvas id="myChart"></canvas>
       </div>
     </div>
     <div class="col-md">
-      <div class="calendar" id ="mini-clndr">
+      <div class="trainer-facts">
+      Trainer info here
       </div>
+
+
     </div>
   </div>
 
@@ -135,7 +102,7 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 
 <script id="mini-clndr-template" type="text/template">
   <div class="controls">
-    <div class="clndr-previous-button">&lsaquo;</div><div class="month"><%= month %></div><div class="clndr-next-button">&rsaquo;</div>
+    <div class="clndr-previous-button">&lsaquo;</div><div class="month"><%= month %> <%= year %></div><div class="clndr-next-button">&rsaquo;</div>
   </div>
 
   <div class="days-container">
@@ -190,6 +157,7 @@ $( function() {
   var events = assignmentEvents;
 
   $('#mini-clndr').clndr({
+    daysOfTheWeek: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     template: $('#mini-clndr-template').html(),
     events: events,
     clickEvents: {
@@ -201,6 +169,28 @@ $( function() {
           $('.eventday').hide();
           $('.event-'+selectedClass).show();
           $('#mini-clndr').find('.x-button').click( function() {
+            daysContainer.toggleClass('show-events', false);
+          });
+        }
+      }
+    },
+    adjacentDaysChangeMonth: true,
+    forceSixRows: true
+  });
+
+  $('#large-clndr').clndr({
+    daysOfTheWeek: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    template: $('#mini-clndr-template').html(),
+    events: events,
+    clickEvents: {
+      click: function(target) {
+        if(target.events.length) {
+          var daysContainer = $('#large-clndr').find('.days-container');
+          daysContainer.toggleClass('show-events', true);
+          var selectedClass = target.date.format('YYYY-MM-DD');
+          $('.eventday').hide();
+          $('.event-'+selectedClass).show();
+          $('#large-clndr').find('.x-button').click( function() {
             daysContainer.toggleClass('show-events', false);
           });
         }

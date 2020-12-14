@@ -144,43 +144,6 @@ text-decoration: none !important;
 }
 
 
-
-@media screen and (max-width: 767px) {
-  .calendar {
-    display:none;
-  }
-  .progressArea {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 767px) {
-  .dashboard-carousel {
-    display:none;
-  }
-
-}
-
-.carousel .carousel-indicators li {
-  background-color: #fff;
-  background-color: rgba(70, 70, 70, 0.25);
-}
-
-.carousel .carousel-indicators .active {
-  background-color: #444;
-}
-
-.carousel-control-prev-icon{
-  color:black;
-  background-color: #fff;
-  background-color: rgba(70, 70, 70, 0.25);
-}
-
-.carousel-control-next-icon{
-  background-color: #fff;
-  background-color: rgba(70, 70, 70, 0.25);
-}
-
 @media screen and (max-width: 575px) {
   .hide-on-mobile {
     display:none;
@@ -269,3 +232,13 @@ text-decoration: none !important;
 .loginBtn--google:focus {
   background: #F5F5F5;
 }
+
+.userdropdown{
+  box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+}
+
+/*  table formatting */

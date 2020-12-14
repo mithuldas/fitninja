@@ -92,7 +92,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0">
 
     <!-- burger -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="burger" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- /burger" -->
@@ -111,7 +111,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <?php
   if(isset($_SESSION['uid'])){?>
   <div class="dropdown">
-<button type="button" class="btn btn-sm btn-primary dropdown-toggle mb-1" data-toggle="dropdown">
+<button type="button" class="btn btn-sm btn-primary dropdown-toggle userdropdown" data-toggle="dropdown">
   <img class="svg m-0 p-0" src="/images/profile.svg" width="18" />
 </button>
 <div class="dropdown-menu dropdown-menu-right">

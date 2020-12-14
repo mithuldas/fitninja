@@ -44,6 +44,12 @@ $activities = Product::getActivities($conn);
 
 <div class="container">
   <h5> Process trial request </h5><br>
+
+<b>Requested date: </b><?php echo $session->trialDate;?><br>
+<b>Requested time slot: </b><?php echo $session->trialTimeSlot;?><br>
+<b>Requested activity: </b></b><?php echo $session->trialType;?><br>
+<b>Comments: </b></b><?php echo $session->comments;?><br><br>
+
 <form action = "process_trial_assignment.php" method="post">
 <div class="form-group">
   <fieldset class="form-inline">
@@ -109,7 +115,7 @@ $activities = Product::getActivities($conn);
   ?>
 </select>
 <input type='hidden' name='trialSession' value='<?php echo $_POST['trialSession']; ?>'>
-<br><button class="btn-sm btn-primary mt-1" type="submit" name="scheduleTrial">Schedule the Trial</button>
+<br><button class="btn btn-sm btn-primary mt-1" type="submit" name="scheduleTrial">Schedule the Trial</button>
 
 </form>
 </div>

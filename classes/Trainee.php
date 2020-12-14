@@ -11,6 +11,7 @@ class Trainee extends User{
   public $activePlan;
   public $isNew;
   public $onboardingComplete;
+  public $trialCompleted;
 
   function __construct($uid, $conn) {
     parent::__construct($uid, $conn);
@@ -18,6 +19,7 @@ class Trainee extends User{
     $this->loadPlans($conn);
     $this->setActivePlan($conn);
     $this->setOnboardingStatus($conn);
+    $this->setTrialCompletedStatus($conn);
   }
 
   function setOnboardingStatus($conn){
@@ -61,7 +63,8 @@ class Trainee extends User{
     }
   }
 
-  function submitTrialRequest($trialType, $trialDate, $trialTimeSlot, $conn){
+  function submitTrialRequest($trialType, $trialDate, $trialTimeSlot, $requestComments, $conn){
+
     // insert user_products entry for Trial
     $sql = "INSERT INTO user_products (id, uid, product_id, valid_from, valid_to) VALUES (NULL,".
        $this->uid .", '1', (select date(sysdate()) from dual), NULL);";
@@ -77,7 +80,8 @@ class Trainee extends User{
       }
     }
 
-    // insert session but first get the user_product id first
+
+    // insert session but get the user_product id first
     $sql = "select id from user_products where uid = ".$this->uid." and sysdate() between valid_from and IFNULL(valid_to,  DATE_ADD(sysdate(), INTERVAL 1 YEAR));";
 
     $stmt = mysqli_stmt_init($conn);
@@ -94,7 +98,7 @@ class Trainee extends User{
     // insert sessions
 
     $sql = "INSERT INTO sessions (sequence, user_product_id, duration, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
-            VALUES (1,".$userProductId.", (select attribute_value from product_attribute_definitions pad, product_attributes pa where pad.id=pa.attribute_id and pad.attribute_name='standard session duration' and product_id=1), 1, 1, 0, 0)";
+            VALUES (1,".$userProductId.", (select attribute_value from product_attribute_definitions pad, product_attributes pa where pad.id=pa.attribute_id and pad.attribute_name='default session duration' and product_id=1), 1, 1, 0, 0)";
 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -122,19 +126,26 @@ class Trainee extends User{
 
     // now that we have the session id, insert the session attributes (viewable by admin for assignment tips)
 
-    $sql1 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialType'), '".$trialType."', (select date(sysdate()) from dual), NULL);";
-    $sql2 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialDate'), '".$trialDate."', (select date(sysdate()) from dual), NULL);";
-    $sql3 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialTimeSlot'), '".$trialTimeSlot."', (select date(sysdate()) from dual), NULL);";
-
     $stmt = mysqli_stmt_init($conn);
 
+    $sql1 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialType'), ?, (select date(sysdate()) from dual), NULL);";
     mysqli_stmt_prepare($stmt, $sql1);
+    mysqli_stmt_bind_param($stmt, "s", $trialType);
     mysqli_stmt_execute($stmt);
 
+    $sql2 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialDate'), ?, (select date(sysdate()) from dual), NULL);";
     mysqli_stmt_prepare($stmt, $sql2);
+    mysqli_stmt_bind_param($stmt, "s", $trialDate);
     mysqli_stmt_execute($stmt);
 
+    $sql3 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='preferredTrialTimeSlot'), ?, (select date(sysdate()) from dual), NULL);";
     mysqli_stmt_prepare($stmt, $sql3);
+    mysqli_stmt_bind_param($stmt, "s", $trialTimeSlot);
+    mysqli_stmt_execute($stmt);
+
+    $sql4 = "INSERT INTO session_attributes (session_id, attribute_id, attribute_value, valid_from, valid_to) VALUES (".$sessionId.", (select attribute_id from session_attribute_definitions where attribute_name='trialRequestComments'), ?, (select date(sysdate()) from dual), NULL);";
+    mysqli_stmt_prepare($stmt, $sql4);
+    mysqli_stmt_bind_param($stmt, "s", $requestComments);
     mysqli_stmt_execute($stmt);
 
     return true;
@@ -197,7 +208,7 @@ class Trainee extends User{
     // insert sessions
     for ($i=1; $i <= $sessionCount; $i++) {
       $sql = "insert into sessions (sequence, user_product_id, duration, planned_trainers, planned_trainees, filled_trainers, filled_trainees)
-              (select $i, up.id, pa.attribute_value, 1, 1, 0, 0 from transactions t, orders o, user_products up, product_attributes pa, product_attribute_definitions pad where up.product_id = pa.product_id and pa.attribute_id=pad.id and pad.attribute_name='standard session duration' and t.order_id=o.id and up.order_id=o.id and t.external_id=?)";
+              (select $i, up.id, pa.attribute_value, 1, 1, 0, 0 from transactions t, orders o, user_products up, product_attributes pa, product_attribute_definitions pad where up.product_id = pa.product_id and pa.attribute_id=pad.id and pad.attribute_name='default session duration' and t.order_id=o.id and up.order_id=o.id and t.external_id=?)";
 
       $stmt = mysqli_stmt_init($conn);
       if(!mysqli_stmt_prepare($stmt, $sql)) {
@@ -214,7 +225,7 @@ class Trainee extends User{
   }
 
   function loadPlans($conn){
-    $sql="select * from user_products where uid=" .$this->uid. " and product_id<>'1';";
+    $sql="select * from user_products where uid=" .$this->uid. ";";
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sql);
     mysqli_stmt_execute($stmt);
@@ -224,12 +235,30 @@ class Trainee extends User{
       $userProductId=$row['id'];
       array_push($this->plans, new UserProduct($userProductId, $conn));
     }
+
+    $paidPlanCount=0;
+    foreach ($this->plans as $value) {
+      if($value->productName!="Trial"){
+        $paidPlanCount+=1;
+      }
+    }
+
+
+    // if a non-trial (paid) plan exists, then set trial to not active, otherwise trial is the active plan
+    if($paidPlanCount>0){
+      foreach ($this->plans as $userPlan) {
+        if($userPlan->productName=="Trial"){
+          $userPlan->isActive=false;
+        }
+      }
+    }
+
   }
 
   function setActivePlan($conn){
-    foreach ($this->plans as $value) {
-      if($value->isActive){
-        $this->activePlan=$value;
+    foreach ($this->plans as $userPlan) {
+      if($userPlan->isActive){
+        $this->activePlan=$userPlan;
       }
     }
   }
@@ -248,6 +277,19 @@ class Trainee extends User{
       array_push($trainers, new Trainer($trainerUID, $conn));
     }
     return $trainers;
+  }
+
+  function setTrialCompletedStatus($conn){
+    $completed=false;
+    $sql="select 1 from user_products up, sessions s where s.user_product_id=up.id and s.completed='Y' and up.uid =$this->uid;";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+      $completed=true;
+    }
+    $this->trialCompleted=$completed;
   }
 }
 

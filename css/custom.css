@@ -5,7 +5,7 @@ html{
 
 body {
   background-color: white;
-  font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+  font-family: Lato-Regular;
 }
 
 .navbar-custom {
@@ -140,8 +140,6 @@ text-decoration: none !important;
 
 /** dashboard **/
 
-.upcoming-sessions-area{
-}
 
 
 @media screen and (max-width: 575px) {
@@ -241,4 +239,208 @@ text-decoration: none !important;
   -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
 }
 
+
+/* trainee dashboard tables */
 /*  table formatting */
+
+@font-face {
+  font-family: Lato-Regular;
+  src: url('/fonts/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+  font-family: Lato-Bold;
+  src: url('/fonts/Lato/Lato-Bold.ttf');
+}
+
+
+table {
+  width: 100%;
+}
+
+th, td {
+  font-weight: unset;
+  padding-right: 10px;
+}
+
+
+/* upcoming sessions table control desktop*/
+.column1.upcoming {
+  width: 40%;
+  padding-left: 40px;
+}
+
+.column2.upcoming {
+  width: 20%;
+}
+
+.column3.upcoming {
+  width: 20%;
+}
+
+.column4.upcoming {
+  width: 20%;
+}
+
+/* unassigned sessions table control desktop*/
+.column1.unassigned {
+  width: 20%;
+  padding-left: 40px;
+}
+
+.column2.unassigned {
+  width: 20%;
+}
+
+.column3.unassigned {
+  width: 60%;
+}
+  /* list of trainers table control desktop*/
+.column1.trainerlist {
+  width: 35%;
+  padding-left: 40px;
+}
+
+.column2.trainerlist {
+  width: 75%;
+}
+
+/* TRAINER dashboard tables */
+
+
+.column1.traineelist {
+  width: 40%;
+  padding-left: 40px;
+}
+.column2.traineelist {
+  width: 20%;
+}
+.column3.traineelist {
+  width: 20%;
+}
+.column4.traineelist {
+  width: 20%;
+}
+
+.column1 {
+  width: 35%;
+  padding-left: 40px;
+}
+
+.column2 {
+  width: 15%;
+}
+
+.column3 {
+  width: 60%;
+}
+
+.table100-head th {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.table100-body td {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/*==================================================================
+[ Fix header ]*/
+.table100 {
+  position: relative;
+  padding-top: 45px;
+}
+
+.table100-head {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.table100-body {
+  max-height: 585px;
+  overflow: auto;
+}
+
+
+.tableTitle{
+  font-family: Lato-Bold;
+  font-size: 14px;
+  color: #555555;
+  text-transform: uppercase;
+}
+
+/*==================================================================
+[ ]*/
+
+.table100 .table100-head {
+
+}
+
+.table100 th {
+  font-family: Lato-Bold;
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.4;
+
+  background-color: transparent;
+}
+
+.table100 td {
+  font-family: Lato-Regular;
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.4;
+
+  background-color: #f7f7f7;
+}
+
+.table100 .table100-body tr {
+  overflow: hidden;
+  border-bottom: 10px solid #fff;
+  border-radius: 10px;
+}
+
+.table100 .table100-body table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+.table100 .table100-body td {
+    border: solid 1px transparent;
+    border-style: solid none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.table100 .table100-body td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.table100 .table100-body td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.table100 tr:hover td {
+  background-color: #ebebeb;
+}
+
+.table100 .table100-head th {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+/*---------------------------------------------*/
+
+.table100 {
+  overflow: hidden;
+}
+
+
+/* Page background */
+body {
+	background: linear-gradient(45deg, lightblue, lavender);
+}

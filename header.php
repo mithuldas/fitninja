@@ -142,7 +142,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
         <a class="nav-link " href="/contact.php">About FuNinja</a>
       </li>
       <li class="nav-item active pl-5">
-        <a class="nav-link " href="/contact.php">Our Trainers</a>
+        <a class="nav-link " href="/offerings.php">Our Offerings</a>
       </li>
       <li class="nav-item active pl-5">
         <a class="nav-link" href="/plans.php">Membership</a>
@@ -150,13 +150,6 @@ include_once ROOT_DIR."/includes/auto_login.php";
       <li class="nav-item active pl-5 pb-4">
         <a class="nav-link " href="/contact.php">Contact Us</a>
       </li>
-
-
-
-
-
-
-
 
     </ul>
 

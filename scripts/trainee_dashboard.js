@@ -11,27 +11,32 @@ function populateUpcomingDivContent(){
     $(".upcoming-sessions-area").html
       ("You don't have any upcoming sessions yet. \
       <br>\
-      <a href=\"/request_trial.php\" class=\"btn btn-primary btn-sm btn mr mb\
+      <a href=\"/request_trial.php\" class=\"btn btn-primary btn-sm btn mt-4\
       \" id =\"loginButton\"> Request a Free Trial </a>\
       ");
   } else if (currentUser.activePlan.productName=="Trial" && currentUser.trialCompleted){
     var finalHTML ="<p>Now that you\'ve completed your trial, we would love to hear your <a href=\"contact.php\">feedback.</a></p>\
-    <p> Explore <a href=\"about_us.php\">FuNinja,</a> our <a href=\"trainers.php\">Trainers</a> and our exciting <a href=\"plans.php\">Membership Plans </a></p>";
+    <p> Explore <a href=\"about_us.php\">FuNinja,</a> our <a href=\"offerings.php\">Offerings</a> and exciting <a href=\"plans.php\">Membership Plans </a></p>";
 
   } else {
 
     var finalHTML ='';
 
     if(upcomingSessions.length>0){ // if there are upcoming sessions, display them in a table
-      var title="<h6>Your upcoming sessions</h6>";
+      var title="<h6 class='tableTitle'>Your upcoming sessions</h6>";
+
       var tableHeader=
-      " <table id='upcomingSessions' class='table-sm table' style='width:100%'><thead>\
-        <tr>\
-        <th> Date and time </th>\
-        <th> Duration </th>\
-        <th> Activity </th>\
-        <th> Trainer </th>\
-        </tr><thead>";
+      " <div class='table100'>\
+        <div class='table100-head'>\
+        <table id='upcomingSessions'><thead>\
+        <tr class='row100 head'>\
+        <th class='cell100 column1 upcoming'> Date and time </th>\
+        <th class='cell100 column2 upcoming'> Duration </th>\
+        <th class='cell100 column3 upcoming'> Activity </th>\
+        <th class='cell100 column3 upcoming'> Trainer </th>\
+        </tr></thead>\
+        </table>\
+        </div>";
 
       var tableBody='';
       var tableFooter =
@@ -42,36 +47,49 @@ function populateUpcomingDivContent(){
           var momentDate = moment(jsDate);
           var momentDateString = momentDate.format('ddd D MMM');
           var momentTimeString = momentDate.format('h:mm A');
-          tableBody=tableBody+'<tr><td>'+momentDateString+' @ '+ momentTimeString+'</td><td>'+session.duration+' minutes'+ '</td><td>'+session.activity+'<td>'+session.trainerFirstName+'</td></td></tr>';
-        });
 
-      var finalUpcomingSessions = title+tableHeader+tableBody+tableFooter;
+          tableBody=tableBody+'<tr class=\'row100 body\'><td class="cell100 column1 upcoming">'+momentDateString+' @ '+ momentTimeString+'</td><td class="cell100 column2 upcoming">'+session.duration+' mins'+'</td><td class="cell100 column3 upcoming">'+session.activity+'</td><td class="cell100 column4 upcoming">'+session.trainerFirstName+'</td></tr>';
+        });
+        tableBodyHeader = '<div class=\'table100-body\'><table><tbody>';
+        tableBodyFooter = '</tbody></table></div></div>';
+
+        tableBodyFinal=tableBodyHeader+tableBody+tableBodyFooter;
+
+      var finalUpcomingSessions = title+tableHeader+tableBodyFinal;
       finalHTML = finalHTML+finalUpcomingSessions;
     }
 
     if(unassignedProducts.length>0){ // if there are products that haven't been scheduled yet, display them next
-      var title="<h6> Unscheduled Plans</h6>";
+      var title="<h6 class='tableTitle'> Unscheduled Plans</h6>";
       var tableHeader=
-      " <table id='unassignedProducts' class='table-sm table' style='width:100%'><thead>\
-        <tr>\
-        <th> Type </th>\
-        <th> Added On </th>\
-        <th> Status </th>\
-        </tr><thead>";
-
-      var tableBody='';
-      var tableFooter =
-      "</table>";
-
+      " <div class='table100'>\
+        <div class='table100-head'>\
+        <table id='unassignedProducts'><thead>\
+        <tr class='row100 head'>\
+        <th class='cell100 column1 unassigned'> Type </th>\
+        <th class='cell100 column2 unassigned'> Added </th>\
+        <th class='cell100 column3 unassigned'> Status </th>\
+        </tr></thead>\
+        </table>\
+        </div>";
+        tableBody='';
         unassignedProducts.forEach(function (product, index) {
           var productValidFromDate = new Date(product.validFrom);
           var momentDate = moment(productValidFromDate);
           var momentDateString = momentDate.format('Do MMM');
-          tableBody=tableBody+'<tr><td>'+product.productName+'</td><td>'+momentDateString+'</td><td>'+'We\'re working on finding you the right trainer'+'</td></tr>';
+
+
+          tableBody=tableBody+'<tr class=\'row100 body\'><td class="cell100 column1 unassigned">'+product.productName+'</td><td class="cell100 column2 unassigned">'+momentDateString+'</td><td class="cell100 column3 unassigned">'+'We\'re working on finding you the right trainer'+'</td></tr>';
+
         });
 
-        var finalUnassignedProducts = title+tableHeader+tableBody+tableFooter;
+        tableBodyHeader = '<div class=\'table100-body\'><table><tbody>';
+        tableBodyFooter = '</tbody></table></div></div>';
+
+        tableBodyFinal=tableBodyHeader+tableBody+tableBodyFooter;
+        var finalUnassignedProducts = title+tableHeader+tableBodyFinal;
         finalHTML=finalHTML+finalUnassignedProducts;
+
     }
 
 
@@ -85,30 +103,38 @@ function populateTrainerDetailsDivContent(){
 
   if(trainers.length>0){
     var finalHTML ='';
-    var title="<h6>Your Trainers</h6>";
+    var title="<center><h6 class='tableTitle'>Your Trainers</h6></center>";
 
     var tableHeader=
-    " <table id='trainerList' class='table-sm table' style='width:100%'><thead>\
-      <tr>\
-      <th> Name </th>\
-      <th> Specialization </th>\
-      </tr><thead>";
+    " <div class='table100'>\
+      <div class='table100-head'>\
+      <table id='trainerList'><thead>\
+      <tr class='row100 head'>\
+      <th class='cell100 column1 trainerlist'> Name </th>\
+      <th class='cell100 column2 trainerlist'> Specialization </th>\
+      </tr></thead>\
+      </table>\
+      </div>";
 
     var tableBody='';
-    var tableFooter =
-    "</table>";
-
 
     trainers.forEach(function (trainer, index) {
-      tableBody=tableBody+'<tr><td>'+trainer.firstName+' '+trainer.lastName+'</td><td>'+trainer.qualifiedActivitiesString+'</td></tr>';
+      tableBody=tableBody+'<tr class=\'row100 body\'><td class="cell100 column1 trainerlist">'+trainer.firstName+' '+trainer.lastName+'</td><td class="cell100 column2 trainerlist">'+trainer.qualifiedActivitiesString+'</td></tr>';
+
     });
 
-    var finalTrainerList = title+tableHeader+tableBody+tableFooter;
+    tableBodyHeader = '<div class=\'table100-body\'><table><tbody>';
+    tableBodyFooter = '</tbody></table></div></div>';
+
+    tableBodyFinal=tableBodyHeader+tableBody+tableBodyFooter;
+
+    var finalTrainerList = title+tableHeader+tableBodyFinal;
+
     finalHTML = finalHTML+finalTrainerList;
     $(".trainer-facts").html(finalHTML);
   } else {
     var finalHTML ='';
-    finalHTML = '<center>Explore <a href="/about_us.php">FuNinja,</a> our <a href="/trainers.php">Trainers</a> and our exciting <a href="/plans.php">Membership Plans </a></center>';
+    finalHTML = '<center>Explore <a href="/about_us.php">FuNinja,</a> our <a href="/offerings.php">Offerings</a> and exciting <a href="/plans.php">Membership Plans </a></center>';
     $(".trainer-facts").html(finalHTML);
   }
 
@@ -244,8 +270,8 @@ function populateProgressDivContent(){
     data: {
         labels: ['Completed', 'Scheduled', 'Unscheduled'],
         datasets: [{
-            backgroundColor: ['rgb(255, 99, 132)','grey'],
-            borderColor: ['rgb(255, 99, 132)','grey'],
+            backgroundColor: ['#79cbb8','#500472','white'],
+            borderColor: ['black','black','black'],
             data: [completedSessionsForPie, scheduledSessionsForPie, unscheduledSessionsForPie],
         }]
     },
@@ -255,7 +281,7 @@ function populateProgressDivContent(){
       elements: {
   center: {
     text: donutCenterText,
-    color: '#FF6384', // Default is #000000
+    color: '#500472', // Default is #000000
     fontStyle: 'Arial', // Default is Arial
     sidePadding: 20, // Default is 20 (as a percentage)
     minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
@@ -263,14 +289,18 @@ function populateProgressDivContent(){
   }
 },
 
-      cutoutPercentage: 80,
+      cutoutPercentage: 70,
       title: {
         display: false,
         text: status,
         position: 'bottom',
     },
     legend: {
-     onClick: (e) => e.stopPropagation()
+     onClick: (e) => e.stopPropagation(),
+     labels: {
+                fontColor: "500472"
+              }
+
  }
     }
 });
@@ -297,8 +327,8 @@ var chart = new Chart(ctxMobile, {
   data: {
       labels: ['Completed', 'Scheduled', 'Unscheduled'],
       datasets: [{
-          backgroundColor: ['rgb(255, 99, 132)','grey'],
-          borderColor: ['rgb(255, 99, 132)','grey'],
+          backgroundColor: ['#79cbb8','#500472','white'],
+          borderColor: ['black','black','black'],
           data: [completedSessionsForPie, scheduledSessionsForPie, unscheduledSessionsForPie],
       }]
   },
@@ -308,22 +338,25 @@ var chart = new Chart(ctxMobile, {
     elements: {
 center: {
   text: donutCenterText,
-  color: '#FF6384', // Default is #000000
+  color: '#500472', // Default is #000000
   fontStyle: 'Arial', // Default is Arial
   sidePadding: 20, // Default is 20 (as a percentage)
-  minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
+  minFontSize: 15, // Default is 20 (in px), set to false and text will not wrap.
   lineHeight: 25 // Default is 25 (in px), used for when text wraps
 }
 },
 
-    cutoutPercentage: 80,
+    cutoutPercentage: 70,
     title: {
       display: false,
       text: status,
       position: 'bottom',
   },
   legend: {
-   onClick: (e) => e.stopPropagation()
+   onClick: (e) => e.stopPropagation(),
+   labels: {
+              fontColor: "#500472"
+            }
 },
   }
 });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 10, 2020 at 05:42 PM
+-- Generation Time: Dec 15, 2020 at 01:36 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -94,6 +94,7 @@ CREATE TABLE `product_attributes` (
 --
 
 INSERT INTO `product_attributes` (`product_id`, `attribute_id`, `attribute_value`, `valid_from`, `valid_to`) VALUES
+(1, 2, '1', '2020-11-24 00:00:00', NULL),
 (1, 4, '60', '2020-11-24 00:00:00', NULL),
 (2, 2, '10', '2020-11-24 00:00:00', NULL),
 (2, 4, '60', '2020-11-24 00:00:00', NULL),
@@ -230,7 +231,8 @@ INSERT INTO `session_attribute_definitions` (`attribute_id`, `attribute_name`) V
 (3, 'preferredTrialTimeSlot'),
 (4, 'Zoom Join URL'),
 (5, 'Zoom Start URL'),
-(6, 'duration');
+(6, 'duration'),
+(7, 'trialRequestComments');
 
 -- --------------------------------------------------------
 

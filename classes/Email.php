@@ -439,7 +439,7 @@ class Email{
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$traineeName.'</b>,</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Your first <b>'. $sessionType. '</b> session has been scheduled with <b>'. $trainerName. '</b> on <b>'.$firstSessionDate. '</b> at <b>'.$firstSessionTime. '.</b></p>
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link 30 minutes before the session starts and follow it up with a call to your number <b>' .$phone. '</b> to make sure everything is in order.</p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link to your Fitness Room 30 minutes before the session starts and follow it up with a call to your number <b>' .$phone. '</b> to make sure everything is in order.</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team<br>+91 9972166212</p>
                           </td>
@@ -476,7 +476,7 @@ class Email{
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$trainerName.'</b>,</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We\'ve scheduled a <b>'. $sessionType. '</b> session with you for new trainee <b>'. $traineeName. '</b> on <b>'.$firstSessionDate. '</b> at <b>'.$firstSessionTime. '.</b></p>
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link to your Fitness Room around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
 
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
@@ -514,7 +514,7 @@ class Email{
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$traineeName.'</b>,</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Good news. Your <b>'. $trialType. '</b> trial has been scheduled with <b>'. $trainerName. '</b> on <b>'.$finalTrialDate. '</b> at <b>'.$finalTrialTime. '.</b></p>
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link to your Fitness Room around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
                           </td>
@@ -551,7 +551,7 @@ class Email{
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$trainerName.'</b>,</p>
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We\'ve scheduled a <b>'. $trialType. '</b> trial with you for new trainee <b>'. $traineeName. '</b> on <b>'.$finalTrialDate. '</b> at <b>'.$finalTrialTime. '.</b></p>
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link to your Fitness Room around 30 minutes before the trial starts and follow it up with a ring on your number <b>' .$phone. '</b> to make sure everything is in order. Talk to you soon!</p>
 
 
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team</p>
@@ -583,7 +583,7 @@ class Email{
 
     $readableTime= date('h:i A' , $sessionDateTime );
 
-    $subject = 'Zoom link for your '.$session->productName. ' session #'.$session->sequence;
+    $subject = 'Fitness Room Zoom link for your '.$session->productName. ' session #'.$session->sequence;
     $trainer = new User($uid, $conn);
     $message = self::$header . '
     <!-- START MAIN CONTENT AREA -->
@@ -594,7 +594,7 @@ class Email{
           <tr>
             <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi '.$trainer->firstName.',</p>
-              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">The Zoom link to start your session is below. Please make sure you open the room by <b>'.$readableTime.'</b> (10 minutes before the session starts).</p>
+              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">The Fitness Room Zoom link to start your session is below. Please make sure you open the Fitness Room by <b>'.$readableTime.'</b> (10 minutes before the session starts).</p>
 
               <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
                 <tbody>
@@ -641,7 +641,7 @@ class Email{
 
     $readableTime= date('h:i A' , $sessionDateTime );
 
-    $subject = 'Zoom link for your '.$session->productName. ' session #'.$session->sequence;
+    $subject = 'Fitness Room Zoom link for your '.$session->productName. ' session #'.$session->sequence;
     $trainee = new Trainee($uid, $conn);
     $message = self::$header . '
     <!-- START MAIN CONTENT AREA -->
@@ -652,7 +652,7 @@ class Email{
           <tr>
             <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi '.$trainee->firstName.',</p>
-              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">The Zoom link to join your session is below. Please ensure you join the room by <b>'.$readableTime.'</b> </p>
+              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">The Fitness Room Zoom link to join your session is below. Please ensure you join the Fitness Room by <b>'.$readableTime.'</b> </p>
 
               <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
                 <tbody>

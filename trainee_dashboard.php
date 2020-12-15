@@ -31,7 +31,6 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 <script src="ext_scripts/clndr.min.js"></script>
 <link rel="stylesheet/less" type="text/css" href="/css/clndr.less" />
 <script src="https://cdn.jsdelivr.net/npm/less/dist/less.min.js" ></script>
-<link href="/css/main.css" rel="stylesheet">
 
 <script type="text/javascript">
   var currentUser = <?php echo $currentUserJSON; ?>;
@@ -50,52 +49,41 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 
   <div class="row">
     <div class="col-md">
-      <div class="welcome-banner mt-2 mb-4">
-        <center><h6>Hey <?php echo $currentUser->firstName;?>! </h6></center>
+      <div class="welcome-banner mt-0 mb-3">
+        <center><h5 class="welcomeText" >Hey, <?php echo $currentUser->firstName;?>! </h6></center>
       </div>
     </div>
   </div>
 
-    <!-- row 2 - upcoming and calendar on pc -->
+  <!-- row 2 - contains two columns -
+    col 1 to contain upcoming sessions and below it, the progress donut
+    col 2 to contain the calendar and below it, the trainers list
+  -->
   <div class="row">
     <div class="col-md">
-      <div class="upcoming-sessions-area" align="center">
+      <div class="upcoming-sessions-area pb-3" align="center">
       </div>
+      <div class="progressArea hide-on-mobile mt-4 mb-2">
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="row pt-3, pb-4 hide-on-nonmobile">
+          <div id ="mini-clndr"> </div>
+      </div>
+      <div class="row pt-4, pb-4 hide-on-nonmobile">
+          <canvas id="myMobileChart"></canvas>
+      </div>
+
     </div>
     <div class="col-md">
       <div class="calendar hide-on-mobile mt-2 mb-5" id ="large-clndr">
       </div>
-    </div>
-  </div>
 
-  <!-- row - visible only on mobile that'll contain carousel with pie and calendar-->
-
-  <div class="row hide-on-nonmobile ">
-    <div class="col">
-      <div class="row pt-3">
-          <div id ="mini-clndr"> </div>
-        </div>
-      <div class="row pt-4">
-          <canvas id="myMobileChart"></canvas>
-      </div>
-      </div>
-    </div>
-
-  <!-- row 2 -->
-  <div class="row">
-    <div class="col-md">
-      <div class="progressArea hide-on-mobile mb-2">
-        <canvas id="myChart"></canvas>
-      </div>
-    </div>
-    <div class="col-md">
       <div class="trainer-facts">
       Trainer info here
       </div>
-
-
     </div>
   </div>
+
 
 
 </div>

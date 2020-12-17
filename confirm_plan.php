@@ -1,12 +1,3 @@
-Order Summary
-
-
-<br>
-Product details
-<br>
-original price marked off with new price
-<br><br>
-
 <?php
 
 require_once __DIR__.'/vendor/autoload.php';
@@ -18,47 +9,30 @@ require_once ( ROOT_DIR.'/header.php' );
 
 use Razorpay\Api\Api;
 
-if(!isset($_SESSION)){
-  session_start();
-}
-
-if(!isset($_SESSION['uid'])){
-  header("Location: index.php?notLoggedIn");
-  exit();
-}
-
-if($_SESSION['userType']!="Trainee"){
-  header("Location: includes/post_login_landing_controller.php");
-  exit();
-}
+FlowControl::startSession();
+FlowControl::redirectIfNotLoggedIn();
+FlowControl::redirectIfWrongUserType("Trainee");
 
 // Plan form and product name mappings:
-  // plan1= Basic
-  // plan2= Standard
-  // plan3= All Access
-  // plan4= Couple
+  // 1= Basic
+  // 2= Ignite
+  // 3= Level Up
+  // 4= Duo Ninja
 
-switch ($_POST['planChoice']) {
-  case 'plan1':
-    echo "You chose the Basic plan";
+switch ($_GET['product']) {
+  case '1':
     $product = new Product("Basic",$conn);
     break;
-  case 'plan2':
-    echo "You chose the Standard plan";
-    $product = new Product("Standard",$conn);
+  case '2':
+    $product = new Product("Ignite",$conn);
     break;
-  case 'plan3':
-    echo "You chose the All Access plan";
-    $product = new Product("All Access",$conn);
+  case '3':
+    $product = new Product("Level Up",$conn);
     break;
-  case 'plan4':
-    echo "You chose the Couple plan";
-    $product = new Product("Couple",$conn);
+  case '4':
+    $product = new Product("Duo Ninja",$conn);
     break;
 }
-
-echo "<BR><BR>Price: ₹".$product->currentPriceINR->amount;
-
 
 
 $api_key="rzp_live_cY4Rzp82rZKsDq";
@@ -83,16 +57,59 @@ if($orderStatus=="created"){
 
 ?>
 
+<div class="container">
+  <div class="row pt-3">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-6 orderConfirmationContainer greyBorder ml-3 mr-3 userdropdown">
+    <div class="row mt-1">
+      <div class="col ">
+      <a href="/plans.php"> <small><< Back</small></a>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col pb-4">
+      <center><h5>Confirm Your Order To Proceed</h5></center>
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2 tableTitle">
+        Plan
+      </div>
+      <div class="col-10">
+        <?php echo $product->productName;  ?>
+      </div>
+    </div>
+    <div class="row pb-4">
+      <div class="col-2 tableTitle">
+        Amount
+      </div>
+      <div class="col-10">
+        <?php echo '₹ '.$product->currentPriceINR->amount; ?>
+      </div>
+    </div>
+    <div class="row pt-3 pb-3">
+      <div class="col">
+          <center><button class="btn btn-primary" id="rzp-button1">Purchase</button></center>
+      </div>
+    </div>
+    <div class="col-lg-3">
+    </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
 <script> // pass order and details
 var orderID = '<?php echo $orderID; ?>';
 var orderAmount = '<?php echo $orderAmount; ?>';
 var orderStatus = '<?php echo $orderStatus; ?>';
 var uid = '<?php echo $trainee->uid; ?>';
 </script>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<button id="rzp-button1">Pay</button>
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 var options = {

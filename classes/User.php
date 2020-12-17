@@ -15,13 +15,53 @@ class User {
   public $type;
   public $zoomID;
   public $nextSession;
+  public $username;
+  public $authenticationType;
 
   function __construct($uid, $conn) {
     $this->uid = $uid;
     $this->setUserAttributes($conn);
     $this->setEmailId($conn);
     $this->setUserType($conn);
+    $this->setUserName($conn);
+    $this->setAuthenticationType($conn);
     $this->setNextSession($conn);
+  }
+
+  function setUserName($conn){
+    $sql = "select username from users where uid = ".$this->uid.";";
+    $stmt = mysqli_stmt_init($conn);
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return "sqlerror";
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+        $this->username=$row['username'];
+      }
+    }
+  }
+
+  function setAuthenticationType($conn){
+    $sql = "select * from users where uid = ".$this->uid." and source='Web';";
+    $stmt = mysqli_stmt_init($conn);
+
+    $authType = "socialLogin";
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+      return "sqlerror";
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+
+      while($row = $result->fetch_assoc()) { // loop through the array and set all user attributes
+        $authType="webLogin";
+      }
+    }
+
+    $this->authenticationType=$authType;
   }
 
   function setEmailId($conn){

@@ -5,20 +5,10 @@ require_once __DIR__.'/config.php';
 require_once ( ROOT_DIR.'/includes/autoloader.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
+FlowControl::startSession();
+FlowControl::redirectIfNotLoggedIn();
+FlowControl::redirectIfWrongUserType("Trainer");
 
-if(!isset($_SESSION)){
-  session_start();
-}
-
-if(!isset($_SESSION['uid'])){
-  header("Location: index.php?notLoggedIn");
-  exit();
-}
-
-if($_SESSION['userType']!="Trainer"){
-  header("Location: includes/post_login_landing_controller.php");
-  exit();
-}
 ?>
 
 <?php
@@ -156,7 +146,7 @@ $( function() {
   var assignmentEvents = [];
 
   assignments.forEach(function (assignment, index) {
-        var jsDate = new Date(assignment.scheduledDateTimeLocal);
+        var jsDate = moment(assignment.scheduledDateTimeLocal, 'YYYY-MM-DD H:m');
         var momentDate = moment(jsDate);
         var momentDateString = momentDate.format('YYYY-MM-DD');
         var momentTimeString = momentDate.format('h:mm A');

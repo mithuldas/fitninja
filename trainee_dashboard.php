@@ -127,7 +127,7 @@ $( function() {
   var assignmentEvents = [];
 
   assignments.forEach(function (assignment, index) {
-        var jsDate = new Date(assignment.scheduledDateTimeLocal);
+        var jsDate = moment(assignment.scheduledDateTimeLocal, 'YYYY-MM-DD H:m');
         var momentDate = moment(jsDate);
         var momentDateString = momentDate.format('YYYY-MM-DD');
         var momentTimeString = momentDate.format('h:mm A');

@@ -41,6 +41,7 @@ if (isset($_POST['externalLogin'])){
           $_SESSION['uid'] = $row['uid'];
           $_SESSION['username'] = $firstName;
           $_SESSION['userType'] = $row['user_type_desc'];
+          $_SESSION['authenticationType'] = "Facebook";
 
           // set cookie
           $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
@@ -85,6 +86,7 @@ if (isset($_POST['externalLogin'])){
                 $split_names = explode(' ', $name, 2);
                 $_SESSION['username'] = $firstName;
                 $_SESSION['userType'] = $row['user_type_desc'];
+                $_SESSION['authenticationType'] = "Facebook";
 
                 // set cookie
                 $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
@@ -132,6 +134,7 @@ if (isset($_POST['externalLogin'])){
         $_SESSION['uid'] = $row['uid'];
         $_SESSION['username'] = $firstName;
         $_SESSION['userType'] = $row['user_type_desc'];
+        $_SESSION['authenticationType'] = "Google";
         // set cookie
         $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
         setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);
@@ -174,6 +177,7 @@ if (isset($_POST['externalLogin'])){
               $_SESSION['uid'] = $row['uid'];
               $_SESSION['username'] = $firstName;
               $_SESSION['userType'] = $row['user_type_desc'];
+              $_SESSION['authenticationType'] = "Google";
 
               // set cookie
               $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);

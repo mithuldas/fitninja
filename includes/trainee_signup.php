@@ -157,6 +157,7 @@ if(isset($_POST['save'])){
           $_SESSION['uid'] = $row['uid'];
           $_SESSION['username'] = $username;
           $_SESSION['userType'] = $row['user_type_desc'];
+          $_SESSION['authenticationType'] = "Web";
           // remember login
           $cookieString = Token::getTokenStringForCookie($email, "funinja_login", $conn);
           setcookie("FuNinja", $cookieString, time() + 7776000, '/', null);

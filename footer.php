@@ -2,9 +2,9 @@
 
 <div id="standard_footer" class="row footer">
   <div class="col-md">
-  <u><a href="/index.php" class="px-1">FuNinja.in</a></u>
-  <u><a href="#" class="px-1">Terms of Service</a></u>
-  <u><a href="#" class="px-1">Privacy</a></u>
+<a href="/index.php" class="px-1">FuNinja.in</a>
+<a href="#" class="px-1">Terms of Service</a>
+<a href="#" class="px-1">Privacy</a>
   </div>
 </div>
 

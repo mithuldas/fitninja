@@ -116,9 +116,10 @@ include_once ROOT_DIR."/includes/auto_login.php";
 </button>
 <div class="dropdown-menu dropdown-menu-right">
   <a class="dropdown-item" href="/includes/post_login_landing_controller.php">Dashboard</a>
-  <a class="dropdown-item" href="profile.php">Profile</a>
-  <a class="dropdown-item" href="settings.php">Settings</a>
-  <a class="dropdown-item" href="contact.php">Support</a>
+  <a class="dropdown-item" href="/profile.php#profile">Profile</a>
+  <a class="dropdown-item" href="/profile.php#settings">Settings</a>
+  <a class="dropdown-item" href="/profile.php#plans">Plans</a>
+  <a class="dropdown-item" href="/contact.php">Support</a>
   <div class="dropdown-divider"></div>
   <a class="dropdown-item" href="/includes/logout.php"><img class="svg m-0 pr-1" src="/images/logout.svg" width="20" />Logout</a>
 </div>

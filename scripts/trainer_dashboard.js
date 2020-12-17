@@ -4,7 +4,7 @@ $(document).ready(function(){
   if(trainees.length>0){
     populateTraineeDetailsDivContent();
   }
-  
+
   populateInstructionsDivContent();
 
   $("#trialSubmit").submit(function(event){
@@ -56,7 +56,7 @@ function populateUpcomingDivContent(){
     "</table>";
 
     upcomingSessions.forEach(function (session, index) {
-      var jsDate = new Date(session.scheduledDateTimeLocal);
+      var jsDate = moment(session.scheduledDateTimeLocal, 'YYYY-MM-DD H:m')
       var momentDate = moment(jsDate);
       var momentDateString = momentDate.format('ddd D MMM');
       var momentTimeString = momentDate.format('h:mm A');

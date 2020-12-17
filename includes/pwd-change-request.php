@@ -16,13 +16,13 @@ if(isset($_POST['changepwd-submit'])){
   $passwordObject = new Password($newPassword, $passwordRepeat);
 
   if($passwordObject->hasEmptyFields()) {
-    header("Location: ../settings.php?status=emptyfields");
+    header("Location: ../profile.php?status=emptyfields");
     exit();
   } else if (!$passwordObject->doesMatch()) {
-    header("Location: ../settings.php?status=pwdMismatch");
+    header("Location: ../profile.php?status=pwdMismatch");
     exit();
   } else if (!$passwordObject->isLongEnough()){
-    header("Location: ../settings.php?status=tooShort");
+    header("Location: ../profile.php?status=tooShort");
     exit();
   }
 
@@ -49,7 +49,7 @@ if(isset($_POST['changepwd-submit'])){
       $pwdCheck = password_verify($password, $row['password']);
 
       if ($pwdCheck == false){
-        header("Location: ../settings.php?status=wrongPassword");
+        header("Location: ../profile.php?status=wrongPassword");
         exit();
       }
       else if($pwdCheck == true) {
@@ -63,7 +63,7 @@ if(isset($_POST['changepwd-submit'])){
           $newPwdHash = password_hash($newPassword, PASSWORD_DEFAULT);
           mysqli_stmt_bind_param($stmt, "ss", $newPwdHash, $uid);
           mysqli_stmt_execute($stmt);
-          header("Location: ../settings.php?status=passwordupdated");
+          header("Location: ../profile.php?status=passwordupdated");
         }
       }
     }

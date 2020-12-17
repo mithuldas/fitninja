@@ -444,3 +444,153 @@ th, td {
 body {
 	background: linear-gradient(45deg, lightblue, lavender);
 }
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #500472 !important;
+    border-color:#500472 !important;
+}
+
+.greyfont{
+  color:grey;
+  text-align:center;
+}
+
+.greyfontNoCenter{
+  color:grey;
+}
+
+.centerButton{
+  text-align:center;
+  justify-content: center;
+}
+
+.nav-link.active{
+  background-color:#500472 !important;
+  color:white !important;
+}
+
+.borderbottom{
+  border-bottom: 1px solid grey;
+}
+
+.purpleFont{
+  color:#500472;
+}
+
+.planHeaderButton{
+  padding-top:25px;
+  padding-bottom:25px;
+  width:100px;
+  opacity:.6;
+  box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+  -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
+}
+
+.activeOpacity{
+  opacity:1;
+}
+
+.activeOpacity::after {
+  content: "";
+  border-right: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #500472;
+  height: 0;
+  width: 0;
+  position: absolute;
+  right: 90px;
+  top: 100%;
+  transform: translateY(-50%);
+}
+
+@media screen and (max-width: 575px) {
+
+  .activeOpacity{
+    opacity:1;
+  }
+
+  .activeOpacity::after {
+    content: "";
+    border-right: 10px solid transparent;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #500472;
+    height: 0;
+    width: 0;
+    position: absolute;
+    right: 40px;
+    top: 100%;
+    transform: translateY(-50%);
+  }
+
+  .plansMobileHeader{
+    font-size: 13px;
+    margin-top:10px;
+    margin-left:0px;
+    margin-right:0px;
+    padding-left:0px;
+    padding:right:0px:
+  }
+
+  .centerButton{
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .plansMobileContent{
+    font-size: 12px;
+  }
+
+  .borderbottom{
+    margin-left:3px;
+    margin-right:3px;
+  }
+  .planHeaderButton{
+    font-size: 13px;
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left:0px;
+    padding-right:0px;
+    width:80px;
+  }
+}
+
+@media screen and (min-width: 575px) and (max-width: 800px){
+  .centerButton{
+    padding-left:0px;
+    padding-right:0px;
+  }
+
+  .planHeaderButton{
+    padding-left:0px;
+    padding-right:0px;
+    width:80px;
+  }
+}
+
+.continueBtn{
+  width:300px;
+  height:40px;
+}
+
+.inactiveOpacity{
+  opacity:.4;
+  text-align:center;
+}
+
+.orderConfirmationContainer{
+  background-color: white;
+  border-radius:10px;
+}
+
+.greyBorder{
+  border: solid 3px;
+  border-color:#EFEEFA;
+}
+
+.whiteBgd{
+  background-color: white;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 15, 2020 at 01:36 PM
+-- Generation Time: Dec 17, 2020 at 06:08 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -69,10 +69,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`) VALUES
-(4, 'All Access'),
 (2, 'Basic'),
-(5, 'Couple'),
-(3, 'Standard'),
+(5, 'Duo Ninja'),
+(3, 'Ignite'),
+(4, 'Level Up'),
 (1, 'Trial');
 
 -- --------------------------------------------------------
@@ -96,13 +96,17 @@ CREATE TABLE `product_attributes` (
 INSERT INTO `product_attributes` (`product_id`, `attribute_id`, `attribute_value`, `valid_from`, `valid_to`) VALUES
 (1, 2, '1', '2020-11-24 00:00:00', NULL),
 (1, 4, '60', '2020-11-24 00:00:00', NULL),
-(2, 2, '10', '2020-11-24 00:00:00', NULL),
+(2, 2, '20', '2020-11-24 00:00:00', NULL),
+(2, 3, '30', '2020-11-24 00:00:00', NULL),
 (2, 4, '60', '2020-11-24 00:00:00', NULL),
 (3, 2, '20', '2020-11-24 00:00:00', NULL),
+(3, 3, '30', '2020-11-24 00:00:00', NULL),
 (3, 4, '60', '2020-11-24 00:00:00', NULL),
 (4, 2, '20', '2020-11-24 00:00:00', NULL),
+(4, 3, '30', '2020-11-24 00:00:00', NULL),
 (4, 4, '60', '2020-11-24 00:00:00', NULL),
 (5, 2, '20', '2020-11-24 00:00:00', NULL),
+(5, 3, '30', '2020-11-24 00:00:00', NULL),
 (5, 4, '60', '2020-11-24 00:00:00', NULL);
 
 -- --------------------------------------------------------

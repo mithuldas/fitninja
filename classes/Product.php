@@ -9,7 +9,7 @@ class Product {
   public $productName;
   public $currentPriceINR;
   public $numberOfSessions;
-  public $courseSpan;
+  public $validityDuration;
 
   function __construct($name, $conn) {
     $this->productName = $name;
@@ -36,8 +36,8 @@ class Product {
           case "number of sessions":
             $this->numberOfSessions = $row['attribute_value'];
             break;
-          case "course span":
-            $this->courseSpan = $row['attribute_value'];
+          case "valid days":
+            $this->validityDuration = $row['attribute_value'];
             break;
           }
       }

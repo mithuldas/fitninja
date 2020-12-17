@@ -46,6 +46,7 @@ if (isset($_POST['login-submit'])) {
             $_SESSION['uid'] = $row['uid'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['userType'] = $row['user_type_desc'];
+            $_SESSION['authenticationType'] = "Web";
             echo "success";
 
             // if remember me is checked, then create a cookie and store it in the DB before returning control back

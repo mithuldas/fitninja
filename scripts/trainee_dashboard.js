@@ -43,14 +43,15 @@ function populateUpcomingDivContent(){
       "</table>";
 
         upcomingSessions.forEach(function (session, index) {
-          var jsDate = new Date(session.scheduledDateTimeLocal);
+          //var jsDate = new Date(session.scheduledDateTimeLocal);
+          var jsDate = moment(session.scheduledDateTimeLocal, 'YYYY-MM-DD H:m');
           var momentDate = moment(jsDate);
           var momentDateString = momentDate.format('ddd D MMM');
           var momentTimeString = momentDate.format('h:mm A');
 
           tableBody=tableBody+'<tr class=\'row100 body\'><td class="cell100 column1 upcoming">'+momentDateString+' @ '+ momentTimeString+'</td><td class="cell100 column2 upcoming">'+session.duration+' mins'+'</td><td class="cell100 column3 upcoming">'+session.activity+'</td><td class="cell100 column4 upcoming">'+session.trainerFirstName+'</td></tr>';
         });
-        tableBodyHeader = '<div class=\'table100-body\'><table><tbody>';
+        tableBodyHeader = '<div class=\'table100-body\'><table class="mb-4"><tbody>';
         tableBodyFooter = '</tbody></table></div></div>';
 
         tableBodyFinal=tableBodyHeader+tableBody+tableBodyFooter;
@@ -67,16 +68,16 @@ function populateUpcomingDivContent(){
         <table id='unassignedProducts'><thead>\
         <tr class='row100 head'>\
         <th class='cell100 column1 unassigned'> Type </th>\
-        <th class='cell100 column2 unassigned'> Added </th>\
+        <th class='cell100 column2 unassigned'> Requested </th>\
         <th class='cell100 column3 unassigned'> Status </th>\
         </tr></thead>\
         </table>\
         </div>";
         tableBody='';
         unassignedProducts.forEach(function (product, index) {
-          var productValidFromDate = new Date(product.validFrom);
+          var productValidFromDate = moment(product.validFrom, 'YYYY-MM-DD H:m');
           var momentDate = moment(productValidFromDate);
-          var momentDateString = momentDate.format('Do MMM');
+          var momentDateString = momentDate.format('D MMM');
 
 
           tableBody=tableBody+'<tr class=\'row100 body\'><td class="cell100 column1 unassigned">'+product.productName+'</td><td class="cell100 column2 unassigned">'+momentDateString+'</td><td class="cell100 column3 unassigned">'+'We\'re working on finding you the right trainer'+'</td></tr>';
@@ -240,7 +241,11 @@ function populateProgressDivContent(){
 
     var status = completedSessionsForPie+' out of ' +(completedSessionsForPie+scheduledSessionsForPie+unscheduledSessionsForPie)+' sessions completed';
 
-    if(currentUser.activePlan.productName=="Trial" && !currentUser.trialCompleted){
+    if(currentUser.activePlan.productName=="Trial" && currentUser.activePlan.sessionsScheduled==0 && !currentUser.trialCompleted){
+      var status = "Trial Requested";
+    }
+
+    if(currentUser.activePlan.productName=="Trial" && currentUser.activePlan.sessionsScheduled==1 && !currentUser.trialCompleted){
       var status = "Trial Scheduled";
     }
 
@@ -255,9 +260,9 @@ function populateProgressDivContent(){
   if(!currentUser.nextSession){
     var donutCenterText = status;
   } else {
-    var donutNextDate = new Date(currentUser.nextSession.scheduledDateTimeLocal);
+    var donutNextDate = moment(currentUser.nextSession.scheduledDateTimeLocal, 'YYYY-MM-DD H:m');
     var momentDate = moment(donutNextDate);
-    var momentDateString = momentDate.format('Do MMM') + ' at ' + momentDate.format('h:mm A');
+    var momentDateString = momentDate.format('D MMM') + ' at ' + momentDate.format('h:mm A');
     var donutCenterText = status;
   }
 
@@ -312,9 +317,9 @@ var ctxMobile = document.getElementById('myMobileChart').getContext('2d');
 if(!currentUser.nextSession){
   var donutCenterText = status;
 } else {
-  var donutNextDate = new Date(currentUser.nextSession.scheduledDateTimeLocal);
+  var donutNextDate = moment(currentUser.nextSession.scheduledDateTimeLocal, 'YYYY-MM-DD H:m');
   var momentDate = moment(donutNextDate);
-  var momentDateString = momentDate.format('Do MMM') + ' at ' + momentDate.format('h:mm A');
+  var momentDateString = momentDate.format('D MMM') + ' at ' + momentDate.format('h:mm A');
   var donutCenterText = status;
 }
 

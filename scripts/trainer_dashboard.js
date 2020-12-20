@@ -70,7 +70,7 @@ function populateUpcomingDivContent(){
   var finalUpcomingSessions = title+tableHeader+tableBodyFinal;
   finalHTML = finalHTML+finalUpcomingSessions;
 } else {
-  finalHTML = "<P class='tableTitle'> Welcome to FuNinja.</P> <P> While we get you started and assign trainees and sessions to you, feel free to <a href='offerings.php'>GET TO KNOW US </a> better and <a href='contact.php'>GET IN TOUCH</a> with us if you have any questions </P>";
+  finalHTML = "<P class='tableTitle'> Welcome to FuNinja.</P> <P> While we get you started and assign trainees and sessions to you, feel free to <a href='offerings.php'> learn more about FuNinja </a> and <a href='contact.php'>get in touch</a> with us if you have any questions. </P>";
 }
 
   $(".upcoming-sessions-area").html(finalHTML);

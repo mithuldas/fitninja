@@ -30,7 +30,7 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="ext_scripts/clndr.min.js"></script>
 <link rel="stylesheet/less" type="text/css" href="/css/clndr.less" />
-<script src="https://cdn.jsdelivr.net/npm/less/dist/less.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/less@3.13.1/dist/less.min.js" ></script>
 
 <script type="text/javascript">
   var currentUser = <?php echo $currentUserJSON; ?>;

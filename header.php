@@ -89,14 +89,14 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <div class="container-fluid">
 <div class="row">
   <!--navbar -->
-  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom boxshadoweffect mb-0 pb-0 mt-0 pt-0">
+  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom mb-0 pb-0 mt-0 pt-0 boxshadoweffect">
 
     <!-- burger -->
     <button id="burger" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- /burger" -->
-  <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand"><img src="/images/logo2.png" alt="FuNinja" style="height:40px"></a>
+  <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand"><img src="/images/logo.png" alt="FuNinja" style="height:40px"></a>
 
   <div>
   <?php
@@ -115,13 +115,13 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <img class="svg m-0 p-0" src="/images/profile.svg" width="18" />
 </button>
 <div class="dropdown-menu dropdown-menu-right">
-  <a class="dropdown-item" href="/includes/post_login_landing_controller.php">Dashboard</a>
-  <a class="dropdown-item" href="/profile.php#profile">Profile</a>
-  <a class="dropdown-item" href="/profile.php#settings">Settings</a>
-  <a class="dropdown-item" href="/profile.php#plans">Plans</a>
-  <a class="dropdown-item" href="/contact.php">Support</a>
-  <div class="dropdown-divider"></div>
-  <a class="dropdown-item" href="/includes/logout.php"><img class="svg m-0 pr-1" src="/images/logout.svg" width="20" />Logout</a>
+  <a class="dropdown-item userMenu" href="/includes/post_login_landing_controller.php">Dashboard</a>
+  <a class="dropdown-item userMenu" href="/profile.php#profile">Profile</a>
+  <a class="dropdown-item userMenu" href="/profile.php#settings">Settings</a>
+  <a class="dropdown-item userMenu" href="/profile.php#plans">Plans</a>
+  <a class="dropdown-item userMenu" href="/contact.php">Support</a>
+  <div class="dropdown-divider mt-2 mb-2"></div>
+  <a class="dropdown-item userMenu" href="/includes/logout.php"><img class="svg m-0 pr-1" src="/images/logout.svg" width="20" />Logout</a>
 </div>
 </div>
     <?php
@@ -139,17 +139,17 @@ include_once ROOT_DIR."/includes/auto_login.php";
 
 <!-- mobile navbar items state-independent -->
 
-      <li class="nav-item active pl-5 pt-3">
-        <a class="nav-link " href="/contact.php">About FuNinja</a>
+      <li class="nav-item active pl-5 pt-3 ">
+        <a class="nav-link burgerOption" href="/about.php">About FuNinja</a>
       </li>
       <li class="nav-item active pl-5">
-        <a class="nav-link " href="/offerings.php">Our Offerings</a>
+        <a class="nav-link burgerOption" href="/offerings.php">Our Offerings</a>
       </li>
       <li class="nav-item active pl-5">
-        <a class="nav-link" href="/plans.php">Membership</a>
+        <a class="nav-link burgerOption" href="/plans.php">Membership</a>
       </li>
       <li class="nav-item active pl-5 pb-4">
-        <a class="nav-link " href="/contact.php">Contact Us</a>
+        <a class="nav-link burgerOption" href="/contact.php">Contact Us</a>
       </li>
 
     </ul>
@@ -181,16 +181,16 @@ include_once ROOT_DIR."/includes/auto_login.php";
           <small id = "login-errorMsg" class = "login-error formErrors">  </small>
           <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-1 greybgd" placeholder="Username or Email" required>
           <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1 greybgd" placeholder="Password" required>
-          <center><button class="btn btn-primary btn-sm btn-block" type="submit" name="login-submit" id = "login-submit">Login</button></center>
+          <center><button class="btn btn-primary btn-block" type="submit" name="login-submit" id = "login-submit">Login</button></center>
 
-          <div class="checkbox mt-1 mb-1">
+          <div class="checkbox mt-2 mb-0">
           <input type="checkbox" value="remember-me" name="remember-me" id="remember-me">
           <label for="remember-me"> <small>Remember me</small> </label>
           </div>
 
           </form>
           <div class="mt-1 mb-1">
-            <center><small>Or</center></small>
+            <hr class="m-0 pb-2">
           </div>
           <div>
             <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">
@@ -225,10 +225,10 @@ include_once ROOT_DIR."/includes/auto_login.php";
         <div id = "passwordRepeat-error" class="signup-error mb-1 formErrors" ><small> </small></div>
 
         <small id = "errorMsg" class = "signup-error formErrors">  </small>
-        <center><button id = "submit" class="btn btn-primary btn-sm mt-1 mb-1 btn-block" type="submit" name="signup-submit">Sign Up</button></center>
+        <center><button id = "submit" class="btn btn-primary mt-1 mb-1 btn-block" type="submit" name="signup-submit">Sign Up</button></center>
         </form>
-        <div class="mt-1 mb-1">
-          <center><small>Or</center></small>
+        <div class="mt-4 mb-1">
+          <hr class="mt-2 mb-3 ">
         </div>
         <div>
           <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">

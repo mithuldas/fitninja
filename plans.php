@@ -24,7 +24,7 @@ $product4 = new Product("Duo Ninja",$conn);
 <p class="pt-2"> STEP <b>1</b> OF <b>2</b></p>
 <h5 class="pb-2"> Choose the plan that’s right for you </h5>
 
-  <div class="row pb-3">
+  <div class="row pb-3" id="headerDiv">
   <div class="col-3 hide-on-mobile">
   </div class="col">
   <div class="col centerButton">
@@ -192,6 +192,15 @@ $product4 = new Product("Duo Ninja",$conn);
 </div class="col">
 </div class = "row">
 
+hi<br>
+hi<br>
+hi<br>
+hi<br>
+hi<br>
+hi<br>
+hi<br>
+hi<br>
+hi<br>
 </div>
 
 
@@ -242,5 +251,13 @@ $(".prod4, .prod4Button").on("click", function(){
 
 $("#continueBtn").on("click", function(){
   window.location.href = '/confirm_plan.php?'+'product='+selectedProduct;
+});
+
+$(window).scroll(function(){
+    if ($(this).scrollTop() > 100) {
+        $('#headerDiv').addClass('fixed');
+    } else {
+        $('#headerDiv').removeClass('fixed');
+    }
 });
 </script>

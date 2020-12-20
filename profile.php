@@ -12,7 +12,7 @@ FlowControl::redirectIfNotLoggedIn();
 if($_SESSION['userType']=="Trainee"){
   $user = new Trainee ($_SESSION['uid'], $conn);
 } else if ($_SESSION['userType']=="Trainer"){
-  $user = new TRAINER ($_SESSION['uid'], $conn);
+  $user = new Trainer ($_SESSION['uid'], $conn);
 } else {
   $user = new User ($_SESSION['uid'], $conn);
 }

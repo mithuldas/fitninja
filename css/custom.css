@@ -1,3 +1,5 @@
+
+
 html{
   position: relative;
   min-height: 100%;
@@ -57,7 +59,9 @@ body {
 
 
 .navbar-nav > li > a {padding-top:0px !important; padding-bottom:0px !important;}
-.navbar {min-height:15px !important}
+.navbar {
+  min-height:15px !important;
+}
 
 .custom-popover li {
   border: none!important;
@@ -98,16 +102,6 @@ input.invalid {
 
 .greybgd{
   background-color:#F5F5F5
-}
-
-.altbgd{
-  background-color:#42b72a;
-  border-color:#42b72a;
-}
-
-.altbgd:hover{
-  background-color:darkgreen;
-  border-color:darkgreen;
 }
 
 .formErrors{
@@ -533,7 +527,7 @@ body {
     margin-left:0px;
     margin-right:0px;
     padding-left:0px;
-    padding:right:0px:
+    padding-right:0px
   }
 
   .centerButton{
@@ -593,4 +587,92 @@ body {
 
 .whiteBgd{
   background-color: white;
+}
+
+a.userMenu:hover {
+  background-color: #e95420;
+  color:white;
+}
+
+a.burgerOption:hover {
+  color:#e95420!important;
+}
+
+.indexPage{
+    background: white!important;
+}
+
+.bg-lightgrey {
+  position: relative;
+}
+
+.bg-lightgrey:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX( -50%);
+  height: 100%;
+  width: 100vw;
+  background: #f9f9fb;
+  border-top: 1px solid #d3d3d3;
+
+}
+
+.bg-lightgreynoborder {
+  position: relative;
+}
+
+.bg-lightgreynoborder:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX( -50%);
+  height: 100%;
+  width: 100vw;
+  background: #f9f9fb;
+  border-bottom: 1px solid #d3d3d3;
+
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.navbar-toggle {
+  border: none!important;
+}
+
+.navbar-toggler {
+  border: none!important;
+}
+
+.modal-header{
+  border-bottom:none!important;
+}
+
+.miniOfferingHeader{
+  font-size: 19px;
+}
+
+@media screen and (max-width: 575px) {
+  .textMobileNormal{
+    font-size: 12px;
+  }
+
+  .miniOfferingHeader{
+    font-size: 14px;
+  }
+
+  .largerHowItWorks{
+    width:80%;
+  }
+
+}
+
+.fixed {
+  position:fixed;
+  top:50px;
+  left: 20px;
 }

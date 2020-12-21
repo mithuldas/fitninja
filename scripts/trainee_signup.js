@@ -274,7 +274,7 @@ $(document).ready(function() {
           } else if (response == 'mergeSuccess' ) {
             window.location.href = "../includes/post_login_landing_controller.php";
           } else {
-            window.location = 'index.php?status=verification-sent&email=' + email;
+            window.location = 'verify_email_sent.php?email=' + email;
           }
 
         }

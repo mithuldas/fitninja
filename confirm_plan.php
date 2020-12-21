@@ -13,6 +13,10 @@ FlowControl::startSession();
 FlowControl::redirectIfNotLoggedIn();
 FlowControl::redirectIfWrongUserType("Trainee");
 
+if(isset($_SESSION['selectedProduct'])){ // unset this so that post_login_landing_controller.php works correctly
+  unset($_SESSION['selectedProduct']);
+}
+
 // Plan form and product name mappings:
   // 1= Basic
   // 2= Ignite
@@ -64,7 +68,7 @@ if($orderStatus=="created"){
     <div class="col-lg-6 orderConfirmationContainer greyBorder ml-3 mr-3 userdropdown">
     <div class="row mt-1">
       <div class="col ">
-      <a href="/plans.php"> <small><< Back</small></a>
+      <a href="/plans.php"> <small><< Back to Plans</small></a>
     </div>
     </div>
     <div class="row">

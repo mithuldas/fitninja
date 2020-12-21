@@ -13,7 +13,10 @@ if(!isset($_SESSION['uid'])){
 }
 
 // trainee controller
-if ($_SESSION['userType']=="Trainee"){
+if ($_SESSION['userType']=="Trainee" and isset($_SESSION['selectedProduct'])){
+  header("Location: /confirm_plan.php?"."product=".$_SESSION['selectedProduct']);
+  exit();
+} else if ($_SESSION['userType']=="Trainee"){
   header("Location: ../trainee_landing.php");
   exit();
 }

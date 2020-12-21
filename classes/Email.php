@@ -175,6 +175,8 @@ class Email{
   static function sendVerificationEmail($email, $conn){
 
     self::setBaseURL();
+    FlowControl::startSession();
+
 
     // generate token and save it
     $tokenDuration =  7200; // seconds (2 hours)
@@ -183,6 +185,9 @@ class Email{
     $URLQualifier = "verify_email.php";
     $url = self::$baseURL.$URLQualifier."?" . $tokenString;
 
+    if(isset($_SESSION['selectedProduct'])){
+      $url=$url.'&selectedProduct='.$_SESSION['selectedProduct'];
+    }
     // create the e-mail content
     $subject = 'Confirm Your Email and Get Started ';
     $message = self::$header . '

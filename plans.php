@@ -24,11 +24,11 @@ $product4 = new Product("Duo Ninja",$conn);
 <p class="pt-2"> STEP <b>1</b> OF <b>2</b></p>
 <h5 class="pb-2"> Choose the plan that’s right for you </h5>
 
-  <div class="row pb-3" id="headerDiv">
+  <div class="row pb-3 sticky">
   <div class="col-3 hide-on-mobile">
   </div class="col">
   <div class="col centerButton">
-  <button class="btn btn-primary planHeaderButton prod1Button"><?php echo $product1->productName; ?></button>
+  <button id="prod1Button" class="btn btn-primary planHeaderButton prod1Button"><?php echo $product1->productName; ?></button>
   </div class="col">
   <div class="col centerButton">
     <button class="btn btn-primary planHeaderButton prod2Button"><?php echo $product2->productName; ?></button>
@@ -191,19 +191,7 @@ $product4 = new Product("Duo Ninja",$conn);
 <div class="col"> <center><button class="btn btn-primary btn mt-3 mb-2 continueBtn" id ="continueBtn"> Continue </button></center>
 </div class="col">
 </div class = "row">
-
-hi<br>
-hi<br>
-hi<br>
-hi<br>
-hi<br>
-hi<br>
-hi<br>
-hi<br>
-hi<br>
 </div>
-
-
 <?php
   require "footer.php";
 ?>
@@ -249,15 +237,33 @@ $(".prod4, .prod4Button").on("click", function(){
   $(".prod4Button").addClass("activeOpacity");
 });
 
+
+
 $("#continueBtn").on("click", function(){
-  window.location.href = '/confirm_plan.php?'+'product='+selectedProduct;
+
+  $.ajax({
+    url: 'includes/plan_select.php',
+
+    type: 'post',
+    data: {
+      'product' : selectedProduct,
+    },
+    timeout:5000, //5 second timeout
+    error: function(xmlhttprequest, textstatus, message){
+      if(textstatus==="timeout"){
+        //do nothing?
+      }
+
+    },
+    success: function(response){
+      if(response=="loggedIn"){
+        window.location.href = '/confirm_plan.php?'+'product='+selectedProduct;
+      } else if(response=="notLoggedIn"){
+        $("#registerButton").click();
+      }
+    }
+  });
+
 });
 
-$(window).scroll(function(){
-    if ($(this).scrollTop() > 100) {
-        $('#headerDiv').addClass('fixed');
-    } else {
-        $('#headerDiv').removeClass('fixed');
-    }
-});
 </script>

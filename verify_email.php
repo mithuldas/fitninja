@@ -81,6 +81,9 @@ if(!mysqli_stmt_prepare($stmt, $sql)){
               $_SESSION['uid'] = $row['uid'];
               $_SESSION['username'] = $row['username'];
               $_SESSION['userType'] = $row['user_type_desc'];
+              if(isset($_GET['selectedProduct'])){
+                $_SESSION['selectedProduct']=$_GET['selectedProduct'];
+              }
             }
 
           $split_names = explode('@', $tokenEmail, 2);

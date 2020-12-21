@@ -73,7 +73,7 @@ $("body").addClass("indexPage");
     Conditioning. Toning. Lean.
   </div>
   <div class="col-3 text-center p-0">
-    <img src="/images/graphics/Push Up SVG.svg" width="60%"> </img><br>
+    <img src="/images/graphics/Push up SVG.svg" width="60%"> </img><br>
   </div>
   <div class="col-3 text-center p-0">
     <img src="/images/graphics/Zumba SVG.svg" width="60%"> </img><br>

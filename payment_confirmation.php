@@ -93,7 +93,7 @@ require "header.php";
     <div class="row pt-2 pb-3">
       <div class="col">
         <small> An e-mail has been sent to you with payment confirmation details. </small>
-          <center><a href="trainee_dashboard.php" class="btn btn-primary mt-3">Continue</a></center>
+          <center><a href="/includes/post_login_landing_controller.php" class="btn btn-primary mt-3">Continue</a></center>
       </div>
     </div>
     <div class="col-lg-3">

@@ -27,6 +27,7 @@ $trainee = new Trainee($_SESSION['uid'],$conn);
 
 if($trainee->onboardingComplete){
   header("Location: trainee_dashboard.php");
+  exit();
 }
 
 $months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];

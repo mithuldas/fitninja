@@ -19,8 +19,9 @@ require "header.php";
 
 <div class="row">
   <div class="col-md-3 mb-4">
-    <strong>Phone:</strong> +91 9972 166212<br>
+    <strong>Phone:</strong> +91 91088 06213<br>
     <strong>Email:</strong> hello@funinja.in<br>
+    <a href="https://api.whatsapp.com/send?phone=919108806213"> test whatsapp </a>
   </div>
 <div class="col-md-7">
 <form action="/includes/contact_us_submit.php" method="post">

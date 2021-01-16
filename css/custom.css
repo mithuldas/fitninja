@@ -1,5 +1,30 @@
 
 
+@font-face {
+  font-family: Lato-Regular;
+  src: url('/fonts/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+  font-family: Lato-Bold;
+  src: url('/fonts/Lato/Lato-Bold.ttf');
+}
+
+@font-face {
+  font-family: Lato-Black;
+  src: url('/fonts/Lato/Lato-Black.ttf');
+}
+
+@font-face {
+  font-family: Lato-Light;
+  src: url('/fonts/Lato/Lato-Light.ttf');
+}
+
+@font-face {
+  font-family: Lato-Hairline;
+  src: url('/fonts/Lato/Lato-Hairline.ttf');
+}
+
 html{
   position: relative;
   min-height: 100%;
@@ -19,6 +44,38 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
+  background-color:black;
+  color:grey;
+  font-size: 13px;
+
+}
+
+.footer a:hover {
+  color:lightgrey!important;
+}
+
+.footer a {
+  font-family: Lato-Light;
+  color:grey!important;
+  font-weight: 100;
+}
+.footerList{
+    font-family: Lato-Light;
+    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footerList ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+}
+
+a{
+  color:#190472;
 }
 
 
@@ -237,15 +294,6 @@ text-decoration: none !important;
 /* trainee dashboard tables */
 /*  table formatting */
 
-@font-face {
-  font-family: Lato-Regular;
-  src: url('/fonts/Lato/Lato-Regular.ttf');
-}
-
-@font-face {
-  font-family: Lato-Bold;
-  src: url('/fonts/Lato/Lato-Bold.ttf');
-}
 
 
 table {
@@ -436,12 +484,18 @@ th, td {
 
 /* Page background */
 body {
-	background: linear-gradient(45deg, lightblue, lavender);
+	/*background: linear-gradient(45deg, lightblue, lavender);*/
+  background: #f4f5f7;
 }
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #500472 !important;
     border-color:#500472 !important;
+}
+
+.blueButton{
+  background-color: #190472 !important;
+  border-color:#190472 !important;
 }
 
 .greyfont{
@@ -590,15 +644,15 @@ body {
 }
 
 a.userMenu:hover {
-  background-color: #e95420;
+  background-color: #190472;
   color:white;
 }
 
 a.burgerOption:hover {
-  color:#e95420!important;
+  color:#0071c2!important;
 }
 
-.indexPage{
+.whiteBackground{
     background: white!important;
 }
 
@@ -685,4 +739,63 @@ html {
 
 .whiteSVG{
   fill:white;
+}
+
+.float{
+	position:fixed;
+	width:45px;
+	height:45px;
+	bottom:20px;
+	right:20px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+  z-index:100;
+}
+
+.float:hover{
+  background-color:darkgreen;
+  color:white;
+}
+.my-float{
+	margin-top:1px;
+}
+
+.fa-whatsapp:hover{
+  background-color:darkgreen;
+  color:white;
+}
+
+@media screen and (max-width: 575px) {
+  .footerBottomPadMob {
+    padding-bottom:20px;
+    padding-left:0px;
+    padding-right:0px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .footerTopMarginMob {
+    margin-top:20px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .footerWriteUpMob {
+    text-align:center;
+    font-family:Lato-Light;
+    padding-left:0px;
+    margin-left:0px;
+
+  }
+}
+
+@media screen and (min-width: 575px) {
+  .footerWriteUpDesktop {
+    text-align:left;
+    font-family:Lato-Light;
+  }
+
 }

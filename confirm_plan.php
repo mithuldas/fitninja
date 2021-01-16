@@ -155,9 +155,7 @@ var options = {
   //  "notes": {
     //    "address": "Razorpay Corporate Office"
     //},
-    "theme": {
-        "color": "#F37254"
-    }
+
 };
 
 var rzp1 = new Razorpay(options);

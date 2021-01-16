@@ -19,6 +19,13 @@ $product4 = new Product("Duo Ninja",$conn);
 
 ?>
 
+<script>
+// add class to body tag so that white background can be set
+
+$("body").addClass("whiteBackground");
+
+</script>
+
 <div class="container">
 
 <p class="pt-2"> STEP <b>1</b> OF <b>2</b></p>
@@ -188,7 +195,7 @@ $product4 = new Product("Duo Ninja",$conn);
 </div class = "row">
 
 <div class="row">
-<div class="col"> <center><button class="btn btn-primary btn mt-3 mb-2 continueBtn" id ="continueBtn"> Continue </button></center>
+<div class="col"> <center><button class="btn btn-primary btn mt-3 mb-2 continueBtn blueButton" id ="continueBtn"> Continue </button></center>
 </div class="col">
 </div class = "row">
 </div>

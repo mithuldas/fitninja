@@ -27,8 +27,8 @@ require "header.php";
   <div class="row gutters-sm">
     <!-- desktop menu bar on left -->
     <div class="col-md-3 d-none d-md-block">
-      <div class="card shadow mt-4 roundborder">
-        <div class="card-body">
+      <div class="card mt-4 roundborder">
+        <div class="card-body profileShadow">
           <nav class="nav flex-column nav-pills nav-gap-y-1">
             <a href="#profile" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded active" id="profileDesktopHeader">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user mr-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Profile
@@ -46,7 +46,7 @@ require "header.php";
 
     <!-- content card -->
  <div class="col-md-9">
-  <div class="card shadow mt-4 roundborder">
+  <div class="card profileShadow mt-4 roundborder">
     <h6 id = "statusMessage" class="ml-2 mt-2"> <h6>
     <div class="card-header border-bottom mb-3 d-flex d-md-none">
       <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
@@ -72,9 +72,9 @@ require "header.php";
       if($user->authenticationType=='webLogin'){
         echo "
         <div class=\"row pt-2 pb-2\">
-          <div class=\"col-3\">Username
+          <div class=\"col-4\">Username
           </div>
-          <div class=\"col-9 greyfontNoCenter\">".$user->username."
+          <div class=\"col-8 greyfontNoCenter\">".$user->username."
           </div>
         </div>
         ";
@@ -83,37 +83,37 @@ require "header.php";
 
       ?>
       <div class="row pt-2 pb-2">
-        <div class="col-3">Name
+        <div class="col-4">Name
         </div>
-        <div class="col-9 greyfontNoCenter"><?php echo $user->firstName.' '.$user->lastName; ?>
-        </div>
-      </div>
-      <div class="row pt-2 pb-2">
-        <div class="col-3">Email
-        </div>
-        <div class="col-9 greyfontNoCenter"><?php echo $user->email; ?>
+        <div class="col-8 greyfontNoCenter"><?php echo $user->firstName.' '.$user->lastName; ?>
         </div>
       </div>
       <div class="row pt-2 pb-2">
-        <div class="col-3">Date of Birth
+        <div class="col-4">Email
         </div>
-        <div class="col-9 greyfontNoCenter"><?php echo $user->dateOfBirth; ?>
-        </div>
-      </div>
-      <div class="row pt-2 pb-2">
-        <div class="col-3 ">Gender
-        </div>
-        <div class="col-9 greyfontNoCenter"><?php echo $user->gender; ?>
+        <div class="col-8 greyfontNoCenter"><?php echo $user->email; ?>
         </div>
       </div>
       <div class="row pt-2 pb-2">
-        <div class="col-3 ">Phone number
+        <div class="col-4">Date of Birth
         </div>
-        <div class="col-9 greyfontNoCenter"><?php echo $user->phoneNumber; ?>
+        <div class="col-8 greyfontNoCenter"><?php echo $user->dateOfBirth; ?>
         </div>
       </div>
-      <div class="row pt-2">
-        <div class="col"><small>If you need to edit any of your personal details, please <a href="contact.php">submit a request.</a> </small>
+      <div class="row pt-2 pb-2">
+        <div class="col-4 ">Gender
+        </div>
+        <div class="col-8 greyfontNoCenter"><?php echo $user->gender; ?>
+        </div>
+      </div>
+      <div class="row pt-2 pb-2">
+        <div class="col-4 ">Phone number
+        </div>
+        <div class="col-8 greyfontNoCenter"><?php echo $user->phoneNumber; ?>
+        </div>
+      </div>
+      <div class="row pt-4">
+        <div class="col"><small> <a href="contact.php">Submit a request</a> to update personal details.</small>
         </div>
       </div>
 

@@ -21,6 +21,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <!-- Bootstrap sources -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
   <link href="/css/custom.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/8f8a300cc0.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
@@ -85,7 +86,9 @@ include_once ROOT_DIR."/includes/auto_login.php";
 </head>
 
 <body>
-
+  <a href="https://api.whatsapp.com/send?phone=919108806213" class="float" target="_blank">
+  <i class="fa fa-whatsapp my-float"></i>
+  </a>
 <div class="container-fluid">
 <div class="row">
   <!--navbar -->
@@ -102,7 +105,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <?php
   // if user user isn't logged in, show the login and register buttons
   if(!isset($_SESSION['uid'])){ ?>
-    <button type="button" class="btn btn-secondary btn-sm btn" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
+    <button type="button" class="btn btn-secondary btn-sm btn blueButton" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
     <button type="button" class="btn btn-primary btn-sm btn" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
 
     <?php  ;
@@ -164,9 +167,9 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <!-- /navbar -->
 
 <!-- Modal for login / registration popup -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" >
 <div class="modal-dialog" role="document" style=" width: 350px;">
-<div class="modal-content signup_modal">
+<div class="modal-content signup_modal" style="vertical-align: middle">
   <div class="modal-header">
 
   <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
@@ -186,7 +189,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
           <small id = "login-errorMsg" class = "login-error formErrors">  </small>
           <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-1 greybgd" placeholder="Username or Email" required>
           <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1 greybgd" placeholder="Password" required>
-          <center><button class="btn btn-primary btn-block" type="submit" name="login-submit" id = "login-submit">Login</button></center>
+          <center><button class="btn btn-primary btn-block blueButton" type="submit" name="login-submit" id = "login-submit">Login</button></center>
 
           <div class="checkbox mt-2 mb-0">
           <input type="checkbox" value="remember-me" name="remember-me" id="remember-me">
@@ -230,7 +233,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
         <div id = "passwordRepeat-error" class="signup-error mb-1 formErrors" ><small> </small></div>
 
         <small id = "errorMsg" class = "signup-error formErrors">  </small>
-        <center><button id = "submit" class="btn btn-primary mt-1 mb-1 btn-block" type="submit" name="signup-submit">Sign Up</button></center>
+        <center><button id = "submit" class="btn btn-primary mt-1 mb-1 btn-block blueButton" type="submit" name="signup-submit">Sign Up</button></center>
         </form>
         <div class="mt-4 mb-1">
           <hr class="mt-2 mb-3 ">

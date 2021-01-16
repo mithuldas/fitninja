@@ -6,9 +6,9 @@ require "header.php";
 ?>
 
 <script>
-// add indexPage class to body tag so that white background can be set
+// add class to body tag so that white background can be set
 
-$("body").addClass("indexPage");
+$("body").addClass("whiteBackground");
 
 </script>
 
@@ -23,8 +23,8 @@ $("body").addClass("indexPage");
 <!-- get fit section row -->
   <div class="row pt-4 align-items-center" >
     <div class="col-md-4 col-6">
-      <h2 class="mb-4">Get Fit</h2>
-      Elite personal training tailored to your individual needs, wherever and whenever you need. Enjoy the benefits of personalized workouts with the best trainers via live zoom sessions.
+      <h2 class="mb-4">Get Fit. Stay Fit.</h2>
+      Get into the best shape of your life with FuNinja's elite Online Personal Trainers as they masterfully guide you through fun, engaging and highly customized fitness routines carefully tailored to fit your exact needs.
     </div>
     <div class="col-md-8 col-6">
       <center><img src="/images/graphics/Illustration SVG.svg" width="80%"> </img></center>

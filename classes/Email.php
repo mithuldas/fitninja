@@ -107,11 +107,13 @@ class Email{
           line-height: inherit;
         }
         .btn-primary table td:hover {
-          background-color: #34495e !important;
+          background-color: #500472 !important;
+          border-color:#500472 !important;
         }
         .btn-primary a:hover {
-          background-color: #34495e !important;
-          border-color: #34495e !important;
+          .btn-primary table td:hover {
+            background-color: #500472 !important;
+            border-color:#500472 !important;
         }
       }
       </style>
@@ -303,22 +305,20 @@ class Email{
                       <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
                         <tr>
                           <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
-                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi <b>'.$name.'</b>,</p>
+                            <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Hi '.$name.',</p>
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><b>Welcome to FuNinja!<b></p>
-    						<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We are here to get you started on your customized fitness journey with our highly specialized group of trainers.</p>
-    						<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><b >A quick note on your <u style="color:green">FREE trial session: </u></b></p>
-    						<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">With your free account, you can enroll yourself for a free trial in a class of your choice with one of our esteemed trainers who will guide you through your session. </p>
-    						<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><a href="https://funinja.in/"><b>Sign in</b></a> to schedule your free trial and explore our various <b> membership plans </b> and payment options.</p>
+    						<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We offer personalised fitness training online, ensuring you are on track with your fitness goals no matter where you go.</p>
+    						<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">With your free account, you can enroll yourself for a <b>Free Trial</b> in a class of your choice with one of our esteemed trainers who will guide you through your session. </p>
     						<p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"><b>Have any questions? </b></p>
                             <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">We would love to <a href="https://funinja.in/contact.php"> connect with you!</a></p>
-                            <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
+                            <table border="0" cellpadding="0" cellspacing="0" class="btn btn-sm btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
                               <tbody>
                                 <tr>
                                   <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;">
                                     <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
                                       <tbody>
                                         <tr>
-                                          <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color: #EA5421; border-radius: 5px; text-align: center;"> <a href="https://FuNinja.in" target="_blank" style="display: inline-block; color: #ffffff; background-color: #EA5421; border: solid 1px #EA5421; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-transform: capitalize; border-color: #EA5421;">Let\'s begin!</a> </td>
+                                          <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color: #500472; border-radius: 5px; text-align: center;"> <a href="https://FuNinja.in" target="_blank" style="display: inline-block; color: #ffffff; background-color: #500472; border: solid 1px #500472; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 7px 15px; text-transform: capitalize; border-color: #500472;">Let\'s begin!</a> </td>
                                         </tr>
                                       </tbody>
                                     </table>

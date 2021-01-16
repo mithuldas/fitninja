@@ -5,7 +5,7 @@
 <li class="footerList ml-5 mr-5">
 
 <ul style="text-align: left">
-  <img src="/images/whitelogo.png" alt="FuNinja" style="height:70px" class="pr-4 pb-3">
+  <a href="index.php"><img src="/images/whitelogo.png" alt="FuNinja" style="height:70px" class="pr-4 pb-3"></a>
   Follow us
   <a href="https://www.facebook.com/FuNinja.in" target="_blank">
     <i class="fab fa-facebook fa-lg pl-2 pr-2 pb-4"></i></a>

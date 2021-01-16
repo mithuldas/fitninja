@@ -21,7 +21,7 @@ $("body").addClass("whiteBackground");
   <div class="container ">
 
 <!-- get fit section row -->
-  <div class="row pt-4 align-items-center" >
+  <div class="row pt-4 align-items-center pb-4" >
     <div class="col-md-4 col-6">
       <h2 class="mb-4">Get Fit. Stay Fit.</h2>
       Get into the best shape of your life with FuNinja's elite Online Personal Trainers as they masterfully guide you through fun, engaging and highly customized fitness routines carefully tailored to fit your exact needs.
@@ -30,8 +30,13 @@ $("body").addClass("whiteBackground");
       <center><img src="/images/graphics/Illustration SVG.svg" width="80%"> </img></center>
     </div>
   </div>
+</div>
 
+<div class="container-fluid p-0">
+
+  <div style="background-color:blue; background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(/images/bg1.png); background-size: 100%; box-shadow: 0 0 8px 8px white inset;">
 <!-- short form of offerings row -->
+<div class="container">
 
 <div class="row pt-5 align-items-center" data-offset-top="200">
   <div class="col-3 text-right p-0 textMobileNormal ">
@@ -50,7 +55,7 @@ $("body").addClass("whiteBackground");
     Strength. Cardio. Variation.
   </div>
 </div>
-<div class="row align-items-center" >
+<div class="row align-items-center pb-5" >
   <div class="col-3 text-right p-0 textMobileNormal">
     <b class="miniOfferingHeader">Slimnastics</b><br>
     Conditioning. Toning. Lean.
@@ -66,7 +71,11 @@ $("body").addClass("whiteBackground");
   Dance. Flexibility. Fun.
   </div>
 </div>
+</div>
+</div>
+</div>
 
+<div class="container">
 
 <!-- know more separator button -->
 <div class="row align-items-center pt-4 pb-4">
@@ -80,7 +89,7 @@ $("body").addClass("whiteBackground");
 
   <div class="row mt-2 pt-4 pb-4">
     <div class="col">
-      <center><h2>How it works</h2></center>
+      <center><h2>How It Works</h2></center>
     </div>
   </div>
   <div class="row pb-4">

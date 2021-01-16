@@ -50,7 +50,7 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
   <div class="row">
     <div class="col-md">
       <div class="welcome-banner mt-0 mb-3">
-        <center><h5 class="welcomeText" >Hey, <?php echo $currentUser->firstName;?>! </h6></center>
+        <h5 class="welcomeText" >Hi <?php echo $currentUser->firstName;?>, </h6>
       </div>
     </div>
   </div>

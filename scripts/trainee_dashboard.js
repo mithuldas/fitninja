@@ -11,7 +11,7 @@ function populateUpcomingDivContent(){
     $(".upcoming-sessions-area").html
       ("You don't have any upcoming sessions yet. \
       <br>\
-      <a href=\"/request_trial.php\" class=\"btn btn-primary btn-sm btn mt-4\
+      <a href=\"/request_trial.php\" class=\"btn btn-primary btn mt-3\
       \" id =\"loginButton\"> Request a Free Trial </a>\
       ");
   } else if (currentUser.activePlan.productName=="Trial" && currentUser.trialCompleted){
@@ -23,8 +23,6 @@ function populateUpcomingDivContent(){
     var finalHTML ='';
 
     if(upcomingSessions.length>0){ // if there are upcoming sessions, display them in a table
-      var title="<h6 class='tableTitle'>Your upcoming sessions</h6>";
-
       var tableHeader=
       " <div class='table100'>\
         <div class='table100-head'>\
@@ -56,18 +54,18 @@ function populateUpcomingDivContent(){
 
         tableBodyFinal=tableBodyHeader+tableBody+tableBodyFooter;
 
-      var finalUpcomingSessions = title+tableHeader+tableBodyFinal;
+      var finalUpcomingSessions = tableHeader+tableBodyFinal;
       finalHTML = finalHTML+finalUpcomingSessions;
     }
 
     if(unassignedProducts.length>0){ // if there are products that haven't been scheduled yet, display them next
-      var title="<h6 class='tableTitle'> Unscheduled Plans</h6>";
+
       var tableHeader=
       " <div class='table100'>\
         <div class='table100-head'>\
         <table id='unassignedProducts'><thead>\
         <tr class='row100 head'>\
-        <th class='cell100 column1 unassigned'> Type </th>\
+        <th class='cell100 column1 unassigned'> Session </th>\
         <th class='cell100 column2 unassigned'> Requested </th>\
         <th class='cell100 column3 unassigned'> Status </th>\
         </tr></thead>\
@@ -88,7 +86,7 @@ function populateUpcomingDivContent(){
         tableBodyFooter = '</tbody></table></div></div>';
 
         tableBodyFinal=tableBodyHeader+tableBody+tableBodyFooter;
-        var finalUnassignedProducts = title+tableHeader+tableBodyFinal;
+        var finalUnassignedProducts = tableHeader+tableBodyFinal;
         finalHTML=finalHTML+finalUnassignedProducts;
 
     }
@@ -104,8 +102,6 @@ function populateTrainerDetailsDivContent(){
 
   if(trainers.length>0){
     var finalHTML ='';
-    var title="<center><h6 class='tableTitle'>Your Trainers</h6></center>";
-
     var tableHeader=
     " <div class='table100'>\
       <div class='table100-head'>\
@@ -129,13 +125,13 @@ function populateTrainerDetailsDivContent(){
 
     tableBodyFinal=tableBodyHeader+tableBody+tableBodyFooter;
 
-    var finalTrainerList = title+tableHeader+tableBodyFinal;
+    var finalTrainerList = tableHeader+tableBodyFinal;
 
     finalHTML = finalHTML+finalTrainerList;
     $(".trainer-facts").html(finalHTML);
   } else {
     var finalHTML ='';
-    finalHTML = '<center>Explore <a href="/about_us.php">FuNinja,</a> our <a href="/offerings.php">Offerings</a> and exciting <a href="/plans.php">Membership Plans </a></center>';
+    finalHTML = '<p>Trainers that have been assigned to you will be listed here. </p>Learn more <a href="/about_us.php">About FuNinja</a>, our <a href="/offerings.php">Offerings</a> and our exciting <a href="/plans.php">Membership Plans.</a>';
     $(".trainer-facts").html(finalHTML);
   }
 
@@ -239,7 +235,7 @@ function populateProgressDivContent(){
     var scheduledSessionsForPie=currentUser.activePlan.sessionsScheduled-completedSessionsForPie;
     var unscheduledSessionsForPie=currentUser.activePlan.totalSessions-currentUser.activePlan.sessionsScheduled;
 
-    var status = completedSessionsForPie+' out of ' +(completedSessionsForPie+scheduledSessionsForPie+unscheduledSessionsForPie)+' sessions completed';
+    var status = completedSessionsForPie+' of ' +(completedSessionsForPie+scheduledSessionsForPie+unscheduledSessionsForPie)+' complete';
 
     if(currentUser.activePlan.productName=="Trial" && currentUser.activePlan.sessionsScheduled==0 && !currentUser.trialCompleted){
       var status = "Trial Requested";
@@ -275,8 +271,9 @@ function populateProgressDivContent(){
     data: {
         labels: ['Completed', 'Scheduled', 'Unscheduled'],
         datasets: [{
-            backgroundColor: ['#79cbb8','#500472','white'],
-            borderColor: ['black','black','black'],
+            backgroundColor: ['#00BA7C','blue','lightgrey'],
+            borderColor: ['white','white','white'],
+            borderWidth: [3,3,3],
             data: [completedSessionsForPie, scheduledSessionsForPie, unscheduledSessionsForPie],
         }]
     },
@@ -286,7 +283,7 @@ function populateProgressDivContent(){
       elements: {
   center: {
     text: donutCenterText,
-    color: '#500472', // Default is #000000
+    color: 'black', // Default is #000000
     fontStyle: 'Arial', // Default is Arial
     sidePadding: 20, // Default is 20 (as a percentage)
     minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.

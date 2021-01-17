@@ -799,3 +799,19 @@ html {
   }
 
 }
+
+.dashCard{
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  -webkit-box-shadow: 0px 3px 6px 0px #00000020;
+  -moz-box-shadow: 0px 3px 6px 0px #00000020;
+  box-shadow: 0px 3px 6px 0px #00000020;
+  background-color:white
+}
+
+.dashCardTitle{
+  font-family:Lato-Light;
+  font-size:20px;
+}

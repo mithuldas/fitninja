@@ -92,7 +92,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <div class="container-fluid">
 <div class="row">
   <!--navbar -->
-  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom mb-0 pb-0 mt-0 pt-0 boxshadoweffect">
+  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom mb-0 pb-0 mt-0 pt-0">
 
     <!-- burger -->
     <button id="burger" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

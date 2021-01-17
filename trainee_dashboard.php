@@ -45,27 +45,31 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 
 <div class="container-fluid">
 
-  <!-- row 1 - Welcome banner on pc and mob-->
 
-  <div class="row">
-    <div class="col-md">
-      <div class="welcome-banner mt-0 mb-3">
-        <h5 class="welcomeText" >Hi <?php echo $currentUser->firstName;?>, </h6>
-      </div>
-    </div>
-  </div>
 
   <!-- row 2 - contains two columns -
     col 1 to contain upcoming sessions and below it, the progress donut
     col 2 to contain the calendar and below it, the trainers list
   -->
+
   <div class="row">
-    <div class="col-md">
-      <div class="upcoming-sessions-area pb-3" align="center">
+    <div class="col-md m-3 mt-4">
+      <!-- row 1 - Welcome banner on pc and mob-->
+      <div class="welcome-banner mb-4">
+        <h5 class="welcomeText p-0 m-0" >Hi <?php echo $currentUser->firstName;?>, </h5>
+        <h5 class="p-0 m-0"> This is your FuNinja dashboard</h5>
+        <small>You can find your upcoming sessions, progress data, your full schedule and details of your trainers here.</small>
       </div>
-      <div class="progressArea hide-on-mobile mt-4 mb-2">
-        <canvas id="myChart"></canvas>
+      <div class="pb-2 dashCardTitle">Upcoming Sessions
       </div>
+      <div class="upcoming-sessions-area p-3 dashCard" align="left">
+      </div>
+      <div class=" hide-on-mobile mt-4 dashCardTitle"> Your Trainers
+      </div>
+        <div class="trainer-facts dashCard p-3 pb-3 mt-2" align="left">
+        Trainer info here
+        </div>
+
       <div class="row pt-3, pb-4 hide-on-nonmobile">
           <div id ="mini-clndr"> </div>
       </div>
@@ -74,13 +78,19 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
       </div>
 
     </div>
-    <div class="col-md">
-      <div class="calendar hide-on-mobile mt-2 mb-5" id ="large-clndr">
+    <div class="col-md m-3 mt-4">
+      <div class=" hide-on-mobile dashCardTitle"> <center>Your Schedule</center>
       </div>
+      <div class=" hide-on-mobile mb-3 mt-2" >
+      <div class="calendar hide-on-mobile " id ="large-clndr">
+      </div>
+      <center><div class="mt-4 hide-on-mobile dashCardTitle"> Your Plan
+      </div>
+      <div class="progressArea hide-on-mobile pt-3 pb-3 mt-2 mb-2 dashCard" style="width:500px">
+        <canvas id="myChart"></canvas>
+      </div></center>
+    </div>
 
-      <div class="trainer-facts">
-      Trainer info here
-      </div>
     </div>
   </div>
 

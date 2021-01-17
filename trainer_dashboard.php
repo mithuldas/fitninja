@@ -72,15 +72,7 @@ $currentUserJSON = json_encode($currentUser);
 
 <div class="container-fluid">
 
-  <!-- row 1 - Welcome banner on pc and mob-->
 
-  <div class="row">
-    <div class="col-md">
-      <div class="welcome-banner mb-3">
-        <h5 class="welcomeText" >Hi <?php echo $currentUser->firstName;?>, </h6>
-      </div>
-    </div>
-  </div>
 
   <!-- row 2 - contains two columns -
     col 1 to contain upcoming sessions and below it, instructions area
@@ -88,18 +80,34 @@ $currentUserJSON = json_encode($currentUser);
   -->
 
   <div class="row">
-    <div class="col-md">
-      <div class="upcoming-sessions-area pb-3" align="center">
-      </div>
-      <div class="instructions-area">
-      </div>
-    </div>
-    <div class="col-md">
-      <div class="calendar mt-2 mb-5" id ="mini-clndr">
-      </div>
-      <div class="trainee-details" align="center">
+    <div class="col-md m-3 mt-4">
+      <!-- row 1 - Welcome banner on pc and mob-->
 
+      <div class="welcome-banner mb-4">
+        <h5 class="welcomeText p-0 m-0" >Hi <?php echo $currentUser->firstName;?>, </h5>
+        <h5 class="p-0 m-0"> This is your FuNinja dashboard</h5>
+        <small>You can find your upcoming sessions, your full schedule and details of your trainees here.</small>
       </div>
+      <div class="dashCardTitle">Upcoming Sessions
+      </div>
+      <div class="upcoming-sessions-area p-3 dashCard mt-2" align="left">
+      </div>
+      <div class="mt-4 hide-on-mobile dashCardTitle"> Your Trainees
+      </div>
+      <div class="trainee-details dashCard pt-3 pb-3  pl-3 pr-3 mt-2 mb-2" align="left">
+      </div>
+
+    </div>
+    <div class="col-md mt-5">
+      <div class=" hide-on-mobile dashCardTitle"> <center>Your Schedule</center>
+      </div>
+      <div class="calendar mt-2" id ="mini-clndr">
+      </div>
+      <div class="mt-4 hide-on-mobile dashCardTitle"> <center>Trainer Guidelines</center>
+      </div>
+      <div class="instructions-area dashCard mt-2 pt-3 pb-3 mb-2 pr-2" style="font-size:14px">
+      </div>
+
     </div>
   </div>
 

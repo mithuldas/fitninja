@@ -12,10 +12,10 @@ require "header.php";
 
 <div class="container">
 
-  <div class="row mt-2">
+  <div class="row mt-3">
     <div class="col">
   <center><h4>Frequently Asked Questions</h4></center>
-  <center><small>If your question isn't listed here, please <a href="contact.php"> contact us </a> </small></center>
+  <center><small>If your question isn't listed here, <a href="contact.php"> CONTACT US directly. </a> </small></center>
     </div>
   </div>
 
@@ -23,7 +23,7 @@ require "header.php";
 
     <div class="row mt-4">
 
-        <div class="col-lg-12 ">
+        <div class="col-lg-12 pb-3">
             <div class="tab-content" id="faq-tab-content">
                 <div class="tab-pane show active dashCard" id="tab1" role="tabpanel" aria-labelledby="tab1">
                     <div class="accordion" id="accordion-tab-1">

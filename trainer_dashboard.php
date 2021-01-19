@@ -70,7 +70,7 @@ $currentUserJSON = json_encode($currentUser);
 
 <script type="text/javascript" src="scripts/trainer_dashboard.js"> </script>
 
-<div class="container-fluid">
+<div class="container-fluid containerReducePadding">
 
 
 
@@ -80,32 +80,34 @@ $currentUserJSON = json_encode($currentUser);
   -->
 
   <div class="row">
-    <div class="col-md m-3 mt-4">
+    <div class="col-md m-3 mt-4 mobileDiv">
       <!-- row 1 - Welcome banner on pc and mob-->
 
       <div class="welcome-banner mb-4">
         <h5 class="welcomeText p-0 m-0" >Hi <?php echo $currentUser->firstName;?>, </h5>
-        <h5 class="p-0 m-0"> This is your FuNinja dashboard</h5>
-        <small>You can find your upcoming sessions, your full schedule and details of your trainees here.</small>
+        <h5 class="p-0 m-0 welcomeText"> This is your FuNinja dashboard</h5>
+        <small class="hide-on-mobile">You can find your upcoming sessions, your full schedule and details of your trainees here.</small>
       </div>
-      <div class="dashCardTitle">Upcoming Sessions
+      <div class="dashCardTitle dashMobTitle">Upcoming Sessions
       </div>
-      <div class="upcoming-sessions-area p-3 dashCard mt-2" align="left">
+      <div class="upcoming-sessions-area p-3 dashCard mt-2 dashMobTextInner" align="left">
       </div>
-      <div class="mt-4 hide-on-mobile dashCardTitle"> Your Trainees
+      <div class="mt-4 dashCardTitle dashMobTitle"> Your Trainees
       </div>
-      <div class="trainee-details dashCard pt-3 pb-3  pl-3 pr-3 mt-2 mb-2" align="left">
+      <div class="trainee-details dashCard  dashMobTextInner pt-3 pb-3  pl-3 pr-3 mt-2 mb-2" align="left">
       </div>
 
     </div>
-    <div class="col-md mt-5">
+    <div class="col-md mt-5 mobileDiv">
+      <div class=" mt-1 hide-on-nonmobile dashCardTitle dashMobTitle"> Your Schedule
+      </div>
       <div class=" hide-on-mobile dashCardTitle"> <center>Your Schedule</center>
       </div>
       <div class="calendar mt-2" id ="mini-clndr">
       </div>
-      <div class="mt-4 hide-on-mobile dashCardTitle"> <center>Trainer Guidelines</center>
+      <div class="mt-4 dashCardTitle dashMobTitle"> <center>Trainer Guidelines</center>
       </div>
-      <div class="instructions-area dashCard mt-2 pt-3 pb-3 mb-2 pr-2" style="font-size:14px">
+      <div class="instructions-area dashCard dashMobInstrInner mt-2 pt-3 pb-3 mb-2 pr-2" style="font-size:14px">
       </div>
 
     </div>

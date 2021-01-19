@@ -35,10 +35,6 @@ body {
   font-family: Lato-Regular;
 }
 
-.navbar-custom {
-    background-color: white;
-}
-
 .footer {
   text-align: center;
   position: absolute;
@@ -282,19 +278,8 @@ text-decoration: none !important;
   background: #F5F5F5;
 }
 
-.userdropdown{
-  box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
-  -o-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
-  -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
-}
-
-
 /* trainee dashboard tables */
 /*  table formatting */
-
-
 
 table {
   width: 100%;
@@ -304,7 +289,6 @@ th, td {
   font-weight: unset;
   padding-right: 10px;
 }
-
 
 /* upcoming sessions table control desktop*/
 .column1.upcoming {
@@ -414,12 +398,7 @@ th, td {
   text-transform: uppercase;
 }
 
-/*==================================================================
-[ ]*/
 
-.table100 .table100-head {
-
-}
 
 .table100 th {
   font-family: Lato-Bold;
@@ -481,12 +460,93 @@ th, td {
   overflow: hidden;
 }
 
+/*-Mobile Tables--*/
+@media screen and (max-width: 575px) {
+  .table100-head th {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+  }
+
+  .table100-body td {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  /*==================================================================
+  [ Fix header ]*/
+  .table100 {
+    position: relative;
+    padding-top: 13px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .table100-head {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .table100 th {
+    font-family: Lato-Bold;
+    font-size: 12px;
+    color: #555555;
+    line-height: 1;
+
+    background-color: transparent;
+  }
+
+  .table100 td {
+    font-family: Lato-Regular;
+    font-size: 11px;
+    color: #808080;
+    line-height: 1.0;
+
+    background-color: #f7f7f7;
+  }
+
+  .table100 .table100-body tr {
+    overflow: hidden;
+    border-bottom: 10px solid #fff;
+    border-radius: 10px;
+  }
+
+  .table100 .table100-body table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+  .table100 .table100-body td {
+      border: solid 1px transparent;
+      border-style: solid none;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left:2px;
+      padding-right:2px;
+  }
+  .table100 .table100-body td:first-child {
+      border-left-style: solid;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+  }
+  .table100 .table100-body td:last-child {
+      border-right-style: solid;
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
+  }
+
+  .table100 tr:hover td {
+    background-color: #ebebeb;
+  }
+
+  .table100 .table100-head th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+}
 
 /* Page background */
-body {
-	/*background: linear-gradient(45deg, lightblue, lavender);*/
-  background: #f4f5f7;
-}
 
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #500472 !important;
@@ -741,6 +801,49 @@ html {
   fill:white;
 }
 
+.roundedUserMenuDropdown{
+  border-radius: 6px;
+}
+
+.stickyUserMenu{
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.stickyUserLogout{
+  padding: 0;
+  border: none;
+  background: none;
+
+}
+
+.navbar-custom {
+    background-color: white;
+}
+
+.stickyLogin{
+  position:absolute;
+  top:25px;
+  right:25px;
+  z-index:100;
+}
+
+.stickySignup{
+  position:absolute;
+  top:25px;
+  right:90px;
+  z-index:100;
+}
+
+.stickyLogo{
+  position:absolute;
+  height:40px;
+  top:25px;
+  left:100px;
+  z-index:100;
+}
+
 .float{
 	position:fixed;
 	width:45px;
@@ -814,4 +917,57 @@ html {
 .dashCardTitle{
   font-family:Lato-Light;
   font-size:20px;
+}
+
+.headerShadow{
+  box-shadow: 0 10px 21px -12px rgba(0, 0, 0, 0.30);
+}
+
+@media screen and (max-width: 575px) {
+  .instructions-area{
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .welcomeText {
+    font-size:15px;
+  }
+
+  .mobileDiv {
+    padding:0px;
+    margin-top:0px !important;
+  }
+
+  .containerReducePadding{
+    padding-top:20px;
+    padding-left:8px;
+    padding-bottom:8px;
+  }
+
+  .dashMobTitle{
+    text-align: center;
+    font-size:16px;
+  }
+
+  .dashMobTextInner{
+    text-align: center!important;
+    font-size:13px!important;
+    padding-bottom:7px !important;
+    padding-top:7px !important;
+    padding-left:3px !important;
+    padding-right:3px !important;
+  }
+
+  .dashMobInstrInner{
+    font-size:13px!important;
+    padding-bottom:7px !important;
+    padding-top:10px !important;
+    padding-left:3px !important;
+    padding-right:3px !important;
+  }
+
+  .miniCalPadding{
+    padding-top:7px !important;
+    padding-bottom:7px !important;
+  }
 }

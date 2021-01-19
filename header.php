@@ -20,7 +20,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 
   <!-- Bootstrap sources -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
-  <link href="/css/custom.css" rel="stylesheet">
+  <link href="/css/custom.css?v=2f3xdfd42" rel="stylesheet">
   <script src="https://kit.fontawesome.com/8f8a300cc0.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -92,7 +92,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <div class="container-fluid">
 <div class="row">
   <!--navbar -->
-  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom mb-0 pb-0 mt-0 pt-0">
+  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom headerShadow mb-0 pb-0 mt-0 pt-0">
 
     <!-- burger -->
     <button id="burger" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,9 +114,12 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <?php
   if(isset($_SESSION['uid'])){?>
   <div class="dropdown">
-<button type="button" class="btn btn-sm btn-primary dropdown-toggle userdropdown" data-toggle="dropdown">
-  <img class="svg m-0 p-0" src="/images/profile.svg" width="18" />
-</button>
+    <button type="button" class="stickyUserMenu" data-toggle="dropdown">
+      <img class="mt-2 mb-2 mr-2 ml-2" title="User Menu" src="/images/user-ninja.png" width="35" style="border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
+    </button>
+    <a href="/includes/logout.php" class="stickyUserLogout">
+      <img class="m-0 " title="Logout" src="/images/logout.png" width="35" style="padding:5px; border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
+    </a>
 <div class="dropdown-menu dropdown-menu-right">
   <a class="dropdown-item userMenu" href="/includes/post_login_landing_controller.php">Dashboard</a>
   <a class="dropdown-item userMenu" href="/profile.php#profile">Profile</a>

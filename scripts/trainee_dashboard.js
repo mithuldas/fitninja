@@ -235,7 +235,7 @@ function populateProgressDivContent(){
     var scheduledSessionsForPie=currentUser.activePlan.sessionsScheduled-completedSessionsForPie;
     var unscheduledSessionsForPie=currentUser.activePlan.totalSessions-currentUser.activePlan.sessionsScheduled;
 
-    var status = completedSessionsForPie+' of ' +(completedSessionsForPie+scheduledSessionsForPie+unscheduledSessionsForPie)+' complete';
+    var status = currentUser.activePlan.productName;
 
     if(currentUser.activePlan.productName=="Trial" && currentUser.activePlan.sessionsScheduled==0 && !currentUser.trialCompleted){
       var status = "Trial Requested";
@@ -269,17 +269,18 @@ function populateProgressDivContent(){
 
     // The data for our dataset
     data: {
-        labels: ['Completed', 'Scheduled', 'Unscheduled'],
+        labels: ['Completed', 'Scheduled'],
         datasets: [{
-            backgroundColor: ['#00BA7C','blue','lightgrey'],
+            backgroundColor: ['#00BA7C','lightgrey'],
             borderColor: ['white','white','white'],
             borderWidth: [3,3,3],
-            data: [completedSessionsForPie, scheduledSessionsForPie, unscheduledSessionsForPie],
+            data: [completedSessionsForPie, scheduledSessionsForPie],
         }]
     },
 
     // Configuration options go here
     options: {
+      aspectRatio: 2,
       elements: {
   center: {
     text: donutCenterText,
@@ -327,24 +328,26 @@ var chart = new Chart(ctxMobile, {
 
   // The data for our dataset
   data: {
-      labels: ['Completed', 'Scheduled', 'Unscheduled'],
+      labels: ['Completed', 'Scheduled'],
       datasets: [{
-          backgroundColor: ['#79cbb8','#500472','white'],
-          borderColor: ['black','black','black'],
-          data: [completedSessionsForPie, scheduledSessionsForPie, unscheduledSessionsForPie],
+        backgroundColor: ['#00BA7C','lightgrey'],
+        borderColor: ['white','white'],
+        borderWidth: [3,3],
+          data: [completedSessionsForPie, scheduledSessionsForPie],
       }]
   },
 
   // Configuration options go here
   options: {
+    aspectRatio: 1.5,
     elements: {
 center: {
   text: donutCenterText,
-  color: '#500472', // Default is #000000
+  color: 'black', // Default is #000000
   fontStyle: 'Arial', // Default is Arial
-  sidePadding: 20, // Default is 20 (as a percentage)
-  minFontSize: 15, // Default is 20 (in px), set to false and text will not wrap.
-  lineHeight: 25 // Default is 25 (in px), used for when text wraps
+  sidePadding: 10, // Default is 20 (as a percentage)
+  minFontSize: 13, // Default is 20 (in px), set to false and text will not wrap.
+  lineHeight: 20 // Default is 25 (in px), used for when text wraps
 }
 },
 

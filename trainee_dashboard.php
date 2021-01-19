@@ -43,7 +43,7 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"> </script>
 <script type="text/javascript" src="scripts/trainee_dashboard.js"> </script>
 
-<div class="container-fluid">
+<div class="container-fluid containerReducePadding">
 
 
 
@@ -53,32 +53,39 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
   -->
 
   <div class="row">
-    <div class="col-md m-3 mt-4">
+    <div class="col-lg m-3 mt-4 mobileDiv">
       <!-- row 1 - Welcome banner on pc and mob-->
       <div class="welcome-banner mb-4">
         <h5 class="welcomeText p-0 m-0" >Hi <?php echo $currentUser->firstName;?>, </h5>
-        <h5 class="p-0 m-0"> This is your FuNinja dashboard</h5>
-        <small>You can find your upcoming sessions, progress data, your full schedule and details of your trainers here.</small>
+        <h5 class="p-0 m-0 welcomeText"> This is your FuNinja dashboard</h5>
+        <small class="hide-on-mobile">You can find your upcoming sessions, progress data, your full schedule and details of your trainers here.</small>
       </div>
-      <div class="pb-2 dashCardTitle">Upcoming Sessions
+      <div class="pb-2 dashCardTitle dashMobTitle">Upcoming Sessions
       </div>
-      <div class="upcoming-sessions-area p-3 dashCard" align="left">
+      <div class="upcoming-sessions-area p-3 dashCard dashMobTitle dashMobTextInner" align="left">
       </div>
-      <div class=" hide-on-mobile mt-4 dashCardTitle"> Your Trainers
+      <div class=" mt-4 dashCardTitle dashMobTitle"> Your Trainers
       </div>
-        <div class="trainer-facts dashCard p-3 pb-3 mt-2" align="left">
+        <div class="trainer-facts dashCard p-3 pb-3 mt-2 dashMobTextInner" align="left">
         Trainer info here
         </div>
 
-      <div class="row pt-3, pb-4 hide-on-nonmobile">
+        <div class=" mt-4 hide-on-nonmobile dashCardTitle dashMobTitle"> Your Schedule
+        </div>
+      <div class="row mt-2 hide-on-nonmobile">
           <div id ="mini-clndr"> </div>
       </div>
-      <div class="row pt-4, pb-4 hide-on-nonmobile">
-          <canvas id="myMobileChart"></canvas>
+
+      <div class=" mt-4 hide-on-nonmobile dashCardTitle dashMobTitle"> Your Plan
+      </div>
+      <div class="row pt-4, pb-4 hide-on-nonmobile dashMobTitle">
+        <div class="col-lg mt-2 ml-3 mr-3 dashCard">
+          <canvas id="myMobileChart" ></canvas>
+        </div>
       </div>
 
     </div>
-    <div class="col-md m-3 mt-4">
+    <div class="col-lg m-3 mt-4">
       <div class=" hide-on-mobile dashCardTitle"> <center>Your Schedule</center>
       </div>
       <div class=" hide-on-mobile mb-3 mt-2" >

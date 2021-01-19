@@ -19,8 +19,9 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <title> FuNinja </title>
 
   <!-- Bootstrap sources -->
+  <link rel="icon" href="https://www.funinja.in/favicon.ico?v=523" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
-  <link href="/css/custom.css?v=2f3xdfd42" rel="stylesheet">
+  <link href="/css/custom.css?v=2f3xdfdf2d42" rel="stylesheet">
   <script src="https://kit.fontawesome.com/8f8a300cc0.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -91,34 +92,64 @@ include_once ROOT_DIR."/includes/auto_login.php";
   </a>
 <div class="container-fluid">
 <div class="row">
+
   <!--navbar -->
-  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom headerShadow mb-0 pb-0 mt-0 pt-0">
+  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom navbar-expand-md headerShadow mb-0 pb-0 mt-0 pt-0">
 
     <!-- burger -->
     <button id="burger" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- /burger" -->
+
+
   <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand"><img src="/images/logo.png" alt="FuNinja" style="height:40px"></a>
 
-  <div>
-  <?php
-  // if user user isn't logged in, show the login and register buttons
-  if(!isset($_SESSION['uid'])){ ?>
-    <button type="button" class="btn btn-secondary btn-sm btn blueButton" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
-    <button type="button" class="btn btn-primary btn-sm btn" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
 
-    <?php  ;
-  } ?>
+  <!-- everything in here will be collapsed on smaller devices -->
+  <div class="collapse navbar-collapse pt-1 order-md-1 order-2" id="navbarSupportedContent">
+    <!-- Navbar links, dropdowns etc go here -->
+    <ul class="navbar-nav mr-auto" id="navbarLinks">
+
+
+      <li class="nav-item active">
+        <a class="nav-link burgerOption" href="/about.php">About</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link burgerOption" href="/offerings.php">Offerings</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link burgerOption" href="/plans.php">Membership</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link burgerOption" href="/contact.php">Contact</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link burgerOption" href="/faq.php">FAQs</a>
+      </li>
+
+    </ul>
+
+</div>
+
+<div class="order-md-2 order-1">
+<?php
+// if user user isn't logged in, show the login and register buttons
+if(!isset($_SESSION['uid'])){ ?>
+  <button type="button" class="mr-1 btn btn-secondary btn-sm btn blueButton" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
+  <button type="button" class=" btn btn-primary btn-sm btn" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
+
+  <?php  ;
+} ?>
 
 <?php
   if(isset($_SESSION['uid'])){?>
   <div class="dropdown">
     <button type="button" class="stickyUserMenu" data-toggle="dropdown">
-      <img class="mt-2 mb-2 mr-2 ml-2" title="User Menu" src="/images/user-ninja.png" width="35" style="border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
+      <img class="mt-2 mb-2 mr-1 ml-2" title="User Menu" src="/images/user-ninja.png" width="30" style="padding: 2px; border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
     </button>
     <a href="/includes/logout.php" class="stickyUserLogout">
-      <img class="m-0 " title="Logout" src="/images/logout.png" width="35" style="padding:5px; border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
+      <img class="m-0 " title="Logout" src="/images/logout.png" width="30" style="padding:4px; border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
     </a>
 <div class="dropdown-menu dropdown-menu-right">
   <a class="dropdown-item userMenu" href="/includes/post_login_landing_controller.php">Dashboard</a>
@@ -141,31 +172,6 @@ include_once ROOT_DIR."/includes/auto_login.php";
 </div>
 
 
-  <!-- everything in here will be collapsed on smaller devices -->
-  <div class="collapse navbar-collapse pt-1" id="navbarSupportedContent">
-    <!-- Navbar links, dropdowns etc go here -->
-    <ul class="navbar-nav mr-auto">
-
-
-
-<!-- mobile navbar items state-independent -->
-
-      <li class="nav-item active pl-5 pt-3 ">
-        <a class="nav-link burgerOption" href="/about.php">About FuNinja</a>
-      </li>
-      <li class="nav-item active pl-5">
-        <a class="nav-link burgerOption" href="/offerings.php">Our Offerings</a>
-      </li>
-      <li class="nav-item active pl-5">
-        <a class="nav-link burgerOption" href="/plans.php">Membership</a>
-      </li>
-      <li class="nav-item active pl-5 pb-4">
-        <a class="nav-link burgerOption" href="/contact.php">Contact Us</a>
-      </li>
-
-    </ul>
-
-</div>
 </nav>
 <!-- /navbar -->
 

@@ -26,6 +26,14 @@ $("body").addClass("whiteBackground");
 
 </script>
 
+<div class="container-fluid">
+  <nav aria-label="breadcrumb mb-0 pb-0">
+    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
+      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Membership</li>
+    </ol>
+  </nav>
+</div>
 <div class="container">
 
 <p class="pt-2"> STEP <b>1</b> OF <b>2</b></p>
@@ -195,7 +203,7 @@ $("body").addClass("whiteBackground");
 </div class = "row">
 
 <div class="row">
-<div class="col"> <center><button class="btn btn-primary btn mt-3 mb-2 continueBtn blueButton" id ="continueBtn"> Continue </button></center>
+<div class="col"> <center><button class="btn btn-primary btn mt-4 mb-4 continueBtn blueButton" id ="continueBtn"> Continue </button></center>
 </div class="col">
 </div class = "row">
 </div>

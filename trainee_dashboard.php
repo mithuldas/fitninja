@@ -43,6 +43,15 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"> </script>
 <script type="text/javascript" src="scripts/trainee_dashboard.js"> </script>
 
+<div class="container-fluid">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px; padding-bottom:0px">
+      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+    </ol>
+  </nav>
+</div>
+
 <div class="container-fluid containerReducePadding">
 
 

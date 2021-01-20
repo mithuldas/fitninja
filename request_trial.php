@@ -20,57 +20,76 @@ $currentUserJSON = json_encode($currentUser);
   var currentUser = <?php echo $currentUserJSON; ?>;
 </script>
 
+<div class="container-fluid">
+  <nav aria-label="breadcrumb mb-0 pb-0" >
+    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
+      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
+      <li class="breadcrumb-item"><a href="/includes/post_login_landing_controller.php">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Request a Trial</li>
+    </ol>
+  </nav>
+</div>
 <div class="container mt-3">
+  <div class="row justify-content-center p-0 m-0">
+    <div class="col-md-8 p-0 m-0">
+      <h5 class="p-0 m-0">Request a Free Trial Session</h5>
+      <small class="p-0 m-0"> Pick an activity, date and time for your trial. </small>
+    </div>
+  </div>
 
-  <h5>Request a Free Trial Session</h5>
-  <small> Pick an activity, date and time for your trial. We'll pair you up with a FuNinja trainer. </small>
-
+<div class="row justify-content-center">
+  <div class="col-md-8 dashCard m-3">
   <form action="/includes/submit_trial_request.php" class="mt-3" method="post">
-    <div class="row">
-      <div class="form-group col">
-        <label class="pt-2" for="phone">1. Pick your activity: </label><br>
+    <div class="row justify-content-center">
+      <div class="form-group col-xs-4 col-md-4">
+        <label class="pt-2" for="phone">1. Trial type: </label><br>
         <?php
           foreach ($activityNames as $activityName) {
             echo "
             <input  type='radio' value='$activityName' id='$activityName' name='trialType' required>
-            <label class='form-check-label' for='$activityName'> $activityName </label>
+            <label class='form-check-label' for='$activityName' style='font-size:13px'> $activityName </label>
             <br>
             ";
           }
         ?>
       </div>
+      <div class="col-xs-4 col-md-4">
+
+      </div>
     </div>
 
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="form-group col-xs-4 col-md-4">
-        <label for="gender">2. Requested date </label>
+        <label for="gender">2. Date </label>
         <select class="form-control" id="dateSelect" name="trialDate">
         </select>
       </div>
       <div class="form-group col-xs-4 col-md-4">
         <div class="row pl-3">
-          <label for="dobDay">3. Requested time window</label>
+          <label for="dobDay">3. Time </label>
         </div>
         <select class="form-control" id="timeSlot" name="trialTimeSlot">
         </select>
     </div>
   </div>
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="form-group col-xs-8 col-md-8">
-        <label for="phone">4. Comments (Optional)<small> Expectations/ Feedback/ Health Restrictions </small></label>
+        <label for="phone">4. Comments </label>
         <input id="comments" type="text" name="comments" class="form-control">
+        <small> Be sure to define your expectations as well as any health restrictions you might have. </small>
       </div>
 
     </div>
     <div class="row">
-      <div class="form-group col-xs-4 col-md-4">
+      <div class="form-group col-xs-12 col-md-12">
         <input type='hidden' name='currentUser' value='<?php echo $currentUserJSON; ?>'>
-        <button class="btn btn-sm btn-primary" type="submit" name="trainee_landing_submit">Submit Request</button>
+        <Center><button class="btn btn-sm btn-primary blueButton" type="submit" name="trainee_landing_submit">Submit</button></center>
       </div>
     </div>
   </form>
 </div>
-
+</div>
+</div>
 
 <script>
 
@@ -109,3 +128,7 @@ for(var i = 0; i < timeSlots.length; i++) {
 }
 
 </script>
+
+<?php
+  require "footer.php";
+?>

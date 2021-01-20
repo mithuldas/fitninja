@@ -23,6 +23,15 @@ require "header.php";
 
 <link href="css/profile.css" rel="stylesheet">
 
+<div class="container-fluid">
+  <nav aria-label="breadcrumb mb-0 pb-0" >
+    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
+      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
+      <li class="breadcrumb-item"><a href="/includes/post_login_landing_controller.php">Dashboard</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Profile</li>
+    </ol>
+  </nav>
+</div>
 <div class="container">
   <div class="row gutters-sm">
     <!-- desktop menu bar on left -->

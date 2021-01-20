@@ -989,15 +989,23 @@ html {
   }
 }
 
-.card-header{
+.faqHeader{
   background-color:white !important;
   padding:0px !important;
 }
 
-.card-body{
+.faqBody{
   background-color: #F5F5F5 !important;
 }
 
 h5 > .btn {
   text-align: left;
+}
+
+.breadcrumb{
+  background-color: transparent !important;
+}
+
+.dashLink{
+  color:#0071c2 !important;
 }

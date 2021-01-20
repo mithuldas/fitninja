@@ -78,7 +78,7 @@ function populateUpcomingDivContent(){
           var momentDateString = momentDate.format('D MMM');
 
 
-          tableBody=tableBody+'<tr class=\'row100 body\'><td class="cell100 column1 unassigned">'+product.productName+'</td><td class="cell100 column2 unassigned">'+momentDateString+'</td><td class="cell100 column3 unassigned">'+'We\'re working on finding you the right trainer'+'</td></tr>';
+          tableBody=tableBody+'<tr class=\'row100 body\'><td class="cell100 column1 unassigned">'+product.productName+'</td><td class="cell100 column2 unassigned">'+momentDateString+'</td><td class="cell100 column3 unassigned">'+'We\'re working on scheduling your trial.'+'</td></tr>';
 
         });
 

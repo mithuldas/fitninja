@@ -21,9 +21,18 @@ $currentUserJSON = json_encode($currentUser);
 </script>
 
 <div class="container mt-3">
-<center>We've received your request. A FuNinja co-ordinator will be in touch with you shortly.
-<br><br>
-<a href="/trainee_dashboard.php">Return to dashboard </a>
+  <div class="row justify-content-center">
+    <div class="col-8 dashCard p-3" align="center">
+<p>We have received your trial request. A FuNinja co-ordinator will reach out to you soon.</p>
 
-</center>
+<a href="/trainee_dashboard.php" class="btn btn btn-primary blueButton">Back to Dashboard </a>
+
 </div>
+</div>
+
+
+</div>
+
+<?php
+  require "footer.php";
+?>

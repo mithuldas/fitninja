@@ -5,9 +5,9 @@ require "header.php";
 ?>
 
 <script>
-// add indexPage class to body tag so that white background can be set
+// add class to body tag so that white background can be set
 
-$("body").addClass("indexPage");
+$("body").addClass("whiteBackground");
 
 </script>
 
@@ -15,9 +15,19 @@ $("body").addClass("indexPage");
 <main>
 
 
-
-
+<div class="container-fluid">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
+      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Offerings</li>
+    </ol>
+  </nav>
+</div>
   <div class="container ">
+
+
+
+
     <!-- Detailed offerings section -->
     <div class="row">
       <div class="col-md-6 text-center">

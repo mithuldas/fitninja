@@ -10,25 +10,33 @@ FlowControl::startSession();
 require "header.php";
 ?>
 
-<div class="container">
+<div class="container-fluid">
+  <nav aria-label="breadcrumb mb-0 pb-0">
+    <ol class="breadcrumb" style="margin-bottom: 0px ; padding-left:0px; padding-top:0px">
+      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+    </ol>
+  </nav>
+</div>
+<div class="container-fluid">
 
-<br><br>
-<center>We would <span style="color:red">♥</span> to hear from you</center>
-<center><small>Support. Feedback. Enquiries</small></center></p>
+<center> <h5 class="m-0 p-0">We would <span style="color:red">♥</span> to hear from you</h5></center>
+<center><small class="m-0 p-0">Support. Feedback. Enquiries</small></center>
 <br>
 
-<div class="row">
-  <div class="col-md-3 mb-4">
-    <strong>Phone:</strong> +91 91088 06213<br>
-    <strong>Email:</strong> hello@funinja.in<br>
-    <a href="https://api.whatsapp.com/send?phone=919108806213"> test whatsapp </a>
+<div class="row" >
+  <div class="col-md-3 mb-4 justify-content-center align-self-center" align="center">
+
+  <i class="far fa-envelope fa-lg mr-3"></i> hello@funinja.in <br>
+  <i class="fas fa-phone fa-lg mr-2"> </i> +91 91088 06213 <br>
+     <i class="fab fa-whatsapp fa-lg mr-2"></i> +91 91088 06213
   </div>
 <div class="col-md-7">
 <form action="/includes/contact_us_submit.php" method="post">
   <div class="form-group"><input id="subject" type="text" name="subject" class="form-control" placeholder="Subject" required >
   </div>
   <div class="form-group">
-  <textarea class="form-control" id="message" rows="6" name="message" style="resize: none" required></textarea>
+  <textarea class="form-control" id="message" rows="6" name="message" style="resize: none" placeholder="Your message" required></textarea>
   </div>
   <div class="form-group form-inline justify-content-center">
     <input id="name" type="text" name="name" class="form-control mr-1" placeholder="Name" required >
@@ -36,7 +44,7 @@ require "header.php";
     <input id="phone" type="number" name="phone" class="form-control mr-1" placeholder="Phone #"  required>
   </div>
   <div class="form-group ">
-    <center><button class="btn btn-sm btn-primary" type="submit" name="submit_contact">Submit</button></center>
+    <center><button class="btn btn-primary blueButton" type="submit" name="submit_contact">Submit</button></center>
   </div>
 </form>
 </div>

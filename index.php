@@ -5,12 +5,7 @@ require "header.php";
 
 ?>
 
-<script>
-// add class to body tag so that white background can be set
 
-$("body").addClass("whiteBackground");
-
-</script>
 
 
 <main>
@@ -22,13 +17,22 @@ $("body").addClass("whiteBackground");
 
 <!-- get fit section row -->
   <div class="row pt-4 align-items-center pb-4" >
-    <div class="col-md-4 col-6">
-      <h2 class="mb-4">Get Fit. Stay Fit.</h2>
-      Get into the best shape of your life with FuNinja's elite Online Personal Trainers as they masterfully guide you through fun, engaging and highly customized fitness routines carefully tailored to fit your exact needs.
+    <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv">
+      <h2 class="mb-4 mobTopPadding mobHeader">Get Fit. Stay Fit.</h2>
+      <p class="mobText">Get into the best shape of your life with FuNinja's elite Online Personal Trainers as they masterfully guide you through fun, engaging and highly customized fitness routines carefully tailored to fit your exact needs.</p>
+
+      <?php
+      // if user user isn't logged in, show the login and register buttons
+      if(!isset($_SESSION['uid'])){ ?>
+        <center><button type="button" class=" btn btn-lg btn-primary bigSignUpButton" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button></center>
+
+        <?php  ;
+      } ?>
     </div>
-    <div class="col-md-8 col-6">
+    <div class="col-md-8 col-12 order-md-2 order-1" id="womanImg">
       <center><img src="/images/graphics/Illustration SVG.svg" width="80%"> </img></center>
     </div>
+
   </div>
 </div>
 
@@ -80,7 +84,7 @@ $("body").addClass("whiteBackground");
 <!-- know more separator button -->
 <div class="row align-items-center pt-4 pb-4">
   <div class="col text-center">
-    <a href="offerings.php" class="btn btn-primary btn-sm btn userdropdown">KNOW MORE </a>
+    <a href="offerings.php" class="btn  bigSignUpButton btn-lg userdropdown">LEARN MORE </a>
   </div>
 
 </div>
@@ -118,6 +122,12 @@ $("body").addClass("whiteBackground");
 </div>
 
 </main>
+<script>
+// add class to body tag so that white background can be set
+
+$("body").addClass("whiteBackground");
+
+</script>
 
 
 <!--

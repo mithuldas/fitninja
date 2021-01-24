@@ -117,7 +117,7 @@ function populateTraineeDetailsDivContent(){
   } else {
     finalHTML = '<p>Trainees that have been assigned to you will be listed here.</p> While we get you started and assign trainees and sessions to you, feel free to learn more <a href=\'offerings.php\'> About FuNinja </a> and <a href=\'contact.php\'>Get In Touch</a> with us if you have any questions.';
     $(".trainee-details").html(finalHTML);
-    console.log("hello");
+    
   }
 
 

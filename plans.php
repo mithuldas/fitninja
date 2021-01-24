@@ -26,7 +26,7 @@ $("body").addClass("whiteBackground");
 
 </script>
 
-<div class="container-fluid">
+<div class="container-fluid breadcrumbContiner">
   <nav aria-label="breadcrumb mb-0 pb-0">
     <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
       <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
@@ -60,11 +60,11 @@ $("body").addClass("whiteBackground");
 
 <div class="row hide-on-nonmobile plansMobileHeader ">
 <div class="col">
-<center>Fitness Routines</center>
+<center>Offerings</center>
 </div class="col">
 </div class="row">
 <div class="row pt-1 pb-3 borderbottom">
-<div class="col-3 hide-on-mobile"> Fitness Routines
+<div class="col-3 hide-on-mobile"> Offerings
 </div class="col">
 <div class="col prod1 plansMobileContent"> Any 1
 </div class="col">
@@ -281,4 +281,9 @@ $("#continueBtn").on("click", function(){
 
 });
 
+</script>
+
+<script>
+// set active link display in the menu bar
+$('.membershipLink').addClass("activeMenuLink");
 </script>

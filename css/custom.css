@@ -45,7 +45,7 @@ body {
   width: 100%;
   background-color:black;
   color:grey;
-  font-size: 13px;
+  font-size: 15px;
 
 }
 
@@ -195,6 +195,11 @@ text-decoration: none !important;
 @media screen and (max-width: 575px) {
   .hide-on-mobile {
     display:none;
+  }
+
+  .aditiBgrndDiv{
+    background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(/images/bg1.png);
+    background-size: 200%!important;
   }
 }
 
@@ -670,12 +675,12 @@ th, td {
 }
 
 @media screen and (min-width: 575px) and (max-width: 800px){
-  .centerButton{
+  .center{
     padding-left:0px;
     padding-right:0px;
   }
 
-  .planHeaderButton{
+  .planHeader{
     padding-left:0px;
     padding-right:0px;
     width:80px;
@@ -785,7 +790,7 @@ html {
   }
 
   .largerHowItWorks{
-    width:80%;
+    width:85%;
   }
 
 }
@@ -928,6 +933,13 @@ html {
   box-shadow: 0 10px 21px -12px rgba(0, 0, 0, 0.30);
 }
 
+.bigSignUpButton{
+  background-color:white !important;
+  border-color: #500472 !important;
+  color:#500472 !important;\
+
+}
+
 @media screen and (max-width: 575px) {
   .instructions-area{
     margin-left: 15px;
@@ -963,6 +975,18 @@ html {
     padding-right:3px !important;
   }
 
+  .mobCenterDiv{
+    text-align: center!important;
+  }
+
+  .mobHeader{
+    font-size:20px!important;
+  }
+
+  .mobText{
+    font-size:14px!important;
+  }
+
   .dashMobInstrInner{
     font-size:13px!important;
     padding-bottom:7px !important;
@@ -975,6 +999,7 @@ html {
     padding-top:7px !important;
     padding-bottom:7px !important;
   }
+
 }
 
 @media screen and (max-width: 767px) {
@@ -1006,6 +1031,22 @@ h5 > .btn {
   background-color: transparent !important;
 }
 
-.dashLink{
+.activeMenuLink{
   color:#0071c2 !important;
+}
+
+.bigSignUpButton:hover{
+  background-color:#500472 !important;
+  border-color: #500472 !important;
+  color:white!important;
+}
+
+.breadcrumbContiner{
+  font-size:13px !important;
+}
+
+@media screen and (max-width: 575px) {
+  .breadcrumbContiner{
+    padding-left: 5px !important;
+  }
 }

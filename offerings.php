@@ -15,7 +15,7 @@ $("body").addClass("whiteBackground");
 <main>
 
 
-<div class="container-fluid">
+<div class="container-fluid breadcrumbContiner">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
       <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
@@ -95,7 +95,10 @@ $("body").addClass("whiteBackground");
 
 </main>
 
-
+<script>
+// set active link display in the menu bar
+$('.offeringsLink').addClass("activeMenuLink");
+</script>
 <!--
 <img src="/images/Icons/Enroll/Enroll with Text PNG.png" width="100%"> </img>
 <img src="/images/Icons/Pick Membership/Pick Membership with text PNG.png" width="100%">  </img>

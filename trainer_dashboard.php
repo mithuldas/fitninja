@@ -58,8 +58,7 @@ $currentUserJSON = json_encode($currentUser);
 <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="ext_scripts/clndr.min.js"></script>
-<link rel="stylesheet/less" type="text/css" href="/css/clndr.less" />
-<script src="https://cdn.jsdelivr.net/npm/less@3.13.1/dist/less.min.js" ></script>
+<link href="/css/clndr.css" rel="stylesheet">
 
 <script type="text/javascript">
   var currentUser = <?php echo $currentUserJSON; ?>;
@@ -70,7 +69,7 @@ $currentUserJSON = json_encode($currentUser);
 
 <script type="text/javascript" src="scripts/trainer_dashboard.js"> </script>
 
-<div class="container-fluid">
+<div class="container-fluid breadcrumbContiner">
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px; padding-bottom:0px">
       <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
@@ -203,6 +202,12 @@ $( function() {
     forceSixRows: true
   });
 });
+</script>
+
+<script>
+// set active link display in the menu bar
+$('.dashLink').addClass("activeMenuLink");
+
 </script>
 
 <?php

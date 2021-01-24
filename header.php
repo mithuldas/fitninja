@@ -21,7 +21,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <!-- Bootstrap sources -->
   <link rel="icon" href="https://www.funinja.in/favicon.ico?v=523" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
-  <link href="/css/custom.css?v=2f3xdfdddf2d42" rel="stylesheet">
+  <link href="/css/custom.css?v=2fgh89sddsfs2d42" rel="stylesheet">
   <script src="https://kit.fontawesome.com/8f8a300cc0.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -94,7 +94,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <div class="row">
 
   <!--navbar -->
-  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom navbar-expand-md headerShadow mb-0 pb-0 mt-0 pt-0">
+  <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom headerShadow navbar-expand-md  mb-0 pb-0 mt-0 pt-0">
 
     <!-- burger -->
     <button id="burger" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,19 +113,19 @@ include_once ROOT_DIR."/includes/auto_login.php";
 
 
       <li class="nav-item active">
-        <a class="nav-link burgerOption" href="/about.php">About</a>
+        <a class="nav-link burgerOption aboutLink" href="/about.php">About</a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link burgerOption offeringsLink" href="/offerings.php">Offerings</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link burgerOption" href="/offerings.php">Offerings</a>
+        <a class="nav-link burgerOption membershipLink" href="/plans.php">Membership</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link burgerOption" href="/plans.php">Membership</a>
+        <a class="nav-link burgerOption contactLink" href="/contact.php">Contact</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link burgerOption" href="/contact.php">Contact</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link burgerOption" href="/faq.php">FAQs</a>
+        <a class="nav-link burgerOption faqLink" href="/faq.php">FAQs</a>
       </li>
       <?php
       // show dashboard link with special formatting if logged in

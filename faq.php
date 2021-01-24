@@ -10,7 +10,7 @@ FlowControl::startSession();
 require "header.php";
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid breadcrumbContiner">
   <nav aria-label="breadcrumb mb-0 pb-0">
     <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
       <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
@@ -174,6 +174,10 @@ require "header.php";
     </div>
     </div>
 
+    <script>
+    // set active link display in the menu bar
+    $('.faqLink').addClass("activeMenuLink");
+    </script>
 <?php
   require "footer.php";
 ?>

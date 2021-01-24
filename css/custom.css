@@ -49,6 +49,12 @@ body {
 
 }
 
+@media screen and (max-width: 575px) {
+  .footer {
+    font-size: 13px;
+  }
+}
+
 .footer a:hover {
   color:lightgrey!important;
 }
@@ -580,9 +586,32 @@ th, td {
   justify-content: center;
 }
 
-.nav-link.active{
+.pillRegButton{
+  background-color:white !important;
+  color:#500472 !important;
+  border: 1px solid !important;
+  border-top-left-radius: 0px!important;
+  border-bottom-left-radius: 0px!important;
+}
+
+.pillLoginButton{
+  background-color:white !important;
+  color:#500472 !important;
+  border: 1px solid !important;
+  border-top-right-radius: 0px!important;
+  border-bottom-right-radius: 0px!important;
+}
+
+.pillRegButton.active{
   background-color:#500472 !important;
   color:white !important;
+  border-color: #500472 !important;
+}
+
+.pillLoginButton.active{
+  background-color:#500472 !important;
+  color:white !important;
+  border-color: #500472 !important;
 }
 
 .borderbottom{

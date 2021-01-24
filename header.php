@@ -21,7 +21,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <!-- Bootstrap sources -->
   <link rel="icon" href="https://www.funinja.in/favicon.ico?v=523" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
-  <link href="/css/custom.css?v=2fgh89sddsfs2d42" rel="stylesheet">
+  <link href="/css/custom.css?v=2fgh8d9sddsfss2d42" rel="stylesheet">
   <script src="https://kit.fontawesome.com/8f8a300cc0.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -184,13 +184,12 @@ if(!isset($_SESSION['uid'])){ ?>
 
 <!-- Modal for login / registration popup -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" >
-<div class="modal-dialog" role="document" style=" width: 350px;">
+<div class="modal-dialog" role="document" style=" width: 300px; margin-top:0px; margin-bottom:0px; margin-left: 0px;margin-right: 0px;">
 <div class="modal-content signup_modal" style="vertical-align: middle">
   <div class="modal-header">
-
   <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
-  <li class="nav-item"> <a class="nav-link btn-sm active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab"  aria-selected="true">Login</a> </li>
-  <li class="nav-item"> <a class="nav-link btn-sm" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"  aria-selected="false">Register</a> </li>
+  <li class="nav-item"> <a class="nav-link pillLoginButton btn-sm active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab"  aria-selected="true">Login</a> </li>
+  <li class="nav-item"> <a class="nav-link pillRegButton btn-sm" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"  aria-selected="false">Register</a> </li>
   </ul>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
   <span aria-hidden="true">&times;</span>
@@ -314,5 +313,16 @@ if(!isset($_SESSION['uid'])){ ?>
    $("#logoutArea").hover(function(){
      $("#logoutSVG").toggleClass('whiteSVG')
     });
+
+    var modalHeight=418.75;
+    var modalWidth = 300;
+    var visibleHeight = window.innerHeight;
+    var visibleWidth = window.innerWidth;
+    var topPosition = (visibleHeight-modalHeight)/3;
+    var sidePosition = (visibleWidth -modalWidth)/2;
+    var x= document.getElementsByClassName('modal-content');
+    $(x).css({"top":topPosition, "left":sidePosition});
+    console.log(topPosition);
+    console.log(sidePosition);
 
 </script>

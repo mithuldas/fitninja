@@ -26,68 +26,60 @@ $("body").addClass("whiteBackground");
   <div class="container ">
 
 
+	<div class"row ">
+    <div class"col ">
+
+      <h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4">Explore the various workouts being offered below and find a <a href="/plans.php">membership plan</a> that works for you and your family.</h5>
+
+      <?php
+      // if user user isn't logged in, show the login and register buttons
+      if(!isset($_SESSION['uid'])){ ?>
+        <center><button type="button" class=" btn btn-lg btn-primary mb-4 bigSignUpButton offeringsTrialButton  hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton1"> FREE TRIAL </button></center>
+        <center><button type="button" class=" btn btn-primary mt-3 bigSignUpButton  hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton2"> FREE TRIAL </button></center>
+        <?php  ;
+      } ?>
+    </div>
+  </div>
 
 
     <!-- Detailed offerings section -->
-    <div class="row">
-      <div class="col-md-6 text-center">
-      <img src="/images/graphics/Yoga SVG.svg" width="50%"> </img>
+    <div class="row justify-content-center mb-3 mb-md-4 mt-4 mt-md-5">
+      <div class="col-4 col-md-4 align-self-center text-center">
+      <img class="offeringsPic picRef" id="picRef" src="/images/graphics/Yoga SVG.svg" width="50%"> </img>
       </div>
-      <div class="col-md-4 align-self-center">
+      <div class="col-8 col-md-4 align-self-center textMobileNormal ">
       <b class="miniOfferingHeader">Yoga</b><br>
       Build your foundation to a disciplined and healthy balanced life by training with our expert yoga trainers who will guide you through the training and offer customized training schedules to suit your fitness levels and needs.
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6 text-center">
-      <img src="/images/graphics/Aerobics SVG.svg" width="50%"> </img>
+    <div class="row justify-content-center mb-3 mb-md-4">
+      <div class="col-4 col-md-4 text-center">
+      <img class="offeringsPic" src="/images/graphics/Aerobics SVG.svg" width="50%"> </img>
       </div>
-      <div class="col-md-4 align-self-center" >
+      <div class="col-8 col-md-4 align-self-center textMobileNormal" >
         <b class="miniOfferingHeader">Aerobics</b><br>
       Pump up your heart rate with the varied customized aerobic routines strengthening your muscles and seeing fitness levels increase as you work through the routines designed
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6 text-center">
-      <img src="/images/graphics/Push up SVG.svg" width="50%" style="object-position: 0 -50px"> </img>
+    <div class="row justify-content-center mb-3 mb-md-4">
+      <div class="col-4 col-md-4 align-self-center text-center">
+      <img class="offeringsPic pt-4" src="/images/graphics/Push up_PNG.png" width="50%"> </img>
       </div>
-      <div class="col-md-4 align-self-center">
+      <div class="col-8 col-md-4 align-self-center textMobileNormal">
         <b class="miniOfferingHeader">Slimnastics</b><br>
       Condition , tone and work on getting lean as our trainers work to create workouts that are suited to your body type and fitness levels
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6 text-center">
-      <img src="/images/graphics/Zumba SVG.svg" width="50%"> </img>
+    <div class="row justify-content-center pb-3 pb-md-4">
+      <div class="col-4 col-md-4 text-center">
+      <img class="offeringsPic" src="/images/graphics/Zumba SVG.svg" width="50%"> </img>
       </div>
-      <div class="col-md-4 align-self-center">
+      <div class="col-8 col-md-4 align-self-center textMobileNormal">
         <b class="miniOfferingHeader">Zumba</b><br>
       Have fun and up your fitness levels with the varied zumba routines that work to condition and tone the muscles in sessions that get your heart beat racing.
       </div>
     </div>
 
-    <!-- USP / product highlights section -->
-
-    <div class="row pt-5">
-      <div class="col-lg-4 col-6 text-center">
-      <img src="/images/graphics/Customized plans with text PNG.png" width="60%"> </img>
-      </div>
-      <div class="col-lg-4 col-6 text-center">
-      <img src="/images/graphics/Flexible Schedule with text PNG.png" width="60%">
-      </div>
-      <div class="col-lg-4 col-6 text-center">
-      <img src="/images/graphics/Feedback Loop with text PNG.png" width="60%"> </img>
-      </div>
-      <div class="col-lg-4 col-6 text-center">
-      <img src="/images/graphics/Top Tier Trainers with Text PNG.png" width="60%"> </img>
-      </div>
-      <div class="col-lg-4 col-6 text-center">
-      <img src="/images/graphics/Accessible Anywhere with text PNG.png" width="60%"> </img>
-      </div>
-      <div class="col-lg-4 col-6 text-center">
-      <img src="/images/graphics/Diverse workout routines with text PNG.png" width="60%"> </img>
-      </div>
-    </div>
 
 
 
@@ -98,11 +90,21 @@ $("body").addClass("whiteBackground");
 <script>
 // set active link display in the menu bar
 $('.offeringsLink').addClass("activeMenuLink");
+
+var buttonWidth=140;
+var picRef = $("#picRef");
+console.log(buttonWidth);
+var leftOffset = picRef.offset().left;
+//var visibleHeight = window.innerHeight;
+//var visibleWidth = window.innerWidth;
+//var topPosition = (visibleHeight-modalHeight)/3;
+var sidePosition = (leftOffset -buttonWidth)/2;
+//var x= document.getElementsByClassName('modal-content');
+$("#registerButton1").css({"left":sidePosition});
+
 </script>
-<!--
-<img src="/images/Icons/Enroll/Enroll with Text PNG.png" width="100%"> </img>
-<img src="/images/Icons/Pick Membership/Pick Membership with text PNG.png" width="100%">  </img>
-<img src="/images/Icons/Get Connected/Get Connected with Text PNG.png" width="100%"> </img>-->
+
+
 
 <?php
   require "footer.php";

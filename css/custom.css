@@ -57,6 +57,7 @@ body {
 
 .footer a:hover {
   color:lightgrey!important;
+  text-decoration: none !important;
 }
 
 .footer a {
@@ -80,7 +81,7 @@ body {
 }
 
 a{
-  color:#190472;
+  color:#0e35b4;
 }
 
 
@@ -171,7 +172,9 @@ input.invalid {
 }
 
 a:hover {
-text-decoration: none !important;
+text-decoration: underline !important;
+color:#0e35b4;
+
 }
 a:active {
 text-decoration: none !important;
@@ -565,11 +568,13 @@ th, td {
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #500472 !important;
     border-color:#500472 !important;
+    text-decoration: none !important;
 }
 
 .blueButton{
   background-color: #190472 !important;
   border-color:#190472 !important;
+  text-decoration: none !important;
 }
 
 .greyfont{
@@ -600,6 +605,10 @@ th, td {
   border: 1px solid !important;
   border-top-right-radius: 0px!important;
   border-bottom-right-radius: 0px!important;
+}
+
+.pillLoginButton:hover, .pillRegButton:hover{
+  text-decoration: none !important;
 }
 
 .pillRegButton.active{
@@ -743,6 +752,7 @@ th, td {
 a.userMenu:hover {
   background-color: #190472;
   color:white;
+  text-decoration: none !important;
 }
 
 a.burgerOption:hover {
@@ -1068,14 +1078,36 @@ h5 > .btn {
   background-color:#500472 !important;
   border-color: #500472 !important;
   color:white!important;
+  text-decoration: none !important;
 }
 
 .breadcrumbContiner{
   font-size:13px !important;
 }
 
+.offeringsTrialButton{
+  position:absolute!important;
+  top:300px;
+  left:150px;
+}
+
 @media screen and (max-width: 575px) {
   .breadcrumbContiner{
     padding-left: 5px !important;
   }
+  .mobileTitle{
+      font-size:16px;
+  }
+
+  .offeringsPic{
+    width:120%;
+  }
+
+  .offeringsTrialButton{
+
+  }
+}
+
+.fade {
+  opacity: 1;
 }

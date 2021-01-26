@@ -16,7 +16,7 @@ function populateUpcomingDivContent(){
       ");
   } else if (currentUser.activePlan.productName=="Trial" && currentUser.trialCompleted){
     var finalHTML ="<p>Now that you\'ve completed your trial, we would love to hear your <a href=\"contact.php\">feedback.</a></p>\
-    <p> Explore <a href=\"about_us.php\">FuNinja,</a> our <a href=\"offerings.php\">Offerings</a> and exciting <a href=\"plans.php\">Membership Plans </a></p>";
+    <p> Explore <a href=\"about.php\">FuNinja,</a> our <a href=\"offerings.php\">Offerings</a> and exciting <a href=\"plans.php\">Membership Plans </a></p>";
 
   } else {
 
@@ -131,7 +131,7 @@ function populateTrainerDetailsDivContent(){
     $(".trainer-facts").html(finalHTML);
   } else {
     var finalHTML ='';
-    finalHTML = '<p>Trainers that have been assigned to you will be listed here. </p>Learn more <a href="/about_us.php">About FuNinja</a>, our <a href="/offerings.php">Offerings</a> and our exciting <a href="/plans.php">Membership Plans.</a>';
+    finalHTML = '<p>Trainers that have been assigned to you will be listed here. </p>Learn more <a href="/about.php">About FuNinja</a>, our <a href="/offerings.php">Offerings</a> and our exciting <a href="/plans.php">Membership Plans.</a>';
     $(".trainer-facts").html(finalHTML);
   }
 

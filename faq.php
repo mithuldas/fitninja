@@ -23,7 +23,7 @@ require "header.php";
   <div class="row mt-3">
     <div class="col">
   <center><h4>Frequently Asked Questions</h4></center>
-  <center><small>If your question isn't listed here, <a href="contact.php"> CONTACT US</a> directly.</small></center>
+  <center><small>If your question isn't listed here, please <a href="contact.php"> contact us</a> directly.</small></center>
     </div>
   </div>
 

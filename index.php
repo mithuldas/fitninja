@@ -16,7 +16,7 @@ require "header.php";
   <div class="container ">
 
 <!-- get fit section row -->
-  <div class="row pt-4 align-items-center pb-4" >
+  <div class="row pt-3 pt-md-4 align-items-center pb-4 pb-md-5" >
     <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv">
       <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Get Fit. Stay Fit.</h2>
       <p class="mobText pb-2 pb-md-0">Get into the best shape of your life with FuNinja's elite Online Personal Trainers as they masterfully guide you through fun, engaging and highly customized fitness 1 on 1 routines carefully tailored to fit your exact needs.</p>
@@ -24,7 +24,7 @@ require "header.php";
       <?php
       // if user user isn't logged in, show the login and register buttons
       if(!isset($_SESSION['uid'])){ ?>
-        <center><button type="button" class=" btn btn-lg btn-primary bigSignUpButton mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL </button></center>
+        <button type="button" class=" btn btn-lg btn-primary bigSignUpButton mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL </button>
         <center><button type="button" class=" btn btn-primary bigSignUpButton mt-0 mt-md-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL </button></center>
 
         <?php  ;
@@ -37,24 +37,29 @@ require "header.php";
   </div>
 </div>
 
-<div class="container-fluid p-0">
+<div class="container-fluid p-0" style="border-top: 1px solid #D5E8F3;">
 
-  <div class="aditiBgrndDiv" style=" background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(/images/bg1.png); background-size: 100%; box-shadow: 0 0 8px 8px white inset;">
+  <div class="aditiBgrndDiv" style=" background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(/images/bg1.png); background-size: 100%;">
 <!-- short form of offerings row -->
 <div class="container ">
+  <div class="row pt-4 pt-md-5">
+    <div class="col" >
+      <center><h2 class="mobHeader">Offerings</h2></center>
+    </div>
+  </div>
 
 <div class="row pt-3 pt-md-5 align-items-center justify-content-center" data-offset-top="200">
   <div class="col-md-4 col-6 text-center p-0">
     <b class="miniOfferingHeader fade">Yoga</b>
     <p class="mobText fade">Peace. Balance. Agility.</P>
-      <a class="fade" href="/offerings.php"><img src="/images/graphics/Yoga SVG.svg" width="60%"> </img><a>
+      <a class="fade" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Yoga SVG.svg" width="60%"> </img><a>
 
 
   </div>
   <div class="col-md-4 col-6 text-center p-0 ">
     <b class="miniOfferingHeader fade">Aerobics</b><br>
     <p class="mobText fade">Strength. Cardio. Variation.</p>
-    <a class="fade" href="/offerings.php"><img src="/images/graphics/Aerobics SVG.svg" width="60%"> </img><a>
+    <a class="fade" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Aerobics SVG.svg" width="60%"> </img><a>
   </div>
 
 </div>
@@ -74,12 +79,12 @@ require "header.php";
 <div class="row align-items-center justify-content-center pb-md-4 pb-3" >
 
   <div class="col-md-4 col-6 text-center p-0">
-    <a class="fade" href="/offerings.php"><img src="/images/graphics/Push up SVG.svg" width="60%"> </img></a><br>
+    <a class="fade" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Push up SVG.svg" width="60%"> </img></a><br>
     <b class="miniOfferingHeader fade">Slimnastics</b>
     <p class="mobText fade">Conditioning. Toning. Lean.</p>
   </div>
   <div class="col-md-4 col-6 text-center p-0">
-    <a class="fade" href="/offerings.php"><img src="/images/graphics/Zumba SVG.svg" width="60%"> </img></a><br>
+    <a class="fade" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Zumba SVG.svg" width="60%"> </img></a><br>
     <b class="miniOfferingHeader fade">Zumba</b>
     <p class="mobText fade"> Dance. Flexibility. Fun.</p>
   </div>
@@ -90,13 +95,53 @@ require "header.php";
 </div>
 </div>
 </div>
+<div class="container-fluid" style="background-color: #263F97; ">
+  <div class="container">
+    <div class="row pt-4 pt-md-5">
+      <div class="col" style="color:white">
+        <center><h2 class="mobHeader">Reviews and testimonials</h2></center>
+      </div>
+    </div>
+  <div class="row testimonialRowPadding" >
+    <div class="col-12 col-md-6 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center">
+      <div class="mt-3 testimonialCard ">
+        <img class="testimonialPic" src="/images/testimonials/Nadia.png"></img><br>
+        <p style="color:blue">Nadezhda Trapizonian</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
+      </div>
+    </div class="col">
+    <div class="col-12 col-md-6 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center">
+      <div class="mt-3 testimonialCard">
+      <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
+      <p style="color:blue">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. I recently moved to Australia. My routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me adapt my lifestyle to the new environment by challenging me and helping me work towards my fitness goals.
+    </div>
+    </div>
+  </div>
+
+  <div class="row pb-md-5 testimonialRowMargin pb-3" >
+    <div class="col-12 col-md-6 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center">
+      <div class="mt-3 testimonialCard" >
+        <img class="testimonialPic" src="/images/testimonials/Megha.png"></img><br>
+        <p style="color:blue">Priya and Megha Gupta</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the “Couple” package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
+      </div>
+    </div class="col-12 col-md-6">
+    <div class="col mb-3 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center">
+      <div class="mt-3 testimonialCard" >
+      <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
+      <p style="color:blue">Satya Das</P> Krishna and Raghavan (FuNinja yoga leads) were both bright students at Sivananda Asram and graduated from our Teacher’s Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
+    </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
 
 <div class="container">
 
 
 <!-- how it works section -->
 
-  <div class="row mt-md-4 mt-2">
+  <div class="row pt-md-5 pt-4 pb-3 pb-md-4">
     <div class="col">
       <center><h2 class="mobHeader fade">How It Works</h2></center>
     </div>

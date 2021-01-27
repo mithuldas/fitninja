@@ -829,7 +829,7 @@ html {
   }
 
   .largerHowItWorks{
-    width:85%;
+    width:95%;
   }
 
 }
@@ -1110,4 +1110,94 @@ h5 > .btn {
 
 .fade {
   opacity: 1;
+}
+
+@media screen and (min-width: 575px) {
+  .testimonialCard{
+
+    height:270px;
+    background-color:white;
+    border-radius:20px;
+    text-align: left;
+    padding:25px;
+    padding-top:60px;
+
+  }
+
+  .testimonialPic{
+    width:175px;
+    position:absolute;
+    top:-70px;
+    left:200px;
+  }
+
+  .testimonialRowMargin{
+    margin-top: 100px;
+  }
+
+  .testimonialRowPadding{
+    padding-top:125px;
+  }
+
+}
+
+@media screen and (max-width: 575px) {
+
+  .testimonialCard{
+
+    font-size:13px;
+    background-color:white;
+    border-radius:20px;
+    text-align: left;
+    padding:25px;
+    padding-top:60px;
+
+  }
+
+  .testimonialPic{
+    width:135px;
+    position:absolute;
+    top:-60px;
+    left:100px;
+  }
+
+  .testimonialMobileTopMargin{
+    margin-top:80px;
+  }
+
+  .offeringsPic{
+    width:70%;
+  }
+}
+
+@media screen and (min-width: 575px) and (max-width: 800px){
+  .testimonialCard{
+
+    height:350px;
+    background-color:white;
+    border-radius:15px;
+    text-align: left;
+    padding:25px;
+    padding-top:60px;
+
+  }
+
+  .testimonialPic{
+    width:150px;
+    position:absolute;
+    top:-70px;
+    left:110px;
+  }
+
+  .testimonialRowMargin{
+    margin-top: 100px;
+  }
+
+  .testimonialRowPadding{
+    padding-top:125px;
+  }
+
+  .offeringsPic{
+    width:70%;
+  }
 }

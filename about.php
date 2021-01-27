@@ -22,16 +22,12 @@ $("body").addClass("whiteBackground");
 
 <div class="container">
   <div class"row ">
-    <div class"col ">
-      <center><h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4">Who we are and what we stand for</h5></center>
-At FuNinja, we strive to provide premium online personal training services.
 
-    </div>
   </div>
   <div class"row ">
     <div class"col ">
 
-      <center><h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4">Our Strengths</h5></center>
+    
     </div>
   </div>
 

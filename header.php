@@ -21,7 +21,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <!-- Bootstrap sources -->
   <link rel="icon" href="https://www.funinja.in/favicon.ico?v=523" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
-  <link href="/css/custom.css?v=2fgh8d9sdsf23dsfss2d42" rel="stylesheet">
+  <link href="/css/custom.css?v=2fgh8d9sdsf23dsfssd2d42" rel="stylesheet">
   <script src="https://kit.fontawesome.com/8f8a300cc0.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -117,6 +117,9 @@ include_once ROOT_DIR."/includes/auto_login.php";
       </li>
       <li class="nav-item dropdown active">
         <a class="nav-link burgerOption offeringsLink" href="/offerings.php">Offerings</a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link burgerOption trainersLink" href="/trainers.php">Trainers</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link burgerOption membershipLink" href="/plans.php">Membership</a>

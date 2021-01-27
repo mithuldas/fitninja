@@ -28,13 +28,13 @@ switch ($_GET['product']) {
     $product = new Product("Basic",$conn);
     break;
   case '2':
-    $product = new Product("Ignite",$conn);
+    $product = new Product("Standard",$conn);
     break;
   case '3':
-    $product = new Product("Level Up",$conn);
+    $product = new Product("Ultra",$conn);
     break;
   case '4':
-    $product = new Product("Duo Ninja",$conn);
+    $product = new Product("Pair Up",$conn);
     break;
 }
 

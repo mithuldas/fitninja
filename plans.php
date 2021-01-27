@@ -13,9 +13,9 @@ FlowControl::startSession();
 require "header.php";
 
 $product1 = new Product("Basic",$conn);
-$product2 = new Product("Ignite",$conn);
-$product3 = new Product("Level Up",$conn);
-$product4 = new Product("Duo Ninja",$conn);
+$product2 = new Product("Standard",$conn);
+$product3 = new Product("Ultra",$conn);
+$product4 = new Product("Pair Up",$conn);
 
 ?>
 
@@ -60,37 +60,37 @@ $("body").addClass("whiteBackground");
 
 <div class="row hide-on-nonmobile plansMobileHeader ">
 <div class="col">
-<center>Offerings</center>
+<center>Zumba, Yoga, Aerobics, Slimnastics</center>
 </div class="col">
 </div class="row">
 <div class="row pt-1 pb-3 borderbottom">
-<div class="col-3 hide-on-mobile"> Offerings
+<div class="col-3 hide-on-mobile"> Zumba, Yoga, Aerobics, Slimnastics
 </div class="col">
 <div class="col prod1 plansMobileContent"> Any 1
 </div class="col">
 <div class="col prod2 plansMobileContent"> Any 2
 </div class="col">
-<div class="col prod3 plansMobileContent"> All Access
+<div class="col prod3 plansMobileContent"> All
 </div class="col">
-<div class="col prod4 plansMobileContent"> All Access
+<div class="col prod4 plansMobileContent"> All
 </div class="col">
 </div class = "row">
 
 <div class="row hide-on-nonmobile plansMobileHeader">
 <div class="col">
-<center>Number of sessions per month</center>
+<center>Number of Participants</center>
 </div class="col">
 </div class="row">
 <div class="row pt-3 pb-3 borderbottom">
-<div class="col-3 hide-on-mobile"> Number of sessions per month
+<div class="col-3 hide-on-mobile"> Number of Participants
 </div class="col">
-<div class="col prod1 plansMobileContent"> 20
+<div class="col prod1 plansMobileContent"> 1
 </div class="col">
-<div class="col prod2 plansMobileContent"> 20
+<div class="col prod2 plansMobileContent"> 1
 </div class="col">
-<div class="col prod3 plansMobileContent"> 20
+<div class="col prod3 plansMobileContent"> 1
 </div class="col">
-<div class="col prod4 plansMobileContent"> 20
+<div class="col prod4 plansMobileContent"> 2
 </div class="col">
 </div class = "row">
 
@@ -112,23 +112,6 @@ $("body").addClass("whiteBackground");
 </div class="col">
 </div class = "row">
 
-<div class="row hide-on-nonmobile plansMobileHeader">
-<div class="col">
-<center>Sessions with Fitness Manager</center>
-</div class="col">
-</div class="row">
-<div class="row pt-3 pb-3 borderbottom">
-<div class="col-3 hide-on-mobile"> Sessions with Fitness Manager
-</div class="col">
-<div class="col prod1 plansMobileContent"> 1/week
-</div class="col">
-<div class="col prod2 plansMobileContent"> 2/week
-</div class="col">
-<div class="col prod3 plansMobileContent"> On-Demand
-</div class="col">
-<div class="col prod4 plansMobileContent"> On-Demand
-</div class="col">
-</div class = "row">
 
 <div class="row hide-on-nonmobile plansMobileHeader">
 <div class="col">
@@ -150,11 +133,11 @@ $("body").addClass("whiteBackground");
 
 <div class="row hide-on-nonmobile plansMobileHeader">
 <div class="col">
-<center>Dedicated Personal Trainer</center>
+<center>Dedicated Personal Trainers</center>
 </div class="col">
 </div class="row">
 <div class="row pt-3 pb-3 borderbottom">
-<div class="col-3 hide-on-mobile"> Dedicated Personal Trainer
+<div class="col-3 hide-on-mobile"> Dedicated Personal Trainers
 </div class="col">
 <div class="col prod1 plansMobileContent"> ✓
 </div class="col">
@@ -184,7 +167,7 @@ $("body").addClass("whiteBackground");
 </div class="col">
 </div class = "row">
 
-<div class="row hide-on-nonmobile plansMobileHeader">
+<!-- <div class="row hide-on-nonmobile plansMobileHeader">
 <div class="col">
 <center>Monthly Price</center>
 </div class="col">
@@ -200,7 +183,7 @@ $("body").addClass("whiteBackground");
 </div class="col">
 <div class="col prod4 plansMobileContent"> <?php echo "₹ ".$product4->currentPriceINR->amount; ?>
 </div class="col">
-</div class = "row">
+</div class = "row"> -->
 
 <div class="row">
 <div class="col"> <center><button class="btn btn-primary btn mt-4 mb-4 continueBtn blueButton" id ="continueBtn"> Continue </button></center>

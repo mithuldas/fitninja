@@ -216,9 +216,18 @@ require "header.php";
   </div>
   <div class="row ">
     <div class="col-lg-4 col-6 text-center p-0">
-    <button type="button" class="stickyUserMenu " data-toggle="modal" data-target="#exampleModal" >
-      <img title="Enroll" src="/images/graphics/Enroll with Text PNG.png" width="70%" class="largerHowItWorks"/>
-    </button>
+
+    <?php
+          if(!isset($_SESSION['uid'])){
+            echo
+            '<button type="button" class="stickyUserMenu" data-toggle="modal" data-target="#exampleModal">
+            <img title="Enroll" src="/images/graphics/Enroll with Text PNG.png" width="70%" class="largerHowItWorks"/>
+            </button>';
+          } else {
+            echo
+            '<img title="Enroll" src="/images/graphics/Enroll with Text PNG.png" width="70%" class="largerHowItWorks"/>';
+          }
+      ?>
     </div>
     <div class="col-lg-4 col-6 text-center p-0">
     <a href="/plans.php"><img src="/images/graphics/Pick Membership with text PNG.png" width="70%" class="largerHowItWorks "></a>

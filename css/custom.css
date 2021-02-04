@@ -895,13 +895,13 @@ html {
 
 .float{
 	position:fixed;
-	width:45px;
-	height:45px;
+	width:35px;
+	height:35px;
 	bottom:20px;
 	right:20px;
 	background-color:#25d366;
 	color:#FFF;
-	border-radius:50px;
+	border-radius:30px;
 	text-align:center;
   font-size:30px;
   z-index:100;
@@ -912,7 +912,10 @@ html {
   color:white;
 }
 .my-float{
-	margin-top:1px;
+
+  position:relative;
+  bottom:6.5px;
+
 }
 
 .fa-whatsapp:hover{
@@ -969,7 +972,7 @@ html {
 }
 
 .headerShadow{
-  box-shadow: 0 10px 21px -12px rgba(0, 0, 0, 0.30);
+  box-shadow: 0 3px 5px 0 rgb(0 0 0 / 8%);
 }
 
 .bigSignUpButton{
@@ -1096,6 +1099,7 @@ h5 > .btn {
     padding-left: 5px !important;
   }
   .mobileTitle{
+    font-family: Lato-Bold;
       font-size:16px;
   }
 
@@ -1129,6 +1133,7 @@ h5 > .btn {
     position:absolute;
     top:-70px;
     left:200px;
+
   }
 
   .testimonialRowMargin{
@@ -1199,5 +1204,57 @@ h5 > .btn {
 
   .offeringsPic{
     width:70%;
+  }
+}
+
+/*********************************************************************/
+/* Bootstrap 4 Multiple Item Carousel */
+/*********************************************************************/
+/* medium - display 2  */
+@media (min-width: 768px) {
+
+  .testiWrapper{
+    height: 380px;
+  }
+
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(50%);
+    }
+
+    .carousel-inner .carousel-item-left.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-50%);
+    }
+
+    .carousel-inner .carousel-item-right,
+    .carousel-inner .carousel-item-left {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 575px) {
+
+
+  #desktopIpadCarousel{
+    display:none;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+
+@media screen and (min-width: 575px) and (max-width: 768px){
+  .testiWrapper{
+    height: 450px;
+  }
+
+  .carousel-inner .carousel-item-right,
+  .carousel-inner .carousel-item-left {
+      transform: translateX(0);
   }
 }

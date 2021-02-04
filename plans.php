@@ -167,7 +167,7 @@ $("body").addClass("whiteBackground");
 </div class="col">
 </div class = "row">
 
-<!-- <div class="row hide-on-nonmobile plansMobileHeader">
+<div class="row hide-on-nonmobile plansMobileHeader">
 <div class="col">
 <center>Monthly Price</center>
 </div class="col">
@@ -183,7 +183,7 @@ $("body").addClass("whiteBackground");
 </div class="col">
 <div class="col prod4 plansMobileContent"> <?php echo "₹ ".$product4->currentPriceINR->amount; ?>
 </div class="col">
-</div class = "row"> -->
+</div class = "row">
 
 <div class="row">
 <div class="col"> <center><button class="btn btn-primary btn mt-4 mb-4 continueBtn blueButton" id ="continueBtn"> Continue </button></center>

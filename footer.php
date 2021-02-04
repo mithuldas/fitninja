@@ -18,7 +18,7 @@
     <li class="footerList pt-2">
     <ul class="footerList pb-2" style="font-family:Lato-Regular"> FUNINJA</ul>
     <ul class="pb-1"> <a href="about.php">About</a> </ul>
-    <ul class="pb-1"> <a href="trainers.php">Trainers</a> </ul>
+    <!--<ul class="pb-1"> <a href="trainers.php">Trainers</a> </ul>-->
     <ul class="pb-1"> <a href="offerings.php">Offerings</a> </ul>
     <ul class="pb-1"> <a href="plans.php">Membership</a> </ul>
     </li>

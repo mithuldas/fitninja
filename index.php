@@ -104,7 +104,7 @@ require "header.php";
 <div id="mobileCarousel" class="carousel slide hide-on-nonmobile w-100 m-0 p-0" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" style="height:360px">
-      <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
+      <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Nadia.png"></img><br>
           <p style="color:blue">Nadezhda Trapizonian</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
@@ -113,7 +113,7 @@ require "header.php";
     </div>
 
     <div class="carousel-item" style="height:360px">
-      <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
+      <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
           <p style="color:blue">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. I recently moved to Australia. My routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me adapt my lifestyle to the new environment by challenging me and helping me work towards my fitness goals.
@@ -122,7 +122,7 @@ require "header.php";
     </div>
 
     <div class="carousel-item" style="height:360px">
-      <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
+      <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Megha.png"></img><br>
           <p style="color:blue">Priya and Megha Gupta</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
@@ -131,7 +131,7 @@ require "header.php";
     </div>
 
     <div class="carousel-item" style="height:360px">
-      <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
+      <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
           <p style="color:blue">Satya Das</P> Krishna and Raghavan (FuNinja yoga leads) were both bright students at Sivananda Ashram and graduated from our Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.

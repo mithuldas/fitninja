@@ -582,6 +582,14 @@ th, td {
   text-align:center;
 }
 
+.lightgreyfont{
+  color:lightgrey;
+  text-decoration: underline;
+}
+.lightgreyfont:hover{
+  color:grey!important;
+}
+
 .greyfontNoCenter{
   color:grey;
 }

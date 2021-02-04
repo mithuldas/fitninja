@@ -58,13 +58,13 @@ $("body").addClass("whiteBackground");
 
 
 
-<div class="row hide-on-nonmobile plansMobileHeader ">
-<div class="col">
-<center>Workout Formats</center>
+<div class="row hide-on-nonmobile plansMobileHeader pt-2">
+<div class="col" align="center">
+<center style="display:inline-block; margin-right:5px">Workout Formats</center> <i style="display:inline-block" class="far fa-question-circle infoButton" data-toggle="tooltip" data-html="true" title="Know more about the exciting Workout Formats you can choose from by heading over to our <a href='offerings.php' class='lightgreyfont'> Offerings</a> page"></i>
 </div class="col">
 </div class="row">
-<div class="row pt-1 pb-3 borderbottom">
-<div class="col-3 hide-on-mobile"> Workout Formats
+<div class="row pt-3 pb-3 borderbottom">
+<div class="col-3 hide-on-mobile" > Workout Formats <i style="margin-left:5px" class="far fa-question-circle infoButton" data-toggle="tooltip" data-html="true" title="Know more about the exciting Workout Formats you can choose from by heading over to our <a href='offerings.php' class='lightgreyfont'> Offerings</a> page"></i>
 </div class="col">
 <div class="col prod1 plansMobileContent"> Any 1
 </div class="col">
@@ -76,7 +76,7 @@ $("body").addClass("whiteBackground");
 </div class="col">
 </div class = "row">
 
-<div class="row hide-on-nonmobile plansMobileHeader">
+<div class="row hide-on-nonmobile plansMobileHeader pt-2">
 <div class="col">
 <center>Number of Trainees</center>
 </div class="col">
@@ -94,7 +94,7 @@ $("body").addClass("whiteBackground");
 </div class="col">
 </div class = "row">
 
-<div class="row hide-on-nonmobile plansMobileHeader">
+<div class="row hide-on-nonmobile plansMobileHeader pt-2">
 <div class="col">
 <center>Dedicated Fitness Manager</center>
 </div class="col">
@@ -113,7 +113,7 @@ $("body").addClass("whiteBackground");
 </div class = "row">
 
 
-<div class="row hide-on-nonmobile plansMobileHeader">
+<div class="row hide-on-nonmobile plansMobileHeader pt-2">
 <div class="col">
 <center>Customised Fitness Plans</center>
 </div class="col">
@@ -131,13 +131,13 @@ $("body").addClass("whiteBackground");
 </div class="col">
 </div class = "row">
 
-<div class="row hide-on-nonmobile plansMobileHeader">
-<div class="col">
-<center>Dedicated Personal Trainers</center>
+<div class="row hide-on-nonmobile plansMobileHeader pt-2">
+<div class="col" align="center">
+<center style="display:inline-block; margin-right:5px">Dedicated Personal Trainers</center> <i style="display:inline-block" class="far fa-question-circle infoButton" data-toggle="tooltip" data-html="true" title="Depending upon the package you choose, up to a total of 4 FuNinja Personal Trainers will be assigned to you, 1 for each chosen Workout Format!"></i>
 </div class="col">
 </div class="row">
 <div class="row pt-3 pb-3 borderbottom">
-<div class="col-3 hide-on-mobile"> Dedicated Personal Trainers
+<div class="col-3 hide-on-mobile" > Dedicated Personal Trainers <i style="margin-left:5px" class="far fa-question-circle infoButton" data-toggle="tooltip" data-html="true" title="Depending upon the package you choose, up to a total of 4 FuNinja Personal Trainers will be assigned to you, 1 for each chosen Workout Format!"></i>
 </div class="col">
 <div class="col prod1 plansMobileContent"> ✓
 </div class="col">
@@ -149,7 +149,7 @@ $("body").addClass("whiteBackground");
 </div class="col">
 </div class = "row">
 
-<div class="row hide-on-nonmobile plansMobileHeader">
+<div class="row hide-on-nonmobile plansMobileHeader pt-2">
 <div class="col">
 <center>Flexible Scheduling</center>
 </div class="col">
@@ -167,12 +167,12 @@ $("body").addClass("whiteBackground");
 </div class="col">
 </div class = "row">
 
-<div class="row hide-on-nonmobile plansMobileHeader">
+<div class="row hide-on-nonmobile plansMobileHeader pt-2">
 <div class="col">
 <center>Monthly Price</center>
 </div class="col">
 </div class="row">
-<div class="row mt-2 mb-2">
+<div class="row pt-3 mb-2">
 <div class="col-3 hide-on-mobile">Monthly Price
 </div class="col">
 <div class="col prod1 plansMobileContent"> <?php echo "₹ ".substr($product1->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
@@ -264,6 +264,14 @@ $("#continueBtn").on("click", function(){
 
 });
 
+</script>
+
+<script>
+$(document).ready(function(){
+  //$('[data-toggle="tooltip"]').tooltip();
+  $('.infoButton').tooltip({delay: {show: 0, hide: 1000}});
+
+});
 </script>
 
 <script>

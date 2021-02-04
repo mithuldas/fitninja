@@ -29,7 +29,7 @@ $("body").addClass("whiteBackground");
 	<div class"row ">
     <div class"col ">
 
-      <h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4">Explore the various workouts being offered below and find a <a href="/plans.php">membership plan</a> that works for you and your family.</h5>
+      <h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4">Explore the various Workout Formats being offered below and find a <a href="/plans.php">membership plan</a> that works for you and your family.</h5>
 
       <?php
       // if user user isn't logged in, show the login and register buttons

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 27, 2021 at 03:29 PM
+-- Generation Time: Feb 04, 2021 at 06:45 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -150,10 +150,10 @@ CREATE TABLE `product_prices` (
 --
 
 INSERT INTO `product_prices` (`id`, `product_id`, `valid_from`, `valid_to`, `currency`, `amount`) VALUES
-(1, 2, '2020-11-21 10:11:31', NULL, 'INR', 1),
-(2, 3, '2020-11-21 10:11:56', NULL, 'INR', 2),
-(3, 4, '2020-11-21 10:12:09', NULL, 'INR', 3),
-(4, 5, '2020-11-21 10:12:25', NULL, 'INR', 4);
+(1, 2, '2020-11-21 10:11:31', NULL, 'INR', 11990),
+(2, 3, '2020-11-21 10:11:56', NULL, 'INR', 13990),
+(3, 4, '2020-11-21 10:12:09', NULL, 'INR', 15990),
+(4, 5, '2020-11-21 10:12:25', NULL, 'INR', 17990);
 
 -- --------------------------------------------------------
 

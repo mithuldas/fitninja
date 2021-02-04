@@ -60,11 +60,11 @@ $("body").addClass("whiteBackground");
 
 <div class="row hide-on-nonmobile plansMobileHeader ">
 <div class="col">
-<center>Zumba, Yoga, Aerobics, Slimnastics</center>
+<center>Workout Formats</center>
 </div class="col">
 </div class="row">
 <div class="row pt-1 pb-3 borderbottom">
-<div class="col-3 hide-on-mobile"> Zumba, Yoga, Aerobics, Slimnastics
+<div class="col-3 hide-on-mobile"> Workout Formats
 </div class="col">
 <div class="col prod1 plansMobileContent"> Any 1
 </div class="col">
@@ -78,11 +78,11 @@ $("body").addClass("whiteBackground");
 
 <div class="row hide-on-nonmobile plansMobileHeader">
 <div class="col">
-<center>Number of Participants</center>
+<center>Number of Trainees</center>
 </div class="col">
 </div class="row">
 <div class="row pt-3 pb-3 borderbottom">
-<div class="col-3 hide-on-mobile"> Number of Participants
+<div class="col-3 hide-on-mobile"> Number of Trainees
 </div class="col">
 <div class="col prod1 plansMobileContent"> 1
 </div class="col">
@@ -175,13 +175,13 @@ $("body").addClass("whiteBackground");
 <div class="row mt-2 mb-2">
 <div class="col-3 hide-on-mobile">Monthly Price
 </div class="col">
-<div class="col prod1 plansMobileContent"> <?php echo "₹ ".$product1->currentPriceINR->amount; ?>
+<div class="col prod1 plansMobileContent"> <?php echo "₹ ".substr($product1->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
 </div class="col">
-<div class="col prod2 plansMobileContent"> <?php echo "₹ ".$product2->currentPriceINR->amount; ?>
+<div class="col prod2 plansMobileContent"> <?php echo "₹ ".substr($product2->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
 </div class="col">
-<div class="col prod3 plansMobileContent"> <?php echo "₹ ".$product3->currentPriceINR->amount; ?>
+<div class="col prod3 plansMobileContent"> <?php echo "₹ ".substr($product3->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
 </div class="col">
-<div class="col prod4 plansMobileContent"> <?php echo "₹ ".$product4->currentPriceINR->amount; ?>
+<div class="col prod4 plansMobileContent"> <?php echo "₹ ".substr($product4->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
 </div class="col">
 </div class = "row">
 

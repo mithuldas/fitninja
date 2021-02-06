@@ -81,7 +81,7 @@ include ROOT_DIR."/includes/dbh.php";
 <?php
   foreach ($unassignedTrialSessions as $value) {
 
-    $sessionJSON = json_encode($value);
+    $sessionJSON = json_encode($value, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 
     $trainee = new Trainee($value->uid, $conn);
     echo "<tr>

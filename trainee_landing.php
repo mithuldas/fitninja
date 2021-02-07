@@ -57,11 +57,19 @@ $activityNames=Activity::getAllActivityNames($conn);
       <label class="pt-2" for="phone">1. Interests: </label><br>
       <?php
         foreach ($activityNames as $activityName) {
+          if($activityName=="Slimnastics"){
+            echo "
+            <input  type='checkbox' value='$activityName' id='$activityName' name='$activityName'>
+            <label class='form-check-label' for='$activityName' style='font-size:13px'> $activityName * </label>
+            <br>
+            ";
+          } else{
           echo "
           <input  type='checkbox' value='$activityName' id='$activityName' name='$activityName'>
           <label class='form-check-label' for='$activityName' style='font-size:13px'> $activityName </label>
           <br>
           ";
+          }
         }
       ?>
 
@@ -127,6 +135,11 @@ $activityNames=Activity::getAllActivityNames($conn);
   <div class="row" align=center>
     <div class="form-group col-12">
       <button class="btn btn-primary blueButton mt-1" type="submit" name="trainee_landing_submit">Begin</button>
+    </div>
+  </div>
+  <div class="row" align=left>
+    <div class="form-group col-12">
+      <small>* Our very own toning and weight loss offering</small>
     </div>
   </div>
 </form>

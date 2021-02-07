@@ -12,7 +12,7 @@ FlowControl::startSession();
 <?php
 require "header.php";
 
-$product1 = new Product("Basic",$conn);
+$product1 = new Product("Focus",$conn);
 $product2 = new Product("Standard",$conn);
 $product3 = new Product("Ultra",$conn);
 $product4 = new Product("Pair Up",$conn);

@@ -16,6 +16,7 @@ require ROOT_DIR."/header.php";
   } );
 </script>
 
+
 <?php
 
 // convert json to php object
@@ -43,6 +44,9 @@ $trainers = getTrainerList($conn);
 ?>
 
 <div class="container">
+  <?php
+  require ROOT_DIR."/admin/admin_subheader.php";
+  ?>
   <h5> Assign Trainee to Trainer </h5><br>
 <form action = "process_product_assignment.php" method="post">
 

@@ -33,28 +33,23 @@ $(document).ready(function() {
 </script>
 
 <div class="container">
-<div class="admin-header-div">
-<?php
-  if(isset($_GET['status'])){
-    if($_GET['status']=='onboard_sent'){
-        ?>
-        <div class="alert alert-dismissible alert-secondary">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          An e-mail has been sent to <b><?php echo $_GET['email'] ?> </b>with the onboarding link
-        </div>
-        <?php
+  <?php
+    if(isset($_GET['status'])){
+      if($_GET['status']=='onboard_sent'){
+          ?>
+          <div class="alert alert-dismissible alert-secondary">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            An e-mail has been sent to <b><?php echo $_GET['email'] ?> </b>with the onboarding link
+          </div>
+          <?php
+      }
     }
-  }
+  ?>
+
+<?php
+require ROOT_DIR."/admin/admin_subheader.php";
 ?>
 
-<a href="new_trainer_admin.php?type=Trainer" class="btn-sm btn-light">New Trainer</a>
-<a href="new_trainer_admin.php?type=Admin" class="btn-sm btn-light">New Admin</a>
-<a href="new_trainer_admin.php?type=Admin" class="btn-sm btn-light active">User List</a>
-<a href="view_trial_requests.php" class="btn-sm btn-light">Trial Requests</a>
-<a href="view_unassigned_products.php" class="btn-sm btn-light">Unassigned Trainees</a>
-<a href="view_assigned_sessions.php" class="btn-sm btn-light">Assigned Sessions</a>
-</div>
-<br>
 <div class="admin-main-div">
 <h4> User List </h4><br>
 <?php
@@ -97,6 +92,8 @@ else{
 
 <a href="debug_functions.php?action=deleteAllUsers" class="btn-sm btn-danger">Delete Users</a>
 <a href="debug_functions.php?action=deleteUserProducts" class="btn-sm btn-danger">Delete User Products</a>
+<a href="new_trainer_admin.php?type=Trainer" class="btn-sm btn-light">New Trainer</a>
+<a href="new_trainer_admin.php?type=Admin" class="btn-sm btn-light">New Admin</a>
 </div>
 
 <?php

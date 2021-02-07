@@ -21,6 +21,7 @@ include ROOT_DIR."/includes/dbh.php";
   require ROOT_DIR."/header.php";
 ?>
 
+
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" class="init">
@@ -30,6 +31,9 @@ include ROOT_DIR."/includes/dbh.php";
 </script>
 
 <div class="container">
+  <?php
+  require ROOT_DIR."/admin/admin_subheader.php";
+  ?>
 <?php
 
 

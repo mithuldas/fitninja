@@ -7,14 +7,12 @@ require_once ( ROOT_DIR.'/includes/dbh.php' );
 
 FlowControl::startSession();
 
-FlowControl::redirectIfWrongUserType("Trainee");
-
 ?>
 
 <?php
 require "header.php";
 
-$product1 = new Product("Focus",$conn);
+$product1 = new Product("Basic",$conn);
 $product2 = new Product("Standard",$conn);
 $product3 = new Product("Ultra",$conn);
 $product4 = new Product("Pair Up",$conn);
@@ -177,13 +175,13 @@ $("body").addClass("whiteBackground");
 <div class="row pt-3 mb-2">
 <div class="col-3 hide-on-mobile">Monthly Price
 </div class="col">
-<div class="col prod1 plansMobileContent"> <?php echo "₹ ".substr($product1->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
+<div class="col prod1 plansMobileContent"> <?php echo "₹ 1"; ?>
 </div class="col">
-<div class="col prod2 plansMobileContent"> <?php echo "₹ ".substr($product2->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
+<div class="col prod2 plansMobileContent"> <?php echo "₹ 1"; ?>
 </div class="col">
-<div class="col prod3 plansMobileContent"> <?php echo "₹ ".substr($product3->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
+<div class="col prod3 plansMobileContent"> <?php echo "₹ 1"; ?>
 </div class="col">
-<div class="col prod4 plansMobileContent"> <?php echo "₹ ".substr($product4->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
+<div class="col prod4 plansMobileContent"> <?php echo "₹ 1"; ?>
 </div class="col">
 </div class = "row">
 
@@ -257,7 +255,7 @@ $("#continueBtn").on("click", function(){
     },
     success: function(response){
       if(response=="loggedIn"){
-        window.location.href = '/confirm_plan.php?'+'product='+selectedProduct;
+        window.location.href = '/confirm_plan_test.php?'+'product='+selectedProduct;
       } else if(response=="notLoggedIn"){
         $("#registerButton").click();
       }

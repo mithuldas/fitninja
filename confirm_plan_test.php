@@ -18,10 +18,10 @@ if(isset($_SESSION['selectedProduct'])){ // unset this so that post_login_landin
 }
 
 // Plan form and product name mappings:
-  // 1= Focus
-  // 2= Standard
-  // 3= Ultra
-  // 4= Pair Up
+  // 1= Basic
+  // 2= Ignite
+  // 3= Level Up
+  // 4= Duo Ninja
 
 switch ($_GET['product']) {
   case '1':
@@ -45,7 +45,7 @@ $api_secret="E7W6UlNrI3ZTAJmf1HJnw65x";
 $api = new Api($api_key, $api_secret);
 
 $order = $api->order->create(array(
-  'amount' => $product->currentPriceINR->amount*100, // x 100 since Razorpay amount seems to be in paisas (wtf?)
+  'amount' => 1*100, // x 100 since Razorpay amount seems to be in paisas (wtf?)
   'currency' => 'INR'
   )
 );
@@ -90,7 +90,7 @@ if($orderStatus=="created"){
         Amount
       </div>
       <div class="col-10">
-        <?php echo '₹ '.$product->currentPriceINR->amount; ?>
+        <?php echo '₹ 1'; ?>
       </div>
     </div>
     <div class="row pt-3 pb-3">
@@ -110,7 +110,7 @@ if($orderStatus=="created"){
 
 <script> // pass order and details
 var orderID = '<?php echo $orderID; ?>';
-var orderAmount = '<?php echo $orderAmount; ?>';
+var orderAmount = '<?php echo 1; ?>';
 var orderStatus = '<?php echo $orderStatus; ?>';
 var uid = '<?php echo $trainee->uid; ?>';
 </script>
@@ -140,7 +140,7 @@ var options = {
         },
         success: function(response){
           if(response==1){
-            window.location.href = "/payment_confirmation.php?gatewayResponse="+paymentGatewayResponse;
+            window.location.href = "/payment_confirmation_test.php?gatewayResponse="+paymentGatewayResponse;
           }
         }
       });

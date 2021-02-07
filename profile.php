@@ -23,7 +23,7 @@ require "header.php";
 
 <link href="css/profile.css" rel="stylesheet">
 
-<div class="container-fluid">
+<div class="container-fluid  breadcrumbContiner">
   <nav aria-label="breadcrumb mb-0 pb-0" >
     <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
       <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
@@ -39,13 +39,13 @@ require "header.php";
       <div class="card mt-4 roundborder">
         <div class="card-body profileShadow">
           <nav class="nav flex-column nav-pills nav-gap-y-1">
-            <a href="#profile" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded active" id="profileDesktopHeader">
+            <a href="#profile" data-toggle="tab" class="profileNavItem nav-item nav-link has-icon nav-link-faded active" id="profileDesktopHeader">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user mr-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Profile
             </a>
-            <a href="#settings" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded" id="settingsDesktopHeader">
+            <a href="#settings" data-toggle="tab" class="profileNavItem nav-item nav-link has-icon nav-link-faded" id="settingsDesktopHeader">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings mr-2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>Settings
             </a>
-            <a href="#plans" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded" id="plansDesktopHeader">
+            <a href="#plans" data-toggle="tab" class="profileNavItem nav-item nav-link has-icon nav-link-faded" id="plansDesktopHeader">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card mr-2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>Plans
             </a>
           </nav>
@@ -59,21 +59,21 @@ require "header.php";
     <h6 id = "statusMessage" class="ml-2 mt-2"> <h6>
     <div class="card-header border-bottom mb-3 d-flex d-md-none">
       <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
-        <li class="nav-item">
-          <a href="#profile" data-toggle="tab" class="nav-link has-icon active" id="profileMobileHeader"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
+        <li class="nav-item profileNavItem">
+          <a href="#profile" data-toggle="tab" class="profileNav nav-link has-icon active" id="profileMobileHeader"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a>
         </li>
-        <li class="nav-item">
-          <a href="#settings" data-toggle="tab" class="nav-link has-icon" id="settingsMobileHeader"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></a>
+        <li class="nav-item profileNavItem">
+          <a href="#settings" data-toggle="tab" class="profileNav nav-link has-icon" id="settingsMobileHeader"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></a>
         </li>
-        <li class="nav-item">
-          <a href="#plans" data-toggle="tab" class="nav-link has-icon" id="plansMobileHeader"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></a>
+        <li class="nav-item profileNavItem">
+          <a href="#plans" data-toggle="tab" class="profileNav nav-link has-icon" id="plansMobileHeader"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></a>
         </li>
       </ul>
             </div>
 
 
   <div class="card-body tab-content">
-    <div class="tab-pane active" id="profile">
+    <div class="profileTabPane tab-pane active" id="profile">
       <h6>PERSONAL INFORMATION</h6>
       <hr>
 
@@ -128,7 +128,7 @@ require "header.php";
 
     </div>
 
-    <div class="tab-pane" id="settings">
+    <div class="profileTabPane tab-pane" id="settings">
       <h6>SETTINGS</h6>
       <hr>
       <?php
@@ -157,7 +157,7 @@ require "header.php";
 
     </div>
 
-    <div class="tab-pane" id="plans">
+    <div class="profileTabPane tab-pane" id="plans">
 
       <p class="tableTitle">ACTIVE</p>
 
@@ -236,9 +236,9 @@ require "header.php";
 
 <script>
     var sublink = document.location.hash;
-     $(".tab-pane").removeClass("active");
-     $(".nav-item").removeClass("active");
-     $(".nav-link").removeClass("active");
+     $(".profileTabPane").removeClass("active");
+     $(".profileNav").removeClass("active");
+     $(".profileNavItem").removeClass("active");
      $(sublink).addClass("active");
 
      if(sublink=="#settings"){
@@ -254,7 +254,9 @@ require "header.php";
 
      $(window).on('hashchange', function(e){
       var sublink = document.location.hash;
-      $("*").removeClass("active");
+      $(".profileTabPane").removeClass("active");
+      $(".profileNav").removeClass("active");
+      $(".profileNavItem").removeClass("active");
       $(sublink).addClass("active");
 
       if(sublink=="#settings"){
@@ -275,33 +277,45 @@ require "header.php";
       var status = "<?php echo($_GET['status']); ?>";
 
       if(status == "emptyfields" || status == "pwdMismatch" || status =="wrongPassword" || status =="tooShort"){
-        $("*").removeClass("active");
+        $(".profileTabPane").removeClass("active");
+        $(".profileNav").removeClass("active");
+        $(".profileNavItem").removeClass("active");
         $("#settingsDesktopHeader, #settingsMobileHeader, #settings").addClass("active");
       }
       if (status == "emptyfields"){
         $('#statusMessage').slideDown();
         $('#statusMessage').html('<small style="color:red"> Fill in all fields </small>');
-        $("*").removeClass("active");
+        $(".profileTabPane").removeClass("active");
+        $(".profileNav").removeClass("active");
+        $(".profileNavItem").removeClass("active");
         $("#settingsDesktopHeader, #settingsMobileHeader, #settings").addClass("active");
       } else if (status == "pwdMismatch") {
         $('#statusMessage').slideDown();
         $('#statusMessage').html('<small style="color:red"> Passwords do not match </small>');
-        $("*").removeClass("active");
+        $(".profileTabPane").removeClass("active");
+        $(".profileNav").removeClass("active");
+        $(".profileNavItem").removeClass("active");
         $("#settingsDesktopHeader, #settingsMobileHeader, #settings").addClass("active");
       } else if (status == "wrongPassword") {
         $('#statusMessage').slideDown();
         $('#statusMessage').html('<small style="color:red"> Old password is incorrect </small>');
-        $("*").removeClass("active");
+        $(".profileTabPane").removeClass("active");
+        $(".profileNav").removeClass("active");
+        $(".profileNavItem").removeClass("active");
         $("#settingsDesktopHeader, #settingsMobileHeader, #settings").addClass("active");
       } else if (status == "tooShort") {
         $('#statusMessage').slideDown();
         $('#statusMessage').html('<small style="color:red"> Password must contain at least 8 characters </small>');
-        $("*").removeClass("active");
+        $(".profileTabPane").removeClass("active");
+        $(".profileNav").removeClass("active");
+        $(".profileNavItem").removeClass("active");
         $("#settingsDesktopHeader, #settingsMobileHeader, #settings").addClass("active");
       } else if (status == "passwordupdated") {
         $('#statusMessage').slideDown();
         $('#statusMessage').html('<small style="color:green"> Your password has been updated </small>');
-        $("*").removeClass("active");
+        $(".profileTabPane").removeClass("active");
+        $(".profileNav").removeClass("active");
+        $(".profileNavItem").removeClass("active");
         $("#settingsDesktopHeader, #settingsMobileHeader, #settings").addClass("active");
       }
 

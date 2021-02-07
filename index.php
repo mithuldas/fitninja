@@ -17,7 +17,7 @@ require "header.php";
 
 <!-- get fit section row -->
   <div class="row pt-3 pt-md-4 align-items-center pb-4 pb-md-5" >
-    <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv">
+    <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center">
       <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Get Fit. Stay Fit.</h2>
       <p class="mobText pb-2 pb-md-0">Get into the best shape of your life with FuNinja's elite Online Personal Trainers as they masterfully guide you through fun, engaging and highly customized fitness 1 on 1 routines carefully tailored to fit your exact needs.</p>
 

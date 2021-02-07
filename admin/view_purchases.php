@@ -4,21 +4,11 @@ require_once __DIR__.'/../config.php';
 include ROOT_DIR."/includes/autoloader.php";
 include ROOT_DIR."/includes/dbh.php";
 
-  if(!isset($_SESSION)){
-    session_start();
-  }
+FlowControl::startSession();
+FlowControl::redirectIfNotLoggedIn();
+FlowControl::redirectIfWrongUserType("Admin");
 
-  if(!isset($_SESSION['uid'])){
-    header("Location: /index.php?notLoggedIn");
-    exit();
-  }
-
-  if($_SESSION['userType']!="Admin"){
-    header("Location: /includes/post_login_landing_controller.php");
-    exit();
-  }
-
-  require ROOT_DIR."/header.php";
+require ROOT_DIR."/header.php";
 ?>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
@@ -30,6 +20,8 @@ include ROOT_DIR."/includes/dbh.php";
 </script>
 
 <div class="container">
+  <?php require ROOT_DIR."/admin/admin_subheader.php" ?>
+
 <?php
 
 
@@ -67,7 +59,7 @@ include ROOT_DIR."/includes/dbh.php";
 
 ?>
 
-<h4> New Purchases </h4><br>
+<h4> Purchases </h4><br>
   <table id='users' class='display' style='width:100%'><thead>
     <tr>
     <th> Date submitted </th>
@@ -75,6 +67,7 @@ include ROOT_DIR."/includes/dbh.php";
     <th> Name </th>
     <th> Phone </th>
     <th> Email </th>
+    <th>  </th>
     <th>  </th>
     </tr><thead><tbody>
 
@@ -98,7 +91,13 @@ include ROOT_DIR."/includes/dbh.php";
         <td>
         <form action='/admin/assign_product.php' method='post'>
         <input type='hidden' name='session' value='". $sessionJSON."'>
-        <button class='btn-sm btn-light' type='submit' name='process-trial'>Process</button>
+        <button class='btn btn-sm btn-light' type='submit' name='schedule-trial'>Schedule</button>
+        </form>
+        </td>
+        <td>
+        <form action='/admin/data_collector_form.php' method='post'>
+        <input type='hidden' name='session' value='". $sessionJSON."'>
+        <button class='btn btn-sm btn-light' type='submit' name='schedule-trial'>Form</button>
         </form>
         </td>
         </tr>";

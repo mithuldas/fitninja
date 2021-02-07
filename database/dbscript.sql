@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 07, 2021 at 10:37 AM
+-- Generation Time: Feb 07, 2021 at 03:01 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -64,7 +64,7 @@ INSERT INTO `form_questions` (`id`, `form_version`, `seq_nr`, `question`) VALUES
 (6, 1, 6, 'Height (CM)'),
 (7, 1, 7, 'BMI'),
 (8, 1, 8, 'Package'),
-(9, 1, 9, 'Workout Routines Selected'),
+(9, 1, 9, 'Selected Workout Routines'),
 (10, 1, 10, 'Years you\'ve been exercising?'),
 (11, 1, 11, 'Lifestyle'),
 (12, 1, 12, 'Goals?'),
@@ -523,8 +523,8 @@ ALTER TABLE `form_questions`
 --
 ALTER TABLE `form_saved`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `form_version` (`form_version`),
-  ADD KEY `user_product_id` (`user_product_id`);
+  ADD UNIQUE KEY `user_product_id` (`user_product_id`),
+  ADD KEY `form_version` (`form_version`);
 
 --
 -- Indexes for table `form_saved_data`

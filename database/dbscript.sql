@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 04, 2021 at 06:45 PM
+-- Generation Time: Feb 07, 2021 at 10:37 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -41,6 +41,89 @@ INSERT INTO `activity_types` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `form_questions`
+--
+
+CREATE TABLE `form_questions` (
+  `id` int(11) NOT NULL,
+  `form_version` int(11) NOT NULL,
+  `seq_nr` int(11) NOT NULL,
+  `question` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `form_questions`
+--
+
+INSERT INTO `form_questions` (`id`, `form_version`, `seq_nr`, `question`) VALUES
+(1, 1, 1, 'Date'),
+(2, 1, 2, 'Name'),
+(3, 1, 3, 'Age'),
+(4, 1, 4, 'Gender'),
+(5, 1, 5, 'Weight (KG)'),
+(6, 1, 6, 'Height (CM)'),
+(7, 1, 7, 'BMI'),
+(8, 1, 8, 'Package'),
+(9, 1, 9, 'Workout Routines Selected'),
+(10, 1, 10, 'Years you\'ve been exercising?'),
+(11, 1, 11, 'Lifestyle'),
+(12, 1, 12, 'Goals?'),
+(13, 1, 13, 'Other goals'),
+(14, 1, 14, 'Medical History and Health Concerns'),
+(15, 1, 15, 'Recent surgeries or injuries'),
+(16, 1, 16, 'Active medications'),
+(17, 1, 17, 'Any restrictions (exercise/general)?'),
+(18, 1, 18, 'Current Diet (Veg/Non Veg/Vegan etc)');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `form_saved`
+--
+
+CREATE TABLE `form_saved` (
+  `id` int(11) NOT NULL,
+  `user_product_id` int(11) NOT NULL,
+  `form_version` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `form_saved_data`
+--
+
+CREATE TABLE `form_saved_data` (
+  `id` int(11) NOT NULL,
+  `saved_form_id` int(11) NOT NULL,
+  `form_version` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `answer` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `form_versions`
+--
+
+CREATE TABLE `form_versions` (
+  `id` int(11) NOT NULL,
+  `created_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `current_version` varchar(2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `form_versions`
+--
+
+INSERT INTO `form_versions` (`id`, `created_dt`, `current_version`) VALUES
+(1, '2021-02-06 11:32:37', 'Y');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -69,7 +152,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`) VALUES
-(2, 'Basic'),
+(2, 'Focus'),
 (5, 'Pair Up'),
 (3, 'Standard'),
 (1, 'Trial'),
@@ -429,6 +512,36 @@ ALTER TABLE `activity_types`
   ADD UNIQUE KEY `name` (`name`);
 
 --
+-- Indexes for table `form_questions`
+--
+ALTER TABLE `form_questions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `form_version` (`form_version`,`seq_nr`);
+
+--
+-- Indexes for table `form_saved`
+--
+ALTER TABLE `form_saved`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `form_version` (`form_version`),
+  ADD KEY `user_product_id` (`user_product_id`);
+
+--
+-- Indexes for table `form_saved_data`
+--
+ALTER TABLE `form_saved_data`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `saved_form_id` (`saved_form_id`),
+  ADD KEY `form_version` (`form_version`),
+  ADD KEY `question_id` (`question_id`);
+
+--
+-- Indexes for table `form_versions`
+--
+ALTER TABLE `form_versions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -574,6 +687,30 @@ ALTER TABLE `activity_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `form_questions`
+--
+ALTER TABLE `form_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `form_saved`
+--
+ALTER TABLE `form_saved`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `form_saved_data`
+--
+ALTER TABLE `form_saved_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `form_versions`
+--
+ALTER TABLE `form_versions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
@@ -666,6 +803,27 @@ ALTER TABLE `user_types`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `form_questions`
+--
+ALTER TABLE `form_questions`
+  ADD CONSTRAINT `form_questions_ibfk_1` FOREIGN KEY (`form_version`) REFERENCES `form_versions` (`id`);
+
+--
+-- Constraints for table `form_saved`
+--
+ALTER TABLE `form_saved`
+  ADD CONSTRAINT `form_saved_ibfk_1` FOREIGN KEY (`form_version`) REFERENCES `form_versions` (`id`),
+  ADD CONSTRAINT `form_saved_ibfk_2` FOREIGN KEY (`user_product_id`) REFERENCES `user_products` (`id`);
+
+--
+-- Constraints for table `form_saved_data`
+--
+ALTER TABLE `form_saved_data`
+  ADD CONSTRAINT `form_saved_data_ibfk_1` FOREIGN KEY (`saved_form_id`) REFERENCES `form_saved` (`id`),
+  ADD CONSTRAINT `form_saved_data_ibfk_2` FOREIGN KEY (`form_version`) REFERENCES `form_versions` (`id`),
+  ADD CONSTRAINT `form_saved_data_ibfk_3` FOREIGN KEY (`question_id`) REFERENCES `form_questions` (`id`);
 
 --
 -- Constraints for table `orders`

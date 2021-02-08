@@ -10,12 +10,14 @@ class Helper{
     $sql1 = "DELETE from user_interests;";
     $sql2 = "DELETE from session_attributes;";
     $sql3 = "DELETE from sessions;";
-    $sql4 = "DELETE from user_products;";
-    $sql5 = "DELETE from user_interests;";
-    $sql6 = "DELETE from user_attributes where uid not in ('2');"; // preserve dummy trainer's details
-    $sql7 = "DELETE from tokens;";
-    $sql8 = "DELETE from qualifications where uid not in ('2');"; // preserve dummy trainer's quals
-    $sql9 = "DELETE from users where username not in ('admin','trainer');"; // preserve dummy trainer and admin accounts
+    $sql4 = "DELETE from form_saved_data;";
+    $sql5 = "DELETE from form_saved;";
+    $sql6 = "DELETE from user_products;";
+    $sql7 = "DELETE from user_interests;";
+    $sql8 = "DELETE from user_attributes where uid not in ('2');"; // preserve dummy trainer's details
+    $sql9 = "DELETE from tokens;";
+    $sql10 = "DELETE from qualifications where uid not in ('2');"; // preserve dummy trainer's quals
+    $sql11 = "DELETE from users where username not in ('admin','trainer');"; // preserve dummy trainer and admin accounts
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -46,6 +48,12 @@ class Helper{
     mysqli_stmt_prepare($stmt, $sql9);
     mysqli_stmt_execute($stmt);
 
+    mysqli_stmt_prepare($stmt, $sql10);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_prepare($stmt, $sql11);
+    mysqli_stmt_execute($stmt);
+
     if(mysqli_stmt_affected_rows($stmt)<1){
       return 0;
     } else {
@@ -57,9 +65,11 @@ class Helper{
     $sql1 = "DELETE from session_attributes;";
     $sql2 = "DELETE from user_assignments;";
     $sql3 = "DELETE from sessions;";
-    $sql4 = "DELETE from user_products;";
-    $sql5 = "DELETE from transactions;";
-    $sql6 = "DELETE from orders;";
+    $sql4 = "DELETE from form_saved_data;";
+    $sql5 = "DELETE from form_saved;";
+    $sql6 = "DELETE from user_products;";
+    $sql7 = "DELETE from transactions;";
+    $sql8 = "DELETE from orders;";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -79,6 +89,12 @@ class Helper{
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_prepare($stmt, $sql6);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_prepare($stmt, $sql7);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_prepare($stmt, $sql8);
     mysqli_stmt_execute($stmt);
 
     if(mysqli_stmt_affected_rows($stmt)<1){

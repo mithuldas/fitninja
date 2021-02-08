@@ -109,7 +109,7 @@ function populateTraineeDetailsDivContent(){
         "</td><td>\
             <form action='/view_collected_form.php' method='post'>\
             <input type='hidden' name='userProductId' value='"+ trainee.activePlan.userProductId + "'>\
-            <button class='btn btn-sm' type='submit' name='schedule-trial'><i class='fas fa-paperclip'></i></button>\
+            <button class='btn btn-sm p-0' type='submit' name='schedule-trial'><i class='fas fa-paperclip'></i></button>\
             </form>\
             </td></tr>";
       } else {

@@ -16,7 +16,7 @@ $form = new Form($userProductId, $conn);
 
 ?>
 <div class="container">
-<h4 class="pt-3 pt-md-1" align="center"> Your Package Preferences and Details </h4><br>
+<h4 class="pt-3 pt-md-1" align="center"> Package Details </h4><br>
 
 <?php
 if (Form::getCurrentFormVersion($conn)==1){

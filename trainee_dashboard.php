@@ -53,7 +53,7 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 
 <div class="container-fluid containerReducePadding">
 
-  <a id="yourFormsMobBtn" class="btn btn-sm yourFormsBtn hide-on-nonmobile" href="/profile.php#plans" > <i class='fas fa-paperclip mr-1'></i> Your Forms </a>
+  <a id="yourFormsMobBtn" class="btn btn-sm yourFormsBtn hide-on-nonmobile" href="/profile.php#plans" > <i class='fas fa-paperclip mr-1'></i> My Forms </a>
 
   <!-- row 2 - contains two columns -
     col 1 to contain upcoming sessions and below it, the progress donut
@@ -95,7 +95,7 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
     </div>
     <div class="col-lg m-3 mt-4">
       <div class="hide-on-mobile">
-        <center><a class="btn yourFormsBtn mb-4" href="/profile.php#plans"> <i class='fas fa-paperclip mr-1'></i> Your Forms </a></center>
+        <center><a class="btn yourFormsBtn mb-4" href="/profile.php#plans"> <i class='fas fa-paperclip mr-1'></i> My Forms </a></center>
         <br>
       </div>
 

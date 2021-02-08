@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 07, 2021 at 03:01 PM
+-- Generation Time: Feb 08, 2021 at 12:46 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -73,7 +73,8 @@ INSERT INTO `form_questions` (`id`, `form_version`, `seq_nr`, `question`) VALUES
 (15, 1, 15, 'Recent surgeries or injuries'),
 (16, 1, 16, 'Active medications'),
 (17, 1, 17, 'Any restrictions (exercise/general)?'),
-(18, 1, 18, 'Current Diet (Veg/Non Veg/Vegan etc)');
+(18, 1, 18, 'Current Diet (Veg/Non Veg/Vegan etc)'),
+(19, 1, 19, 'General notes and comments');
 
 -- --------------------------------------------------------
 

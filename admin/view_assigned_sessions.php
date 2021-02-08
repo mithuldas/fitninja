@@ -124,7 +124,7 @@ include ROOT_DIR."/includes/dbh.php";
         <td>
         <form action='/admin/edit_session.php' method='post'>
         <input type='hidden' name='session' value='". $sessionJSON."'>
-        <button class='btn-sm btn-light' type='submit' name='edit_session'>Edit</button>
+        <button class='btn btn-sm btn-light' type='submit' name='edit_session'>Edit</button>
         </form>
         </td>";
     if(is_null($value->nextSessionId)){
@@ -137,7 +137,7 @@ include ROOT_DIR."/includes/dbh.php";
       $b = "<td>
       <form action='/admin/assign_next_session.php' method='post'>
       <input type='hidden' name='session' value='". $sessionJSON."'>
-      <button class='btn-sm btn-light' type='submit' name='assign_next'>Assign Next</button>
+      <button class='btn btn-sm btn-light' type='submit' name='assign_next'>Assign Next</button>
       </form>
       </td>";
     }

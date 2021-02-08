@@ -32,14 +32,14 @@ require "header.php";
     </ol>
   </nav>
 </div>
-<div class="container">
+<div class="container pb-3">
   <div class="row gutters-sm">
     <!-- desktop menu bar on left -->
     <div class="col-md-3 d-none d-md-block">
       <div class="card mt-4 roundborder">
         <div class="card-body profileShadow">
           <nav class="nav flex-column nav-pills nav-gap-y-1">
-            <a href="#profile" data-toggle="tab" class="profileNavItem nav-item nav-link has-icon nav-link-faded active" id="profileDesktopHeader">
+            <a href="#profile" data-toggle="tab" class="profileNavItem nav-item  nav-link has-icon nav-link-faded active" id="profileDesktopHeader">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user mr-2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Profile
             </a>
             <a href="#settings" data-toggle="tab" class="profileNavItem nav-item nav-link has-icon nav-link-faded" id="settingsDesktopHeader">
@@ -72,7 +72,7 @@ require "header.php";
             </div>
 
 
-  <div class="card-body tab-content">
+  <div class="card-body profileCard tab-content">
     <div class="profileTabPane tab-pane active" id="profile">
       <h6>PERSONAL INFORMATION</h6>
       <hr>
@@ -159,69 +159,98 @@ require "header.php";
 
     <div class="profileTabPane tab-pane" id="plans">
 
-      <p class="tableTitle">ACTIVE</p>
+      <div class="dashCardTitle dashMobTitle">Your Current Plan</div>
+      <div class='table100 plansTable'>
+       <div class='table100-head'>
+       <table id='upcomingSessions'><thead>
+       <tr class='row100 head'>
+       <th class='cell100 column1 curPlan'> Plan </th>
+       <th class='cell100 column2 curPlan'> Valid From </th>
+       <th class='cell100 column3 curPlan'> Valid To </th>
+       <th class='cell100 column4 curPlan'> Form </th>
+       </tr></thead>
+       </table>
+       </div>
 
-      <table class="table">
-      <thead>
-        <tr>
-          <th scope="col" style='width:30%'><b>Plan</b></th>
-          <th scope="col" style='width:30%'><b>Valid From</b></th>
-          <th scope="col"><b>Valid To</b></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        if(!is_null($user->activePlan)){
-          $formattedValidFrom = date("d M Y", strtotime($user->activePlan->validFrom));
-          if(!is_null($user->activePlan->validTo)){
-            $formattedValidTo = date("d M Y", strtotime($user->activePlan->validTo));
-          } else {
-            $formattedValidTo='';
-          }
-          echo "
-            <tr>
-             <td>".$user->activePlan->productName."</td>
-             <td>".$formattedValidFrom."</td>
-             <td>".$formattedValidTo."</td>
-           </tr>
-         </tbody>
-       </table> ";
-        }
-
+       <?php
+       if(!is_null($user->activePlan)){
+         $formattedValidFrom = date("d M Y", strtotime($user->activePlan->validFrom));
+         if(!is_null($user->activePlan->validTo)){
+           $formattedValidTo = date("d M Y", strtotime($user->activePlan->validTo));
+         } else {
+           $formattedValidTo='';
+         }
+       }
         ?>
 
-
-      <hr>
-      <p class="tableTitle">PURCHASE HISTORY</p>
-
-      <table class="table">
-      <thead>
-        <tr>
-          <th scope="col" style='width:30%'><b>Date Purchased</b></th>
-          <th scope="col"><b>Plan</b></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        foreach ($user->plans as $plan) {
-          $formattedValidFrom = date("d M Y", strtotime($plan->validFrom));
-          if($plan->productName!="Trial"){
-            echo "
-              <tr>
-               <td>".$formattedValidFrom."</td>
-               <td>".$plan->productName."</td>
+       <div class='table100-body'>
+         <table class="mb-4">
+           <tbody>
+             <tr class=\'row100 body\'>
+               <td class="cell100 column1 curPlan"><?php echo $user->activePlan->productName; ?></td>
+               <td class="cell100 column2 curPlan"><?php echo $formattedValidFrom; ?></td>
+               <td class="cell100 column3 curPlan"><?php echo $formattedValidTo; ?></td>
+               <td class="cell100 column4 curPlan">
+                 <?php
+                 if($user->activePlan->customerDataCollected){
+                   echo "<form action='/view_collected_form.php' method='post'>
+                   <input type='hidden' name='userProductId' value='". $user->activePlan->userProductId."'>
+                   <button class='btn' type='submit' name='viewCurrentPlanForm'><i class='fas fa-paperclip'></i></button>
+                   </form>";
+                 }
+                 ?>
+              </td>
              </tr>
-          ";
-          }
+           </tbody>
+         </table>
+       </div>
+      </div>
 
-        }
-        echo " </tbody>
-       </table> ";
+      <div class="dashCardTitle dashMobTitle">Plan History</div>
 
 
-        ?>
-     </tbody>
-   </table>
+      <div class='table100 plansTable'>
+       <div class='table100-head'>
+       <table id='upcomingSessions'><thead>
+       <tr class='row100 head'>
+       <th class='cell100 column1 pastPlan'> Plan </th>
+       <th class='cell100 column2 pastPlan'> Date Purchased </th>
+       <th class='cell100 column3 pastPlan'> Form </th>
+       </tr></thead>
+       </table>
+       </div>
+
+       <div class='table100-body'>
+         <table class="mb-4">
+           <tbody>
+               <?php
+               foreach ($user->plans as $plan) {
+                 $formattedValidFrom = date("d M Y", strtotime($plan->validFrom));
+                 if($plan->productName!="Trial"){
+                   if($plan->customerDataCollected){
+                     $formHTML = "<form action='/view_collected_form.php' method='post'>
+                          <input type='hidden' name='userProductId' value='". $plan->userProductId."'>
+                          <button  class='btn' type='submit' name='viewPlanForm'><i class='fas fa-paperclip'></i></button>
+                          </form>";
+                   } else {
+                     $formHTML="";
+                   }
+                   echo "
+                     <tr class='row100 body'>
+                     <td class='cell100 column1 pastPlan'>".$plan->productName."</td>
+                      <td class='cell100 column2 pastPlan'>".$formattedValidFrom."</td>
+                      <td class='cell100 column3 pastPlan'> $formHTML </td>
+                    </tr>
+                 ";
+                 }
+
+               }
+               ?>
+           </tbody>
+         </table>
+       </div>
+      </div>
+
   </div>
 
   </div>

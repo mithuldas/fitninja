@@ -446,7 +446,7 @@ class Email{
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Your first <b>'. $sessionType. '</b> session has been scheduled with <b>'. $trainerName. '</b> on <b>'.$firstSessionDate. '</b> at <b>'.$firstSessionTime. '.</b></p>
                 <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;"> We\'ll share a Zoom link to your Fitness Room 30 minutes before the session starts and follow it up with a call to your number <b>' .$phone. '</b> to make sure everything is in order.</p>
 
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team<br>+91 9972166212</p>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">Regards,<br>The FuNinja Team<br>+91 91088 06213</p>
                           </td>
                         </tr>
                       </table>

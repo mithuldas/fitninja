@@ -1266,3 +1266,105 @@ h5 > .btn {
       transform: translateX(0);
   }
 }
+
+
+/* Current plan table control desktop*/
+.column1.curPlan {
+  width: 20%;
+  padding-left: 40px;
+}
+
+.column2.curPlan {
+  width: 20%;
+}
+
+.column3.curPlan {
+  width: 20%;
+}
+
+.column4.curPlan {
+  width: 40%;
+}
+
+/* Past plans table control desktop*/
+.column1.pastPlan {
+  width: 20%;
+  padding-left: 40px;
+}
+
+.column2.pastPlan {
+  width: 20%;
+}
+
+.column3.pastPlan {
+  width: 60%;
+}
+
+/* mobile plan tables */
+@media screen and (max-width: 575px) {
+  .column1.curPlan {
+    width: 20%;
+    padding-left: 5px;
+  }
+
+  .column2.curPlan {
+    width: 30%;
+  }
+
+  .column3.curPlan {
+    width: 30%;
+  }
+
+  .column4.curPlan {
+    width: 20%;
+  }
+
+  /* Past plans table control desktop*/
+  .column1.pastPlan {
+    width: 20%;
+    padding-left: 5px;
+  }
+
+  .column2.pastPlan {
+    width: 40%;
+  }
+
+  .column3.pastPlan {
+    width: 50%;
+  }
+
+  .table100.plansTable{
+    margin-top: 15px!important;
+  }
+
+  .card-body.profileCard{
+    padding-left:10px!important;
+    padding-right:10px!important;
+  }
+}
+
+.yourFormsBtn{
+  color:white;
+  background-color: #190472 !important;
+  border-color:#190472 !important;
+}
+
+.yourFormsBtn:hover{
+  background-color: #500472 !important;
+  color:white;
+  text-decoration: none !important;
+}
+
+.profileNavItem:hover{
+  text-decoration: none !important;
+  color:black;
+}
+
+.profileNavItem.active{
+  background-color: #190472 !important;
+}
+
+#yourFormsMobBtn{
+  position:absolute;
+  top:70px;
+}

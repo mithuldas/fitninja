@@ -53,7 +53,7 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 
 <div class="container-fluid containerReducePadding">
 
-
+  <a id="yourFormsMobBtn" class="btn btn-sm yourFormsBtn hide-on-nonmobile" href="/profile.php#plans" > <i class='fas fa-paperclip mr-1'></i> Your Forms </a>
 
   <!-- row 2 - contains two columns -
     col 1 to contain upcoming sessions and below it, the progress donut
@@ -94,6 +94,11 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
 
     </div>
     <div class="col-lg m-3 mt-4">
+      <div class="hide-on-mobile">
+        <center><a class="btn yourFormsBtn mb-4" href="http://localhost/profile.php#plans"> <i class='fas fa-paperclip mr-1'></i> Your Forms </a></center>
+        <br>
+      </div>
+
       <div class=" hide-on-mobile dashCardTitle"> <center>Your Schedule</center>
       </div>
       <div class=" hide-on-mobile mb-3 mt-2" >
@@ -218,6 +223,14 @@ $( function() {
 <script>
 // set active link display in the menu bar
 $('.dashLink').addClass("activeMenuLink");
+
+</script>
+
+<script>
+  btnWidth=$('#yourFormsMobBtn').width();
+  console.log(btnWidth);
+  $("#yourFormsMobBtn").css({"right":20});
+
 
 </script>
 

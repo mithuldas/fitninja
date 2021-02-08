@@ -30,8 +30,7 @@ require ROOT_DIR."/header.php";
   $unassignedSessionIDs=[];
   $unassignedSessions=[];
 
-  $sql = "select s.id from sessions s, user_products up, products p where s.user_product_id=up.id and up.product_id=p.id and p.name<>'Trial' and s.filled_trainers=0 and s.filled_trainees=0
-            and s.sequence=1";
+  $sql = "select s.id from sessions s, user_products up, products p where s.user_product_id=up.id and up.product_id=p.id and p.name<>'Trial' and s.sequence=1";
 
   $stmt = mysqli_stmt_init($conn);
 
@@ -62,7 +61,7 @@ require ROOT_DIR."/header.php";
 <h4> Purchases </h4><br>
   <table id='users' class='display' style='width:100%'><thead>
     <tr>
-    <th> Date submitted </th>
+    <th> Purchase date </th>
     <th> Product </th>
     <th> Name </th>
     <th> Phone </th>

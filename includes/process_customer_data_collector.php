@@ -29,7 +29,7 @@ mysqli_stmt_execute($stmt);
 
 // set limits based on form version
 if($_POST['formVersion']=='1'){
-  $limit=18;
+  $limit=19;
 }
 
 for ($i=1; $i <=$limit; $i++) {
@@ -45,6 +45,6 @@ for ($i=1; $i <=$limit; $i++) {
 
 }
 
-//header("Location: /admin/view_purchases.php");
+header("Location: /admin/view_purchases.php");
 
 ?>

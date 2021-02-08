@@ -95,7 +95,7 @@ $trainers = json_encode($currentUser->getTrainerList($conn));
     </div>
     <div class="col-lg m-3 mt-4">
       <div class="hide-on-mobile">
-        <center><a class="btn yourFormsBtn mb-4" href="http://localhost/profile.php#plans"> <i class='fas fa-paperclip mr-1'></i> Your Forms </a></center>
+        <center><a class="btn yourFormsBtn mb-4" href="/profile.php#plans"> <i class='fas fa-paperclip mr-1'></i> Your Forms </a></center>
         <br>
       </div>
 

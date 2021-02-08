@@ -80,7 +80,7 @@ require ROOT_DIR."/header.php";
     if($up->customerDataCollected){
       $btnHighlight = "btn-success";
     } else {
-      $btnHighlight="btn-light";
+      $btnHighlight="btn-danger";
     }
 
 

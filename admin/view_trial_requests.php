@@ -106,7 +106,7 @@ include ROOT_DIR."/includes/dbh.php";
         <td>
         <form action='/admin/assign_trial_request.php' method='post'>
         <input type='hidden' name='trialSession' value='". $sessionJSON."'>
-        <button class='btn-sm btn-light' type='submit' name='process-trial'>Process</button>
+        <button class='btn btn-sm btn-light' type='submit' name='process-trial'>Process</button>
         </form>
         </td>
         </tr>";

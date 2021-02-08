@@ -84,8 +84,9 @@ function populateTraineeDetailsDivContent(){
       <tr class='row100 head'>\
       <th class='cell100 column1 traineelist'> Name </th>\
       <th class='cell100 column2 traineelist'> Gender </th>\
-      <th class='cell100 column2 traineelist'> Age </th>\
-      <th class='cell100 column2 traineelist'> Completed </th>\
+      <th class='cell100 column3 traineelist'> Age </th>\
+      <th class='cell100 column4 traineelist'> Completed </th>\
+      <th class='cell100 column5 traineelist'> Details </th>\
       </tr></thead>\
       </table>\
       </div>";
@@ -102,7 +103,19 @@ function populateTraineeDetailsDivContent(){
         }
       });
 
-      tableBody=tableBody+'<tr class=\'row100 body\'><td class="cell100 column1 traineelist">'+trainee.firstName+' '+trainee.lastName+'</td><td class="cell100 column2 traineelist">'+trainee.gender+'</td><td class="cell100 column3 traineelist">'+age+'</td><td class="cell100 column4 traineelist">'+progressContent+'</td></tr>';
+      if(trainee.activePlan.customerDataCollected){
+
+        var formLinkHTML=
+        "</td><td>\
+            <form action='/view_collected_form.php' method='post'>\
+            <input type='hidden' name='userProductId' value='"+ trainee.activePlan.userProductId + "'>\
+            <button class='btn btn-sm' type='submit' name='schedule-trial'><i class='fas fa-paperclip'></i></button>\
+            </form>\
+            </td></tr>";
+      } else {
+        var formLinkHTML="</td></tr>";
+      }
+      tableBody=tableBody+'<tr class=\'row100 body\'><td class="cell100 column1 traineelist">'+trainee.firstName+' '+trainee.lastName+'</td><td class="cell100 column2 traineelist">'+trainee.gender+'</td><td class="cell100 column3 traineelist">'+age+'</td><td class="cell100 column4 traineelist">'+progressContent+formLinkHTML;
 
     });
 
@@ -117,7 +130,7 @@ function populateTraineeDetailsDivContent(){
   } else {
     finalHTML = '<p>Trainees that have been assigned to you will be listed here.</p> While we get you started and assign trainees and sessions to you, feel free to learn more <a href=\'offerings.php\'> About FuNinja </a> and <a href=\'contact.php\'>Get In Touch</a> with us if you have any questions.';
     $(".trainee-details").html(finalHTML);
-    
+
   }
 
 

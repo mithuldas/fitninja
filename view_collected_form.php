@@ -6,7 +6,6 @@ include ROOT_DIR."/includes/dbh.php";
 
 FlowControl::startSession();
 FlowControl::redirectIfNotLoggedIn();
-FlowControl::redirectIfWrongUserType("Trainee");
 
 
 require ROOT_DIR."/header.php";

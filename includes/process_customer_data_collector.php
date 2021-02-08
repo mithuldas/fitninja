@@ -10,7 +10,7 @@ Helper::view($_POST);
 // clear out existing data before inserting new data ()
 $userProductId = $_POST['userProductId'];
 
-$sql = "delete from form_saved_data where user_product_id=$userProductId";
+$sql = "delete from form_saved_data where saved_form_id in (select id from form_saved where user_product_id=$userProductId);";
 $stmt = mysqli_stmt_init($conn);
 mysqli_stmt_prepare($stmt, $sql);
 mysqli_stmt_execute($stmt);
@@ -34,13 +34,17 @@ if($_POST['formVersion']=='1'){
 
 for ($i=1; $i <=$limit; $i++) {
   $subQuery = "select id from form_saved where user_product_id=$userProductId";
-  $postValue = $_POST["$i"];
+  $postValue = mysqli_real_escape_string($conn, $_POST["$i"]);
+
   $sql = "insert into form_saved_data (saved_form_id, form_version, question_id, answer)
           values (($subQuery), 1, $i, '$postValue');";
+
   $stmt = mysqli_stmt_init($conn);
   mysqli_stmt_prepare($stmt, $sql);
   mysqli_stmt_execute($stmt);
-  
+
 }
+
+//header("Location: /admin/view_purchases.php");
 
 ?>

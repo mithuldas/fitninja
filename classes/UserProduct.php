@@ -14,6 +14,7 @@ class UserProduct{
   public $sessionsCompleted;
   public $isActive;
   public $trainerStats=[];
+  public $customerDataCollected;
 
   function __construct($id, $conn) {
     $this->userProductId=$id;
@@ -22,7 +23,7 @@ class UserProduct{
     $this->setSessionStatistics($conn);
     $this->setCompleted($conn);
     $this->setTrainerStats($conn);
-
+    $this->setFormStatus($conn);
   }
 
   function setValidTo($conn){
@@ -149,6 +150,21 @@ class UserProduct{
 
       array_push($this->trainerStats, $trainerStat);
     }
+  }
+
+  function setFormStatus($conn){
+    $sql = "select * from form_saved where user_product_id=$this->userProductId;";
+    $stmt = mysqli_stmt_init($conn);
+    mysqli_stmt_prepare($stmt, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    $this->customerDataCollected=false;
+
+    while($row = $result->fetch_assoc()) { // loop through the array and set all session properties
+      $this->customerDataCollected=true;
+    }
+
   }
 }
 

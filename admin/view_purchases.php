@@ -76,6 +76,16 @@ require ROOT_DIR."/header.php";
 
     $sessionJSON = json_encode($value);
 
+    $upid=$value->getUserProductId($conn);
+    $up = new UserProduct($upid, $conn);
+    if($up->customerDataCollected){
+      $btnHighlight = "btn-success";
+    } else {
+      $btnHighlight="btn-light";
+    }
+
+
+
     $trainee = new Trainee($value->uid, $conn);
     echo "<tr>
         <td>" . $value->dateCreated .
@@ -97,7 +107,7 @@ require ROOT_DIR."/header.php";
         <td>
         <form action='/admin/data_collector_form.php' method='post'>
         <input type='hidden' name='session' value='". $sessionJSON."'>
-        <button class='btn btn-sm btn-light' type='submit' name='schedule-trial'>Form</button>
+        <button class='btn btn-sm $btnHighlight' type='submit' name='schedule-trial'>Form</button>
         </form>
         </td>
         </tr>";

@@ -46,7 +46,7 @@ if (Form::getCurrentFormVersion($conn)==1){
         echo " value='$date'";
       } else if ($mode=="Update"){
         $answer=$form->answers[0];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>
       >
     </div>
@@ -57,10 +57,10 @@ if (Form::getCurrentFormVersion($conn)==1){
       <input id="name" type="text" name="2" class="form-control" required readonly <?php
       if($mode=="New"){
         $name = $trainee->fullName;
-        echo " value='$name'";
+        echo ' value="'.$name.'"';
       } else if ($mode=="Update"){
         $answer=$form->answers[1];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>
       >
     </div>
@@ -71,10 +71,10 @@ if (Form::getCurrentFormVersion($conn)==1){
         $from = new DateTime($trainee->dateOfBirth);
         $to = new DateTime('today');
         $age = $from->diff($to)->y;
-        echo " value='$age'";
+        echo ' value="'.$age.'"';
       } else if ($mode=="Update"){
         $answer=$form->answers[2];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>
       >
     </div>
@@ -83,10 +83,10 @@ if (Form::getCurrentFormVersion($conn)==1){
       <input id="gender" type="text" name="4" class="form-control" required readonly <?php
       if($mode=="New"){
         $gender = $trainee->gender;
-        echo " value='$gender'";
+        echo ' value="'.$gender.'"';
       } else if ($mode=="Update"){
         $answer=$form->answers[3];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>
       >
     </div>
@@ -98,7 +98,7 @@ if (Form::getCurrentFormVersion($conn)==1){
       <input id="weight" type="text" name="5" class="form-control" required <?php
       if ($mode=="Update"){
         $answer=$form->answers[4];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>
       >
     </div>
@@ -115,7 +115,7 @@ if (Form::getCurrentFormVersion($conn)==1){
       <input id="bmi" type="text" name="7" class="form-control" required <?php
       if ($mode=="Update"){
         $answer=$form->answers[6];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>>
     </div>
   </div>
@@ -125,10 +125,10 @@ if (Form::getCurrentFormVersion($conn)==1){
       <label class="pt-2" for="package">8. Package Purchased: </label><br>
       <input id="package" type="text" name="8" class="form-control" required readonly <?php
       if($mode=="New"){
-        echo " value='$session->productName'";
+        echo ' value="'.$session->productName.'"';
       } else if ($mode=="Update"){
         $answer=$form->answers[7];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>
       >
     </div>
@@ -137,7 +137,7 @@ if (Form::getCurrentFormVersion($conn)==1){
       <input id="formats" type="text" name="9" class="form-control" required <?php
       if ($mode=="Update"){
         $answer=$form->answers[8];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>>
     </div>
     <div class="form-group col-xs-4 col-md-4">
@@ -145,7 +145,7 @@ if (Form::getCurrentFormVersion($conn)==1){
       <input id="yearsOfExercise" type="text" name="10" class="form-control" required <?php
       if ($mode=="Update"){
         $answer=$form->answers[9];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>>
     </div>
   </div>
@@ -242,8 +242,7 @@ if (Form::getCurrentFormVersion($conn)==1){
         if ($mode=="Update"){
           $answer=$form->answers[12];
           echo $answer;
-        }?>
-      </textarea>
+        }?></textarea>
     </div>
   </div>
 
@@ -282,7 +281,7 @@ if (Form::getCurrentFormVersion($conn)==1){
       <input id="restrictions" type="text" name="17" class="form-control" <?php
       if ($mode=="Update"){
         $answer=$form->answers[16];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>>
     </div>
     <div class="form-group col-xs-4 col-md-4">
@@ -290,7 +289,7 @@ if (Form::getCurrentFormVersion($conn)==1){
       <input id="diet" type="text" name="18" class="form-control" required <?php
       if ($mode=="Update"){
         $answer=$form->answers[17];
-        echo " value='$answer'";
+        echo ' value="'.$answer.'"';
       }?>>
     </div>
   </div>

@@ -14,6 +14,15 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <!DOCTYPE html>
 <html lang='en'>
 <head>
+
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-557BHJH');</script>
+<!-- End Google Tag Manager -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <title> FuNinja </title>
@@ -87,6 +96,13 @@ include_once ROOT_DIR."/includes/auto_login.php";
 </head>
 
 <body>
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-557BHJH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
   <a href="https://api.whatsapp.com/send?phone=919108806213" class="float" target="_blank">
   <i class="fa fa-sm fa-whatsapp my-float"></i>
   </a>
@@ -103,11 +119,11 @@ include_once ROOT_DIR."/includes/auto_login.php";
     <!-- /burger" -->
 
 
-  <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand"><img src="/images/logo.png" alt="FuNinja" style="height:40px"></a>
+  <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand" style="padding-top:2px; padding-bottom:10px!important"><img src="/images/logo.png" alt="FuNinja" style="height:35px;"></a>
 
 
   <!-- everything in here will be collapsed on smaller devices -->
-  <div class="collapse navbar-collapse pt-1 order-md-1 order-2" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse pt-1 order-md-1 order-2" id="navbarSupportedContent" style="padding-top:0px!important">
     <!-- Navbar links, dropdowns etc go here -->
     <ul class="navbar-nav mr-auto" id="navbarLinks">
 
@@ -155,9 +171,11 @@ if(!isset($_SESSION['uid'])){ ?>
 <?php
   if(isset($_SESSION['uid'])){?>
   <div class="dropdown">
+
     <button type="button" class="stickyUserMenu" data-toggle="dropdown">
-      <img class="mt-2 mb-2 mr-1 ml-2" title="User Menu" src="/images/user-ninja.png" width="30" style="padding: 2px; border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
+      <img class="mt-0 mb-0 mr-1 ml-2" title="User Menu" src="/images/user-ninja.png" width="30" style="padding: 2px; border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
     </button>
+
     <a href="/includes/logout.php" class="stickyUserLogout">
       <img class="m-0 " title="Logout" src="/images/logout.png" width="30" style="padding:4px; border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
     </a>

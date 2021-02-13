@@ -134,7 +134,7 @@ require "header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
-          <p style="color:blue">Satya Das</P> Krishna and Raghavan (FuNinja yoga leads) were both bright students at Sivananda Ashram and graduated from our Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
+          <p style="color:blue">Satya Das</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
         </div>
       </div >
     </div>
@@ -187,7 +187,7 @@ require "header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
-                <p style="color:blue">Satya Das</P> Krishna and Raghavan (FuNinja yoga leads) were both bright students at Sivananda Ashram and graduated from our Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
+                <p style="color:blue">Satya Das</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
                   </div>
                 </div>
                   </div>

@@ -10,6 +10,8 @@ FlowControl::startSession();
 require "header.php";
 ?>
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <div class="container-fluid breadcrumbContiner">
   <nav aria-label="breadcrumb mb-0 pb-0">
     <ol class="breadcrumb" style="margin-bottom: 0px ; padding-left:0px; padding-top:0px">
@@ -44,7 +46,9 @@ require "header.php";
     <input id="phone" type="number" name="phone" class="form-control mr-1" placeholder="Phone #"  required>
   </div>
   <div class="form-group ">
-    <center><button class="btn btn-primary blueButton" type="submit" name="submit_contact">Submit</button></center>
+    <center><div class="g-recaptcha" data-sitekey="6LcUPlYaAAAAANdAD-frTgF7yUWUoCe4aTqYKJLk" data-callback="enableBtn"></div></center>
+      <br/>
+    <center><button id="submitButton" class="btn btn-primary" type="submit" name="submit_contact" disabled="disabled">Submit</button></center>
   </div>
 </form>
 </div>
@@ -61,4 +65,8 @@ require "header.php";
 <script>
 // set active link display in the menu bar
 $('.contactLink').addClass("activeMenuLink");
+
+function enableBtn(){
+  document.getElementById("submitButton").disabled = false;
+}
 </script>

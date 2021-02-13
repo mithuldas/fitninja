@@ -1368,3 +1368,7 @@ h5 > .btn {
   position:absolute;
   top:70px;
 }
+
+.burgerOption:hover{
+  text-decoration: none!important;
+}

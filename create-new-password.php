@@ -1,10 +1,26 @@
 
-
 <?php
+include_once "config.php";
+include_once ( ROOT_DIR.'/includes/autoloader.php' );
 
 if(!isset($_SESSION)){
   session_start();
 }
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Home - Premium Personal Training - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
 
 if (isset($_SESSION['uid'])){
 
@@ -17,8 +33,8 @@ if (isset($_SESSION['uid'])){
   exit();
 }
 
-
 ?>
+
 
 
 <?php

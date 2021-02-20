@@ -2,8 +2,28 @@
 require_once __DIR__.'/../config.php';
 include ROOT_DIR."/includes/autoloader.php";
 include ROOT_DIR."/includes/dbh.php";
-require ROOT_DIR."/header.php";
+
+FlowControl::startSession();
+FlowControl::redirectIfNotLoggedIn();
+FlowControl::redirectIfWrongUserType("Admin");
+
+include_once ROOT_DIR."/includes/auto_login.php";
 ?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Assign Next Session - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
+?>
+
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -61,7 +81,9 @@ $(document).ready(function(){
 </script>
 
 
-<div class="container">
+<div class="container">  <?php
+  require ROOT_DIR."/admin/admin_subheader.php";
+  ?>
   <h5> Assign next session </h5><br>
 
 <form action = "process_next_session_assignment.php" method="post">

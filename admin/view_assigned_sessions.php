@@ -1,25 +1,29 @@
 <?php
-
 require_once __DIR__.'/../config.php';
 include ROOT_DIR."/includes/autoloader.php";
 include ROOT_DIR."/includes/dbh.php";
 
-  if(!isset($_SESSION)){
-    session_start();
-  }
+FlowControl::startSession();
+FlowControl::redirectIfNotLoggedIn();
+FlowControl::redirectIfWrongUserType("Admin");
 
-  if(!isset($_SESSION['uid'])){
-    header("Location: /index.php?notLoggedIn");
-    exit();
-  }
-
-  if($_SESSION['userType']!="Admin"){
-    header("Location: /includes/post_login_landing_controller.php");
-    exit();
-  }
-
-  require ROOT_DIR."/header.php";
+include_once ROOT_DIR."/includes/auto_login.php";
 ?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> View Assigned Sessions - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
+?>
+
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>

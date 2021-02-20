@@ -5,9 +5,10 @@ require_once __DIR__.'/config.php';
 require_once ( ROOT_DIR.'/includes/autoloader.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
-require_once ( ROOT_DIR.'/header.php' );
-
 use Razorpay\Api\Api;
+?>
+
+<?php
 
 FlowControl::startSession();
 FlowControl::redirectIfNotLoggedIn();
@@ -16,6 +17,21 @@ FlowControl::redirectIfWrongUserType("Trainee");
 if(isset($_SESSION['selectedProduct'])){ // unset this so that post_login_landing_controller.php works correctly
   unset($_SESSION['selectedProduct']);
 }
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Confirm Plan - Membership - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
 
 // Plan form and product name mappings:
   // 1= Focus
@@ -44,8 +60,16 @@ $api_secret="E7W6UlNrI3ZTAJmf1HJnw65x";
 
 $api = new Api($api_key, $api_secret);
 
+  if(isset($_GET['promo']) and $_GET['promo']=="FIRST10"){
+    $amount = 100;
+  } else {
+    $amount = $product->currentPriceINR->amount*100;
+  }
+
+
+
 $order = $api->order->create(array(
-  'amount' => $product->currentPriceINR->amount*100, // x 100 since Razorpay amount seems to be in paisas (wtf?)
+  'amount' => $amount, // x 100 since Razorpay amount seems to be in paisas (wtf?)
   'currency' => 'INR'
   )
 );
@@ -66,40 +90,77 @@ if($orderStatus=="created"){
     <div class="col-lg-3">
     </div>
     <div class="col-lg-6 orderConfirmationContainer greyBorder ml-3 mr-3 userdropdown">
-    <div class="row mt-1">
+    <div class="row mt-3">
       <div class="col ">
       <a href="/plans.php"> <small><< Back to Plans</small></a>
     </div>
     </div>
     <div class="row">
-      <div class="col pb-4">
-      <center><h5>Confirm Your Order To Proceed</h5></center>
+      <div class="col pb-4 pt-2">
+      <center><h5>Confirm your purchase</h5></center>
     </div>
     </div>
 
     <div class="row">
-      <div class="col-2 tableTitle">
-        Plan
+      <div class="col-4 ">
+        Plan Name
       </div>
-      <div class="col-10">
+      <div class="col-8">
         <?php echo $product->productName;  ?>
       </div>
     </div>
-    <div class="row pb-4">
-      <div class="col-2 tableTitle">
-        Amount
+    <div class="row pt-2">
+      <div class="col-4 ">
+        Price
       </div>
-      <div class="col-10">
+      <div class="col-8">
         <?php echo '₹ '.$product->currentPriceINR->amount; ?>
       </div>
     </div>
-    <div class="row pt-3 pb-3">
+    <?php
+    if(!isset($_GET['promo'])){
+      echo "    <div class='row pt-2 pb-0 mb-0'>
+            <div class='col-12 pt-1' >
+
+              <form class='inline' action='confirm_plan.php' method='get'>
+                <input type='text' name=promo placeholder='Promotion Code' required> </input>
+                <input hidden type='text' name=product  method='get' value=".$_GET['product']."> </input>
+                <button type='submit' class='btn btn-sm btn-light'> Apply </button>
+              </form>
+            </div>
+          </div>";
+    }
+
+    ?>
+
+    <?php
+    if(isset($_GET['promo']) and $_GET['promo']=="FIRST10"){
+      echo "    <div class='row pt-2'>
+            <div class='col-4 pt-1'>
+              Discount
+            </div>
+            <div class='col-8'>
+              -₹ ".($product->currentPriceINR->amount-1)."
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-4 pt-2'>
+              Final amount
+            </div>
+            <div class='col-8 pt-2'>
+              ₹ 1
+            </div>
+          </div>";
+    }
+
+    ?>
+
+    <div class="row pt-4 pb-3">
       <div class="col">
-          <center><button class="btn btn-primary" id="rzp-button1">Purchase</button></center>
+        <center><button class="btn btn-primary" id="rzp-button1">Purchase</button></center>
       </div>
     </div>
-    <div class="col-lg-3">
-    </div>
+
     </div>
 
   </div>

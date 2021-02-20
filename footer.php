@@ -9,7 +9,7 @@
   Follow us
   <a href="https://www.facebook.com/FuNinja.in" target="_blank">
     <i class="fab fa-facebook fa-lg pl-2 pr-2 pb-4"></i></a>
-  <a href="https://instagram.com" target="_blank">
+  <a href="https://www.instagram.com/funinja_in/" target="_blank">
     <i class="fab fa-instagram fa-lg"></i></ul></a>
 <ul class="footerWriteUpDesktop"> Get into the best shape of your life with FuNinja's elite Online Personal Trainers as they masterfully guide you through fun, engaging and highly customized fitness routines carefully tailored to fit your exact needs.  </ul>
 </li>

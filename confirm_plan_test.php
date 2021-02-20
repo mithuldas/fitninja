@@ -8,6 +8,11 @@ require_once ( ROOT_DIR.'/includes/dbh.php' );
 require_once ( ROOT_DIR.'/header.php' );
 
 use Razorpay\Api\Api;
+?>
+
+<?php
+include_once "config.php";
+include_once ( ROOT_DIR.'/includes/autoloader.php' );
 
 FlowControl::startSession();
 FlowControl::redirectIfNotLoggedIn();
@@ -17,11 +22,27 @@ if(isset($_SESSION['selectedProduct'])){ // unset this so that post_login_landin
   unset($_SESSION['selectedProduct']);
 }
 
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Confirm Plan - Membership - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
+
 // Plan form and product name mappings:
-  // 1= Basic
-  // 2= Ignite
-  // 3= Level Up
-  // 4= Duo Ninja
+  // 1= Focus
+  // 2= Standard
+  // 3= Ultra
+  // 4= Pair Up
 
 switch ($_GET['product']) {
   case '1':

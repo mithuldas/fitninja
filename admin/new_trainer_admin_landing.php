@@ -1,10 +1,29 @@
 <?php
-
-include_once __DIR__.'/../config.php';
-require_once ROOT_DIR.'/includes/dbh.php';
-include_once (ROOT_DIR.'/includes/autoloader.php');
+require_once __DIR__.'/../config.php';
+include ROOT_DIR."/includes/autoloader.php";
+include ROOT_DIR."/includes/dbh.php";
 
 FlowControl::startSession();
+
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> New Trainer/Admin - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
+?>
+
+<?php
+
 
 //delete cookie if exists and log-out
 if(isset($_SESSION['uid']) && isset($_COOKIE['FuNinja'])){
@@ -31,10 +50,6 @@ curl_close($ch);
 
 // Decode JSON response:
 $api_result = json_decode($json, false);
-
-
-
-require ROOT_DIR."/header.php";
 
 $email = "";
 $username = "";

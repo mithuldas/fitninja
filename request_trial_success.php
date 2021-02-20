@@ -1,15 +1,25 @@
 <?php
-
-require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/config.php';
-require_once ( ROOT_DIR.'/includes/autoloader.php' );
-require_once ( ROOT_DIR.'/includes/dbh.php' );
+include_once "config.php";
+include_once ( ROOT_DIR.'/includes/autoloader.php' );
 
 FlowControl::startSession();
 FlowControl::redirectIfNotLoggedIn();
 FlowControl::redirectIfWrongUserType("Trainee");
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
 
-require "header.php";
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Request Trial Success - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
 
 $activityNames=Activity::getAllActivityNames($conn);
 $currentUser = new Trainee($_SESSION['uid'], $conn);

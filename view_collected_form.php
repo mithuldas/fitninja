@@ -1,14 +1,24 @@
 <?php
-
-require_once __DIR__.'/config.php';
-include ROOT_DIR."/includes/autoloader.php";
-include ROOT_DIR."/includes/dbh.php";
+include_once "config.php";
+include_once ( ROOT_DIR.'/includes/autoloader.php' );
 
 FlowControl::startSession();
 FlowControl::redirectIfNotLoggedIn();
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
 
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Home - Premium Personal Training - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
 
-require ROOT_DIR."/header.php";
+<body>
+<?php
+include ROOT_DIR."/header.php";
 
 $userProductId = $_POST['userProductId'];
 

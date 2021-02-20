@@ -1,43 +1,11 @@
 <?php
-
-
 include_once "config.php";
 include_once ( ROOT_DIR.'/includes/autoloader.php' );
 
-if(!isset($_SESSION)){
-  session_start();
-}
-
+FlowControl::startSession();
 include_once ROOT_DIR."/includes/auto_login.php";
 ?>
 
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-557BHJH');</script>
-<!-- End Google Tag Manager -->
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <title> FuNinja </title>
-
-  <!-- Bootstrap sources -->
-  <link rel="icon" href="https://www.funinja.in/favicon.ico?v=523" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
-  <link href="/css/custom.css?v=2fasd12fssd23sdsfsfdfsdf23dsfssddf2d42" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/8f8a300cc0.js" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous">
-  </script>
 
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
@@ -62,40 +30,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script src="/scripts/login.js"> </script>
   <script src="/scripts/facebook_login.js"> </script>
   <script src="/scripts/google_login.js"> </script>
-
-
-    <!-- support script for displaying popovers -->
-    <script>
-      $(document).ready(function(){
-      $('[data-toggle="popover"]').popover();
-      });
-    </script>
-
-    <!-- set default tabs when clicking sign up / login -->
-    <script>
-    $(document).ready(function(){
-      $("#loginButton, #pills-signin-tab").on("click",function(){
-          $("#pills-signup-tab").removeClass("active");
-          $("#pills-signin-tab").addClass("active");
-          $("#pills-signup-body").removeClass("show active");
-          $("#pills-signin-body").addClass("show active");
-          $("#login-errorMsg").text(''); // clear any existing error messages
-      });
-
-      $("#registerButton, #pills-signup-tab").on("click",function(){
-          $("#pills-signin-tab").removeClass("active");
-          $("#pills-signup-tab").addClass("active");
-          $("#pills-signin-body").removeClass("show active");
-          $("#pills-signup-body").addClass("show active");
-          $("#login-errorMsg").text(''); // clear any existing error messages
-      });
-
-    });
-    </script>
-
-</head>
-
-<body>
 
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-557BHJH"
@@ -344,4 +278,33 @@ if(!isset($_SESSION['uid'])){ ?>
     var x= document.getElementsByClassName('modal-content');
     $(x).css({"top":topPosition, "left":sidePosition});
 
+</script>
+
+<!-- support script for displaying popovers -->
+<script>
+  $(document).ready(function(){
+  $('[data-toggle="popover"]').popover();
+  });
+</script>
+
+<!-- set default tabs when clicking sign up / login -->
+<script>
+$(document).ready(function(){
+  $("#loginButton, #pills-signin-tab").on("click",function(){
+      $("#pills-signup-tab").removeClass("active");
+      $("#pills-signin-tab").addClass("active");
+      $("#pills-signup-body").removeClass("show active");
+      $("#pills-signin-body").addClass("show active");
+      $("#login-errorMsg").text(''); // clear any existing error messages
+  });
+
+  $("#registerButton, #pills-signup-tab").on("click",function(){
+      $("#pills-signin-tab").removeClass("active");
+      $("#pills-signup-tab").addClass("active");
+      $("#pills-signin-body").removeClass("show active");
+      $("#pills-signup-body").addClass("show active");
+      $("#login-errorMsg").text(''); // clear any existing error messages
+  });
+
+});
 </script>

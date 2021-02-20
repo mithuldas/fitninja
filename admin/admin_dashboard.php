@@ -1,25 +1,27 @@
 <?php
-
 require_once __DIR__.'/../config.php';
 include ROOT_DIR."/includes/autoloader.php";
 include ROOT_DIR."/includes/dbh.php";
 
-  if(!isset($_SESSION)){
-    session_start();
-  }
+FlowControl::startSession();
+FlowControl::redirectIfNotLoggedIn();
+FlowControl::redirectIfWrongUserType("Admin");
 
-  if(!isset($_SESSION['uid'])){
-    header("Location: /index.php?notLoggedIn");
-    exit();
-  }
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
 
-  if($_SESSION['userType']!="Admin"){
-    header("Location: /includes/post_login_landing_controller.php");
-    exit();
-  }
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Dashboard - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
 
-  require ROOT_DIR."/header.php";
-
+<body>
+<?php
+include ROOT_DIR."/header.php";
 ?>
 
 <script type="text/javascript" src="/scripts/admin_dashboard.js"> </script>

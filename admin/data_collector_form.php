@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__.'/../config.php';
 include ROOT_DIR."/includes/autoloader.php";
 include ROOT_DIR."/includes/dbh.php";
@@ -8,8 +7,22 @@ FlowControl::startSession();
 FlowControl::redirectIfNotLoggedIn();
 FlowControl::redirectIfWrongUserType("Admin");
 
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
 
-require ROOT_DIR."/header.php";
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Customer Data Collector - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
+
 
 $session = new Session(json_decode($_POST['session'])->id, $conn);
 

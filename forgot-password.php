@@ -1,15 +1,27 @@
 <?php
-if(isset($_SESSION['uid'])){
-  header("Location: index.php");
-  exit();
-}
+include_once "config.php";
+include_once ( ROOT_DIR.'/includes/autoloader.php' );
 
+FlowControl::startSession();
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Forgot Password - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
 ?>
 
 <div class="container">
 <?php
-
-require "header.php";
 
 
 

@@ -1,12 +1,17 @@
 <?php
-
-include_once __DIR__.'/config.php';
+include_once "config.php";
 require_once ROOT_DIR.'/includes/dbh.php';
-include_once ROOT_DIR.'/includes/autoloader.php';
+include_once ( ROOT_DIR.'/includes/autoloader.php' );
 
 FlowControl::startSession();
 FlowControl::redirectIfNotLoggedIn();
 FlowControl::redirectIfWrongUserType("Trainee");
+
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
+
+<?php
+
 
 // set IP address and API access key
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -31,13 +36,24 @@ if($trainee->onboardingComplete){
 }
 
 $months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-require "header.php";
 
 $activityNames=Activity::getAllActivityNames($conn);
 
 ?>
 
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Welcome! - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
 
+<body>
+  <?php
+  include ROOT_DIR."/header.php";
+  ?>
 <div class="container">
   <div class="row justify-content-center p-0 m-0">
     <div class="col-md-8 p-0 m-0">

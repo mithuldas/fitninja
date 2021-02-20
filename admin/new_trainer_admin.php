@@ -1,9 +1,25 @@
 <?php
+require_once __DIR__.'/../config.php';
+include ROOT_DIR."/includes/autoloader.php";
+include ROOT_DIR."/includes/dbh.php";
 
-include_once __DIR__.'/../config.php';
-require_once ROOT_DIR.'/includes/dbh.php';
-include_once ROOT_DIR.'/includes/autoloader.php';
-require_once ROOT_DIR."/header.php";
+FlowControl::startSession();
+
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> New Trainer/Admin - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
 ?>
 
 <div class="container">

@@ -2,8 +2,28 @@
 require_once __DIR__.'/../config.php';
 include ROOT_DIR."/includes/autoloader.php";
 include ROOT_DIR."/includes/dbh.php";
-require ROOT_DIR."/header.php";
+
+FlowControl::startSession();
+FlowControl::redirectIfNotLoggedIn();
+FlowControl::redirectIfWrongUserType("Admin");
+
+include_once ROOT_DIR."/includes/auto_login.php";
 ?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> Edit Session - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
+?>
+
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 
@@ -109,6 +129,6 @@ $(document).ready(function(){
 <input class="form-control" type='number' name='duration' id='duration' value='<?php echo $session->duration; ?>'>
 <br>
 <input type='hidden' name='session' value='<?php echo $_POST['session']; ?>'>
-<button class="btn-sm btn-primary mt-1" type="submit" name="edit_session">Save changes</button>
+<button class="btn btn-sm btn-primary mt-1" type="submit" name="edit_session">Save changes</button>
 
 </form>

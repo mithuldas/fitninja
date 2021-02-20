@@ -1,7 +1,23 @@
-
 <?php
-include "includes/autoloader.php";
-require "header.php";
+include_once "config.php";
+include_once ( ROOT_DIR.'/includes/autoloader.php' );
+
+FlowControl::startSession();
+include_once ROOT_DIR."/includes/auto_login.php";
+?>
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <title> About - FuNinja </title>
+  <?php
+  require ROOT_DIR."/includes/frameworks.php";
+  ?>
+</head>
+
+<body>
+<?php
+include ROOT_DIR."/header.php";
 ?>
 
 <script>

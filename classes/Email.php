@@ -167,6 +167,7 @@ class Email{
     $mg->messages()->send($mailgun_domain, [
       'from'    => $from,
       'to'      => $to,
+      'bcc' => "mithuldas@gmail.com;meghagupta11@gmail.com;athuldas@gmail.com;hello@funinja.in",
       'subject' => $subject,
       'text'    => $text,
       'html' => $html

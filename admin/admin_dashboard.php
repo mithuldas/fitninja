@@ -81,8 +81,14 @@ else{
   while($row = mysqli_fetch_assoc($result))
   {
     $user= new User($row['uid'], $conn);
+    
+    if (substr(($user->username), 0, 2)=="FB"){
+      $user->username="via Facebook";
+    } else if (substr(($user->username), 0, 2)=="GO"){
+      $user->username="via Google";
+    }
    echo "<tr>
-       </td><td>" . $row['username'] .
+       </td><td>" . $user->username .
        "<td>" . $user->firstName .
        "<td>" . $user->lastName .
        "<td>" . $user->dateOfBirth .

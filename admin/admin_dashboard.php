@@ -34,7 +34,7 @@ $(document).ready(function() {
 } );
 </script>
 
-<div class="container">
+<div class="container-fluid pb-2">
   <?php
     if(isset($_GET['status'])){
       if($_GET['status']=='onboard_sent'){
@@ -70,14 +70,23 @@ else{
     echo "<table id='users' class='display' style='width:100%'><thead>
     <tr>
     <th> Username </th>
+    <th> First </th>
+    <th> Last Name </th>
+    <th> DOB </th>
+    <th> Gender </th>
     <th> E-mail </th>
     <th> User type </th>
     </tr><thead><tbody>" ;
   $result = mysqli_stmt_get_result($stmt);
   while($row = mysqli_fetch_assoc($result))
   {
+    $user= new User($row['uid'], $conn);
    echo "<tr>
        </td><td>" . $row['username'] .
+       "<td>" . $user->firstName .
+       "<td>" . $user->lastName .
+       "<td>" . $user->dateOfBirth .
+       "<td>" . $user->gender .
        "<td>" . $row['email'] .
        "</td>
        <td>" . $row['user_type_desc'] .

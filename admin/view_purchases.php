@@ -33,7 +33,7 @@ include ROOT_DIR."/header.php";
   } );
 </script>
 
-<div class="container">
+<div class="container-fluid pb-2">
   <?php require ROOT_DIR."/admin/admin_subheader.php" ?>
 
 <?php

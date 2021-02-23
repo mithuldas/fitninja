@@ -102,6 +102,63 @@ $("body").addClass("whiteBackground");
 
 </div>
 
+<div class="container">
+
+
+<!-- how it works section -->
+
+  <div class="row pt-md-5 pt-4 pb-3 pb-md-4">
+    <div class="col">
+      <center><h2 class="mobHeader ">How It Works</h2></center>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-lg-4 col-6 text-center p-0">
+
+    <?php
+          if(!isset($_SESSION['uid'])){
+            echo
+            '<button type="button" class="stickyUserMenu" data-toggle="modal" data-target="#exampleModal">
+            <img title="Enroll" src="/images/graphics/Enroll with Text PNG.png" width="70%" class="largerHowItWorks"/>
+            </button>';
+          } else {
+            echo
+            '<img title="Enroll" src="/images/graphics/Enroll with Text PNG.png" width="70%" class="largerHowItWorks"/>';
+          }
+      ?>
+    </div>
+    <div class="col-lg-4 col-6 text-center p-0">
+    <a href="/plans.php"><img src="/images/graphics/Pick Membership with text PNG.png" width="70%" class="largerHowItWorks "></a>
+    </div>
+    <div class="col-lg-4 col-6 text-center p-0">
+    <img src="/images/graphics/Get Connected with Text PNG.png" width="70%" class="largerHowItWorks "> </img>
+    </div>
+    <div class="col-lg-4 col-6 text-center p-0">
+    <img src="/images/graphics/Customise with text PNG.png" width="70%" class="largerHowItWorks "> </img>
+    </div>
+    <div class="col-lg-4 col-6 text-center p-0">
+    <img src="/images/graphics/Get Started with text PNG.png" width="70%" class="largerHowItWorks "> </img>
+    </div>
+    <div class="col-lg-4 col-6 text-center p-0">
+    <img src="/images/graphics/Feedback with text PNG.png" width="70%" class="largerHowItWorks "> </img>
+    </div>
+
+  </div>
+
+  <div class="row align-items-center hide-on-mobile pt-2 pb-5">
+    <div class="col text-center">
+      <a href="plans.php" class="btn bigSignUpButton btn-lg userdropdown m-0 ">PICK YOUR PLAN </a>
+    </div>
+  </div>
+  <div class="row align-items-center mt-2 pb-5 hide-on-nonmobile">
+    <div class="col text-center">
+      <a href="plans.php" class="btn bigSignUpButton userdropdown m-0 ">PICK YOUR PLAN </a>
+    </div>
+  </div>
+
+
+</div>
+
 </main>
 
 <script>

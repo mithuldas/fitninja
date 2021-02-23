@@ -21,7 +21,7 @@ include ROOT_DIR."/header.php";
 ?>
 
 
-<main>
+<main style="margin-bottom:0px!important">
 
 
 
@@ -50,9 +50,65 @@ include ROOT_DIR."/header.php";
   </div>
 </div>
 
-<div class="container-fluid p-0" style="border-top: 1px solid #D5E8F3;">
+<div class="container-fluid">
+  <!-- core team section -->
+
+  <div class="row mt-2 mb-4">
+    <div class="col">
+      <center><h2 class="mobHeader"> Meet The Core Team  </h2></center>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4" align="center">
+      Dipali
+    </div>
+    <div class="col-4" align="center">
+      Ashish
+    </div>
+    <div class="col-4" align="center">
+      Bharath
+    </div>
+  </div>
+
+  <div class="row p-0 m-0">
+
+    <div class="col-4" align="center" >
+      <img class="" src="/images/trainers/Dipali_new.jpg" width="45%"> </img>
+    </div>
+    <div class="col-4" align="center" >
+      <img class="" src="/images/trainers/Ashish_no_bg.jpg" width="45%" style="transform: rotateY(180deg);"> </img>
+    </div>
+    <div class="col-4" align="center" >
+      <img class="" src="/images/trainers/Bharath_no_bg.jpg" width="45%"> </img>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4" align="center">
+      18 Yrs of Zumba Instruction
+
+    </div>
+    <div class="col-4" align="center">
+      BHMS (Homoeopathic physician)<br>
+      MSc. Yoga <br>
+      Ex Senior Yoga Instructor Singapore
+    </div>
+    <div class="col-4" align="center">
+      13 Yrs of Aerobics Instruction
+    </div>
+  </div>
+
+
+</div>
+
+
+<div class="container-fluid" style="border-top: 1px solid #D5E8F3;">
 
   <div class="aditiBgrndDiv" style=" background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(/images/bg1.png); background-size: 70%;">
+
+
+
 <!-- short form of offerings row -->
 <div class="container ">
 
@@ -97,7 +153,6 @@ include ROOT_DIR."/header.php";
     <b class="miniOfferingHeader ">Zumba</b>
     <p class="mobText "> Dance. Flexibility. Fun.</p>
   </div>
-
 </div>
 
 
@@ -120,16 +175,16 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Nadia.png"></img><br>
-          <p style="color:blue">Nadezhda Trapizonian</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
+          <p style="font-family:lato-bold">Nadezhda Trapizonian</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
         </div>
-      </div >
+      </div>
     </div>
 
     <div class="carousel-item" style="height:360px">
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-          <p style="color:blue">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. I recently moved to Australia. My routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me adapt my lifestyle to the new environment by challenging me and helping me work towards my fitness goals.
+          <p style="font-family:lato-bold">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. I recently moved to Australia. My routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me adapt my lifestyle to the new environment by challenging me and helping me work towards my fitness goals.
         </div>
       </div >
     </div>
@@ -138,7 +193,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Megha.png"></img><br>
-          <p style="color:blue">Priya and Megha Gupta</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
+          <p style="font-family:lato-bold">Priya and Megha Gupta</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
         </div>
       </div >
     </div>
@@ -147,7 +202,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
-          <p style="color:blue">Satya Das</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
+          <p style="font-family:lato-bold">Satya Das</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
         </div>
       </div >
     </div>
@@ -167,7 +222,7 @@ include ROOT_DIR."/header.php";
                   <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                     <div class="mt-3 testimonialCard ">
                       <img class="testimonialPic" src="/images/testimonials/Nadia.png"></img><br>
-                      <p style="color:blue">Nadezhda Trapizonian</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
+                      <p style="font-family:lato-bold">Nadezhda Trapizonian</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
                     </div>
                   </div >
                   </div>
@@ -178,7 +233,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-                <p style="color:blue">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. I recently moved to Australia. My routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me adapt my lifestyle to the new environment by challenging me and helping me work towards my fitness goals.
+                <p style="font-family:lato-bold">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. I recently moved to Australia. My routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me adapt my lifestyle to the new environment by challenging me and helping me work towards my fitness goals.
                   </div>
                 </div>
                   </div>
@@ -189,7 +244,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Megha.png"></img><br>
-                <p style="color:blue">Priya and Megha Gupta</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
+                <p style="font-family:lato-bold">Priya and Megha Gupta</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
                   </div>
                 </div>
                   </div>
@@ -200,7 +255,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
-                <p style="color:blue">Satya Das</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
+                <p style="font-family:lato-bold">Satya Das</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
                   </div>
                 </div>
                   </div>
@@ -217,62 +272,7 @@ include ROOT_DIR."/header.php";
 </div>
 </div>
 
-<div class="container">
 
-
-<!-- how it works section -->
-
-  <div class="row pt-md-5 pt-4 pb-3 pb-md-4">
-    <div class="col">
-      <center><h2 class="mobHeader ">How It Works</h2></center>
-    </div>
-  </div>
-  <div class="row ">
-    <div class="col-lg-4 col-6 text-center p-0">
-
-    <?php
-          if(!isset($_SESSION['uid'])){
-            echo
-            '<button type="button" class="stickyUserMenu" data-toggle="modal" data-target="#exampleModal">
-            <img title="Enroll" src="/images/graphics/Enroll with Text PNG.png" width="70%" class="largerHowItWorks"/>
-            </button>';
-          } else {
-            echo
-            '<img title="Enroll" src="/images/graphics/Enroll with Text PNG.png" width="70%" class="largerHowItWorks"/>';
-          }
-      ?>
-    </div>
-    <div class="col-lg-4 col-6 text-center p-0">
-    <a href="/plans.php"><img src="/images/graphics/Pick Membership with text PNG.png" width="70%" class="largerHowItWorks "></a>
-    </div>
-    <div class="col-lg-4 col-6 text-center p-0">
-    <img src="/images/graphics/Get Connected with Text PNG.png" width="70%" class="largerHowItWorks "> </img>
-    </div>
-    <div class="col-lg-4 col-6 text-center p-0">
-    <img src="/images/graphics/Customise with text PNG.png" width="70%" class="largerHowItWorks "> </img>
-    </div>
-    <div class="col-lg-4 col-6 text-center p-0">
-    <img src="/images/graphics/Get Started with text PNG.png" width="70%" class="largerHowItWorks "> </img>
-    </div>
-    <div class="col-lg-4 col-6 text-center p-0">
-    <img src="/images/graphics/Feedback with text PNG.png" width="70%" class="largerHowItWorks "> </img>
-    </div>
-
-  </div>
-
-  <div class="row align-items-center hide-on-mobile pt-2 pb-5">
-    <div class="col text-center">
-      <a href="plans.php" class="btn bigSignUpButton btn-lg userdropdown m-0 ">PICK YOUR PLAN </a>
-    </div>
-  </div>
-  <div class="row align-items-center mt-2 pb-5 hide-on-nonmobile">
-    <div class="col text-center">
-      <a href="plans.php" class="btn bigSignUpButton userdropdown m-0 ">PICK YOUR PLAN </a>
-    </div>
-  </div>
-
-
-</div>
 
 </main>
 <script>

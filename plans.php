@@ -186,13 +186,13 @@ $("body").addClass("whiteBackground");
 <div class="row pt-3 mb-2">
 <div class="col-3 hide-on-mobile">Monthly Price
 </div class="col">
-<div class="col prod1 plansMobileContent"> <?php echo "₹ ".substr($product1->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
+<div class="col prod1 plansMobileContent"> <strike>₹ 11,990 </strike> <br> <?php echo "₹ ".substr($product1->currentPriceINR->amount, 0,1).','.substr($product1->currentPriceINR->amount, 1,4); ?>
 </div class="col">
-<div class="col prod2 plansMobileContent"> <?php echo "₹ ".substr($product2->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
+<div class="col prod2 plansMobileContent"> <strike>₹ 13,990 </strike> <br><?php echo "₹ ".substr($product2->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 1,5); ?>
 </div class="col">
-<div class="col prod3 plansMobileContent"> <?php echo "₹ ".substr($product3->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
+<div class="col prod3 plansMobileContent"> <strike>₹ 15,990 </strike> <br><?php echo "₹ ".substr($product3->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 1,5); ?>
 </div class="col">
-<div class="col prod4 plansMobileContent"> <?php echo "₹ ".substr($product4->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 2,5); ?>
+<div class="col prod4 plansMobileContent"> <strike>₹ 17,990 </strike> <br><?php echo "₹ ".substr($product4->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 1,5); ?>
 </div class="col">
 </div class = "row">
 

@@ -29,7 +29,7 @@ include ROOT_DIR."/header.php";
   <div class="container ">
 
 <!-- get fit section row -->
-  <div class="row pt-3 pt-md-4 align-items-center pb-4 pb-md-5" >
+  <div class="row pt-3 pt-md-4 align-items-center pb-1 pb-md-5" >
     <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center">
       <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Get Fit. Stay Fit.</h2>
       <p class="mobText pb-2 pb-md-0">Get into the best shape of your life with FuNinja's elite Online Personal Trainers as they masterfully guide you through fun, engaging and highly customized fitness 1 on 1 routines carefully tailored to fit your exact needs.</p>
@@ -38,7 +38,7 @@ include ROOT_DIR."/header.php";
       // if user user isn't logged in, show the login and register buttons
       if(!isset($_SESSION['uid'])){ ?>
         <center><button type="button" class=" btn btn-lg btn-primary bigSignUpButton mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL </button></center>
-        <center><button type="button" class=" btn btn-primary bigSignUpButton mt-0 mt-md-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL </button></center>
+        <center><button type="button" class=" btn btn-primary bigSignUpButton mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL </button></center>
 
         <?php  ;
       } ?>
@@ -53,49 +53,53 @@ include ROOT_DIR."/header.php";
 <div class="container-fluid">
   <!-- core team section -->
 
-  <div class="row mt-2 mb-4">
+  <div class="row mt-2 mb-3">
     <div class="col">
       <center><h2 class="mobHeader"> Meet The Core Team  </h2></center>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-4" align="center">
-      Dipali
-    </div>
-    <div class="col-4" align="center">
-      Ashish
-    </div>
-    <div class="col-4" align="center">
+  <div class="row p-0 m-0 ml-md-5 mr-md-5">
+    <div class="col coreTeamCardTop" align="center">
       Bharath
     </div>
-  </div>
-
-  <div class="row p-0 m-0">
-
-    <div class="col-4" align="center" >
-      <img class="" src="/images/trainers/Dipali_new.jpg" width="45%"> </img>
+    <div class="col coreTeamCardTop" align="center">
+      Deepali
     </div>
-    <div class="col-4" align="center" >
-      <img class="" src="/images/trainers/Ashish_no_bg.jpg" width="45%" style="transform: rotateY(180deg);"> </img>
-    </div>
-    <div class="col-4" align="center" >
-      <img class="" src="/images/trainers/Bharath_no_bg.jpg" width="45%"> </img>
+    <div class="col coreTeamCardTop" align="center">
+      Dr. Ashish
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-4" align="center">
-      18 Yrs of Zumba Instruction
+  <div class="row p-0 m-0 ml-md-5 mr-md-5">
+
+    <div class="col coreTeamCardMain align-self-end " align="center" >
+      <img class="coreTeamMember" src="/images/trainers/Bharath_no_bg.jpg" width="46%"> </img>
+    </div>
+    <div class="col coreTeamCardMain align-self-end mt-md-1" align="center" >
+      <img class="coreTeamMember" src="/images/trainers/Dipali_new.jpg" width="45%"> </img>
 
     </div>
-    <div class="col-4" align="center">
-      BHMS (Homoeopathic physician)<br>
-      MSc. Yoga <br>
-      Ex Senior Yoga Instructor Singapore
+    <div class="col coreTeamCardMain mt-md-2" align="center" >
+      <img class="coreTeamMember" src="/images/trainers/Ashish_no_bg.jpg" width="45%" style="transform: rotateY(180deg);"> </img>
     </div>
-    <div class="col-4" align="center">
-      13 Yrs of Aerobics Instruction
+  </div>
+
+  <div class="row  p-0 m-0 mb-4 ml-md-5 mr-md-5">
+    <div class="col coreTeamCardBottom" align="center">
+      Aerobics, Slimnastics<br>
+      13 Yrs in Personal Training <br>
+      Trained by Sucheta Pal <br>
+    </div>
+    <div class="col coreTeamCardBottom" align="center">
+      Aerobics, Zumba, Pilates<br>
+      18 Yrs in Personal Training<br>
+      Certified Reebok Master Trainer
+    </div>
+    <div class="col coreTeamCardBottom" align="center">
+      Yoga Therapist <br>
+      Homoeopathic physician<br>
+      Ex Yoga Teacher at Sivananda<br>
     </div>
   </div>
 

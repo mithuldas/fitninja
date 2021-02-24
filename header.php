@@ -247,12 +247,11 @@ if(!isset($_SESSION['uid'])){ ?>
 
   // set the margins on body so that contents don't overlap the footer
     $(document).ready(function() {
-       $('body').css('margin-bottom', parseInt($('#standard_footer').css("height"))+10);
+       $('body').css('margin-bottom', parseInt($('#standard_footer').css("height")));
     });
 
-
     $(window).resize(function () {
-      $('body').css('margin-bottom', parseInt($('#standard_footer').css("height"))+10);
+      $('body').css('margin-bottom', parseInt($('#standard_footer').css("height")));
     });
 
     $(document).ready(function () {

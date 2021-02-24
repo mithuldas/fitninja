@@ -60,7 +60,8 @@ $api_secret="E7W6UlNrI3ZTAJmf1HJnw65x";
 
 $api = new Api($api_key, $api_secret);
 
-  if(isset($_GET['promo']) and $_GET['promo']=="FIRST10"){
+  if(isset($_GET['promo']) and ($_GET['promo']=="FIRST10" or $_GET['promo']=="first10"))
+  {
     $amount = 100;
   } else {
     $amount = $product->currentPriceINR->amount*100;
@@ -134,7 +135,8 @@ if($orderStatus=="created"){
     ?>
 
     <?php
-    if(isset($_GET['promo']) and $_GET['promo']=="FIRST10"){
+    if(isset($_GET['promo']) and ($_GET['promo']=="FIRST10" or $_GET['promo']=="first10"))
+    {
       echo "    <div class='row pt-2'>
             <div class='col-4 pt-1'>
               Discount

@@ -78,10 +78,10 @@ if($selectedActivitiesCount===0){
   }
 
 // check if username is long enough
-  else if (strlen($username)<=6){
-    header("Location: /admin/new_trainer_admin_landing.php?status=usernameTooShort&email=".$email.$queryGiveBack);
-    exit();
-  }
+//  else if (strlen($username)<=6){
+//    header("Location: /admin/new_trainer_admin_landing.php?status=usernameTooShort&email=".$email.$queryGiveBack);
+  //  exit();
+//  }
 
 
 // password checks

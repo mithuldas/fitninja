@@ -34,8 +34,8 @@
   <div class="col-md-2 col-12 footerTopMarginMob" style="border-right: 1px solid #333;">
     <li class="footerList pt-2">
     <ul class="pb-2" style="font-family:Lato-Regular"> POLICIES</ul>
-    <ul class="pb-1"> Terms & Conditions </ul>
-    <ul class="pb-1"> Privacy Policy </ul>
+    <ul class="pb-1"> <a href="privacy_policy.php">Privacy Policy</a> </ul>
+    <ul class="pb-1"> <a href="terms_and_conditions.php">Terms & Conditions</a> </ul>
     </li>
   </div>
 </div>

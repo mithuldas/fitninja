@@ -31,8 +31,16 @@ include ROOT_DIR."/header.php";
 <!-- get fit section row -->
   <div class="row pt-3 pt-md-4 align-items-center pb-1 pb-md-5" >
     <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center">
-      <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Fitness at Home</h2>
-      <p class="mobText">Train in the comfort of your home with FuNinja's elite Personal Trainers as they skillfully   guide you through fun, engaging and result oriented 1-on-1 virtual training sessions.</p>
+      <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Personal Training at home - Virtually!</h2>
+      <p class="mobText">Train 1-on-1 anywhere with FuNinja's Elite Personal Trainers as they guide you through fun, engaging and result oriented Virtual Training sessions.</p>
+      <?php
+ // if user user isn't logged in, show the login and register buttons
+ if(!isset($_SESSION['uid'])){ ?>
+   <center><button type="button" class=" btn btn-lg btn-primary bigSignUpButton mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
+   <center><button type="button" class=" btn btn-primary bigSignUpButton mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
+
+   <?php  ;
+ } ?>
 
     </div>
     <div class="col-md-8 col-12 order-md-2 order-1" id="womanImg" >
@@ -40,6 +48,8 @@ include ROOT_DIR."/header.php";
     </div>
 
   </div>
+
+
 
 
 </div>
@@ -50,7 +60,7 @@ include ROOT_DIR."/header.php";
   <div class="row mt-2 mb-3">
     <div class="col" align="center">
       <h2 class="mobHeader">  Our Core Team  </h2>
-      <h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4 mb-md-4">Our team is led by seasoned service minded veterans who have worked with thousands of clients and spent countless hours perfecting their art.</h5>
+      <h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4 mb-md-4">Our team is led by seasoned, service minded veterans who have worked with thousands of clients and spent countless hours perfecting their craft.</h5>
     </div>
   </div>
 

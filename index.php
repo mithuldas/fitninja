@@ -9,7 +9,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-  <title> Home - Premium Personal Training - FuNinja </title>
+  <title> Premium Personal Training - FuNinja </title>
   <?php
   require ROOT_DIR."/includes/frameworks.php";
   ?>
@@ -31,31 +31,26 @@ include ROOT_DIR."/header.php";
 <!-- get fit section row -->
   <div class="row pt-3 pt-md-4 align-items-center pb-1 pb-md-5" >
     <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center">
-      <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Get Fit. Stay Fit.</h2>
-      <p class="mobText pb-2 pb-md-0">Get into the best shape of your life with FuNinja's elite Online Personal Trainers as they masterfully guide you through fun, engaging and highly customized fitness 1 on 1 routines carefully tailored to fit your exact needs.</p>
+      <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Fitness at Home</h2>
+      <p class="mobText">Train in the comfort of your home with FuNinja's elite Personal Trainers as they skillfully   guide you through fun, engaging and result oriented 1-on-1 virtual training sessions.</p>
 
-      <?php
-      // if user user isn't logged in, show the login and register buttons
-      if(!isset($_SESSION['uid'])){ ?>
-        <center><button type="button" class=" btn btn-lg btn-primary bigSignUpButton mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL </button></center>
-        <center><button type="button" class=" btn btn-primary bigSignUpButton mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL </button></center>
-
-        <?php  ;
-      } ?>
     </div>
     <div class="col-md-8 col-12 order-md-2 order-1" id="womanImg" >
-      <center><img src="/images/graphics/Illustration SVG.svg" width="80%" > </img></center>
+      <center><img src="/images/graphics/Illustration SVG.svg" width="60%" > </img></center>
     </div>
 
   </div>
+
+
 </div>
 
 <div class="container-fluid">
   <!-- core team section -->
 
   <div class="row mt-2 mb-3">
-    <div class="col">
-      <center><h2 class="mobHeader"> Meet The Core Team  </h2></center>
+    <div class="col" align="center">
+      <h2 class="mobHeader">  Our Core Team  </h2>
+      <h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4 mb-md-4">Our team is led by seasoned service minded veterans who have worked with thousands of clients and spent countless hours perfecting their art.</h5>
     </div>
   </div>
 
@@ -90,16 +85,54 @@ include ROOT_DIR."/header.php";
       Aerobics, Slimnastics<br>
       13 Yrs in Personal Training <br>
       Trained by Sucheta Pal <br>
+      Co-owns BNF studio, Hyderabad
     </div>
     <div class="col coreTeamCardBottom" align="center">
       Aerobics, Zumba, Pilates<br>
       18 Yrs in Personal Training<br>
-      Certified Reebok Master Trainer
+      Certified Reebok Master Trainer<br>
+      Speciality: Fitness & Dance
     </div>
     <div class="col coreTeamCardBottom" align="center">
       Yoga Therapist <br>
       Homoeopathic physician<br>
-      Ex Yoga Teacher at Sivananda<br>
+      Ex Senior Yoga Instructor Singapore <br>
+      Ex Yoga Teacher at <a href="https://sivananda.org.in/" target="_blank">Sivananda</a><br>
+    </div>
+  </div>
+
+  <div class="row p-0 m-0 ml-md-5 mr-md-5 justify-content-center">
+    <div class="col-4 coreTeamCardTop" align="center">
+      Raghavan
+    </div>
+    <div class="col-4 coreTeamCardTop" align="center">
+      Nani
+    </div>
+  </div>
+
+  <div class="row p-0 m-0 ml-md-5 mr-md-5 justify-content-center">
+
+    <div class="col-4 coreTeamCardMain align-self-end " align="center" >
+      <img class="coreTeamMember" src="/images/trainers/Raghavan_no_bg.jpg" width="45%" > </img>
+    </div>
+    <div class="col-4 coreTeamCardMain align-self-end mt-md-1" align="center" >
+      <img class="coreTeamMember" src="/images/trainers/Nani_no_bg.jpg" width="50%" style="transform: rotateY(180deg);"> </img>
+
+    </div>
+  </div>
+
+  <div class="row  p-0 m-0 mb-4 ml-md-5 mr-md-5 justify-content-center">
+    <div class="col-4 coreTeamCardBottom" align="center">
+      Certified Yoga Acharya<br>
+      9+ years as a Trainer <br>
+      Ex Yoga Teacher at <a href="https://sivananda.org.in/" target="_blank">Sivananda</a> <br>
+      Speciality: Kids Yoga, Stress Management
+    </div>
+    <div class="col-4 coreTeamCardBottom" align="center">
+      Slimnastics, Aerobics, Zumba<br>
+      9 Yrs in Personal Training<br>
+      Trained by Sucheta Pal<br>
+      Co-owns BNF studio, Hyderabad
     </div>
   </div>
 
@@ -167,7 +200,7 @@ include ROOT_DIR."/header.php";
   <div class="container">
     <div class="row pt-4 pt-md-5">
       <div class="col" style="color:white">
-        <center><h2 class="mobHeader">Reviews</h2></center>
+        <center><h2 class="mobHeader">Customer Reviews and Testimonials</h2></center>
       </div>
     </div>
 
@@ -188,7 +221,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-          <p style="font-family:lato-bold">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. I recently moved to Australia. My routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me adapt my lifestyle to the new environment by challenging me and helping me work towards my fitness goals.
+          <p style="font-family:lato-bold">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by constantly challenging me and helping me work towards my fitness goals.
         </div>
       </div >
     </div>
@@ -237,7 +270,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-                <p style="font-family:lato-bold">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. I recently moved to Australia. My routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me adapt my lifestyle to the new environment by challenging me and helping me work towards my fitness goals.
+                <p style="font-family:lato-bold">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by constantly challenging me and helping me work towards my fitness goals.
                   </div>
                 </div>
                   </div>
@@ -297,11 +330,11 @@ $(document).ready(function(){
 <script>
 
 $('#mobileCarousel').carousel({
-  interval: 3000
+  interval: 5000
 })
 
 $('#desktopIpadCarousel').carousel({
-    interval: 3000
+    interval: 5000
 })
 
 $('.desktopIpadCarousel .carousel-item').each(function() {

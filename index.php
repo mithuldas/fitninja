@@ -32,7 +32,7 @@ include ROOT_DIR."/header.php";
   <div class="row pt-3 pt-md-4 align-items-center pb-1 pb-md-5" >
     <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center">
       <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Personal Training at home - Virtually!</h2>
-      <p class="mobText">Train 1-on-1 anywhere with FuNinja's Elite Personal Trainers as they guide you through fun, engaging and result oriented Virtual Training sessions.</p>
+      <p class="mobText">Train 1-on-1 with FuNinja's Personal Trainers as they guide you through fun, engaging and result oriented Virtual Training sessions.</p>
       <?php
  // if user user isn't logged in, show the login and register buttons
  if(!isset($_SESSION['uid'])){ ?>
@@ -46,10 +46,7 @@ include ROOT_DIR."/header.php";
     <div class="col-md-8 col-12 order-md-2 order-1" id="womanImg" >
       <center><img src="/images/graphics/Illustration SVG.svg" width="60%" > </img></center>
     </div>
-
   </div>
-
-
 
 
 </div>

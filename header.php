@@ -53,7 +53,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- /burger" -->
 
 
-  <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand" style="padding-top:2px; padding-bottom:10px!important"><img src="/images/logo.png" alt="FuNinja" style="height:35px;"></a>
+  <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand" style="padding-top:3px; padding-bottom:3px!important"><img src="/images/logo.png" alt="FuNinja" style="height:35px;"></a>
 
 
   <!-- everything in here will be collapsed on smaller devices -->
@@ -170,10 +170,9 @@ if(!isset($_SESSION['uid'])){ ?>
           <input type="checkbox" value="remember-me" name="remember-me" id="remember-me">
           <label for="remember-me"> <small>Remember me</small> </label>
           </div>
-
           </form>
-          <div class="mt-1 mb-1">
-            <hr class="m-0 pb-2">
+          <div class="pt-2 pb-2">
+            <p class="middleText"><span>OR</span></p>
           </div>
           <div>
             <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">
@@ -210,8 +209,8 @@ if(!isset($_SESSION['uid'])){ ?>
         <small id = "errorMsg" class = "signup-error formErrors">  </small>
         <center><button id = "submit" class="btn btn-primary mt-1 mb-1 btn-block blueButton" type="submit" name="signup-submit">Sign Up</button></center>
         </form>
-        <div class="mt-4 mb-1">
-          <hr class="mt-2 mb-3 ">
+        <div class="pt-3 pb-2">
+            <p class="middleText"><span>OR</span></p>
         </div>
         <div>
           <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">

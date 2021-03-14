@@ -39,8 +39,8 @@ $("body").addClass("whiteBackground");
 <div class="container">
   <div class="row pt-4 pt-md-4 pt-lg-0 pb-4 pb-md-0">
     <div class="col-md-7 align-self-center mobText order-md-1 order-1">
-      <h5 class="mobileTitle mobCenterDiv">About Us</h5>
-      <p class="mobCenterDiv"> FuNinja is a premium 1-on-1 Virtual Personal Training service provider. Our customers rely on us to help them meet and exceed their fitness, well-being and aesthetic goals. Our <a href="/offerings.php">Offerings</a> are conducted Live via the latest in video conferencing technology by Trainers who are passionate about their craft, and who are firmly set on their mission to help customers achieve results.</p>
+      <h5 class="subTitle mobCenterDiv pb-2">About Us</h5>
+      <p class="normalFont largerFontMob mobCenterDiv"> FuNinja provides 1-on-1 Virtual Personal Training services. Our customers look to us to help them achieve their fitness, well-being and aesthetic goals. Our <a href="/offerings.php">offerings</a> are delivered Live via video conferencing by our trainers whose chief goal in life is to help our customers achieve results. &#x1F600</p>
     </div>
     <div class="col-md-5 order-md-2 order-2" align="center">
       <img src="/images/graphics/Diverse workout routines with text PNG.png" width="65%"> </img>
@@ -52,12 +52,12 @@ $("body").addClass("whiteBackground");
 
     </div>
     <div class="col-md-7 align-self-center mobText order-md-4 order-3">
-      <h5 class="mobileTitle mobCenterDiv">Our Philosophy</h5>
-      <p class="mobCenterDiv">
+      <h5 class="subTitle mobCenterDiv pb-2">Our Philosophy</h5>
+      <p class="normalFont largerFontMob mobCenterDiv">
 
 
-We believe that "one size fits all" group workout formats limit trainers from providing the care and attention that each individual needs to quickly and effectively achieve results.
- At FuNinja, we try to solve for this by coming up with engaging and effective offerings that cater to individual needs.
+"One size fits all" group workout sessions make it very hard for trainers to give the time and attention needed by their trainees to see real results.
+ At FuNinja, we believe we've solved this by coming up with offerings that cater to individuals instead of groups.
  </p>
 
 
@@ -65,8 +65,8 @@ We believe that "one size fits all" group workout formats limit trainers from pr
   </div>
   <div class="row">
     <div class="col-md-7 align-self-center mobText order-md-5 order-1 pt-4 pt-md-0 ">
-<h5 class="mobileTitle mobCenterDiv">Why Choose Us</h5>
-      <p class="mobCenterDiv">We combine the skills of top Personal Training talent along with our deep expertise in Virtual Training to help our customers set, meet and exceed their goals by customizing chosen packages with diverse workout formats. Let's face it, exercise is mostly a boring affair. We seek to change that.</P>
+<h5 class="subTitle mobCenterDiv pb-2 ">Why Choose Us</h5>
+      <p class="normalFont largerFontMob mobCenterDiv">We combine the skills of top Personal Training talent along with our deep expertise in Virtual Training to help our customers set, meet and exceed their goals by customizing chosen packages with diverse workout formats.</P>
 <br>
 
 

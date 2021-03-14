@@ -141,7 +141,7 @@ include ROOT_DIR."/header.php";
                             </div>
                             <div class="collapse" id="accordion-tab-1-content-8" aria-labelledby="accordion-tab-1-heading-8" data-parent="#accordion-tab-1">
                                 <div class="card-body faqBody">
-                                    Please <a href="contact.php"> contact us </a> to know more about upgrading packages..
+                                    You are free to decide your training days and timing since we offer customized schedules to suit your needs and requirements.
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@ include ROOT_DIR."/header.php";
                             </div>
                             <div class="collapse" id="accordion-tab-1-content-9" aria-labelledby="accordion-tab-1-heading-9" data-parent="#accordion-tab-1">
                                 <div class="card-body faqBody">
-                                    You are free to decide your training days and timing since we offer customized schedules to suit your needs and requirements.
+                                    Please <a href="contact.php"> contact us </a> to know more about upgrading packages..
                                 </div>
                             </div>
                         </div>

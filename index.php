@@ -9,7 +9,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-  <title> FuNinja: Personal Training on the go</title>
+  <title> FuNinja Virtual Personal Training</title>
   <?php
   require ROOT_DIR."/includes/frameworks.php";
   ?>
@@ -26,176 +26,162 @@ include ROOT_DIR."/header.php";
 
 
 
-  <div class="container ">
+  <div class="container pb-5 pb-md-4 pt-5 pt-md-4">
 
 <!-- get fit section row -->
   <div class="row pt-3 pt-md-4 align-items-center pb-1 pb-md-5" >
-    <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center">
-      <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Virtual Personal Training</h2>
-      <p class="mobText">Train 1-on-1 with FuNinja's Personal Trainers as they guide you through fun, engaging and result oriented Virtual Training sessions.</p>
+    <div class="col-md-6 col-lg-6 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center" >
+      <p class="mb-3 mt-3 mb-md-4 mt-md-4 mainTitle" style="font-weight:800">VIRTUAL PERSONAL TRAINING</p>
+      <p class="pb-2 pb-md-3 normalFont">Train 1-on-1 with FuNinja Personal Trainers as they guide you through fun, engaging and result oriented Virtual Training sessions.</p>
       <?php
  // if user user isn't logged in, show the login and register buttons
  if(!isset($_SESSION['uid'])){ ?>
-   <center><button type="button" class=" btn btn-lg btn-primary blueButton mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
-   <center><button type="button" class=" btn btn-primary blueButton mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
+   <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
+   <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
 
    <?php  ;
  } ?>
 
     </div>
-    <div class="col-md-8 col-12 order-md-2 order-1" id="womanImg" >
-      <center><img src="/images/graphics/Illustration SVG.svg" width="60%" > </img></center>
+    <div class="col-md-6 col-lg-6 col-12 order-md-2 order-1" id="womanImg">
+      <center><img id="mainPic" src="/images/graphics/test.gif"> </img></center>
     </div>
   </div>
 
 
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid pt-5 pb-5 pt-md-5 pb-md-5" style="background:linear-gradient(to right, #edf0f4, #ebeef2);box-shadow: inset 0 -3px 10px rgb(0 0 0 / 10%);">
   <!-- core team section -->
 
-  <div class="row mt-2 mb-3">
+  <div class="row mb-2 pt-md-3">
     <div class="col" align="center">
-      <h2 class="mobHeader">  Our Core Team  </h2>
-      <h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4 mb-md-4">Our team is led by seasoned, service minded veterans who have worked with thousands of clients and spent countless hours perfecting their craft.</h5>
+        <p class="subTitle"> HEAD TRAINERS  </p>
+      <h5 class="normalFont largerFontMob mt-3 mt-md-4 pb-md-5 pb-3">Our trainers are led by seasoned veterans who have spent countless hours perfecting their craft.</h5>
     </div>
   </div>
 
-  <div class="row p-0 m-0 ml-md-5 mr-md-5">
-    <div class="col coreTeamCardTop" align="center">
-      Bharath
+
+  <div class="row ml-1 mr-1">
+
+    <div class="col-12 col-md-6 col-lg-3 mb-md-2 coreTeamCol pr-md-0" >
+
+      <div class="row m-0 p-0 coreTeamCardMain coreTeamCol" style="height:100%">
+        <div class="col-4 p-0 pl-2 pl-md-0 align-self-center " align="center">
+          <img class="naniPic ml-1" src="/images/trainers/Nani_full_nobg.jpg"> </img>
+        </div>
+        <div class="col-8 align-self-center pr-md-1" align="center">
+          <h5 class="trainerName m-0"> Nani </h5>
+          <p class=" trgCat"> Slimnastics, Aerobics<br></p>
+          <p class="slimText">9 Yrs in Personal Training<br>
+          Trained by Sucheta Pal<br></p>
+        </div>
+      </div>
+
     </div>
-    <div class="col coreTeamCardTop" align="center">
-      Deepali
+
+    <div class="col-12 col-md-6 col-lg-3 mb-md-2 coreTeamCol pr-md-0">
+      <div class="row m-0 p-0 coreTeamCardMain" style="height:100%">
+        <div class="col-4 p-0 pl-2 pl-md-0 align-self-center" align="center">
+          <img class="ashishPic ml-1" src="/images/trainers/Ashish_no_bg.jpg"> </img>
+        </div>
+        <div class="col-8 pl-md-2 p-0 align-self-center" align="center">
+          <p class="trainerName m-0"> Ashish </p>
+          <p class="trgCat"> Yoga Therapist<br></p>
+          <p class="slimText">
+          Homoeopathic physician<br>
+          Ex Teacher, Sivananda<br></p>
+        </div>
+      </div>
     </div>
-    <div class="col coreTeamCardTop" align="center">
-      Dr. Ashish
+
+
+    <div class="col-12 col-md-6 col-lg-3 coreTeamCol pr-md-0">
+      <div class="row m-0 p-0 coreTeamCardMain" style="height:100%">
+        <div class="col-4 p-0 pl-2 pl-md-0 align-self-center " align="center">
+          <img class="dipaliPic ml-md-2" src="/images/trainers/Dipali_new.jpg"> </img>
+        </div>
+        <div class="col-8 p-0  pr-3 pr-md-0 align-self-center" align="center">
+          <h5 class="trainerName m-0"> Deepali </h5>
+          <p class="trgCat"> Aerobics, Zumba, Pilates<br></p>
+          <p class="slimText">18 Yrs in Personal Training<br>
+          Speciality: Fitness & Dance</p>
+        </div>
+      </div>
     </div>
+
+    <div class="col-12 col-md-6 col-lg-3 coreTeamCol pr-md-0">
+      <div class="row m-0 p-0 coreTeamCardMain" style="height:100%">
+        <div class="col-4 p-0 pl-2 pl-md-0 align-self-center" align="center">
+          <img class="raghavanPic ml-1" src="/images/trainers/Raghavan_no_bg.jpg"> </img>
+        </div>
+        <div class="col-8 p-0 align-self-center" align="center">
+          <h5 class="trainerName m-0"> Raghavan </h5>
+          <p class="trgCat"> Certified Yoga Acharya<br></p>
+          <p class="slimText">9+ years as a Trainer<br>
+          Kids Yoga, Stress Mgmt </p>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 
-  <div class="row p-0 m-0 ml-md-5 mr-md-5">
+  <div class="pb-md-3">
 
-    <div class="col coreTeamCardMain align-self-end " align="center" >
-      <img class="coreTeamMember" src="/images/trainers/Bharath_no_bg.jpg" width="46%"> </img>
-    </div>
-    <div class="col coreTeamCardMain align-self-end mt-md-1" align="center" >
-      <img class="coreTeamMember" src="/images/trainers/Dipali_new.jpg" width="45%"> </img>
-
-    </div>
-    <div class="col coreTeamCardMain mt-md-2" align="center" >
-      <img class="coreTeamMember" src="/images/trainers/Ashish_no_bg.jpg" width="45%" style="transform: rotateY(180deg);"> </img>
-    </div>
   </div>
-
-  <div class="row  p-0 m-0 mb-4 ml-md-5 mr-md-5">
-    <div class="col coreTeamCardBottom" align="center">
-      Aerobics, Slimnastics<br>
-      13 Yrs in Personal Training <br>
-      Trained by Sucheta Pal <br>
-      Co-owns BNF studio, Hyderabad
-    </div>
-    <div class="col coreTeamCardBottom" align="center">
-      Aerobics, Zumba, Pilates<br>
-      18 Yrs in Personal Training<br>
-      Certified Reebok Master Trainer<br>
-      Speciality: Fitness & Dance
-    </div>
-    <div class="col coreTeamCardBottom" align="center">
-      Yoga Therapist <br>
-      Homoeopathic physician<br>
-      Ex Senior Yoga Instructor Singapore <br>
-      Ex Yoga Teacher at <a href="https://sivananda.org.in/" target="_blank">Sivananda</a><br>
-    </div>
-  </div>
-
-  <div class="row p-0 m-0 ml-md-5 mr-md-5 justify-content-center">
-    <div class="col-4 coreTeamCardTop" align="center">
-      Raghavan
-    </div>
-    <div class="col-4 coreTeamCardTop" align="center">
-      Nani
-    </div>
-  </div>
-
-  <div class="row p-0 m-0 ml-md-5 mr-md-5 justify-content-center">
-
-    <div class="col-4 coreTeamCardMain align-self-end " align="center" >
-      <img class="coreTeamMember" src="/images/trainers/Raghavan_no_bg.jpg" width="45%" > </img>
-    </div>
-    <div class="col-4 coreTeamCardMain align-self-end mt-md-1" align="center" >
-      <img class="coreTeamMember" src="/images/trainers/Nani_no_bg.jpg" width="50%" style="transform: rotateY(180deg);"> </img>
-
-    </div>
-  </div>
-
-  <div class="row  p-0 m-0 mb-4 ml-md-5 mr-md-5 justify-content-center">
-    <div class="col-4 coreTeamCardBottom" align="center">
-      Certified Yoga Acharya<br>
-      9+ years as a Trainer <br>
-      Ex Yoga Teacher at <a href="https://sivananda.org.in/" target="_blank">Sivananda</a> <br>
-      Speciality: Kids Yoga, Stress Management
-    </div>
-    <div class="col-4 coreTeamCardBottom" align="center">
-      Slimnastics, Aerobics, Zumba<br>
-      9 Yrs in Personal Training<br>
-      Trained by Sucheta Pal<br>
-      Co-owns BNF studio, Hyderabad
-    </div>
-  </div>
-
 
 </div>
 
 
-<div class="container-fluid" style="border-top: 1px solid #D5E8F3;">
 
-  <div class="aditiBgrndDiv" style=" background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(/images/bg1.png); background-size: 70%;">
+<div class="container-fluid ">
+
+  <div class="aditiBgrndDiv pt-md-4 pb-md-4" style=" background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(/images/bg1.png); background-size: 70%;">
 
 
 
 <!-- short form of offerings row -->
-<div class="container ">
+<div class="container">
 
 
-<div class="row pt-3 pt-md-5 align-items-center justify-content-center" data-offset-top="200">
-  <div class="col-md-4 col-6 text-center p-0" style="color:black">
-    <b class="miniOfferingHeader">Yoga</b>
-    <p class="mobText">Peace. Balance. Agility.</P>
-      <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Yoga SVG.svg" width="60%"> </img><a>
-
-
+<div class="row pt-2 pt-md-2 align-items-center justify-content-center">
+  <div class="col-md-4 col-6 text-center p-0">
+    <p class="miniOfferingHeader">YOGA</p>
+    <p class="m-0 hide-on-mobile">Peace. Balance. Agility.</P>
+      <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Yoga SVG.svg" width="40%"> </img></a>
   </div>
-  <div class="col-md-4 col-6 text-center p-0 " style="color:black">
-    <b class="miniOfferingHeader ">Aerobics</b><br>
-    <p class="mobText">Strength. Cardio. Variation.</p>
-    <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Aerobics SVG.svg" width="60%"> </img><a>
+  <div class="col-md-4 col-6 text-center p-0 ">
+    <p class="miniOfferingHeader ">AEROBICS</p>
+    <p class="m-0 hide-on-mobile">Strength. Cardio. Variation.</p>
+    <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Aerobics SVG.svg" width="40%"> </img><a>
   </div>
 
 </div>
 
 <!-- know more separator button -->
-<div class="row align-items-center mt-md-5 hide-on-mobile">
+<div class="row align-items-center mt-md-0 hide-on-mobile">
   <div class="col text-center">
-    <a href="offerings.php" class="btn btn-primary btn-lg userdropdown m-0 ">KNOW MORE </a>
+    <a href="offerings.php" class="btn btn-primary btn-lg userdropdown mainSgnBtn m-0 ">KNOW MORE </a>
   </div>
 </div>
 <div class="row align-items-center mt-4 hide-on-nonmobile">
   <div class="col text-center">
-    <a href="offerings.php" class="btn bigSignUpButton userdropdown m-0 ">KNOW MORE </a>
+    <a href="offerings.php" class="btn btn-primary userdropdown  mainSgnBtn m-0 ">KNOW MORE </a>
   </div>
 </div>
 
-<div class="row align-items-center justify-content-center pb-md-4 pb-3" >
+<div class="row align-items-center justify-content-center pb-md-2 pb-2" >
 
-  <div class="col-md-4 col-6 text-center p-0" style="color:black">
-    <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Push up SVG.svg" width="60%"> </img></a><br>
-    <b class="miniOfferingHeader ">Slimnastics</b>
-    <p class="mobText ">Conditioning. Toning. Lean.</p>
+  <div class="col-md-4 col-6 text-center p-0" >
+    <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Push up SVG.svg" width="40%"> </img></a><br>
+    <p class="miniOfferingHeader ">SLIMNASTICS</p>
+    <p class="m-0 hide-on-mobile">Conditioning. Toning. Lean.</p>
   </div>
-  <div class="col-md-4 col-6 text-center p-0" style="color:black">
-    <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Zumba SVG.svg" width="60%"> </img></a><br>
-    <b class="miniOfferingHeader ">Zumba</b>
-    <p class="mobText "> Dance. Flexibility. Fun.</p>
+  <div class="col-md-4 col-6 text-center p-0">
+    <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Zumba SVG.svg" width="40%"> </img></a><br>
+    <p class="miniOfferingHeader ">ZUMBA</p>
+    <p class="m-0 hide-on-mobile"> Dance. Flexibility. Fun.</p>
   </div>
 </div>
 
@@ -203,9 +189,9 @@ include ROOT_DIR."/header.php";
 </div>
 </div>
 </div>
-<div class="container-fluid" style="background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(7,121,222,1) 0%, rgba(20,72,140,1) 90% );">
+<div class="container-fluid pt-3 pb-4" style="background: linear-gradient(to right, #3a7fd5, #6ebce2);box-shadow: inset 0 -3px 10px rgb(0 0 0 / 10%);">
   <div class="container">
-    <div class="row pt-4 pt-md-5">
+    <div class="row pt-4 pt-md-2">
       <div class="col" style="color:white">
 
       </div>
@@ -219,7 +205,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Nadia.png"></img><br>
-          <p style="font-family:lato-bold">Nadezhda Trapizonian</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
+          <p class="testiNames">Nadia</P><p class="slimText"> I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape. I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.</p>
         </div>
       </div>
     </div>
@@ -228,7 +214,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-          <p style="font-family:lato-bold">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by constantly challenging me and helping me work towards my fitness goals.
+          <p class="testiNames">Rohin</p> <p class="slimText"> The trainer I work with is top knotch. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by challenging me and helping me work towards my fitness goals.</p>
         </div>
       </div >
     </div>
@@ -237,7 +223,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Megha.png"></img><br>
-          <p style="font-family:lato-bold">Priya and Megha Gupta</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
+          <p class="testiNames">Priya and Megha</P> <p class="slimText">I've been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom. FuNinja has been a lot of fun.</p>
         </div>
       </div >
     </div>
@@ -246,7 +232,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
-          <p style="font-family:lato-bold">Satya Das</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
+          <p class="testiNames">Satya</P> <p class="slimText">Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.</p>
         </div>
       </div >
     </div>
@@ -262,11 +248,11 @@ include ROOT_DIR."/header.php";
             <div class="carousel-inner w-100 m-0 p-0" role="listbox" >
                 <div class="carousel-item active" >
 
-                  <div class="col-md-6 m-0 p-0 justify-content-center testiWrapper">
+                  <div class="col-md-6 m-0 p-0 justify-content-center testiWrapper" >
                   <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                     <div class="mt-3 testimonialCard ">
                       <img class="testimonialPic" src="/images/testimonials/Nadia.png"></img><br>
-                      <p style="font-family:lato-bold">Nadezhda Trapizonian</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
+                      <p class="miniOfferingHeader">Nadia</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
                     </div>
                   </div >
                   </div>
@@ -277,7 +263,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-                <p style="font-family:lato-bold">Rohin Suresh<p> Their concept is pretty cool and they have top notch trainers. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by constantly challenging me and helping me work towards my fitness goals.
+                <p class="miniOfferingHeader">Rohin<p> Their concept is pretty cool and they have top notch trainers. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by constantly challenging me and helping me work towards my fitness goals.
                   </div>
                 </div>
                   </div>
@@ -288,7 +274,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Megha.png"></img><br>
-                <p style="font-family:lato-bold">Priya and Megha Gupta</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
+                <p class="miniOfferingHeader">Priya and Megha</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
                   </div>
                 </div>
                   </div>
@@ -299,7 +285,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
-                <p style="font-family:lato-bold">Satya Das</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
+                <p class="miniOfferingHeader">Satya</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
                   </div>
                 </div>
                   </div>
@@ -324,13 +310,6 @@ include ROOT_DIR."/header.php";
 
 $("body").addClass("whiteBackground");
 
-$("#topLeftDiv").hide();
-$("#topLeftDiv").fadeIn(2000);
-
-$("#womanImg").css({"left":600});
-$(document).ready(function(){
-  $("#womanImg").animate({left: "-=600"}, 1000);
-});
 
 </script>
 

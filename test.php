@@ -22,6 +22,9 @@ require_once ( ROOT_DIR.'/includes/autoloader.php' );
 require_once ( ROOT_DIR.'/includes/dbh.php' );
 
 ?>
+<?php
+require ROOT_DIR."/includes/frameworks.php";
+?>
 <body>
 
   <!-- Google Tag Manager (noscript) -->
@@ -30,7 +33,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <div class="container">
-
+<p style="font-family: 'Open Sans', sans-serif;">Hello there!</p>
+<p style="font-family: sans-serif;">Hello there!</p>
+<p >Hello there!</p>
+<p style="font-family: arial">Hello there!</p>
 
 </div>
 </body>

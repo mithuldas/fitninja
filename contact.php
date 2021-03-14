@@ -58,7 +58,7 @@ include ROOT_DIR."/header.php";
   <div class="form-group ">
     <center><div class="g-recaptcha" data-sitekey="6LcUPlYaAAAAANdAD-frTgF7yUWUoCe4aTqYKJLk" data-callback="enableBtn"></div></center>
       <br/>
-    <center><button id="submitButton" class="btn btn-primary" type="submit" name="submit_contact" disabled="disabled">Submit</button></center>
+    <center><button id="submitButton" class="btn btn-primary blueButton" type="submit" name="submit_contact" disabled="disabled">Submit</button></center>
   </div>
 </form>
 </div>

@@ -72,23 +72,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <ul class="navbar-nav mr-auto" id="navbarLinks">
 
 
-      <li class="nav-item active">
-        <a class="nav-link burgerOption aboutLink" href="/about.php">About</a>
+      <li class="nav-item active pl-md-3 pr-md-3">
+        <a class="nav-link burgerOption aboutLink headerMnLink" href="/about.php">ABOUT</a>
       </li>
-      <li class="nav-item dropdown active">
-        <a class="nav-link burgerOption offeringsLink" href="/offerings.php">Offerings</a>
+      <li class="nav-item dropdown active pr-md-3">
+        <a class="nav-link burgerOption offeringsLink headerMnLink" href="/offerings.php">OFFERINGS</a>
       </li>
     <!--  <li class="nav-item dropdown active">
         <a class="nav-link burgerOption trainersLink" href="/trainers.php">Trainers</a>
       </li>-->
-      <li class="nav-item active">
-        <a class="nav-link burgerOption membershipLink" href="/plans.php">Membership</a>
+      <li class="nav-item active pr-md-3">
+        <a class="nav-link burgerOption membershipLink headerMnLink" href="/plans.php">MEMBERSHIP</a>
+      </li>
+      <li class="nav-item active pr-md-3">
+        <a class="nav-link burgerOption contactLink headerMnLink" href="/contact.php">CONTACT</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link burgerOption contactLink" href="/contact.php">Contact</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link burgerOption faqLink" href="/faq.php">FAQs</a>
+        <a class="nav-link burgerOption faqLink headerMnLink" href="/faq.php">FAQ</a>
       </li>
       <?php
       // show dashboard link with special formatting if logged in
@@ -185,9 +185,7 @@ if(!isset($_SESSION['uid'])){ ?>
             <p class="middleText"><span>OR</span></p>
           </div>
           <div>
-            <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">
-            Login with Facebook
-          </button><br>
+            <center>
             <button onclick="google_login();" class="loginBtn loginBtn--google boxshadoweffect">
               Login with Google
             </button></center>
@@ -223,9 +221,7 @@ if(!isset($_SESSION['uid'])){ ?>
             <p class="middleText"><span>OR</span></p>
         </div>
         <div>
-          <center><button onclick="fb_login();" class="loginBtn loginBtn--facebook">
-          Login with Facebook
-        </button><br>
+          <center>
           <button onclick="google_login();" class="loginBtn loginBtn--google boxshadoweffect">
             Login with Google
           </button></center>

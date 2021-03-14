@@ -1,42 +1,120 @@
-
-
-@font-face {
-  font-family: Lato-Regular;
-  src: url('/fonts/Lato/Lato-Regular.ttf');
-}
-
-@font-face {
-  font-family: Lato-Bold;
-  src: url('/fonts/Lato/Lato-Bold.ttf');
-}
-
-@font-face {
-  font-family: Lato-Black;
-  src: url('/fonts/Lato/Lato-Black.ttf');
-}
-
-@font-face {
-  font-family: Lato-Light;
-  src: url('/fonts/Lato/Lato-Light.ttf');
-}
-
-@font-face {
-  font-family: Lato-Hairline;
-  src: url('/fonts/Lato/Lato-Hairline.ttf');
-}
-
 html{
   position: relative;
   min-height: 100%;
 }
 
 body {
-  font-family: Lato-Regular;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  line-height: 1.71;
+}
+
+/* FONTS Desktop */
+.normalFont{
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+  font-size:16px;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+}
+
+.mainTitle{
+  font:weight:800;
+  font-size:48px;
+  line-height:1;
+  font-style:italic;
+}
+
+.subTitle{
+  color: rgb(74, 74, 74)!important;
+  letter-spacing: 0.4px;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.trainerName{
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: rgb(74, 74, 74);
+}
+
+.trgCat{
+  font-weight: 800;
+  color:#0071c2!important;
+}
+
+.miniOfferingHeader{
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.2;
+  color: rgb(74, 74, 74);
+  margin:0;
+  margin-bottom: 5px;
+}
+
+.mainSgnBtn{
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+}
+
+.headerMnLink{
+  color: rgb(155, 155, 155)!important;
+  letter-spacing: 0.4px!important;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* FONTS Mobile */
+@media screen and (max-width: 575px) {
+  .mainTitle{
+    font-weight:800;
+    font-size:30px;
+    line-height:1;
+    font-style:italic;
+  }
+
+  .normalFont{
+    font-size:14px;
+  }
+
+  .subTitle{
+    font-size: 22px;
+  }
+
+  .largerFontMob{
+    font-size: 18px;
+  }
+
+  .slimText{
+    font-weight:300;
+  }
+
+  .testiNames{
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.2;
+    color: rgb(74, 74, 74);
+    margin:0;
+    margin-bottom: 4px;
+  }
 }
 
 body {
   background: #f4f5f7;
 }
+
+
+
+
+
+
 
 .footer {
   text-align: center;
@@ -45,7 +123,16 @@ body {
   width: 100%;
   background-color:black;
   color:grey;
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 1.5em;
+  letter-spacing: .5px;
+}
+
+.footerHeader{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.33em;
+  margin-bottom: 10px!important;
 }
 
 @media screen and (max-width: 575px) {
@@ -54,18 +141,16 @@ body {
   }
 }
 
+
 .footer a:hover {
   color:lightgrey!important;
   text-decoration: none !important;
 }
 
 .footer a {
-  font-family: Lato-Light;
-  color:grey!important;
-  font-weight: 100;
+  color:grey;
 }
 .footerList{
-    font-family: Lato-Light;
     list-style: none;
     list-style-type: none;
     margin: 0;
@@ -408,7 +493,7 @@ th, td {
 
 
 .tableTitle{
-  font-family: Lato-Bold;
+  font-weight: 700;
   font-size: 14px;
   color: #555555;
   text-transform: uppercase;
@@ -417,7 +502,7 @@ th, td {
 
 
 .table100 th {
-  font-family: Lato-Bold;
+  font-weight:700;
   font-size: 14px;
   color: #555555;
   line-height: 1.4;
@@ -426,7 +511,7 @@ th, td {
 }
 
 .table100 td {
-  font-family: Lato-Regular;
+  font-weight:400;
   font-size: 15px;
   color: #808080;
   line-height: 1.4;
@@ -505,7 +590,7 @@ th, td {
   }
 
   .table100 th {
-    font-family: Lato-Bold;
+    font-weight:700;
     font-size: 13px;
     color: #555555;
     line-height: 1;
@@ -514,7 +599,7 @@ th, td {
   }
 
   .table100 td {
-    font-family: Lato-Regular;
+    font-weight:400;
     font-size: 12px;
     color: #808080;
     line-height: 1.0;
@@ -873,18 +958,13 @@ html {
   border-bottom:none!important;
 }
 
-.miniOfferingHeader{
-  font-size: 19px;
-}
+
 
 @media screen and (max-width: 575px) {
   .textMobileNormal{
     font-size: 12px;
   }
 
-  .miniOfferingHeader{
-    font-size: 14px;
-  }
 
   .largerHowItWorks{
     width:95%;
@@ -976,7 +1056,7 @@ html {
 @media screen and (max-width: 575px) {
   .footerWriteUpMob {
     text-align:center;
-    font-family:Lato-Light;
+    font-weight:300;
     padding-left:0px;
     margin-left:0px;
 
@@ -986,7 +1066,6 @@ html {
 @media screen and (min-width: 575px) {
   .footerWriteUpDesktop {
     text-align:left;
-    font-family:Lato-Light;
   }
 
 }
@@ -1003,7 +1082,7 @@ html {
 }
 
 .dashCardTitle{
-  font-family:Lato-Light;
+  font-weight:300;
   font-size:20px;
 }
 
@@ -1122,7 +1201,6 @@ h5 > .btn {
     padding-left: 5px !important;
   }
   .mobileTitle{
-    font-family: Lato-Bold;
       font-size:16px;
   }
 
@@ -1388,50 +1466,41 @@ h5 > .btn {
   text-decoration: none!important;
 }
 
-.coreTeamCardTop{
-  color:white;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  padding-top:5px;
-  padding-bottom:5px;
-  background-color:#585858;
-  margin-right:20px;
-}
 
 .coreTeamCardMain{
   -webkit-box-shadow: 0px 3px 6px 0px #00000020;
   -moz-box-shadow: 0px 3px 6px 0px #00000020;
   box-shadow: 0px 3px 6px 0px #00000020;
-  margin-right:20px;
-}
+  background: white;
 
-.coreTeamCardBottom{
-  color:white;
-  padding-top:5px;
-  padding-bottom:5px;
-  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  background-color:#0071c2;
-  margin-right:20px;
-
+  border-bottom-right-radius: 15px;
 }
 
-.coreTeamCardBottom a{
-  color:lightblue;
-  text-decoration: underline;
+.naniPic{
+  height:240px;
+}
+
+.ashishPic{
+  height:170px;
+  transform: rotateY(180deg);
+}
+
+.dipaliPic{
+  height:240px;
+}
+
+.raghavanPic{
+  height:170px;
+}
+
+.coreTeamCol{
+  height:250px;
 }
 
 @media screen and (max-width: 575px) {
-  .coreTeamCardTop{
-    color:white;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    padding-top:2px;
-    padding-bottom:2px;
-    background-color:#585858;
-    margin-right:5px;
-    font-size: 13px;
-  }
 
   .coreTeamCardMain{
     -webkit-box-shadow: 0px 3px 6px 0px #00000020;
@@ -1440,22 +1509,29 @@ h5 > .btn {
     margin-right:5px;
   }
 
-  .coreTeamCardBottom{
-    color:white;
-    padding-top:5px;
-    padding-bottom:5px;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    background-color:#0071c2;
-    margin-right:5px;
-    font-size: 11px;
-    padding-left:0px;
-    padding-right:0px;
+  .naniPic{
+    height:150px;
   }
 
-  .coreTeamMember{
-    width:100%;
+  .ashishPic{
+    height:106px;
+    transform: rotateY(180deg);
   }
+
+  .dipaliPic{
+    height:150px;
+  }
+
+  .raghavanPic{
+    height:106px;
+  }
+
+  .coreTeamCol{
+    height:160px;
+    margin-bottom: 10px!important;
+  }
+
+
 }
 
 .middleText {
@@ -1469,4 +1545,21 @@ h5 > .btn {
 .middleText span {
     background:#fff;
     padding:0 15px;
+}
+
+
+
+#mainPic{
+  width:90%;
+}
+
+@media screen and (max-width: 575px) {
+  #mainPic{
+    width:80%;
+  }
+}
+@media screen and (min-width: 575px) and (max-width: 800px){
+  #mainPic{
+    width:110%;
+  }
 }

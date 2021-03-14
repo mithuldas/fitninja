@@ -9,7 +9,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-  <title> Premium Personal Training - FuNinja </title>
+  <title> FuNinja: Personal Training on the go</title>
   <?php
   require ROOT_DIR."/includes/frameworks.php";
   ?>
@@ -31,13 +31,13 @@ include ROOT_DIR."/header.php";
 <!-- get fit section row -->
   <div class="row pt-3 pt-md-4 align-items-center pb-1 pb-md-5" >
     <div class="col-md-4 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center">
-      <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Personal Training at home - Virtually!</h2>
+      <h2 class="mb-3 mt-3 mb-md-4 mt-md-4 mobHeader">Virtual Personal Training</h2>
       <p class="mobText">Train 1-on-1 with FuNinja's Personal Trainers as they guide you through fun, engaging and result oriented Virtual Training sessions.</p>
       <?php
  // if user user isn't logged in, show the login and register buttons
  if(!isset($_SESSION['uid'])){ ?>
-   <center><button type="button" class=" btn btn-lg btn-primary bigSignUpButton mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
-   <center><button type="button" class=" btn btn-primary bigSignUpButton mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
+   <center><button type="button" class=" btn btn-lg btn-primary blueButton mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
+   <center><button type="button" class=" btn btn-primary blueButton mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
 
    <?php  ;
  } ?>
@@ -176,7 +176,7 @@ include ROOT_DIR."/header.php";
 <!-- know more separator button -->
 <div class="row align-items-center mt-md-5 hide-on-mobile">
   <div class="col text-center">
-    <a href="offerings.php" class="btn bigSignUpButton btn-lg userdropdown m-0 ">KNOW MORE </a>
+    <a href="offerings.php" class="btn btn-primary btn-lg userdropdown m-0 ">KNOW MORE </a>
   </div>
 </div>
 <div class="row align-items-center mt-4 hide-on-nonmobile">
@@ -203,11 +203,11 @@ include ROOT_DIR."/header.php";
 </div>
 </div>
 </div>
-<div class="container-fluid" style="background-color: #263F97; ">
+<div class="container-fluid" style="background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(7,121,222,1) 0%, rgba(20,72,140,1) 90% );">
   <div class="container">
     <div class="row pt-4 pt-md-5">
       <div class="col" style="color:white">
-        <center><h2 class="mobHeader">Customer Reviews and Testimonials</h2></center>
+
       </div>
     </div>
 

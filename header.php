@@ -6,6 +6,20 @@ FlowControl::startSession();
 include_once ROOT_DIR."/includes/auto_login.php";
 ?>
 
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6045fd9b385de407571db4e7/1f08mda53';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
 
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
@@ -36,10 +50,6 @@ include_once ROOT_DIR."/includes/auto_login.php";
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-
-  <a href="https://api.whatsapp.com/send?phone=919108806213" class="float" target="_blank">
-  <img class="float" src="/images/wa_icon.svg"> </img>
-  </a>
 <div class="container-fluid">
 <div class="row">
 
@@ -96,8 +106,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <?php
 // if user user isn't logged in, show the login and register buttons
 if(!isset($_SESSION['uid'])){ ?>
-  <button type="button" class="mr-1 btn btn-secondary btn-sm btn blueButton" data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
-  <button type="button" class=" btn btn-primary btn-sm btn" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
+  <button type="button" class="mr-1 btn btn-primary  btn-sm btn " data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
+  <button type="button" class=" btn  btn-secondary blueButton btn-sm" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
 
   <?php  ;
 } ?>
@@ -148,8 +158,8 @@ if(!isset($_SESSION['uid'])){ ?>
 <div class="modal-content signup_modal" style="vertical-align: middle">
   <div class="modal-header" style="margin-left: 60px; padding-bottom: 0px;">
   <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
-  <li class="nav-item"> <a class="nav-link pillLoginButton btn-sm active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab"  aria-selected="true">Login</a> </li>
-  <li class="nav-item"> <a class="nav-link pillRegButton btn-sm" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"  aria-selected="false">Register</a> </li>
+  <li class="nav-item"> <a class="nav-link pillLoginButton btn-sm active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab"  aria-selected="true">LOGIN  </a> </li>
+  <li class="nav-item"> <a class="nav-link pillRegButton btn-sm" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"  aria-selected="false">SIGN UP</a> </li>
   </ul>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
   <span id="signupPopupCloseBtn" class="hide-on-nonmobile" aria-hidden="true">&times;</span>

@@ -564,16 +564,50 @@ th, td {
 
 /* Page background */
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #500472 !important;
-    border-color:#500472 !important;
+.btn-primary {
+    background-color: white !important;
+    border-color:#0071c2 !important;
+    color: #0071c2;
     text-decoration: none !important;
+    box-shadow: none !important;
+    outline: 0 none !important;
+    z-index: 100;
+}
+
+.btn-primary:hover {
+  background-color: #f4faff !important;
+  color: #0071c2;
+  text-decoration: none!important;
+}
+
+.btn-primary:active, .btn-primary:focus, .btn-primary:{
+  background-color: white !important;
+  border-color:#0071c2 !important;
+  color: #0071c2;
+}
+
+.btn-primary:focus{
+  background-color: #d7e9f7 !important;
+  color: #0071c2!important;
 }
 
 .blueButton{
-  background-color: #190472 !important;
-  border-color:#190472 !important;
+  background-color: #0071c2 !important;
+  color: white!important;
+  border-color:#0071c2 !important;
   text-decoration: none !important;
+  box-shadow: none !important;
+  outline: 0 none !important;
+}
+
+.blueButton:hover{
+  background-color: #3e90c9!important;
+  border-color: #3e90c9!important;
+}
+
+.blueButton:focus{
+  background-color: #5e9fcc!important;
+  border-color: #5e9fcc!important;
 }
 
 .greyfont{
@@ -600,7 +634,7 @@ th, td {
 
 .pillRegButton{
   background-color:white !important;
-  color:#500472 !important;
+  color:#0071c2 !important;
   border: 1px solid !important;
   border-top-left-radius: 0px!important;
   border-bottom-left-radius: 0px!important;
@@ -608,7 +642,7 @@ th, td {
 
 .pillLoginButton{
   background-color:white !important;
-  color:#500472 !important;
+  color:#0071c2 !important;
   border: 1px solid !important;
   border-top-right-radius: 0px!important;
   border-bottom-right-radius: 0px!important;
@@ -619,15 +653,15 @@ th, td {
 }
 
 .pillRegButton.active{
-  background-color:#500472 !important;
+  background-color:#0071c2 !important;
   color:white !important;
-  border-color: #500472 !important;
+  border-color: #0071c2 !important;
 }
 
 .pillLoginButton.active{
-  background-color:#500472 !important;
+  background-color:#0071c2 !important;
   color:white !important;
-  border-color: #500472 !important;
+  border-color: #0071c2 !important;
 }
 
 .borderbottom{
@@ -650,6 +684,11 @@ th, td {
   -ms-box-shadow: 0 0px 40px 0px rgba(0, 0, 0, 0.15);
 }
 
+.planHeaderButton:focus{
+  color:white!important;
+  background-color: #0071c2!important;
+}
+
 .activeOpacity{
   opacity:1;
 }
@@ -659,7 +698,7 @@ th, td {
   border-right: 10px solid transparent;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #500472;
+  border-left: 10px solid #0071c2;
   height: 0;
   width: 0;
   position: absolute;
@@ -679,7 +718,7 @@ th, td {
     border-right: 10px solid transparent;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-left: 10px solid #500472;
+    border-left: 10px solid #0071c2;
     height: 0;
     width: 0;
     position: absolute;
@@ -972,13 +1011,6 @@ html {
   border-bottom: 1px solid #edeff1;
 }
 
-.bigSignUpButton{
-  background-color:white !important;
-  border-color: #500472 !important;
-  color:#500472 !important;\
-
-}
-
 @media screen and (max-width: 575px) {
   .instructions-area{
     margin-left: 15px;
@@ -1074,12 +1106,6 @@ h5 > .btn {
   color:#0071c2 !important;
 }
 
-.bigSignUpButton:hover{
-  background-color:#500472 !important;
-  border-color: #500472 !important;
-  color:white!important;
-  text-decoration: none !important;
-}
 
 .breadcrumbContiner{
   font-size:13px !important;

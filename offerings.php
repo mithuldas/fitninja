@@ -147,12 +147,12 @@ $("body").addClass("whiteBackground");
 
   <div class="row align-items-center hide-on-mobile pt-2 pb-5">
     <div class="col text-center">
-      <a href="plans.php" class="btn bigSignUpButton btn-lg userdropdown m-0 ">PICK YOUR PLAN </a>
+      <a href="plans.php" class="btn btn-primary btn-lg  blueButton userdropdown m-0 ">PICK YOUR PLAN </a>
     </div>
   </div>
   <div class="row align-items-center mt-2 pb-5 hide-on-nonmobile">
     <div class="col text-center">
-      <a href="plans.php" class="btn bigSignUpButton userdropdown m-0 ">PICK YOUR PLAN </a>
+      <a href="plans.php" class="btn btn-primary blueButton userdropdown m-0 ">PICK YOUR PLAN </a>
     </div>
   </div>
 

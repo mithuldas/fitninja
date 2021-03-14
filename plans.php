@@ -54,16 +54,16 @@ $("body").addClass("whiteBackground");
   <div class="col-3 hide-on-mobile">
   </div class="col">
   <div class="col centerButton">
-  <button id="prod1Button" class="btn btn-primary planHeaderButton prod1Button"><?php echo $product1->productName; ?></button>
+  <button id="prod1Button" class="btn btn-primary blueButton planHeaderButton prod1Button"><?php echo $product1->productName; ?></button>
   </div class="col">
   <div class="col centerButton">
-    <button class="btn btn-primary planHeaderButton prod2Button"><?php echo $product2->productName; ?></button>
+    <button class="btn btn-primary blueButton planHeaderButton prod2Button"><?php echo $product2->productName; ?></button>
   </div class="col">
   <div class="col centerButton">
-    <button class="btn btn-primary planHeaderButton prod3Button"><?php echo $product3->productName; ?></button>
+    <button class="btn btn-primary blueButton planHeaderButton prod3Button"><?php echo $product3->productName; ?></button>
   </div class="col">
   <div class="col centerButton">
-    <button class="btn btn-primary planHeaderButton prod4Button"><?php echo $product4->productName; ?></button>
+    <button class="btn btn-primary blueButton planHeaderButton prod4Button"><?php echo $product4->productName; ?></button>
   </div class="col">
   </div class = "row">
 

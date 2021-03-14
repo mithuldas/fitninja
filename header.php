@@ -80,10 +80,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </li>
     <!--  <li class="nav-item dropdown active">
         <a class="nav-link burgerOption trainersLink" href="/trainers.php">Trainers</a>
-      </li>-->
+      </li>
       <li class="nav-item active pr-md-3">
         <a class="nav-link burgerOption membershipLink headerMnLink" href="/plans.php">MEMBERSHIP</a>
-      </li>
+      </li>-->
       <li class="nav-item active pr-md-3">
         <a class="nav-link burgerOption contactLink headerMnLink" href="/contact.php">CONTACT</a>
       </li>

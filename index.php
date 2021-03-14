@@ -26,7 +26,7 @@ include ROOT_DIR."/header.php";
 
 
 
-  <div class="container pb-5 pb-md-4 pt-5 pt-md-4">
+  <div class="container pb-5 pb-md-4 pt-1 pt-md-4">
 
 <!-- get fit section row -->
   <div class="row pt-3 pt-md-4 align-items-center pb-1 pb-md-5" >
@@ -36,12 +36,12 @@ include ROOT_DIR."/header.php";
       <?php
  // if user user isn't logged in, show the login and register buttons
  if(!isset($_SESSION['uid'])){ ?>
-   <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> TRY IT FOR FREE </button></center>
-   <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> TRY IT FOR FREE </button></center>
+   <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL SESSION </button></center>
+   <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL SESSION </button></center>
 
    <?php  ;
  } ?>
-
+<img class="p-0 m-0 attentionImg" src="/images/graphics/click.gif"> </img>
     </div>
     <div class="col-md-6 col-lg-6 col-12 order-md-2 order-1" id="womanImg">
       <center><img id="mainPic" src="/images/graphics/test.gif"> </img></center>

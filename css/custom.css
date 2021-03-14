@@ -1570,6 +1570,9 @@ h5 > .btn {
 }
 
 @media screen and (max-width: 575px) {
+  .attentionImg{
+    height:75px;
+  }
   .uspAlign{
       text-align:center;
   }

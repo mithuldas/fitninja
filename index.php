@@ -31,13 +31,13 @@ include ROOT_DIR."/header.php";
 <!-- get fit section row -->
   <div class="row pt-3 pt-md-4 align-items-center pb-1 pb-md-5" >
     <div class="col-md-6 col-lg-6 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center" >
-      <p class="mb-3 mt-3 mb-md-4 mt-md-4 mainTitle" style="font-weight:800">VIRTUAL PERSONAL TRAINING</p>
-      <p class="pb-2 pb-md-3 normalFont">Train 1-on-1 with FuNinja Personal Trainers as they guide you through fun, engaging and result oriented Virtual Training sessions.</p>
+      <p class="mb-3 mt-3 mb-md-4 mt-md-4 mainTitle" style="font-weight:800">THE NATION'S TOP TRAINERS, NOW IN YOUR LIVING ROOM!</p>
+      <p class="pb-2 pb-md-3 normalFont">Train 1-on-1 in the comfort of your home with FuNinja Trainers as they guide you through fun, engaging and result oriented Virtual Training sessions.</p>
       <?php
  // if user user isn't logged in, show the login and register buttons
  if(!isset($_SESSION['uid'])){ ?>
-   <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
-   <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP FOR A FREE TRIAL </button></center>
+   <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> TRY IT FOR FREE </button></center>
+   <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 mb-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> TRY IT FOR FREE </button></center>
 
    <?php  ;
  } ?>
@@ -47,17 +47,49 @@ include ROOT_DIR."/header.php";
       <center><img id="mainPic" src="/images/graphics/test.gif"> </img></center>
     </div>
   </div>
+</div>
+<!-- usp section -->
 
+<div class="container-fluid" style="background-image: linear-gradient(rgb(255, 255, 255), rgb(223, 232, 252) 49%, rgb(255, 255, 255));">
+<div class="row pt-3 pt-md-4 justify-content-center pb-md-3" >
+  <div class="col-md-4 mr-md-5 pb-5 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0  uspAlign">
+<img class="mb-3" src="/images/graphics/USP1.png" style="height:100px"> </img><br>
+<p class="miniOfferingHeader pb-1 subTitle"> SAVE ON GYM MEMBERSHIPS</p>
+<p class="largerFontMob">Traditionally, you pay periodic Gym Membership fees + "add-on" trainer fees. Cut out gym fees and direct your hard earned money on what really matters: quality, experienced trainers.  </p>
+  </div>
+  <div class="col-md-4 pb-5 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
+<img class="mb-3" src="/images/graphics/USP2.png" style="height:100px"> </img><br>
+<p class="miniOfferingHeader pb-1 subTitle"> 4 FOR THE PRICE OF 1</p>
+<p class="largerFontMob"> 4 workout formats. 4 Trainers. Our packages are designed to be effective but also fun. Bored of a workout format? Switch to another one! No need to buy another package. </p>
+  </div>
+</div>
+
+<div class="row pt-md-3 pt-md-4 justify-content-center pb-md-3" >
+  <div class="col-md-4 mr-md-5 pb-4 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
+<img class="mb-3" src="/images/graphics/USP3.png" style="height:100px"> </img><br>
+<p class="miniOfferingHeader pb-1 subTitle"> LOCATION NO LONGER MATTERS</p>
+<p class="largerFontMob">A stable internet connection, a phone or laptop, and a positive attitude are all you need to connect with our experienced and talented trainers.</p>
+  </div>
+  <div class="col-md-4 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
+<img class="mb-3" src="/images/graphics/USP4.png" style="height:100px"> </img><br>
+<p class="miniOfferingHeader pb-1 subTitle"> RESULTS. RESULTS. RESULTS</p>
+<p class="largerFontMob"> Our trainers have proven track records in helping customers see results. We place your goals first and relentlessly work with you to help you achieve them.</p>
+  </div>
+</div>
+
+<div class="row pt-3 pt-md-4 align-items-center pb-3" >
 
 </div>
 
-<div class="container-fluid pt-5 pb-5 pt-md-5 pb-md-5" style="background:linear-gradient(to right, #edf0f4, #ebeef2);box-shadow: inset 0 -3px 10px rgb(0 0 0 / 10%);">
+</div>
+
+<div class="container-fluid pt-5 pb-5 pt-md-5 pb-md-5">
   <!-- core team section -->
 
   <div class="row mb-2 pt-md-3">
     <div class="col" align="center">
-        <p class="subTitle"> HEAD TRAINERS  </p>
-      <h5 class="normalFont largerFontMob mt-3 mt-md-4 pb-md-5 pb-3">Our trainers are led by seasoned veterans who have spent countless hours perfecting their craft.</h5>
+        <p class="subTitle"> LEAD TRAINERS  </p>
+      <h5 class="normalFont largerFontMob mt-3 mt-md-4 pb-md-5 pb-3">We're led by veterans who've all been in the results business for a very, very long time.</h5>
     </div>
   </div>
 
@@ -214,7 +246,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-          <p class="testiNames">Rohin</p> <p class="slimText"> The trainer I work with is top knotch. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by challenging me and helping me work towards my fitness goals.</p>
+          <p class="testiNames">Rohin</p> <p class="slimText"> The trainer I work with is top notch. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by challenging me and helping me work towards my fitness goals.</p>
         </div>
       </div >
     </div>

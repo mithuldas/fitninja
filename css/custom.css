@@ -4,6 +4,7 @@ html{
 }
 
 body {
+  color: rgb(74, 74, 74);
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -1561,5 +1562,15 @@ h5 > .btn {
 @media screen and (min-width: 575px) and (max-width: 800px){
   #mainPic{
     width:110%;
+  }
+}
+
+.uspAlign{
+    text-align:center;
+}
+
+@media screen and (max-width: 575px) {
+  .uspAlign{
+      text-align:center;
   }
 }

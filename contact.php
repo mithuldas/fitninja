@@ -22,15 +22,7 @@ include ROOT_DIR."/header.php";
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<div class="container-fluid breadcrumbContiner">
-  <nav aria-label="breadcrumb mb-0 pb-0">
-    <ol class="breadcrumb" style="margin-bottom: 0px ; padding-left:0px; padding-top:0px">
-      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
-    </ol>
-  </nav>
-</div>
-<div class="container-fluid">
+<div class="container-fluid pt-3">
 
 <center> <h5 class="m-0 p-0">We would <span style="color:red">♥</span> to hear from you</h5></center>
 <center><small class="m-0 p-0">Support. Feedback. Enquiries</small></center>

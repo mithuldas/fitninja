@@ -27,18 +27,10 @@ $("body").addClass("whiteBackground");
 
 </script>
 
-<div class="container-fluid breadcrumbContiner">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
-      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">About FuNinja</li>
-    </ol>
-  </nav>
-</div>
 
 <div class="container">
   <div class="row">
-    <div class="col pb-2" align="center"><h5> Terms and Conditions </h5>
+    <div class="col pb-2 pt-3" align="center"><h5> Terms and Conditions </h5>
     </div>
   </div>
 

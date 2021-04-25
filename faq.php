@@ -20,15 +20,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 include ROOT_DIR."/header.php";
 ?>
 
-<div class="container-fluid breadcrumbContiner">
-  <nav aria-label="breadcrumb mb-0 pb-0">
-    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
-      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">FAQs</li>
-    </ol>
-  </nav>
-</div>
-<div class="container">
+<div class="container pb-4">
 
   <div class="row mt-3">
     <div class="col">

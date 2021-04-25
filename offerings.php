@@ -31,22 +31,13 @@ $("body").addClass("whiteBackground");
 
 <main>
 
-
-<div class="container-fluid breadcrumbContiner">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
-      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Offerings</li>
-    </ol>
-  </nav>
-</div>
   <div class="container ">
 
 
 	<div class"row ">
     <div class"col ">
 
-      <h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4">Explore the various Workout Formats being offered below and find a <a href="/plans.php">membership plan</a> that works for you and your family.</h5>
+      <h5 class="mobileTitle mobCenterDiv mt-3 mt-md-4">Explore the various Workout Formats being offered below and find a membership plan that works for you and your family.</h5>
 
       <?php
       // if user user isn't logged in, show the login and register buttons
@@ -109,7 +100,7 @@ $("body").addClass("whiteBackground");
 
   <div class="row pt-md-5 pt-4 pb-3 pb-md-4">
     <div class="col">
-      <center><h2 class="mobHeader ">How It Works</h2></center>
+      <center><h2 class="subTitle mobNewHeader ">How It Works</h2></center>
     </div>
   </div>
   <div class="row ">

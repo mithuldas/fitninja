@@ -27,17 +27,8 @@ $("body").addClass("whiteBackground");
 
 </script>
 
-<div class="container-fluid breadcrumbContiner">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
-      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Privacy Policy</li>
-    </ol>
-  </nav>
-</div>
-
 <div class="container pb-4">
-  <center><h5 class="mobileTitle mobCenterDiv">Privacy Policy</h5></center>
+  <center><h5 class="mobileTitle mobCenterDiv pt-3 ">Privacy Policy</h5></center>
   <div class="row">
     <div class="col">
 

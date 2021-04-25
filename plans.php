@@ -37,18 +37,10 @@ $("body").addClass("whiteBackground");
 
 </script>
 
-<div class="container-fluid breadcrumbContiner">
-  <nav aria-label="breadcrumb mb-0 pb-0">
-    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
-      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Membership</li>
-    </ol>
-  </nav>
-</div>
-<div class="container">
+<div class="container pt-2 pt-md-3">
 
 <p class="pt-2"> STEP <b>1</b> OF <b>2</b></p>
-<h5 class="pb-2"> Choose the plan that’s right for you </h5>
+<h5 class="pb-3 pb-md-4"> Choose the plan that’s right for you </h5>
 
   <div class="row pb-3 sticky">
   <div class="col-3 hide-on-mobile">
@@ -186,18 +178,18 @@ $("body").addClass("whiteBackground");
 <div class="row pt-3 mb-2">
 <div class="col-3 hide-on-mobile">Monthly Price
 </div class="col">
-<div class="col prod1 plansMobileContent"> <strike><small>₹ 11,990 </small></strike> <br> <?php echo "₹ ".substr($product1->currentPriceINR->amount, 0,1).','.substr($product1->currentPriceINR->amount, 1,4); ?>
+<div class="col prod1 plansMobileContent"> <strike>₹ 12,000 </strike> <br> <small><?php echo "₹ ".substr($product1->currentPriceINR->amount, 0,1).','.substr($product1->currentPriceINR->amount, 1,4); ?></small>
 </div class="col">
-<div class="col prod2 plansMobileContent"> <strike><small>₹ 13,990 </small></strike> <br><?php echo "₹ ".substr($product2->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 1,5); ?>
+<div class="col prod2 plansMobileContent"> <strike>₹ 14,000 </strike> <br><small><?php echo "₹ ".substr($product2->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 1,5); ?></small>
 </div class="col">
-<div class="col prod3 plansMobileContent"> <strike><small>₹ 15,990 </small></strike> <br><?php echo "₹ ".substr($product3->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 1,5); ?>
+<div class="col prod3 plansMobileContent"> <strike>₹ 16,000 </strike> <br><small><?php echo "₹ ".substr($product3->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 1,5); ?></small>
 </div class="col">
-<div class="col prod4 plansMobileContent"> <strike><small>₹ 17,990 </small></strike> <br><?php echo "₹ ".substr($product4->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 1,5); ?>
+<div class="col prod4 plansMobileContent"> <strike>₹ 18,000 </strike> <br><small><?php echo "₹ ".substr($product4->currentPriceINR->amount, 0,2).','.substr($product1->currentPriceINR->amount, 1,5); ?></small>
 </div class="col">
 </div class = "row">
 
 <div class="row">
-<div class="col"> <center><button class="btn btn-primary btn mt-4 mb-4 continueBtn blueButton" id ="continueBtn"> Continue </button></center>
+<div class="col"> <center><button class="btn btn-primary mt-4 mb-4 continueBtn blueButton" id ="continueBtn"> Next </button></center>
 </div class="col">
 </div class = "row">
 </div>

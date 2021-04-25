@@ -36,12 +36,12 @@ include ROOT_DIR."/header.php";
       <?php
  // if user user isn't logged in, show the login and register buttons
  if(!isset($_SESSION['uid'])){ ?>
-   <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL SESSION </button></center>
-   <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> FREE TRIAL SESSION </button></center>
+   <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP NOW! </button></center>
+   <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP NOW! </button></center>
 
    <?php  ;
  } ?>
-<img class="p-0 m-0 attentionImg" src="/images/graphics/click.gif"> </img>
+
     </div>
     <div class="col-md-6 col-lg-6 col-12 order-md-2 order-1" id="womanImg">
       <center><img id="mainPic" src="/images/graphics/test.gif"> </img></center>
@@ -86,10 +86,10 @@ include ROOT_DIR."/header.php";
 <div class="container-fluid pt-5 pb-5 pt-md-5 pb-md-5">
   <!-- core team section -->
 
-  <div class="row mb-2 pt-md-3">
+  <div class="row mb-2">
     <div class="col" align="center">
-        <p class="subTitle"> LEAD TRAINERS  </p>
-      <h5 class="normalFont largerFontMob mt-3 mt-md-4 pb-md-5 pb-3">We're led by veterans who've all been in the results business for a very, very long time.</h5>
+        <p class="subTitle mobNewHeader pb-1"> LEAD TRAINERS  </p>
+      <h5 class="normalFont largerFontMob pb-md-5 pb-3">We're led by veterans who've been in the results business for a very, very long time.</h5>
     </div>
   </div>
 
@@ -176,6 +176,12 @@ include ROOT_DIR."/header.php";
 <!-- short form of offerings row -->
 <div class="container">
 
+  <div class="row mb-2 pt-md-3">
+    <div class="col" align="center">
+        <p class="subTitle mobNewHeader pb-1"> WORKOUT FORMATS  </p>
+      <h5 class="normalFont largerFontMob pb-md-5 pb-3">Variety’s the very spice of life, That gives it all its flavour. -<i>William Cowper</i></h5>
+    </div>
+  </div>
 
 <div class="row pt-2 pt-md-2 align-items-center justify-content-center">
   <div class="col-md-4 col-6 text-center p-0">
@@ -203,7 +209,7 @@ include ROOT_DIR."/header.php";
   </div>
 </div>
 
-<div class="row align-items-center justify-content-center pb-md-2 pb-2" >
+<div class="row align-items-center justify-content-center pb-md-2 pb-4" >
 
   <div class="col-md-4 col-6 text-center p-0" >
     <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Push up SVG.svg" width="40%"> </img></a><br>
@@ -221,15 +227,16 @@ include ROOT_DIR."/header.php";
 </div>
 </div>
 </div>
+
+<!--
 <div class="container-fluid pt-3 pb-4" style="background: linear-gradient(to right, #3a7fd5, #6ebce2);box-shadow: inset 0 -3px 10px rgb(0 0 0 / 10%);">
   <div class="container">
-    <div class="row pt-4 pt-md-2">
-      <div class="col" style="color:white">
-
+    <div class="row mb-2 pt-md-3">
+      <div class="col" align="left">
+          <p class="subTitle mobNewHeader pt-3 pb-1" style="color: white!important" align="center"> REVIEWS</p>
       </div>
     </div>
 
-<!-- mobile carousel (one slide only) -->
 
 <div id="mobileCarousel" class="carousel slide hide-on-nonmobile w-100 m-0 p-0" data-ride="carousel">
   <div class="carousel-inner">
@@ -272,8 +279,6 @@ include ROOT_DIR."/header.php";
     </div>
   </div>
 
-
-<!-- desktop testimonial carousel (two slides)-->
     <div class="row mx-auto my-auto pb-5">
         <div id="desktopIpadCarousel" class="desktopIpadCarousel carousel slide w-100 m-0 p-0" data-ride="carousel" >
 
@@ -332,7 +337,7 @@ include ROOT_DIR."/header.php";
 
 
 </div>
-</div>
+</div> -->
 
 
 

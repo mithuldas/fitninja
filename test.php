@@ -33,11 +33,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <div class="container">
-<p style="font-family: 'Open Sans', sans-serif;">Hello there!</p>
-<p style="font-family: sans-serif;">Hello there!</p>
-<p >Hello there!</p>
-<p style="font-family: arial">Hello there!</p>
-
+  <a href="http://www.seooptimizationdirectory.com/">SEO Optimization Directory.com</a>
 </div>
 </body>
 

@@ -57,8 +57,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom headerShadow navbar-expand-md  mb-0 pb-0 mt-0 pt-0">
 
     <!-- burger -->
-    <button id="burger" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler collapsed position-relative" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span> </span>
+      <span> </span>
+      <span> </span>
     </button>
     <!-- /burger" -->
 
@@ -68,33 +70,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- everything in here will be collapsed on smaller devices -->
   <div class="collapse navbar-collapse pt-1 order-md-1 order-2" id="navbarSupportedContent" style="padding-top:0px!important">
+
     <!-- Navbar links, dropdowns etc go here -->
     <ul class="navbar-nav mr-auto" id="navbarLinks">
 
 
-      <li class="nav-item active pl-md-3 pr-md-3">
-        <a class="nav-link burgerOption aboutLink headerMnLink" href="/about.php">ABOUT</a>
+      <li class="nav-item active pl-md-3 pr-md-3 pb-2 pb-md-0 pt-3 pt-md-0">
+        <a class="nav-link burgerOption aboutLink headerMnLink hide-on-mobile" href="/about.php"> ABOUT</a>
+        <a class="nav-link burgerOption aboutLink headerMnLink hide-on-nonmobile" href="/about.php">
+        <i class="fas fa-mask mr-1"></i> ABOUT</a>
       </li>
-      <li class="nav-item dropdown active pr-md-3">
-        <a class="nav-link burgerOption offeringsLink headerMnLink" href="/offerings.php">OFFERINGS</a>
+      <li class="nav-item dropdown active pr-md-3 pb-2 pb-md-0">
+        <a class="nav-link burgerOption offeringsLink headerMnLink hide-on-mobile" href="/offerings.php"> OFFERINGS</a>
+        <a class="nav-link burgerOption offeringsLink headerMnLink hide-on-nonmobile" href="/offerings.php">
+          <i class="fas fa-th-list mr-2"></i>OFFERINGS</a>
       </li>
     <!--  <li class="nav-item dropdown active">
         <a class="nav-link burgerOption trainersLink" href="/trainers.php">Trainers</a>
-      </li>
-      <li class="nav-item active pr-md-3">
-        <a class="nav-link burgerOption membershipLink headerMnLink" href="/plans.php">MEMBERSHIP</a>
       </li>-->
       <li class="nav-item active pr-md-3">
-        <a class="nav-link burgerOption contactLink headerMnLink" href="/contact.php">CONTACT</a>
+        <a class="nav-link burgerOption membershipLink headerMnLink" href="/plans.php">MEMBERSHIP</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link burgerOption faqLink headerMnLink" href="/faq.php">FAQ</a>
+      <li class="nav-item active pr-md-3 pb-2 pb-md-0">
+        <a class="nav-link burgerOption contactLink headerMnLink hide-on-mobile" href="/contact.php">CONTACT</a>
+        <a class="nav-link burgerOption contactLink headerMnLink hide-on-nonmobile" href="/contact.php">
+        <i class="fas fa-phone-alt mr-2"></i>CONTACT</a>
+      </li>
+      <li class="nav-item active pr-md-3 pb-2 pb-md-0">
+        <a class="nav-link burgerOption faqLink headerMnLink hide-on-mobile" href="/faq.php">
+          FAQ</a>
+        <a class="nav-link burgerOption faqLink headerMnLink hide-on-nonmobile" href="/faq.php">
+        <i class="fas fa-question-circle mr-2"></i></i>FAQ</a>
       </li>
       <?php
       // show dashboard link with special formatting if logged in
       if(isset($_SESSION['uid'])){ ?>
-        <li class="nav-item active ">
-          <a class="nav-link burgerOption dashLink" href="/includes/post_login_landing_controller.php">Dashboard</a>
+        <li class="nav-item active">
+          <a class="nav-link burgerOption dashLink headerMnLink" href="/includes/post_login_landing_controller.php">
+            <i class="fas fa-weight mr-2"></i></i>Dashboard</a>
         </li>
 
         <?php  ;}?>
@@ -107,7 +120,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 // if user user isn't logged in, show the login and register buttons
 if(!isset($_SESSION['uid'])){ ?>
   <button type="button" class="mr-1 btn btn-primary  btn-sm btn " data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
-  <button type="button" class=" btn  btn-secondary blueButton btn-sm" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
+  <button type="button" class=" btn  btn-secondary blueButton btn" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
 
   <?php  ;
 } ?>

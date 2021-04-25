@@ -82,14 +82,6 @@ $currentUserJSON = json_encode($currentUser);
 
 <script type="text/javascript" src="scripts/trainer_dashboard.js"> </script>
 
-<div class="container-fluid breadcrumbContiner">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px; padding-bottom:0px">
-      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-    </ol>
-  </nav>
-</div>
 <div class="container-fluid containerReducePadding">
 
 

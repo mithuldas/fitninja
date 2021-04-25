@@ -27,15 +27,6 @@ $("body").addClass("whiteBackground");
 
 </script>
 
-<div class="container-fluid breadcrumbContiner">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb" style="margin-bottom: 0px; padding-left:0px; padding-top:0px">
-      <li class="breadcrumb-item"><a href="/index.php">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">About FuNinja</li>
-    </ol>
-  </nav>
-</div>
-
 <div class="container">
   <div class="row pt-4 pt-md-4 pt-lg-0 pb-4 pb-md-0">
     <div class="col-md-7 align-self-center mobText order-md-1 order-1">

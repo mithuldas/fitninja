@@ -81,7 +81,7 @@ else{
   while($row = mysqli_fetch_assoc($result))
   {
     $user= new User($row['uid'], $conn);
-    
+
     if (substr(($user->username), 0, 2)=="FB"){
       $user->username="via Facebook";
     } else if (substr(($user->username), 0, 2)=="GO"){
@@ -112,7 +112,11 @@ else{
 <a href="new_trainer_admin.php?type=Trainer" class="btn-sm btn-light">New Trainer</a>
 <a href="new_trainer_admin.php?type=Admin" class="btn-sm btn-light">New Admin</a>
 </div>
+<script>
+// set active link display in the menu bar
+$('.dashLink').addClass("activeMenuLink");
 
+</script>
 <?php
   require ROOT_DIR."/footer.php";
 ?>

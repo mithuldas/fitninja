@@ -4,7 +4,7 @@ include_once (__DIR__.'/../config.php');
 require_once (ROOT_DIR.'/includes/dbh.php');
 include_once (ROOT_DIR.'/includes/autoloader.php');
 
-// username validation
+/* username validation
 if(isset($_POST['username_check'])){
   $username = $_POST['username'];
 
@@ -51,7 +51,7 @@ if(isset($_POST['username_check'])){
     echo "invalidCharacters";
     exit();
   }
-}
+} */
 
 // e-mail validation
 if(isset($_POST['email_check'])){
@@ -83,7 +83,7 @@ if(isset($_POST['email_check'])){
 }
 
 // Password validations
-if(isset($_POST['password_check'])){
+/*if(isset($_POST['password_check'])){
 
   $password = $_POST['password'];
 
@@ -97,22 +97,10 @@ if(isset($_POST['password_check'])){
     echo "invalidPasswordLength";
     exit();
   }
-}
+}*/
 
-
-// password repeat validation
-if(isset($_POST['passwordRepeat_check'])){
-
-  $passwordRepeat = $_POST['passwordRepeat'];
-  $password = $_POST['password'];
-  if ($passwordRepeat!=$password){
-    echo "mismatch";
-  }
-
-}
 
 if(isset($_POST['save'])){
-    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -139,14 +127,14 @@ if(isset($_POST['save'])){
           // login
 
         $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "UPDATE users set username=?, password=?, source='Web' where email=? and (source is null or source<>'Web')";
+        $sql = "UPDATE users set password=?, source='Web' where email=? and (source is null or source<>'Web')";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
           echo "sqlerror";
           exit();
         }
         else {
-          mysqli_stmt_bind_param($stmt, "sss", $username, $hashedPwd, $email);
+          mysqli_stmt_bind_param($stmt, "ss", $hashedPwd, $email);
           mysqli_stmt_execute($stmt);
           mysqli_stmt_store_result($stmt);
 
@@ -155,7 +143,6 @@ if(isset($_POST['save'])){
             session_start();
           }
           $_SESSION['uid'] = $row['uid'];
-          $_SESSION['username'] = $username;
           $_SESSION['userType'] = $row['user_type_desc'];
           $_SESSION['authenticationType'] = "Web";
           // remember login
@@ -189,7 +176,7 @@ if(isset($_POST['save'])){
           mysqli_stmt_execute($stmt);
         }
 
-        $sql = "insert into users (username, email, user_type_id, password, email_verified, source) values (?, ?, ?, ?, ?, ?)";
+        $sql = "insert into users (email, user_type_id, password, email_verified, source) values (?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)) {
           echo "sqlerror";
@@ -200,8 +187,44 @@ if(isset($_POST['save'])){
           $userType="2";
           $source = "Web";
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-          mysqli_stmt_bind_param($stmt, "ssssss", $username, $email, $userType, $hashedPwd, $emailVerified, $source );
+          mysqli_stmt_bind_param($stmt, "sssss", $email, $userType, $hashedPwd, $emailVerified, $source );
           mysqli_stmt_execute($stmt);
+
+          // insert first name and last name into user attributes
+
+          //first_name
+          $fName = $_POST['fName'];
+          $email = $_POST['email'];
+
+          $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+          values ((select uid from users where email=?), (select attribute_id from user_attribute_definitions where attribute_name = "first_name"), ?,(select date(sysdate()) from dual));';
+
+          $stmt = mysqli_stmt_init($conn);
+          if(!mysqli_stmt_prepare($stmt, $sql)) {
+            header("Location: ../index.php?error=sqlerror");
+            exit();
+          }
+          else{
+            mysqli_stmt_bind_param($stmt, "ss", $email, $fName);
+            mysqli_stmt_execute($stmt);
+          }
+
+          //last_name
+          /*$lName = $_POST['lName'];
+          $email = $_POST['email'];
+
+          $sql= 'insert into user_attributes (uid, attribute_id, attribute_value, valid_from)
+          values ((select uid from users where email=?), (select attribute_id from user_attribute_definitions where attribute_name = "last_name"), ?,(select date(sysdate()) from dual));';
+
+          $stmt = mysqli_stmt_init($conn);
+          if(!mysqli_stmt_prepare($stmt, $sql)) {
+            header("Location: ../index.php?error=sqlerror");
+            exit();
+          }
+          else{
+            mysqli_stmt_bind_param($stmt, "ss", $email, $lName);
+            mysqli_stmt_execute($stmt);
+          }*/
 
           Email::sendVerificationEmail($email, $conn);
           echo "success";

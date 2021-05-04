@@ -22,10 +22,9 @@ body {
 }
 
 .mainTitle{
-  font:weight:800;
+  font:weight:600;
   font-size:48px;
   line-height:1;
-  font-style:italic;
 }
 
 .subTitle{
@@ -57,30 +56,20 @@ body {
   margin-bottom: 5px;
 }
 
-.mainSgnBtn{
-  font-weight: 700;
-  padding:20px;
-  font-size: 14px;
-  line-height: 1.4;
-  letter-spacing: 0.4px;
-  border-radius: 30px;
-}
-
 .headerMnLink{
-  color: rgb(155, 155, 155)!important;
+  color: white;
   letter-spacing: 0.4px!important;
   text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 14px;
 }
 
 /* FONTS Mobile */
 @media screen and (max-width: 575px) {
   .mainTitle{
-    font-weight:800;
-    font-size:30px;
+    font:weight:600;
+    font-size:34px;
     line-height:1;
-    font-style:italic;
   }
 
   .normalFont{
@@ -323,67 +312,16 @@ text-decoration: none !important;
 
 }
 
-/* Facebook and Google login buttons */
-.loginBtn {
-  box-sizing: border-box;
-  position: relative;
-  width: 13em;
-  margin: 0.2em;
-  padding: 0 15px 0 46px;
-  border: none;
-  text-align: left;
-  line-height: 34px;
-  white-space: nowrap;
-  border-radius: 0.2em;
-  font-size: 16px;
-  color: #FFF;
-}
-.loginBtn:before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 34px;
-  height: 100%;
-}
-.loginBtn:focus {
-  outline: none;
-}
-.loginBtn:active {
-  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+.googleBtn{
+  color:black!important;
 }
 
-
-/* Facebook */
-.loginBtn--facebook {
-  background-color: #4C69BA;
-  background-image: linear-gradient(#4C69BA, #3B55A0);
-  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
-  text-shadow: 0 -1px 0 #354C8C;
-}
-.loginBtn--facebook:before {
-  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;
-}
-.loginBtn--facebook:hover,
-.loginBtn--facebook:focus {
-  background-color: #5B7BD5;
-  background-image: linear-gradient(#5B7BD5, #4864B1);
-}
-
-
-/* Google */
-.loginBtn--google {
-  /*font-family: "Roboto", Roboto, arial, sans-serif;*/
-  background: white;
-  color: #4A4A4A;
-}
-.loginBtn--google:before {
-  background: url('/images/google_icon.png') 6px 6px no-repeat;
-}
-.loginBtn--google:hover,
-.loginBtn--google:focus {
-  background: #F5F5F5;
+.fa-google {
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 /* trainee dashboard tables */
@@ -725,19 +663,28 @@ th, td {
 }
 
 .pillRegButton{
+  font-size:14px!important;
+
   background-color:white !important;
-  color:#0071c2 !important;
+  color:black !important;
   border: 1px solid !important;
-  border-top-left-radius: 0px!important;
-  border-bottom-left-radius: 0px!important;
+  border-left:none!important;
+  border-right:none!important;
+  border-top:none!important;
+  border-radius:0px!important;
+  font-weight:400;
 }
 
 .pillLoginButton{
+font-size:14px!important;
   background-color:white !important;
-  color:#0071c2 !important;
+  color:black !important;
   border: 1px solid !important;
-  border-top-right-radius: 0px!important;
-  border-bottom-right-radius: 0px!important;
+  border-left:none!important;
+  border-right:none!important;
+  border-top:none!important;
+  border-radius:0px!important;
+  font-weight:400;
 }
 
 .pillLoginButton:hover, .pillRegButton:hover{
@@ -745,15 +692,16 @@ th, td {
 }
 
 .pillRegButton.active{
-  background-color:#0071c2 !important;
-  color:white !important;
+  color:#0071c2 !important;
   border-color: #0071c2 !important;
+  border-bottom: 3px solid !important;
+  font-weight:700;
 }
 
 .pillLoginButton.active{
-  background-color:#0071c2 !important;
-  color:white !important;
-  border-color: #0071c2 !important;
+  color:#0071c2 !important;
+  border-bottom: 3px solid !important;
+  font-weight:700;
 }
 
 .borderbottom{
@@ -905,12 +853,13 @@ a.userMenu:hover > .userMenuSvg {
   fill:white;
 }
 
-a.burgerOption:hover {
-  color:#0071c2!important;
-}
 
 .whiteBackground{
     background: white!important;
+}
+
+.lgrayBg{
+  background: #fafafa!important;
 }
 
 .bg-lightgrey {
@@ -974,7 +923,7 @@ html {
 
 
   .largerHowItWorks{
-    width:95%;
+    width:70%;
   }
 
 }
@@ -1013,7 +962,7 @@ html {
 }
 
 .navbar-custom {
-    background-color: white;
+    background-color: inherit;
 }
 
 .stickyLogin{
@@ -1094,7 +1043,7 @@ html {
 }
 
 .headerShadow{
-  border-bottom: 1px solid #edeff1;
+  border-bottom: 0px;
 }
 
 @media screen and (max-width: 575px) {
@@ -1189,7 +1138,7 @@ h5 > .btn {
 }
 
 .activeMenuLink{
-  color:#0071c2 !important;
+  color:#03a84e !important;
 }
 
 
@@ -1640,4 +1589,163 @@ h5 > .btn {
     -o-transform: rotate(-135deg);
     transform: rotate(-135deg);
     opacity: 0.9;
+}
+
+.trialBanner{
+  background-color: white;
+  position:fixed;
+  top:0px;
+  height:50px;
+  z-index: 100;
+  border-bottom: 1px solid lightgrey;
+}
+
+.trialBnrBtn{
+  color:grey;
+  border-color: darkgrey!important;
+}
+
+.navbar{
+
+}
+
+.heroSubFont{
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+  font-size:22px;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+}
+
+.mainSgnBtn:active, .mainSgnBtn:focus, .mainSgnBtn{
+  font-weight: 700;
+  padding:20px;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.4px;
+  border-radius: 30px;
+  background-color: #fa7268!important;
+  border-color: #fa7268!important;
+  color:white!important;
+}
+
+.mainSgnBtn:hover{
+  background-color: #f84437!important;
+  border-color: #f84437!important;
+}
+
+@media screen and (min-width: 575px) {
+  .heroArea{
+    padding-top:150px;
+    padding-bottom:250px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 150%), linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 25%), url(/images/heroImg_lg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: center;
+    background-position-y: center;
+  }
+}
+
+  .planInfobit{
+    margin-top:20px;
+    font-size:15px;
+    font-weight:600;
+
+  }
+@media screen and (max-width: 575px) {
+
+  .yourMemTitle{
+    font-size:18px!important;
+  }
+
+
+  .heroSubFont{
+    font-family: 'Open Sans', sans-serif;
+    font-weight:600;
+    font-size:19px;
+    line-height: 1.4;
+    letter-spacing: 0.4px;
+  }
+
+  .heroArea{
+    padding-top:80px;
+    padding-bottom:30px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 200%), linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 25%), url(/images/heroImg_xs.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: center;
+    background-position-y: center;
+    min-height: 300px;
+    height: 70%;
+  }
+
+  .navbar{
+    padding-left:0px!important;
+    padding-right:0px!important;
+  }
+
+  .navbar-collapse{
+    background-color: #f4f4f4!important;
+  }
+
+  .navbar-toggler{
+    padding-left:25px!important;
+    padding-top:15px!important;
+  }
+
+  .navbar-nav{
+    margin-top:0px!important;
+    margin-bottom:0px!important;
+  }
+
+  .nav-item{
+    border-top: 1px solid lightgray!important;
+    padding-top:12px!important;
+    padding-bottom:12px!important;
+    padding-left:20px!important;
+  }
+
+  .nav-link{
+    color:#215ca0!important;
+  }
+  .nav-link.activeMenuLink{
+    color:#03a84e!important;
+  }
+}
+
+.mainTextInput{
+  border:none!important;
+}
+
+.mainTextInput, .mainTextInput:focus, .mainTextInput:active{
+  background-color: #eceef4!important;
+  border:none!important;
+  border-radius:10px!important;
+  padding-top:15px!important;
+  padding-bottom:15px!important;
+  box-shadow: none!important;
+}
+
+.mainSignupLoginBtns{
+  border-radius:30px!important;
+  padding-top:10px!important;
+  padding-bottom:10px!important;
+}
+
+.whatYouGetHeader{
+  font-weight:800;
+  font-size:27px;
+}
+
+.memShade{
+  box-shadow: 2px 2px 2px rgb(0 0 0 / 20%);
+    overflow: hidden;
+    padding: 0px;
+}
+
+.trialMemBnr{
+  background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(/images/bg1.png); background-size: 70%;
+  border-bottom:1px solid lightblue;;
 }

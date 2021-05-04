@@ -101,7 +101,7 @@ if($_SESSION['userType']=="Trainee"){
       <div class="row pt-2 pb-2">
         <div class="col-4">Name
         </div>
-        <div class="col-8 greyfontNoCenter"><?php echo $user->firstName.' '.$user->lastName; ?>
+        <div class="col-8 greyfontNoCenter"><?php echo $user->firstName; ?>
         </div>
       </div>
       <div class="row pt-2 pb-2">

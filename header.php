@@ -20,6 +20,24 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '482572476278493');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=482572476278493&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
 
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
@@ -40,8 +58,8 @@ s0.parentNode.insertBefore(s1,s0);
 
   </script>
 
-  <script src="/scripts/trainee_signup.js"> </script>
-  <script src="/scripts/login.js"> </script>
+  <script src="/scripts/trainee_signup.js?v=11234"> </script>
+  <script src="/scripts/login.js?v=11234"> </script>
   <script src="/scripts/facebook_login.js"> </script>
   <script src="/scripts/google_login.js"> </script>
 
@@ -49,7 +67,17 @@ s0.parentNode.insertBefore(s1,s0);
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-557BHJH"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<?php
+  if(!isset($_SESSION['uid'])){?>
+<div class="container-fluid trialBanner" align="center">
+  <div class="pt-2">
+<b class="hide-on-mobile">Trial Offer</b>
 
+<button type="button" class="ml-3 btn btn-sm btn-primary trialBnrBtn" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> <b>15 DAYS FREE</b> <i class="fas fa-arrow-right"></i> </button> <i class="far fa-arrow-right"></i>
+
+</div>
+</div>
+<?php } ?>
 <div class="container-fluid">
 <div class="row">
 
@@ -58,56 +86,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- burger -->
     <button class="navbar-toggler collapsed position-relative" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span> </span>
-      <span> </span>
-      <span> </span>
+      <span class="togglerColor"> </span>
+      <span class="togglerColor"> </span>
+      <span class="togglerColor"> </span>
     </button>
     <!-- /burger" -->
 
-
-  <a href="<?php FlowControl::echoHomePageLink();?>" class="navbar-brand" style="padding-top:3px; padding-bottom:3px!important"><img src="/images/logo.png" alt="FuNinja" style="height:35px;"></a>
+    <a id="js-logo-white" href="<?php FlowControl::echoHomePageLink();?>" style="padding-top:3px; padding-bottom:3px!important; margin-left:40px!important"><img class="pt-1" src="/images/whitelogo.png" alt="FuNinja" style="height:45px;"></a>
+    <a id="js-logo-color" href="<?php FlowControl::echoHomePageLink();?>" style="padding-top:3px; padding-bottom:3px!important; margin-left:40px!important"><img class="pt-1" img src="/images/logo.png" alt="FuNinja" style="height:45px;"></a>
 
 
   <!-- everything in here will be collapsed on smaller devices -->
   <div class="collapse navbar-collapse pt-1 order-md-1 order-2" id="navbarSupportedContent" style="padding-top:0px!important">
 
     <!-- Navbar links, dropdowns etc go here -->
-    <ul class="navbar-nav mr-auto" id="navbarLinks">
+    <ul class="navbar-nav ml-auto" id="navbarLinks">
+    </li>
 
-
-      <li class="nav-item active pl-md-3 pr-md-3 pb-2 pb-md-0 pt-3 pt-md-0">
-        <a class="nav-link burgerOption aboutLink headerMnLink hide-on-mobile" href="/about.php"> ABOUT</a>
+    <li class="nav-item dropdown active pr-md-3 pb-md-0">
+      <a class="nav-link burgerOption offeringsLink headerMnLink hide-on-mobile" href="/offerings.php"> HOW IT WORKS</a>
+      <a class="nav-link burgerOption offeringsLink headerMnLink hide-on-nonmobile" href="/offerings.php">
+        HOW IT WORKS</a>
+    </li>
+    <li class="nav-item active pr-md-3 pb-md-0 pt-md-0">
+      <a class="nav-link burgerOption membershipLink headerMnLink" href="/plans.php">MEMBERSHIP</a>
+    </li>
+      <li class="nav-item active pr-md-3 pb-md-0 pt-md-0">
+        <a class="nav-link burgerOption aboutLink headerMnLink hide-on-mobile" href="/about.php"> ABOUT US</a>
         <a class="nav-link burgerOption aboutLink headerMnLink hide-on-nonmobile" href="/about.php">
-        <i class="fas fa-mask mr-1"></i> ABOUT</a>
-      </li>
-      <li class="nav-item dropdown active pr-md-3 pb-2 pb-md-0">
-        <a class="nav-link burgerOption offeringsLink headerMnLink hide-on-mobile" href="/offerings.php"> OFFERINGS</a>
-        <a class="nav-link burgerOption offeringsLink headerMnLink hide-on-nonmobile" href="/offerings.php">
-          <i class="fas fa-th-list mr-2"></i>OFFERINGS</a>
-      </li>
+         ABOUT US</a>
     <!--  <li class="nav-item dropdown active">
         <a class="nav-link burgerOption trainersLink" href="/trainers.php">Trainers</a>
       </li>-->
-      <li class="nav-item active pr-md-3">
-        <a class="nav-link burgerOption membershipLink headerMnLink" href="/plans.php">MEMBERSHIP</a>
-      </li>
-      <li class="nav-item active pr-md-3 pb-2 pb-md-0">
+
+      <li class="nav-item active pr-md-3 pb-md-0">
         <a class="nav-link burgerOption contactLink headerMnLink hide-on-mobile" href="/contact.php">CONTACT</a>
         <a class="nav-link burgerOption contactLink headerMnLink hide-on-nonmobile" href="/contact.php">
-        <i class="fas fa-phone-alt mr-2"></i>CONTACT</a>
+        CONTACT</a>
       </li>
-      <li class="nav-item active pr-md-3 pb-2 pb-md-0">
+      <!--<li class="nav-item active pr-md-3 pb-2 pb-md-0">
         <a class="nav-link burgerOption faqLink headerMnLink hide-on-mobile" href="/faq.php">
           FAQ</a>
         <a class="nav-link burgerOption faqLink headerMnLink hide-on-nonmobile" href="/faq.php">
         <i class="fas fa-question-circle mr-2"></i></i>FAQ</a>
-      </li>
+      </li>-->
+      <?php
+      // if user user isn't logged in, show the login and register buttons
+      if(!isset($_SESSION['uid'])){ ?>
+        <li class="nav-item active pr-md-3 pb-2 pb-md-0">
+          <a class="nav-link burgerOption  headerMnLink hide-on-mobile" data-toggle="modal" data-target="#exampleModal" href="#">LOGIN</a>
+          <a class="nav-link burgerOption  headerMnLink hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" >
+          LOGIN</a>
+        </li>
+        <?php  ;
+      } ?>
+
       <?php
       // show dashboard link with special formatting if logged in
       if(isset($_SESSION['uid'])){ ?>
         <li class="nav-item active">
-          <a class="nav-link burgerOption dashLink headerMnLink" href="/includes/post_login_landing_controller.php">
-            <i class="fas fa-weight mr-2"></i></i>Dashboard</a>
+          <a class="nav-link burgerOption dashLink headerMnLink" href="/includes/post_login_landing_controller.php"> DASHBOARD </a>
         </li>
 
         <?php  ;}?>
@@ -116,14 +154,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="order-md-2 order-1">
-<?php
-// if user user isn't logged in, show the login and register buttons
-if(!isset($_SESSION['uid'])){ ?>
-  <button type="button" class="mr-1 btn btn-primary  btn-sm btn " data-toggle="modal" data-target="#exampleModal" id ="loginButton"> LOGIN </button>
-  <button type="button" class=" btn  btn-secondary blueButton btn" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> SIGN UP</button>
-
-  <?php  ;
-} ?>
 
 <?php
   if(isset($_SESSION['uid'])){?>
@@ -169,10 +199,10 @@ if(!isset($_SESSION['uid'])){ ?>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" >
 <div class="modal-dialog" role="document" style=" width: 300px; margin-top:0px; margin-bottom:0px; margin-left: 0px;margin-right: 0px;">
 <div class="modal-content signup_modal" style="vertical-align: middle">
-  <div class="modal-header" style="margin-left: 60px; padding-bottom: 0px;">
+  <div class="modal-header" style="margin-left: 0px; padding-bottom: 0px;">
   <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
   <li class="nav-item"> <a class="nav-link pillLoginButton btn-sm active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab"  aria-selected="true">LOGIN  </a> </li>
-  <li class="nav-item"> <a class="nav-link pillRegButton btn-sm" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"  aria-selected="false">SIGN UP</a> </li>
+  <li class="nav-item"> <a class="nav-link pillRegButton btn-sm" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"  aria-selected="false" style="padding-left:0px">SIGN UP</a> </li>
   </ul>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
   <span id="signupPopupCloseBtn" class="hide-on-nonmobile" aria-hidden="true">&times;</span>
@@ -185,62 +215,51 @@ if(!isset($_SESSION['uid'])){ ?>
         <div class="col-sm-12 p-0 m-0">
           <form class="form-signin p-0 m-0" id = "login" action="includes/login.php" method="post" novalidate>
           <small id = "login-errorMsg" class = "login-error formErrors">  </small>
-          <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-1 greybgd" placeholder="Username or Email" required>
-          <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-1 greybgd" placeholder="Password" required>
-          <center><button class="btn btn-primary btn-block blueButton" type="submit" name="login-submit" id = "login-submit">Login</button></center>
+          <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-3 greybgd mainTextInput" placeholder="Email" required>
+          <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-3 greybgd mainTextInput" placeholder="Password" required>
+          <center><button class="btn btn-primary btn-block blueButton mainSignupLoginBtns mb-3" type="submit" name="login-submit" id = "login-submit"><i class="far fa-envelope mr-2"></i></i></i><b>Login with Email</b></button></center>
 
-          <div class="checkbox mt-2 mb-0">
-          <input type="checkbox" value="remember-me" name="remember-me" id="remember-me">
-          <label for="remember-me"> <small>Remember me</small> </label>
-          </div>
           </form>
           <div class="pt-2 pb-2">
             <p class="middleText"><span>OR</span></p>
           </div>
           <div>
             <center>
-            <button onclick="google_login();" class="loginBtn loginBtn--google boxshadoweffect">
-              Login with Google
+            <button onclick="google_login();" class="googleBtn btn btn-primary btn-block mainSignupLoginBtns">
+              <i class="fab fa-google mr-2"></i>Login with Google
             </button></center>
-            <center><a href="forgot-password.php" class="btn btn-link"> <small>Forgot password?</small></a></center>
+
           </div>
         </div>
 
 
 
       </div>
-    <div class="tab-pane p-0 m-0" id="pills-signup-body" role="tabpanel" >
-      <div class="col-sm-12 p-0 m-0">
-        <form id = "signup" class="form-signin m-0 p-0" action="includes/signup_trainee.php" method="post" novalidate>
+      <div class="tab-pane p-0 m-0" id="pills-signup-body" role="tabpanel" >
+        <div class="col-sm-12 p-0 m-0">
+          <form id = "signup" class="form-signin m-0 p-0" action="includes/signup_trainee.php" method="post" novalidate>
 
-        <input id = "username" type="text" name="uid" class="form-control mb-1 greybgd " placeholder="Username" required>
-        <div id = "username-guidance" class="signup-guidance mb-1 "><small> This is the name people will know you by on FuNinja. </small></div>
-        <div id = "username-error" class="signup-error formErrors mb-1"></div>
+          <input id = "fName" type="text" name="fName" class="form-control mb-3 greybgd mainTextInput" placeholder="First Name" required>
+          <input id = "email" type="email" name="email" class="form-control mb-3 greybgd mainTextInput" placeholder="Email" required>
+          <div id = "email-error" class="signup-error formErrors mb-1"><small> </small></div>
 
-        <input id = "email" type="email" name="email" class="form-control mb-1 greybgd" placeholder="E-Mail" required>
-        <div id = "email-guidance" class="signup-guidance mb-1"><small> You'll need to verify that you own this email account. </small></div>
-        <div id = "email-error" class="signup-error formErrors mb-1"><small> </small></div>
+          <input id = "password" type="password" name="pwd" class="form-control mb-3 greybgd mainTextInput" placeholder="Password" required >
+          <div id = "password-error" class="signup-error mb-1 formErrors"><small> </small></div>
 
-        <input id = "password" type="password" name="pwd" class="form-control mb-1 greybgd" placeholder="Password" required >
-        <div id = "password-error" class="signup-error mb-1 formErrors"><small> </small></div>
-
-        <input id = "passwordRepeat" type="password" name="pwd-repeat" class="form-control mb-1 greybgd" placeholder="Repeat Password" required>
-        <div id = "passwordRepeat-error" class="signup-error mb-1 formErrors" ><small> </small></div>
-
-        <small id = "errorMsg" class = "signup-error formErrors">  </small>
-        <center><button id = "submit" class="btn btn-primary mt-1 mb-1 btn-block blueButton" type="submit" name="signup-submit">Sign Up</button></center>
-        </form>
-        <div class="pt-3 pb-2">
-            <p class="middleText"><span>OR</span></p>
-        </div>
-        <div>
-          <center>
-          <button onclick="google_login();" class="loginBtn loginBtn--google boxshadoweffect">
-            Login with Google
-          </button></center>
+          <small id = "errorMsg" class = "signup-error formErrors">  </small>
+          <center><button id = "submit" class="btn btn-primary mt-1 mb-1 btn-block blueButton mainSignupLoginBtns" type="submit" name="signup-submit"><i class="fa fa-check-circle fa-fw fa-left mr-2" ></i><b>Create New Account</b></button></center>
+          </form>
+          <div class="pt-3 pb-2">
+              <p class="middleText"><span>OR</span></p>
+          </div>
+          <div>
+            <center>
+            <button onclick="google_login();" class="googleBtn btn btn-primary btn-block mainSignupLoginBtns">
+              <i class="fab fa-google mr-2"></i>Signup with Google
+            </button></center>
+          </div>
         </div>
       </div>
-    </div>
     </div>
 
   <img id="loader" src="/images/loader.svg" alt="load_animation" width="50" height="50" class="m-0 p-0">
@@ -258,14 +277,10 @@ if(!isset($_SESSION['uid'])){ ?>
 
 
 <script>
-// set the padding on load to space the body correctly below the navbar
-  $(document).ready(function() {
-     $('body').css('padding-top', parseInt($('#main-navbar').css("height"))+10);
-  });
-
 
   $(window).resize(function () {
-     $('body').css('padding-top', parseInt($('#main-navbar').css("height"))+10);
+
+     $('body').css('padding-top', parseInt($('#main-navbar').css("height")));
   });
 
   // set the margins on body so that contents don't overlap the footer
@@ -329,4 +344,44 @@ $(document).ready(function(){
   });
 
 });
+</script>
+
+<script> // control navbar position based on 1. login state 2. display
+$(document).ready(function(){
+  <?php
+    if(!isset($_SESSION['uid'])){?>
+      var loggedIn = false;
+    <?php } else { ?>
+      var loggedIn = true;
+    <?php } ?>
+  if(loggedIn==false){
+    $(".navbar").css('top', '50px');
+    var heightNavBar= parseInt($('#main-navbar').css("height"));
+    var heightBanner = parseInt($('.trialBanner').css("height"));
+    var bodyTopPadding = heightNavBar+heightBanner;
+     $('body').css('padding-top', bodyTopPadding);
+  } else if(loggedIn==true){
+    $(".navbar").css('top', '0px');
+    var heightNavBar= parseInt($('#main-navbar').css("height"));
+    $('body').css('padding-top', heightNavBar+10);
+  }
+});
+
+</script>
+
+<script>
+
+  $(document).ready(function () {
+    $('#js-logo-color').show();
+    $('#js-logo-white').hide();
+
+    if ($(window).width() > 425 ){
+        $('.headerMnLink').css('color', 'gray');
+      }
+
+      $('.navbar').css('background-color','white');
+      $('.togglerColor').css('background-color','black');
+      $('.navbar').css('border-bottom','1px solid lightgray');
+
+    });
 </script>

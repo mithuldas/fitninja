@@ -7,17 +7,15 @@ require_once ROOT_DIR.'/includes/dbh.php';
 class Helper{
 
   static function deleteAllUsers($conn){
-    $sql1 = "DELETE from user_interests;";
-    $sql2 = "DELETE from session_attributes;";
-    $sql3 = "DELETE from sessions;";
-    $sql4 = "DELETE from form_saved_data;";
-    $sql5 = "DELETE from form_saved;";
-    $sql6 = "DELETE from user_products;";
-    $sql7 = "DELETE from user_interests;";
-    $sql8 = "DELETE from user_attributes where uid not in ('2');"; // preserve dummy trainer's details
-    $sql9 = "DELETE from tokens;";
-    $sql10 = "DELETE from qualifications where uid not in ('2');"; // preserve dummy trainer's quals
-    $sql11 = "DELETE from users where username not in ('admin','trainer');"; // preserve dummy trainer and admin accounts
+    $sql1 = "DELETE from session_attributes;";
+    $sql2 = "DELETE from sessions;";
+    $sql3 = "DELETE from form_saved_data;";
+    $sql4 = "DELETE from form_saved;";
+    $sql5 = "DELETE from user_products;";
+    $sql6 = "DELETE from user_attributes where uid not in ('2');"; // preserve dummy trainer's details
+    $sql7 = "DELETE from tokens;";
+    $sql8 = "DELETE from qualifications where uid not in ('2');"; // preserve dummy trainer's quals
+    $sql9 = "DELETE from users where username not in ('admin','trainer') or username is null;"; // preserve dummy trainer and admin accounts
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -46,12 +44,6 @@ class Helper{
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_prepare($stmt, $sql9);
-    mysqli_stmt_execute($stmt);
-
-    mysqli_stmt_prepare($stmt, $sql10);
-    mysqli_stmt_execute($stmt);
-
-    mysqli_stmt_prepare($stmt, $sql11);
     mysqli_stmt_execute($stmt);
 
     if(mysqli_stmt_affected_rows($stmt)<1){

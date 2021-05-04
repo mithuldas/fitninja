@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.3
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Feb 24, 2021 at 05:02 AM
--- Server version: 5.7.26
--- PHP Version: 7.4.2
+-- Host: 127.0.0.1
+-- Generation Time: May 03, 2021 at 01:46 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
@@ -86,7 +87,7 @@ CREATE TABLE `form_saved` (
   `id` int(11) NOT NULL,
   `user_product_id` int(11) NOT NULL,
   `form_version` int(11) NOT NULL,
-  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `timestamp` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -111,7 +112,7 @@ CREATE TABLE `form_saved_data` (
 
 CREATE TABLE `form_versions` (
   `id` int(11) NOT NULL,
-  `created_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_dt` datetime NOT NULL DEFAULT current_timestamp(),
   `current_version` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -280,7 +281,7 @@ CREATE TABLE `sessions` (
   `filled_trainers` int(11) NOT NULL,
   `filled_trainees` int(11) NOT NULL,
   `notes` varchar(512) DEFAULT NULL,
-  `creation_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `creation_dt` datetime NOT NULL DEFAULT current_timestamp(),
   `completed` varchar(1) DEFAULT NULL COMMENT 'Y if completed'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -335,7 +336,7 @@ CREATE TABLE `tokens` (
   `token` longtext NOT NULL,
   `expiry` text NOT NULL,
   `type` tinytext NOT NULL,
-  `creation_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `creation_dt` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -350,7 +351,7 @@ CREATE TABLE `transactions` (
   `type_id` int(11) NOT NULL,
   `external_id` varchar(512) NOT NULL,
   `method` varchar(64) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `comments` varchar(512) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -381,12 +382,12 @@ INSERT INTO `transaction_types` (`id`, `type`) VALUES
 
 CREATE TABLE `users` (
   `uid` int(11) NOT NULL,
-  `username` varchar(64) NOT NULL,
+  `username` varchar(64) DEFAULT NULL,
   `user_type_id` int(11) NOT NULL,
   `email` varchar(64) NOT NULL,
   `password` longtext NOT NULL,
   `email_verified` tinytext NOT NULL,
-  `reg_dt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `reg_dt` datetime NOT NULL DEFAULT current_timestamp(),
   `source` varchar(64) DEFAULT NULL,
   `ext_name` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -901,3 +902,4 @@ ALTER TABLE `user_products`
   ADD CONSTRAINT `user_products_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   ADD CONSTRAINT `user_products_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`),
   ADD CONSTRAINT `user_products_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
+COMMIT;

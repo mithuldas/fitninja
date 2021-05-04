@@ -9,30 +9,39 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-  <title> Contact - FuNinja </title>
+  <title> Contact FuNinja </title>
   <?php
   require ROOT_DIR."/includes/frameworks.php";
   ?>
 </head>
 
 <body>
+  <script>
+  // add class to body tag so that white background can be set
+
+  $("body").addClass("lgrayBg");
+
+  </script>
 <?php
 include ROOT_DIR."/header.php";
 ?>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<div class="container-fluid pt-3">
+<div class="container mt-3 mt-md-5">
 
-<center> <h5 class="m-0 p-0">We would <span style="color:red">♥</span> to hear from you</h5></center>
-<center><small class="m-0 p-0">Support. Feedback. Enquiries</small></center>
+<h5 class="m-0 p-0">We would <span style="color:red">♥</span> to hear from you</h5>
+<br>
+
+<!--<p> If you're having trouble, please check our <a href="/faq.php"><b>FAQs</b></a> (Frequently Asked Questions) page. </p>-->
+
 <br>
 
 <div class="row" >
-  <div class="col-md-3 mb-4 justify-content-center align-self-center" align="center">
+  <div class="col-md-3 mb-4 justify-content-center " align="center">
 
-  <i class="far fa-envelope fa-lg mr-3"></i> hello@funinja.in <br>
-  <i class="fas fa-phone fa-lg mr-2"> </i> +91 91088 06213 <br>
+  <i class="far fa-envelope fa-lg mr-3"></i>hello@funinja.in <br>
+  <i class="fas fa-phone fa-lg mr-2"> </i>+91 91088 06213 <br>
      <i class="fab fa-whatsapp fa-lg mr-2"></i> +91 91088 06213
   </div>
 <div class="col-md-7">

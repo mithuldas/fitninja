@@ -21,10 +21,10 @@ include ROOT_DIR."/header.php";
 ?>
 
 <div class="container">
-<div class="row text-center ml-1 mr-1 userdropdown orderConfirmationContainer" style="background:white">
+<div class="row text-center ml-1 mr-1 mt-4 pt-4 pb-4 userdropdown orderConfirmationContainer" style="background:white">
   <div class="col ">
-    <br><br>We've sent you an email at <b><u><?php echo $_GET['email'];?></b></u> to make sure that you own the email account. Please click the link in it to login!
-    <br><br><br>
+    We've sent an email to <b><?php echo $_GET['email'];?></b>. Please click the link in the email to verify before proceeding.
+
   </div>
 </div>
 

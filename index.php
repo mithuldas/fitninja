@@ -9,71 +9,430 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-  <title> FuNinja Virtual Personal Training</title>
+  <meta property="og:title" content="Get Strong, Get Healthy!"/>
+  <meta property="og:description" content="Get healthy and look your best from the safety and comfort of your home"/>
+  <meta property="og:image" content="https://funinja.in/images/logo.png"/>
+  <meta property="og:url" content="https://FuNinja.in"/>
+  <meta property="fb:app_id" content="744163999514262"/>
+
+  <title> FuNinja - Get Strong, Get Healthy!</title>
   <?php
   require ROOT_DIR."/includes/frameworks.php";
   ?>
-</head>
 
+  <!-- Facebook Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '482572476278493');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=482572476278493&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Facebook Pixel Code -->
+
+</head>
+<div
 <body>
-<?php
-include ROOT_DIR."/header.php";
-?>
+
+  <?php
+  include_once "config.php";
+  include_once ( ROOT_DIR.'/includes/autoloader.php' );
+
+  FlowControl::startSession();
+  include_once ROOT_DIR."/includes/auto_login.php";
+  ?>
+
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6045fd9b385de407571db4e7/1f08mda53';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+
+    <meta name="google-signin-client_id" content="29019688226-vrs2euoj57drdrq3krf5gs76bil3otsk.apps.googleusercontent.com">
+
+    <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '744163999514262',
+        autoLogAppEvents : true,
+        cookie           : true,
+        xfbml            : true,
+        version          : 'v8.0'
+      });
+    }
+
+    </script>
+
+    <script src="/scripts/trainee_signup.js?v=11234"> </script>
+    <script src="/scripts/login.js?v=11234"> </script>
+    <script src="/scripts/facebook_login.js"> </script>
+    <script src="/scripts/google_login.js"> </script>
+
+
+    <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-557BHJH"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <?php
+    if(!isset($_SESSION['uid'])){?>
+  <div class="container-fluid trialBanner" align="center">
+    <div class="pt-2">
+  <b class="hide-on-mobile">Trial Offer</b>
+
+  <button type="button" class="ml-3 btn btn-sm btn-primary trialBnrBtn" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> <b>15 DAYS FREE</b> <i class="fas fa-arrow-right"></i> </button> <i class="far fa-arrow-right"></i>
+
+  </div>
+  </div>
+<?php } ?>
+
+  <div class="container-fluid heroArea" style="
+
+    ">
+  <div class="row">
+
+    <!--navbar -->
+    <nav id = "main-navbar" class="navbar navbar-light fixed-top navbar-custom headerShadow navbar-expand-md  mb-0 pb-0 pt-0">
+
+      <!-- burger -->
+      <button class="navbar-toggler collapsed position-relative" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="togglerColor"> </span>
+        <span class="togglerColor"> </span>
+        <span class="togglerColor"> </span>
+      </button>
+      <!-- /burger" -->
+
+    <a id="js-logo-white" href="<?php FlowControl::echoHomePageLink();?>" style="padding-top:3px; padding-bottom:3px!important; margin-left:40px!important"><img class="pt-1" src="/images/whitelogo.png" alt="FuNinja" style="height:45px;"></a>
+    <a id="js-logo-color" href="<?php FlowControl::echoHomePageLink();?>" style="padding-top:3px; padding-bottom:3px!important; margin-left:40px!important"><img class="pt-1" img src="/images/logo.png" alt="FuNinja" style="height:45px;"></a>
+
+    <!-- everything in here will be collapsed on smaller devices -->
+    <div class="collapse navbar-collapse pt-1 order-md-1 order-2" id="navbarSupportedContent" style="padding-top:0px!important">
+
+      <!-- Navbar links, dropdowns etc go here -->
+      <ul class="navbar-nav ml-auto" id="navbarLinks">
+      </li>
+
+      <li class="nav-item dropdown active pr-md-3 pb-md-0">
+        <a class="nav-link burgerOption offeringsLink headerMnLink hide-on-mobile" href="/offerings.php"> HOW IT WORKS</a>
+        <a class="nav-link burgerOption offeringsLink headerMnLink hide-on-nonmobile" href="/offerings.php">
+          HOW IT WORKS</a>
+      </li>
+      <li class="nav-item active pr-md-3 pb-md-0 pt-md-0">
+        <a class="nav-link burgerOption membershipLink headerMnLink" href="/plans.php">MEMBERSHIP</a>
+      </li>
+
+        <li class="nav-item active pr-md-3 pb-md-0 pt-md-0">
+          <a class="nav-link burgerOption aboutLink headerMnLink hide-on-mobile" href="/about.php"> ABOUT US</a>
+          <a class="nav-link burgerOption aboutLink headerMnLink hide-on-nonmobile" href="/about.php">
+           ABOUT US</a>
+      <!--  <li class="nav-item dropdown active">
+          <a class="nav-link burgerOption trainersLink" href="/trainers.php">Trainers</a>
+        </li>-->
+
+        <li class="nav-item active pr-md-3 pb-md-0">
+          <a class="nav-link burgerOption contactLink headerMnLink hide-on-mobile" href="/contact.php">CONTACT</a>
+          <a class="nav-link burgerOption contactLink headerMnLink hide-on-nonmobile" href="/contact.php">
+          CONTACT</a>
+        </li>
+        <!--<li class="nav-item active pr-md-3 pb-2 pb-md-0">
+          <a class="nav-link burgerOption faqLink headerMnLink hide-on-mobile" href="/faq.php">
+            FAQ</a>
+          <a class="nav-link burgerOption faqLink headerMnLink hide-on-nonmobile" href="/faq.php">
+          <i class="fas fa-question-circle mr-2"></i></i>FAQ</a>
+        </li>-->
+        <?php
+        // if user user isn't logged in, show the login and register buttons
+        if(!isset($_SESSION['uid'])){ ?>
+          <li class="nav-item active pr-md-3 pb-2 pb-md-0">
+            <a class="nav-link burgerOption contactLink headerMnLink hide-on-mobile" data-toggle="modal" data-target="#exampleModal" href="#">LOGIN</a>
+            <a class="nav-link burgerOption contactLink headerMnLink hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" >
+            LOGIN</a>
+          </li>
+          <?php  ;
+        } ?>
+
+        <?php
+        // show dashboard link with special formatting if logged in
+        if(isset($_SESSION['uid'])){ ?>
+          <li class="nav-item active">
+            <a class="nav-link burgerOption dashLink headerMnLink" href="/includes/post_login_landing_controller.php"> DASHBOARD </a>
+          </li>
+
+          <?php  ;}?>
+      </ul>
+
+  </div>
+
+  <div class="order-md-2 order-1">
+
+  <?php
+    if(isset($_SESSION['uid'])){?>
+    <div class="dropdown">
+
+      <button type="button" class="stickyUserMenu" data-toggle="dropdown">
+        <img class="mt-0 mb-0 mr-1 ml-2" title="User Menu" src="/images/user-ninja.png" width="30" style="padding: 2px; border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
+      </button>
+
+      <a href="/includes/logout.php" class="stickyUserLogout">
+        <img class="m-0 " title="Logout" src="/images/logout.png" width="30" style="padding:4px; border-radius: 50%; box-shadow: 0px 3px 6px 0px #00000020; background-color:white"/>
+      </a>
+  <div class="dropdown-menu dropdown-menu-right mt-2">
+    <a class="dropdown-item userMenu pb-2 pt-2 pl-3 pr-5" href="/includes/post_login_landing_controller.php">
+  <svg class="mr-2 userMenuSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M1.25,17.5V7.5h5v10Zm11.25,0h-5V5H5l5-5,5,5H12.5Zm1.25,0v-5h5v5Z"></path></svg>
+      Dashboard</a>
+    <a class="dropdown-item userMenu pb-2 pt-2 pl-3 pr-5" href="/profile.php#profile"><svg class="mr-2 userMenuSvg" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="inherit"><path d="M15,15.5 L5,15.5 C4.724,15.5 4.5,15.276 4.5,15 C4.5,12.755 6.326,10.929 8.571,10.929 L11.429,10.929 C13.674,10.929 15.5,12.755 15.5,15 C15.5,15.276 15.276,15.5 15,15.5 M10,4.5 C11.405,4.5 12.547,5.643 12.547,7.048 C12.547,8.452 11.405,9.595 10,9.595 C8.595,9.595 7.453,8.452 7.453,7.048 C7.453,5.643 8.595,4.5 10,4.5 M16,2 L4,2 C2.897,2 2,2.897 2,4 L2,16 C2,17.103 2.897,18 4,18 L16,18 C17.103,18 18,17.103 18,16 L18,4 C18,2.897 17.103,2 16,2"></path>
+    </g></svg> Profile</a>
+    <a class="dropdown-item userMenu pb-2 pt-2 pl-3 pr-5" href="/profile.php#settings"><svg class="mr-2 userMenuSvg" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><g fill="inherit"><path d="M7.03093403,10 C7.03093403,8.36301971 8.36301971,7.03093403 10,7.03093403 C11.6369803,7.03093403 12.9679409,8.36301971 12.9679409,10 C12.9679409,11.6369803 11.6369803,12.969066 10,12.969066 C8.36301971,12.969066 7.03093403,11.6369803 7.03093403,10 M16.4016617,8.49127796 C16.2362761,7.79148295 15.9606334,7.13669084 15.5916096,6.5437777 L16.5231696,5.06768276 C16.7526843,4.70315931 16.7684353,4.22387849 16.5231696,3.83572852 C16.1833977,3.29794393 15.4712269,3.13593351 14.9323172,3.47683044 L13.4562223,4.40839036 C12.8633092,4.03936662 12.208517,3.76259882 11.508722,3.59833825 L11.1250724,1.89947899 C11.0294412,1.47982699 10.7020452,1.12992949 10.2542664,1.02867298 C9.63322641,0.888038932 9.01556168,1.27843904 8.87492764,1.89947899 L8.49127796,3.59833825 C7.79148295,3.76259882 7.13669084,4.03936662 6.54265263,4.40726528 L5.06768276,3.47683044 C4.70315931,3.24731568 4.22387849,3.23156466 3.83572852,3.47683044 C3.29794393,3.81660229 3.13593351,4.5287731 3.47683044,5.06768276 L4.40726528,6.54265263 C4.03936662,7.13669084 3.76259882,7.79148295 3.59721318,8.49127796 L1.89947899,8.87492764 C1.47982699,8.97055879 1.12992949,9.29795485 1.02867298,9.74573365 C0.888038932,10.3667736 1.27843904,10.9844383 1.89947899,11.1250724 L3.59721318,11.508722 C3.76259882,12.208517 4.03936662,12.8633092 4.40726528,13.4573474 L3.47683044,14.9323172 C3.24731568,15.2968407 3.23156466,15.7761215 3.47683044,16.1642715 C3.81660229,16.7020561 4.5287731,16.8640665 5.06768276,16.5231696 L6.54265263,15.5927347 C7.13669084,15.9606334 7.79148295,16.2374012 8.49127796,16.4016617 L8.87492764,18.100521 C8.97055879,18.520173 9.29795485,18.8700705 9.74573365,18.971327 C10.3667736,19.1119611 10.9844383,18.721561 11.1250724,18.100521 L11.508722,16.4016617 C12.208517,16.2374012 12.8633092,15.9606334 13.4562223,15.5916096 L14.9323172,16.5231696 C15.2968407,16.7526843 15.7749964,16.7684353 16.1631464,16.5231696 C16.7020561,16.1833977 16.8629414,15.4712269 16.5231696,14.9323172 L15.5916096,13.4562223 C15.9606334,12.8633092 16.2362761,12.208517 16.4016617,11.508722 L18.100521,11.1250724 C18.520173,11.0294412 18.8700705,10.7020452 18.971327,10.2542664 C19.1119611,9.63322641 18.721561,9.01556168 18.100521,8.87492764 L16.4016617,8.49127796 Z"></path>
+    </g></svg> Settings</a>
+    <a class="dropdown-item userMenu pb-2 pt-2 pl-3 pr-5" href="/profile.php#plans"><svg class="mr-2 userMenuSvg" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><path d="M4.78,5.15H4.15V2H3.09a1,1,0,0,1-.73.25V3a1.84,1.84,0,0,0,.7-.17V5.15H2.35V6H4.78Z"></path><path d="M3.62,8.88c.25,0,.39.12.39.35s-.17.41-.77.78c-1,.63-1.15,1.21-1.15,1.78V12H5v-.85H3.31c.06-.16.22-.35.72-.64.81-.43,1-.87,1-1.32C5,8.47,4.58,8,3.65,8A1.76,1.76,0,0,0,2.08,9l.72.52A1.07,1.07,0,0,1,3.62,8.88Z"></path><path d="M4.43,15.87A.82.82,0,0,0,5,15.05C5,14.4,4.53,14,3.65,14a2.15,2.15,0,0,0-1.51.61l.55.64a1.24,1.24,0,0,1,.88-.39c.27,0,.41.12.41.32s-.15.38-.67.38H3v.72h.31c.53,0,.76.13.76.46s-.15.42-.57.42a1.05,1.05,0,0,1-.85-.5L2,17.21A1.83,1.83,0,0,0,3.57,18c.94,0,1.55-.43,1.55-1.24A.87.87,0,0,0,4.43,15.87Z"></path><path d="M17,9H8a1,1,0,0,0,0,2h9a1,1,0,0,0,0-2Z"></path><path d="M17,15H8a1,1,0,0,0,0,2h9a1,1,0,0,0,0-2Z"></path><path d="M8,5h9a1,1,0,0,0,0-2H8A1,1,0,0,0,8,5Z">
+    </path></svg>
+   Plans</a>
+    <a class="dropdown-item userMenu pb-2 pt-2 pl-3 pr-5" href="/contact.php"><svg class="mr-2 userMenuSvg" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="height:23px"><path fill="inherit" d="M8.622 10.616c.078.08.14.175.183.28.044.105.07.218.07.332 0 .237-.087.456-.253.62-.167.168-.385.255-.622.255-.236 0-.455-.087-.62-.254-.167-.166-.255-.385-.255-.622 0-.114.027-.227.07-.332.044-.105.105-.2.184-.28.087-.088.174-.15.288-.193.324-.13.71-.052.954.193zm-.205-6.242c1.595 0 2.466.807 2.466 1.92 0 .976-.556 1.448-1.238 1.816-.615.317-.83.518-.904.898 0 .004-.034.207-.036.21-.034.126-.087.244-.18.336-.14.14-.323.21-.524.21-.097 0-.192-.017-.29-.052-.087-.035-.165-.088-.235-.158-.14-.14-.22-.333-.22-.533 0-.11.02-.188.074-.348.16-.472.55-.896 1.056-1.17.577-.327.84-.558.84-1.07 0-.42-.357-.715-.987-.715-.496 0-.996.218-1.39.52-.26.2-.62.202-.858-.02l-.05-.05c-.313-.29-.27-.787.075-1.04.603-.444 1.394-.753 2.4-.753zM8 13.25c-2.895 0-5.25-2.355-5.25-5.25S5.105 2.75 8 2.75 13.25 5.105 13.25 8 10.895 13.25 8 13.25M8 1C4.14 1 1 4.14 1 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7">
+    </path></svg>Support</a>
+    <div class="dropdown-divider mt-2 mb-2"></div>
+    <a class="dropdown-item userMenu pb-2 pt-2 pl-3 pr-5" href="/includes/logout.php" id="logoutArea">
+      <svg class="userMenuSvg mr-2" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ><g fill="inherit"><path d="M15,2 L5,2 C4.447,2 4,2.447 4,3 L4,9 L9.586,9 L8.293,7.707 C7.902,7.316 7.902,6.684 8.293,6.293 C8.684,5.902 9.316,5.902 9.707,6.293 L12.707,9.293 C13.098,9.684 13.098,10.316 12.707,10.707 L9.707,13.707 C9.512,13.902 9.256,14 9,14 C8.744,14 8.488,13.902 8.293,13.707 C7.902,13.316 7.902,12.684 8.293,12.293 L9.586,11 L4,11 L4,17 C4,17.553 4.447,18 5,18 L15,18 C15.553,18 16,17.553 16,17 L16,3 C16,2.447 15.553,2 15,2"></path></g></svg>
+
+      Logout</a>
+  </div>
+  </div>
+      <?php
+    }
+    ?>
+  </div>
+
+
+  </nav>
+  <!-- /navbar -->
+
+  <!-- Modal for login / registration popup -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" >
+  <div class="modal-dialog" role="document" style=" width: 300px; margin-top:0px; margin-bottom:0px; margin-left: 0px;margin-right: 0px;">
+  <div class="modal-content signup_modal" style="vertical-align: middle">
+    <div class="modal-header" style="margin-left: 0px; padding-bottom: 0px;">
+    <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
+    <li class="nav-item"> <a class="nav-link pillLoginButton btn-sm active" id="pills-signin-tab" data-toggle="pill" href="#pills-signin" role="tab"  aria-selected="true">LOGIN  </a> </li>
+    <li class="nav-item"> <a class="nav-link pillRegButton btn-sm" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"  aria-selected="false" style="padding-left:0px">SIGN UP</a> </li>
+    </ul>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span id="signupPopupCloseBtn" class="hide-on-nonmobile" aria-hidden="true">&times;</span>
+    </button>
+    </div>
+
+    <div class="modal-body" id = "signup-body">
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane show active p-0 m-0" id="pills-signin-body" role="tabpanel">
+          <div class="col-sm-12 p-0 m-0">
+            <form class="form-signin p-0 m-0" id = "login" action="includes/login.php" method="post" novalidate>
+            <small id = "login-errorMsg" class = "login-error formErrors">  </small>
+            <input type="text" name="login-mailuid" id = "login-mailuid" class="form-control mb-3 greybgd mainTextInput" placeholder="Email" required>
+            <input type="password" name="login-pwd" id = "login-pwd" class="form-control mb-3 greybgd mainTextInput" placeholder="Password" required>
+            <center><button class="btn btn-primary btn-block blueButton mainSignupLoginBtns mb-3" type="submit" name="login-submit" id = "login-submit"><i class="far fa-envelope mr-2"></i></i></i><b>Login with Email</b></button></center>
+
+            </form>
+            <div class="pt-2 pb-2">
+              <p class="middleText"><span>OR</span></p>
+            </div>
+            <div>
+              <center>
+              <button onclick="google_login();" class="googleBtn btn btn-primary btn-block mainSignupLoginBtns">
+                <i class="fab fa-google mr-2"></i>Login with Google
+              </button></center>
+
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="tab-pane p-0 m-0" id="pills-signup-body" role="tabpanel" >
+          <div class="col-sm-12 p-0 m-0">
+            <form id = "signup" class="form-signin m-0 p-0" action="includes/signup_trainee.php" method="post" novalidate>
+
+            <input id = "fName" type="text" name="fName" class="form-control mb-3 greybgd mainTextInput" placeholder="Name" required>
+            <input id = "email" type="email" name="email" class="form-control mb-3 greybgd mainTextInput" placeholder="Email" required>
+            <div id = "email-error" class="signup-error formErrors mb-1"><small> </small></div>
+
+            <input id = "password" type="password" name="pwd" class="form-control mb-3 greybgd mainTextInput" placeholder="Password" required >
+            <div id = "password-error" class="signup-error mb-1 formErrors"><small> </small></div>
+
+            <small id = "errorMsg" class = "signup-error formErrors">  </small>
+            <center><button id = "submit" class="btn btn-primary mt-1 mb-1 btn-block blueButton mainSignupLoginBtns" type="submit" name="signup-submit"><i class="fa fa-check-circle fa-fw fa-left mr-2" ></i><b>Create New Account</b></button></center>
+            </form>
+            <div class="pt-3 pb-2">
+                <p class="middleText"><span>OR</span></p>
+            </div>
+            <div>
+              <center>
+              <button onclick="google_login();" class="googleBtn btn btn-primary btn-block mainSignupLoginBtns">
+                <i class="fab fa-google mr-2"></i>Signup with Google
+              </button></center>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <img id="loader" src="/images/loader.svg" alt="load_animation" width="50" height="50" class="m-0 p-0">
+
+    </div>
+  </div>
+  </div>
+  </div>
+  <!-- EO Modal for login / registration -->
+
+</div>
+
+
+
+
+  <script>
+  // set the padding on load to space the body correctly below the navbar
+
+
+
+    $(window).resize(function () {
+
+       $('body').css('padding-top', parseInt($('#main-navbar').css("height")));
+    });
+
+    // set the margins on body so that contents don't overlap the footer
+      $(document).ready(function() {
+         $('body').css('margin-bottom', parseInt($('#standard_footer').css("height")));
+      });
+
+      $(window).resize(function () {
+        $('body').css('margin-bottom', parseInt($('#standard_footer').css("height")));
+      });
+
+      $(document).ready(function () {
+         $(document).click(function (event) {
+             var clickover = $(event.target);
+             var _opened = $(".navbar-collapse").hasClass("show");
+             if (_opened === true && !clickover.hasClass("navbar-toggler")) {
+                 $(".navbar-toggler").click();
+             }
+         });
+     });
+
+     $("#logoutArea").hover(function(){
+       $("#logoutSVG").toggleClass('whiteSVG')
+      });
+
+      var modalHeight=418.75;
+      var modalWidth = 300;
+      var visibleHeight = window.innerHeight;
+      var visibleWidth = window.innerWidth;
+      var topPosition = (visibleHeight-modalHeight)/3;
+      var sidePosition = (visibleWidth -modalWidth)/2;
+      var x= document.getElementsByClassName('modal-content');
+      $(x).css({"top":topPosition, "left":sidePosition});
+
+  </script>
+
+  <!-- support script for displaying popovers -->
+  <script>
+    $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+    });
+  </script>
+
+  <!-- set default tabs when clicking sign up / login -->
+  <script>
+  $(document).ready(function(){
+    $("#loginButton, #pills-signin-tab").on("click",function(){
+        $("#pills-signup-tab").removeClass("active");
+        $("#pills-signin-tab").addClass("active");
+        $("#pills-signup-body").removeClass("show active");
+        $("#pills-signin-body").addClass("show active");
+        $("#login-errorMsg").text(''); // clear any existing error messages
+    });
+
+    $("#registerButton, #pills-signup-tab").on("click",function(){
+        $("#pills-signin-tab").removeClass("active");
+        $("#pills-signup-tab").addClass("active");
+        $("#pills-signin-body").removeClass("show active");
+        $("#pills-signup-body").addClass("show active");
+        $("#login-errorMsg").text(''); // clear any existing error messages
+    });
+
+  });
+  </script>
 
 
 <main style="margin-bottom:0px!important">
 
 
 
-
   <div class="container pb-5 pb-md-4 pt-1 pt-md-4">
 
-<!-- get fit section row -->
-  <div class="row pt-3 pt-md-4 align-items-center pb-1 pb-md-5" >
-    <div class="col-md-6 col-lg-6 col-12 order-md-1 order-2 mobCenterDiv" id="topLeftDiv" align="center" >
-      <p class="mb-3 mt-3 mb-md-4 mt-md-4 mainTitle" style="font-weight:800">THE NATION'S TOP TRAINERS, NOW IN YOUR LIVING ROOM!</p>
-      <p class="pb-2 pb-md-3 normalFont">Train 1-on-1 in the comfort of your home with FuNinja Trainers as they guide you through fun, engaging and result oriented Virtual Training sessions.</p>
+<div class="row">
+<div class="col"  style="color:white" align="center">
+
+
+<p class="mb-3 mt-3 mb-md-4 mt-md-4 mainTitle">STAY HOME, GET FIT </p>
+      <p class="pb-2 pb-md-3 heroSubFont">Get healthy and look your best from the safety and comfort of your home</p>
       <?php
  // if user user isn't logged in, show the login and register buttons
  if(!isset($_SESSION['uid'])){ ?>
-     <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> START 14 DAY FREE TRIAL </button></center>
-   <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> START 14 DAY FREE TRIAL </button></center>
-
+     <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> START 15 DAY FREE TRIAL </button></center>
+   <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> START 15 DAY FREE TRIAL </button></center>
+   <p class="planInfobit"> Plans starting from ₹3,999 per month </p>
    <?php  ;
  } ?>
 
-    </div>
-    <div class="col-md-6 col-lg-6 col-12 order-md-2 order-1" id="womanImg">
-      <center><img id="mainPic" src="/images/graphics/test.gif"> </img></center>
-    </div>
-  </div>
 </div>
+</div>
+
+</div>
+  </div>
+
 <!-- usp section -->
 
-<div class="container-fluid" style="background-image: linear-gradient(rgb(255, 255, 255), rgb(223, 232, 252) 49%, rgb(255, 255, 255));">
+<div class="container-fluid" >
 <div class="row pt-3 pt-md-4 justify-content-center pb-md-3" >
   <div class="col-md-4 mr-md-5 pb-5 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0  uspAlign">
 <img class="mb-3" src="/images/graphics/USP1.png" style="height:100px"> </img><br>
-<p class="miniOfferingHeader pb-1 subTitle"> SAVE ON GYM MEMBERSHIPS</p>
-<p class="largerFontMob">Traditionally, you pay periodic Gym Membership fees + "add-on" trainer fees. Cut out gym fees and direct your hard earned money on what really matters: quality, experienced trainers.  </p>
+<p class="miniOfferingHeader pb-1 subTitle"> STOP PAYING GYM FEES</p>
+<p class="largerFontMob"> Pay only for what matters: quality trainers for your workouts, expert guidance for your diet and nutrition.  </p>
   </div>
   <div class="col-md-4 pb-5 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
 <img class="mb-3" src="/images/graphics/USP2.png" style="height:100px"> </img><br>
-<p class="miniOfferingHeader pb-1 subTitle"> 4 FOR THE PRICE OF 1</p>
-<p class="largerFontMob"> 4 workout formats. 4 Trainers. Our packages are designed to be effective but also fun. Bored of a workout format? Switch to another one! No need to buy another package. </p>
+<p class="miniOfferingHeader pb-1 subTitle"> 4 FOR 1</p>
+<p class="largerFontMob"> 4 Workout Types. 4 Trainers. FuNinja is effective AND fun. Bored of a workout type? Just switch! </p>
   </div>
 </div>
 
 <div class="row pt-md-3 pt-md-4 justify-content-center pb-md-3" >
   <div class="col-md-4 mr-md-5 pb-4 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
 <img class="mb-3" src="/images/graphics/USP3.png" style="height:100px"> </img><br>
-<p class="miniOfferingHeader pb-1 subTitle"> LOCATION NO LONGER MATTERS</p>
-<p class="largerFontMob">A stable internet connection, a phone or laptop, and a positive attitude are all you need to connect with our experienced and talented trainers.</p>
+<p class="miniOfferingHeader pb-1 subTitle"> LOCATION? DOESN'T MATTER.</p>
+<p class="largerFontMob">Don't have fitness experts near you? A cell phone, internet and a "can do" attitude are all you need.</p>
   </div>
   <div class="col-md-4 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
 <img class="mb-3" src="/images/graphics/USP4.png" style="height:100px"> </img><br>
-<p class="miniOfferingHeader pb-1 subTitle"> RESULTS. RESULTS. RESULTS</p>
-<p class="largerFontMob"> Our trainers have proven track records in helping customers see results. We place your goals first and relentlessly work with you to help you achieve them.</p>
+<p class="miniOfferingHeader pb-1 subTitle"> RESULTS!</p>
+<p class="largerFontMob"> We put your goals first and work with you to get you what's most important - results.</p>
   </div>
 </div>
 
@@ -83,13 +442,13 @@ include ROOT_DIR."/header.php";
 
 </div>
 
-<div class="container-fluid pt-5 pb-5 pt-md-5 pb-md-5">
+<div class="container-fluid pt-5 pb-5 pt-md-5 pb-md-5" style="background-color:#fafafa">
   <!-- core team section -->
 
   <div class="row mb-2">
     <div class="col" align="center">
-        <p class="subTitle mobNewHeader pb-1"> LEAD TRAINERS  </p>
-      <h5 class="normalFont largerFontMob pb-md-5 pb-3">We're led by veterans who've been in the results business for a very, very long time.</h5>
+        <p class="subTitle mobNewHeader pb-1"> OUR TRAINERS  </p>
+      <h5 class="normalFont largerFontMob pb-md-5 pb-3">Meet our lead trainers! They are all crazily passionate about transforming clients. </h5>
     </div>
   </div>
 
@@ -105,8 +464,8 @@ include ROOT_DIR."/header.php";
         <div class="col-8 align-self-center pr-md-1" align="center">
           <h5 class="trainerName m-0"> Nani </h5>
           <p class=" trgCat"> Slimnastics, Aerobics<br></p>
-          <p class="slimText">9 Yrs in Personal Training<br>
-          Trained by Sucheta Pal<br></p>
+          <p class="slimText">10+ Yrs as Trainer<br>
+          Mentored by Sucheta Pal<br></p>
         </div>
       </div>
 
@@ -121,8 +480,8 @@ include ROOT_DIR."/header.php";
           <p class="trainerName m-0"> Ashish </p>
           <p class="trgCat"> Yoga Therapist<br></p>
           <p class="slimText">
-          Homoeopathic physician<br>
-          Ex Teacher, Sivananda<br></p>
+          Homoe physician<br>
+          Ex-Sivananda<br></p>
         </div>
       </div>
     </div>
@@ -136,8 +495,8 @@ include ROOT_DIR."/header.php";
         <div class="col-8 p-0  pr-3 pr-md-0 align-self-center" align="center">
           <h5 class="trainerName m-0"> Deepali </h5>
           <p class="trgCat"> Aerobics, Zumba, Pilates<br></p>
-          <p class="slimText">18 Yrs in Personal Training<br>
-          Speciality: Fitness & Dance</p>
+          <p class="slimText">20+ Yrs as Trainer<br>
+           Speciality: Women's Fitness</p>
         </div>
       </div>
     </div>
@@ -150,8 +509,8 @@ include ROOT_DIR."/header.php";
         <div class="col-8 p-0 align-self-center" align="center">
           <h5 class="trainerName m-0"> Raghavan </h5>
           <p class="trgCat"> Certified Yoga Acharya<br></p>
-          <p class="slimText">9+ years as a Trainer<br>
-          Kids Yoga, Stress Mgmt </p>
+          <p class="slimText">10+ years as Trainer<br>
+          Kids & Stress Mgmt </p>
         </div>
       </div>
     </div>
@@ -169,29 +528,29 @@ include ROOT_DIR."/header.php";
 
 <div class="container-fluid ">
 
-  <div class="aditiBgrndDiv pt-md-4 pb-md-4" style=" background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(/images/bg1.png); background-size: 70%;">
+  <div class="aditiBgrndDiv pt-md-4 pb-md-4" style=" background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(/images/bg1.png); background-size: 70%;">
 
 
 
 <!-- short form of offerings row -->
-<div class="container">
+<div class="container pb-md-5 pt-md-5">
 
-  <div class="row mb-2 pt-md-3">
+  <div class="row mb-2 pt-md-3 pt-4">
     <div class="col" align="center">
-        <p class="subTitle mobNewHeader pb-1"> WORKOUT FORMATS  </p>
-      <h5 class="normalFont largerFontMob pb-md-5 pb-3">Variety’s the very spice of life, That gives it all its flavour. -<i>William Cowper</i></h5>
+        <p class="subTitle mobNewHeader pb-1"> LIVE SESSIONS, SMALL BATCHES </p>
+      <h5 class="normalFont largerFontMob pb-md-5 pb-3"> Join an instructor led batch of 6 trainees as you motivate each other to become the best versions of yourselves.</h5>
     </div>
   </div>
 
 <div class="row pt-2 pt-md-2 align-items-center justify-content-center">
   <div class="col-md-4 col-6 text-center p-0">
     <p class="miniOfferingHeader">YOGA</p>
-    <p class="m-0 hide-on-mobile">Peace. Balance. Agility.</P>
+    <p class="m-0 hide-on-mobile">Balance. Agility. Inner Peace</P>
       <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Yoga SVG.svg" width="40%"> </img></a>
   </div>
   <div class="col-md-4 col-6 text-center p-0 ">
     <p class="miniOfferingHeader ">AEROBICS</p>
-    <p class="m-0 hide-on-mobile">Strength. Cardio. Variation.</p>
+    <p class="m-0 hide-on-mobile">Cardio. Strength. Intensity</p>
     <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Aerobics SVG.svg" width="40%"> </img><a>
   </div>
 
@@ -214,7 +573,7 @@ include ROOT_DIR."/header.php";
   <div class="col-md-4 col-6 text-center p-0" >
     <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Push up SVG.svg" width="40%"> </img></a><br>
     <p class="miniOfferingHeader ">SLIMNASTICS</p>
-    <p class="m-0 hide-on-mobile">Conditioning. Toning. Lean.</p>
+    <p class="m-0 hide-on-mobile">Conditioning. Toning. Resistance.</p>
   </div>
   <div class="col-md-4 col-6 text-center p-0">
     <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Zumba SVG.svg" width="40%"> </img></a><br>
@@ -228,12 +587,12 @@ include ROOT_DIR."/header.php";
 </div>
 </div>
 
-<!--
-<div class="container-fluid pt-3 pb-4" style="background: linear-gradient(to right, #3a7fd5, #6ebce2);box-shadow: inset 0 -3px 10px rgb(0 0 0 / 10%);">
+
+<div class="container-fluid pt-3 pb-4" style="background-color:#fafafa">
   <div class="container">
     <div class="row mb-2 pt-md-3">
       <div class="col" align="left">
-          <p class="subTitle mobNewHeader pt-3 pb-1" style="color: white!important" align="center"> REVIEWS</p>
+          <p class="subTitle mobNewHeader pt-3 pb-1" align="center"> What Our Members Say</p>
       </div>
     </div>
 
@@ -244,7 +603,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Nadia.png"></img><br>
-          <p class="testiNames">Nadia</P><p class="slimText"> I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape. I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.</p>
+          <p class="testiNames">Nadia</P><p class="slimText"> Recently had my first child and gained weight. I appreciate the FuNinja team working closely with me, providing guidance and adjusting my training and diet. The classes are fun + I made some new friends from my batch.</p>
         </div>
       </div>
     </div>
@@ -253,7 +612,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-          <p class="testiNames">Rohin</p> <p class="slimText"> The trainer I work with is top notch. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by challenging me and helping me work towards my fitness goals.</p>
+          <p class="testiNames">Rohin</p> <p class="slimText"> They really do an awesome job! Having recently shifted to Australia, my routine had taken a big hit. Before I knew it, I had gained a lot of weight. The guys at FuNinja helped me get back on track by educating me on the right way to look at fitness, weight loss and getting stronger.</p>
         </div>
       </div >
     </div>
@@ -262,7 +621,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Megha.png"></img><br>
-          <p class="testiNames">Priya and Megha</P> <p class="slimText">I've been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom. FuNinja has been a lot of fun.</p>
+          <p class="testiNames">Priya and Megha</P> <p class="slimText">I have always been a fitness fanatic but my mom was pretty weak. I had never worked out with her before and was a bit skeptical about attending sessions together, but I was pleasantly surprised by the outcome - not only do we both keep fitter and stronger, we are also able to spend loads of quality time together.</p>
         </div>
       </div >
     </div>
@@ -271,7 +630,7 @@ include ROOT_DIR."/header.php";
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
         <div class="mt-3 testimonialCard " style="height:270px">
           <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
-          <p class="testiNames">Satya</P> <p class="slimText">Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.</p>
+          <p class="testiNames">Satya</P> <p class="slimText">Ashish and Raghavan were both bright students at Sivananda and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.</p>
         </div>
       </div >
     </div>
@@ -289,7 +648,7 @@ include ROOT_DIR."/header.php";
                   <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                     <div class="mt-3 testimonialCard ">
                       <img class="testimonialPic" src="/images/testimonials/Nadia.png"></img><br>
-                      <p class="miniOfferingHeader">Nadia</P>I recently had my first child and I had put on a few pounds. I wanted help with getting back in shape... Not quite there yet, but I appreciate the FuNinja team working closely with me and adjusting my training plan while keeping my demanding schedule in mind.
+                      <p class="miniOfferingHeader">Nadia</P> Recently had my first child and gained weight. I appreciate the FuNinja team working closely with me, providing guidance and adjusting my training and diet. The classes are fun + I made some new friends.
                     </div>
                   </div >
                   </div>
@@ -300,7 +659,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-                <p class="miniOfferingHeader">Rohin<p> Their concept is pretty cool and they have top notch trainers. Having recently moved to a new timezone, my routine took a hit and I had a hard time adjusting. The FuNinja trainers helped me by constantly challenging me and helping me work towards my fitness goals.
+                <p class="miniOfferingHeader">Rohin<p> They really do an awesome job! Having recently shifted to Australia, my routine had taken a big hit. Before I knew it, I had gained a lot of weight. The guys at FuNinja helped me get back on track by educating me on the right way to look at fitness, weight loss and getting stronger. 10/10.
                   </div>
                 </div>
                   </div>
@@ -311,7 +670,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Megha.png"></img><br>
-                <p class="miniOfferingHeader">Priya and Megha</P> I have been working out for a while but I wanted my mom to get fitter, so we bought the "Pair Up" package. Sessions like Zumba and Yoga have been way more fun with my mom there. FuNinja has been helping us achieve our individual goals while letting us have fun together.
+                <p class="miniOfferingHeader">Priya and Megha</P> I have always been a fitness fanatic but my mom was pretty weak. I had never worked out with her before and was a bit skeptical about attending sessions together, but I was pleasantly surprised by the outcome - not only do we both keep fitter and stronger, we are also able to spend loads of quality time together.
                   </div>
                 </div>
                   </div>
@@ -322,7 +681,7 @@ include ROOT_DIR."/header.php";
                 <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
                   <div class="mt-3 testimonialCard ">
                     <img class="testimonialPic" src="/images/testimonials/Mangal.png"></img><br>
-                <p class="miniOfferingHeader">Satya</P> Ashish and Raghavan were both bright students at Sivananda Ashram and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
+                <p class="miniOfferingHeader">Satya</P> Ashish and Raghavan were both bright students at Sivananda and graduated from our Yoga Teachers' Training Course. They are both passionate practitioners of Yoga and are excellent teachers.
                   </div>
                 </div>
                   </div>
@@ -334,10 +693,20 @@ include ROOT_DIR."/header.php";
         </div>
     </div>
 
-
+    <!-- know more separator button -->
+    <div class="row align-items-center mt-md-0 hide-on-mobile">
+      <div class="col text-center">
+        <a href="plans.php" class="btn btn-primary btn-lg userdropdown mainSgnBtn m-0 ">LET'S BEGIN! </a>
+      </div>
+    </div>
+    <div class="row align-items-center mt-4 hide-on-nonmobile">
+      <div class="col text-center">
+        <a href="plans.php" class="btn btn-primary userdropdown  mainSgnBtn m-0 ">LET'S BEGIN! </a>
+      </div>
+    </div>
 
 </div>
-</div> -->
+</div>
 
 
 
@@ -379,6 +748,82 @@ $('.desktopIpadCarousel .carousel-item').each(function() {
 
         next.children(':first-child').clone().appendTo($(this));
     }
+});
+
+</script>
+
+<script>
+  $('#js-logo-color').hide();
+
+$(function () {
+  $(document).scroll(function () {
+
+    toggle_colors();
+
+   //$('#js-logo-color').toggleClass('hidden', $(this).scrollTop() > $nav.height());
+   //$('#js-logo-white').toggleClass('hidden', $(this).scrollTop() > $nav.height());
+
+
+  });
+
+
+  toggle_colors = function() {
+	  var $nav = $("#main-navbar");
+
+	    //Page is scrolled down
+	    if ( $(this).scrollTop() > $nav.height()) {
+		    $('#js-logo-color').show();
+		    $('#js-logo-white').hide();
+
+        if ($(window).width() > 425 ){
+		    		$('.headerMnLink').css('color', 'gray');
+
+      }
+      $('.navbar').css('background-color','white');
+      $('.togglerColor').css('background-color','black');
+      $('.navbar').css('border-bottom','1px solid lightgray');
+	    }
+	    //Navbar on top of hero image
+	    else {
+
+		    $('#js-logo-color').hide();
+		    $('#js-logo-white').show();
+
+		    $('.headerMnLink').css('color', 'white');
+        $('.togglerColor').css('background-color','white');
+
+		     $('.navbar').css('border','none');
+         $('.navbar').css('background-color','transparent');
+	    }
+  };
+
+  toggle_colors();
+
+});
+</script>
+
+
+<script> // control navbar position based on 1. login state 2. display
+$(document).ready(function(){
+  <?php
+    if(!isset($_SESSION['uid'])){?>
+      var loggedIn = false;
+    <?php } else { ?>
+      var loggedIn = true;
+    <?php } ?>
+  if(loggedIn==false){
+    $(".navbar").css('top', '50px');
+    var heightNavBar= parseInt($('#main-navbar').css("height"));
+    var heightBanner = parseInt($('.trialBanner').css("height"));
+    var bodyTopPadding = heightNavBar+heightBanner;
+     $('body').css('padding-top', heightBanner);
+  } else if(loggedIn==true){
+    $(".navbar").css('top', '0px');
+    var heightNavBar= parseInt($('#main-navbar').css("height"));
+    $('body').css('padding-top', heightBanner+10);
+  }
+
+
 });
 
 </script>

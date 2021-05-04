@@ -2,21 +2,6 @@
 $(document).ready(function() {
   $(".signup-error, .signup-guidance").hide();
 
-  $(document).ajaxStart(function () {
-    $("#loader").show();
-  }).ajaxStop(function () {
-    $("#loader").hide();
-  });
-
-  $("#username").focus(function(){
-      $("#username-guidance").slideDown();
-  });
-
-
-
-  $("#username").blur(function(){
-    $("#username-guidance").slideUp();
-  });
 
   $("#email").focus(function(){
     $("#email-guidance").slideDown();
@@ -36,7 +21,6 @@ $(document).ready(function() {
   var username_valid = false;
   var email_valid = false;
   var password_valid = false;
-  var passwordRepeat_valid = false;
 
   // username validations
   $('#username').on('blur', function(){
@@ -136,6 +120,7 @@ $(document).ready(function() {
 
   // password validation
 
+
   $('#password').on('blur', function(){
     var password = $('#password').val();
     var passwordRepeat = $('#passwordRepeat').val();
@@ -192,59 +177,17 @@ $(document).ready(function() {
     });
   });
 
-  // password repeat validation
-
-  $('#passwordRepeat').on('blur', function(){
-    var passwordRepeat = $('#passwordRepeat').val();
-    var password = $('#password').val();
-    // good
-    if (passwordRepeat == '') {
-      passwordRepeat_valid = false;
-      return;
-    }
-
-    $.ajax({
-      url: 'includes/trainee_signup.php',
-      type: 'post',
-      data: {
-        'passwordRepeat_check' : 1,
-        'password' : password,
-        'passwordRepeat' : passwordRepeat,
-      },
-      timeout:5000, //3 second timeout
-      error: function(xmlhttprequest, textstatus, message){
-        if(textstatus==="timeout"){
-          //do nothing?
-        }
-
-      },
-      success: function(response){
-        if (password && password_valid == false){
-          passwordRepeat_valid = false;
-          $('#passwordRepeat').addClass("is-invalid");
-        } else if (password && response == 'mismatch' ) {
-          passwordRepeat_valid = false;
-          $('#passwordRepeat-error').slideDown();
-          $('#passwordRepeat').addClass("is-invalid");
-          $('#passwordRepeat-error').html("<small> Passwords don't match</small>");
-        } else {
-          passwordRepeat_valid= true;
-          $('#passwordRepeat').removeClass("is-invalid");
-          $('#passwordRepeat').addClass("is-valid");
-          $('#passwordRepeat-error').html("");
-        }
-      }
-    });
-  });
 
   // click submit and validate everything
   $('#submit').on('click', function(){
-    var username = $('#username').val();
+    console.log(password_valid);
     var email = $('#email').val();
-    var passwordRepeat = $('#passwordRepeat').val();
     var password = $('#password').val();
+    var fName = $('#fName').val();
+    //var lName = $('#lName').val();
 
-    if(username_valid == false || email_valid == false || password_valid == false || passwordRepeat_valid == false){
+    //if(email_valid == false || password_valid == false){
+    if(email_valid == false){
       $("#errorMsg").text('Please fix all the errors first');
       $("#errorMsg").slideDown();
 
@@ -257,9 +200,10 @@ $(document).ready(function() {
         type: 'post',
         data: {
           'save' : 1,
-          'username': username,
           'email': email,
           'password' : password,
+          'fName' : fName,
+          //'lName' : lName,
         },
         timeout:5000, //5 second timeout
         error: function(xmlhttprequest, textstatus, message){

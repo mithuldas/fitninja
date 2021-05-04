@@ -22,7 +22,6 @@ $(document).ready(function() {
 
     var mailuid = $('#login-mailuid').val();
     var password = $('#login-pwd').val();
-    var remember_me = document.querySelector('#remember-me').checked;
 
     var mailuid_valid = false;
     var password_valid = false;
@@ -58,7 +57,7 @@ $(document).ready(function() {
           'login-submit' : 1,
           'mailuid': mailuid,
           'password' : password,
-          'remember-me' : remember_me
+          'remember-me' : "true"
         },
         timeout:3000, //5 second timeout
         error: function(xmlhttprequest, textstatus, message){

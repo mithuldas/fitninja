@@ -1749,3 +1749,16 @@ h5 > .btn {
   background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(/images/bg1.png); background-size: 70%;
   border-bottom:1px solid lightblue;;
 }
+
+.contactForm{
+  border:none!important;
+  box-shadow: none!important;
+  background-color: #f2f2f4!important;
+  border-radius: 5px!important;
+  color:black!important;
+  font-weight:600!important;
+}
+
+.contactForm::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: gray;
+}

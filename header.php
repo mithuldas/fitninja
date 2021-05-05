@@ -239,7 +239,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="col-sm-12 p-0 m-0">
           <form id = "signup" class="form-signin m-0 p-0" action="includes/signup_trainee.php" method="post" novalidate>
 
-          <input id = "fName" type="text" name="fName" class="form-control mb-3 greybgd mainTextInput" placeholder="First Name" required>
+          <input id = "fName" type="text" name="fName" class="form-control mb-3 greybgd mainTextInput" placeholder="Name" required>
           <input id = "email" type="email" name="email" class="form-control mb-3 greybgd mainTextInput" placeholder="Email" required>
           <div id = "email-error" class="signup-error formErrors mb-1"><small> </small></div>
 

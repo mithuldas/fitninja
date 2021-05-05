@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Bootstrap sources -->
 <link rel="icon" href="https://www.funinja.in/favicon.ico?v=523" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/united/bootstrap.min.css">
-<link href="/css/custom.css?v=2fcdfssfncvc__sffeejjdfdd2dssdfk_" rel="stylesheet">
+<link href="/css/custom.css?v=2fcdfssfndfcvc__sffeejjdfdd2dssdfk_" rel="stylesheet">
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">

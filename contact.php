@@ -19,7 +19,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
   <script>
   // add class to body tag so that white background can be set
 
-  $("body").addClass("lgrayBg");
+  $("body").addClass("whiteBgd");
 
   </script>
 <?php
@@ -30,7 +30,7 @@ include ROOT_DIR."/header.php";
 
 <div class="container mt-3 mt-md-5">
 
-<h5 class="m-0 p-0">We would <span style="color:red">♥</span> to hear from you</h5>
+<center><h5 class="m-0 p-0">We would <span style="color:red">♥</span> to hear from you</h5></center>
 <br>
 
 <!--<p> If you're having trouble, please check our <a href="/faq.php"><b>FAQs</b></a> (Frequently Asked Questions) page. </p>-->
@@ -46,15 +46,15 @@ include ROOT_DIR."/header.php";
   </div>
 <div class="col-md-7">
 <form action="/includes/contact_us_submit.php" method="post">
-  <div class="form-group"><input id="subject" type="text" name="subject" class="form-control" placeholder="Subject" required >
+  <div class="form-group"><input id="subject" type="text" name="subject" class="form-control contactForm" placeholder="Subject" required >
   </div>
   <div class="form-group">
-  <textarea class="form-control" id="message" rows="6" name="message" style="resize: none" placeholder="Your message" required></textarea>
+  <textarea class="form-control contactForm" id="message" rows="6" name="message" style="resize: none" placeholder="Your message" required></textarea>
   </div>
-  <div class="form-group form-inline justify-content-center">
-    <input id="name" type="text" name="name" class="form-control mr-1" placeholder="Name" required >
-    <input id="email" type="email" name="email" class="form-control mr-1" placeholder="Email"  required>
-    <input id="phone" type="number" name="phone" class="form-control mr-1" placeholder="Phone #"  required>
+  <div class="form-group justify-content-center">
+    <input id="name" type="text" name="name" class="form-control mr-1 mb-2 contactForm" placeholder="Name" required >
+    <input id="email" type="email" name="email" class="form-control mr-1 mb-2 contactForm" placeholder="Email"  required>
+    <input id="phone" type="text" name="phone" class="form-control mr-1  mb-2 contactForm" placeholder="Phone #"  required>
   </div>
   <div class="form-group ">
     <center><div class="g-recaptcha" data-sitekey="6LcUPlYaAAAAANdAD-frTgF7yUWUoCe4aTqYKJLk" data-callback="enableBtn"></div></center>

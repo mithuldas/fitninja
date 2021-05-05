@@ -29,7 +29,7 @@ $("body").addClass("lgrayBg");
 </script>
 <div class="container-fluid pt-md-1 pb-md-0 pb-2 trialMemBnr" >
   <div class="container" >
-  <p><b><p> <span style="color:red"> COVID-19 update:</span> Now more than ever, we all need to place our health and fitness first. We would like to help by offering discounted membership and free classes for our members. If you're interested, sign-up and we'll reach out.</p>
+  <p><b><p> <span style="color:red"> Update:</span> Now more than ever, we need to place fitness first and focus on getting and staying healthy. We want to help with discounted memberships. Sign-up and we'll reach out on a case by case basis.</p>
 </div>
 </div>
 <div class="container pb-4">
@@ -47,7 +47,6 @@ $("body").addClass("lgrayBg");
     <i class="fas fa-check" style="color:#86b52d"></i> <span style="font-weight:600">Instructor Led, Personalized Sessions<br></span>
     <i class="fas fa-check" style="color:#86b52d"></i> <span style="font-weight:600">Optimized Diet and Nutrition <br></span>
     <i class="fas fa-check" style="color:#86b52d"></i> <span style="font-weight:600">15-day free trial <br></span>
-    <i class="fas fa-check" style="color:#86b52d"></i> <span style="font-weight:600">Plans from ₹3,999/month after trial<br></span>
 
     <?php if(!isset($_SESSION['uid'])){ ?>
         <button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-4 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> START 15 DAY FREE TRIAL </button></center>

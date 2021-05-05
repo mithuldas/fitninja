@@ -397,7 +397,6 @@ include_once ROOT_DIR."/includes/auto_login.php";
  if(!isset($_SESSION['uid'])){ ?>
      <center><button type="button" class=" btn btn-lg btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-mobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> START 15 DAY FREE TRIAL </button></center>
    <center><button type="button" class=" btn btn-primary blueButton mainSgnBtn mt-0 mt-md-2 hide-on-nonmobile" data-toggle="modal" data-target="#exampleModal" id ="registerButton"> START 15 DAY FREE TRIAL </button></center>
-   <p class="planInfobit"> Plans starting from ₹3,999 per month </p>
    <?php  ;
  } ?>
 

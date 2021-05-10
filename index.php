@@ -390,8 +390,8 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <div class="col"  style="color:white" align="center">
 
 
-<p class="mb-3 mt-3 mb-md-4 mt-md-4 mainTitle">STAY HOME, GET FIT </p>
-      <p class="pb-2 pb-md-3 heroSubFont">Get healthy and look your best from the safety and comfort of your home</p>
+<p class="mb-3 mt-3 mb-md-4 mt-md-4 mainTitle">STAY HOME & GET FIT, LADIES! </p>
+      <p class="pb-2 pb-md-3 heroSubFont">Get healthy and look your very best from the safety and comfort of your home</p>
       <?php
  // if user user isn't logged in, show the login and register buttons
  if(!isset($_SESSION['uid'])){ ?>
@@ -406,34 +406,91 @@ include_once ROOT_DIR."/includes/auto_login.php";
 </div>
   </div>
 
+
+  <!-- short form of offerings row -->
+  <div class="container pb-md-5 pt-md-5">
+
+    <div class="row mb-2 pt-md-3 pt-4">
+      <div class="col" align="center">
+          <p class="subTitle mobNewHeader pb-1"> LIVE SESSIONS, SMALL BATCHES </p>
+        <h5 class="normalFont largerFontMob pb-md-5 pb-3"> Join an instructor led batch of up to 6 as you motivate each other to become the best versions of yourselves.</h5>
+      </div>
+    </div>
+
+  <div class="row pt-2 pt-md-2 align-items-center justify-content-center">
+    <div class="col-md-4 col-6 text-center p-0">
+      <p class="miniOfferingHeader">YOGA</p>
+      <p class="m-0 hide-on-mobile">Balance. Agility. Inner Peace</P>
+        <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Yoga SVG.svg" width="40%"> </img></a>
+    </div>
+    <div class="col-md-4 col-6 text-center p-0 ">
+      <p class="miniOfferingHeader ">AEROBICS</p>
+      <p class="m-0 hide-on-mobile">Cardio. Strength. Intensity</p>
+      <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Aerobics SVG.svg" width="40%"> </img><a>
+    </div>
+
+  </div>
+
+  <!-- know more separator button -->
+  <div class="row align-items-center mt-md-0 hide-on-mobile">
+    <div class="col text-center">
+      <a href="offerings.php" class="btn btn-primary btn-lg userdropdown mainSgnBtn m-0 ">KNOW MORE </a>
+    </div>
+  </div>
+  <div class="row align-items-center mt-4 hide-on-nonmobile">
+    <div class="col text-center">
+      <a href="offerings.php" class="btn btn-primary userdropdown  mainSgnBtn m-0 ">KNOW MORE </a>
+    </div>
+  </div>
+
+  <div class="row align-items-center justify-content-center pb-md-2 pb-4" >
+
+    <div class="col-md-4 col-6 text-center p-0" >
+      <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Push up SVG.svg" width="40%"> </img></a><br>
+      <p class="miniOfferingHeader ">SLIMNASTICS</p>
+      <p class="m-0 hide-on-mobile">Conditioning. Toning. Resistance.</p>
+    </div>
+    <div class="col-md-4 col-6 text-center p-0">
+      <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Zumba SVG.svg" width="40%"> </img></a><br>
+      <p class="miniOfferingHeader ">ZUMBA</p>
+      <p class="m-0 hide-on-mobile"> Dance. Flexibility. Fun.</p>
+    </div>
+  </div>
+
+
+  </div>
+
 <!-- usp section -->
 
-<div class="container-fluid" >
+<div class="container-fluid" style="background-color:#fafafa">
+  <div class="row pt-md-3 pt-md-5 justify-content-center pb-md-3" >
+    <div class="col-md-4 mr-md-5 pb-4 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
+  <img class="mb-3" src="/images/graphics/USP3.png" style="height:100px"> </img><br>
+  <p class="miniOfferingHeader pb-1 subTitle"> LOCATION? DOESN'T MATTER.</p>
+  <p class="largerFontMob">Don't have fitness experts near you? A cell phone, internet and a "can do" attitude are all you need to get started.</p>
+    </div>
+    <div class="col-md-4 pb-5 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
+  <img class="mb-3" src="/images/graphics/USP2.png" style="height:100px"> </img><br>
+  <p class="miniOfferingHeader pb-1 subTitle"> FUN FORMATS & SMALL BATCHES</p>
+  <p class="largerFontMob"> FuNinja is effective AND fun. Bored of a workout format? Just switch! Small group sizes mean close attention from trainers. </p>
+    </div>
+
+  </div>
+
 <div class="row pt-3 pt-md-4 justify-content-center pb-md-3" >
   <div class="col-md-4 mr-md-5 pb-5 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0  uspAlign">
 <img class="mb-3" src="/images/graphics/USP1.png" style="height:100px"> </img><br>
 <p class="miniOfferingHeader pb-1 subTitle"> STOP PAYING GYM FEES</p>
-<p class="largerFontMob"> Pay only for what matters: quality trainers for your workouts, expert guidance for your diet and nutrition.  </p>
-  </div>
-  <div class="col-md-4 pb-5 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
-<img class="mb-3" src="/images/graphics/USP2.png" style="height:100px"> </img><br>
-<p class="miniOfferingHeader pb-1 subTitle"> 4 FOR 1</p>
-<p class="largerFontMob"> 4 Workout Types. 4 Trainers. FuNinja is effective AND fun. Bored of a workout type? Just switch! </p>
-  </div>
-</div>
-
-<div class="row pt-md-3 pt-md-4 justify-content-center pb-md-3" >
-  <div class="col-md-4 mr-md-5 pb-4 pb-md-0 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
-<img class="mb-3" src="/images/graphics/USP3.png" style="height:100px"> </img><br>
-<p class="miniOfferingHeader pb-1 subTitle"> LOCATION? DOESN'T MATTER.</p>
-<p class="largerFontMob">Don't have fitness experts near you? A cell phone, internet and a "can do" attitude are all you need.</p>
+<p class="largerFontMob"> Spend only on what matters: Quality Trainers to guide your workouts & expert consultants for your diet and nutrition.  </p>
   </div>
   <div class="col-md-4 pl-4 pl-md-0 pr-4 pr-md-0 uspAlign">
 <img class="mb-3" src="/images/graphics/USP4.png" style="height:100px"> </img><br>
 <p class="miniOfferingHeader pb-1 subTitle"> RESULTS!</p>
-<p class="largerFontMob"> We put your goals first and work with you to get you what's most important - results.</p>
+<p class="largerFontMob"> We put your goals first and work with you right from the start to get you what's most important - results.</p>
   </div>
 </div>
+
+
 
 <div class="row pt-3 pt-md-4 align-items-center pb-3" >
 
@@ -441,13 +498,13 @@ include_once ROOT_DIR."/includes/auto_login.php";
 
 </div>
 
-<div class="container-fluid pt-5 pb-5 pt-md-5 pb-md-5" style="background-color:#fafafa">
+<div class="container-fluid pt-5 pb-5 pt-md-5 pb-md-5">
   <!-- core team section -->
 
   <div class="row mb-2">
     <div class="col" align="center">
         <p class="subTitle mobNewHeader pb-1"> OUR TRAINERS  </p>
-      <h5 class="normalFont largerFontMob pb-md-5 pb-3">Meet our lead trainers! They are all crazily passionate about transforming clients. </h5>
+      <h5 class="normalFont largerFontMob pb-md-5 pb-3">Meet our lead trainers! They are all crazily obssessed about making sure their clients see results. </h5>
     </div>
   </div>
 
@@ -493,7 +550,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
         </div>
         <div class="col-8 p-0  pr-3 pr-md-0 align-self-center" align="center">
           <h5 class="trainerName m-0"> Deepali </h5>
-          <p class="trgCat"> Aerobics, Zumba, Pilates<br></p>
+          <p class="trgCat"> Zumba, Pilates<br></p>
           <p class="slimText">20+ Yrs as Trainer<br>
            Speciality: Women's Fitness</p>
         </div>
@@ -525,66 +582,8 @@ include_once ROOT_DIR."/includes/auto_login.php";
 
 
 
-<div class="container-fluid ">
-
-  <div class="aditiBgrndDiv pt-md-4 pb-md-4" style=" background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(/images/bg1.png); background-size: 70%;">
 
 
-
-<!-- short form of offerings row -->
-<div class="container pb-md-5 pt-md-5">
-
-  <div class="row mb-2 pt-md-3 pt-4">
-    <div class="col" align="center">
-        <p class="subTitle mobNewHeader pb-1"> LIVE SESSIONS, SMALL BATCHES </p>
-      <h5 class="normalFont largerFontMob pb-md-5 pb-3"> Join an instructor led batch of 6 trainees as you motivate each other to become the best versions of yourselves.</h5>
-    </div>
-  </div>
-
-<div class="row pt-2 pt-md-2 align-items-center justify-content-center">
-  <div class="col-md-4 col-6 text-center p-0">
-    <p class="miniOfferingHeader">YOGA</p>
-    <p class="m-0 hide-on-mobile">Balance. Agility. Inner Peace</P>
-      <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Yoga SVG.svg" width="40%"> </img></a>
-  </div>
-  <div class="col-md-4 col-6 text-center p-0 ">
-    <p class="miniOfferingHeader ">AEROBICS</p>
-    <p class="m-0 hide-on-mobile">Cardio. Strength. Intensity</p>
-    <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Aerobics SVG.svg" width="40%"> </img><a>
-  </div>
-
-</div>
-
-<!-- know more separator button -->
-<div class="row align-items-center mt-md-0 hide-on-mobile">
-  <div class="col text-center">
-    <a href="offerings.php" class="btn btn-primary btn-lg userdropdown mainSgnBtn m-0 ">KNOW MORE </a>
-  </div>
-</div>
-<div class="row align-items-center mt-4 hide-on-nonmobile">
-  <div class="col text-center">
-    <a href="offerings.php" class="btn btn-primary userdropdown  mainSgnBtn m-0 ">KNOW MORE </a>
-  </div>
-</div>
-
-<div class="row align-items-center justify-content-center pb-md-2 pb-4" >
-
-  <div class="col-md-4 col-6 text-center p-0" >
-    <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Push up SVG.svg" width="40%"> </img></a><br>
-    <p class="miniOfferingHeader ">SLIMNASTICS</p>
-    <p class="m-0 hide-on-mobile">Conditioning. Toning. Resistance.</p>
-  </div>
-  <div class="col-md-4 col-6 text-center p-0">
-    <a class="" href="/offerings.php"><img class="offeringsPic" src="/images/graphics/Zumba SVG.svg" width="40%"> </img></a><br>
-    <p class="miniOfferingHeader ">ZUMBA</p>
-    <p class="m-0 hide-on-mobile"> Dance. Flexibility. Fun.</p>
-  </div>
-</div>
-
-
-</div>
-</div>
-</div>
 
 
 <div class="container-fluid pt-3 pb-4" style="background-color:#fafafa">
@@ -607,14 +606,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
       </div>
     </div>
 
-    <div class="carousel-item" style="height:360px">
-      <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
-        <div class="mt-3 testimonialCard " style="height:270px">
-          <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-          <p class="testiNames">Rohin</p> <p class="slimText"> They really do an awesome job! Having recently shifted to Australia, my routine had taken a big hit. Before I knew it, I had gained a lot of weight. The guys at FuNinja helped me get back on track by educating me on the right way to look at fitness, weight loss and getting stronger.</p>
-        </div>
-      </div >
-    </div>
+
 
     <div class="carousel-item" style="height:360px">
       <div class="col-12 col-md-12 pl-1 pl-md-3 pr-1 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
@@ -653,16 +645,6 @@ include_once ROOT_DIR."/includes/auto_login.php";
                   </div>
                 </div>
 
-                <div class="carousel-item" >
-                <div class="col-md-6 m-0 p-0 justify-content-center">
-                <div class="col-12 col-md-12 pl-0 pl-md-3 pr-0 pr-md-3 testimonialMobileTopMargin" align="center" style="position:absolute; bottom:0">
-                  <div class="mt-3 testimonialCard ">
-                    <img class="testimonialPic" src="/images/testimonials/Rohin.png"></img><br>
-                <p class="miniOfferingHeader">Rohin<p> They really do an awesome job! Having recently shifted to Australia, my routine had taken a big hit. Before I knew it, I had gained a lot of weight. The guys at FuNinja helped me get back on track by educating me on the right way to look at fitness, weight loss and getting stronger. 10/10.
-                  </div>
-                </div>
-                  </div>
-                </div>
 
                 <div class="carousel-item" >
                 <div class="col-md-6 m-0 p-0 justify-content-center">

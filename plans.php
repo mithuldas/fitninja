@@ -27,10 +27,8 @@ include ROOT_DIR."/header.php";
 $("body").addClass("lgrayBg");
 
 </script>
-<div class="container-fluid pt-md-1 pb-md-0 pb-2 trialMemBnr" >
-  <div class="container" >
-  <p><b><p> <span style="color:red"> Update:</span> Now more than ever, we need to place fitness first and focus on getting and staying healthy. We want to help with discounted memberships. Sign-up and we'll reach out on a case by case basis.</p>
-</div>
+<div class="container-fluid  pb-md-1 pb-2" style="background:white" >
+
 </div>
 <div class="container pb-4">
 

@@ -123,7 +123,6 @@ include_once ROOT_DIR."/includes/auto_login.php";
       </button>
       <!-- /burger" -->
 
-    <a id="js-logo-white" href="<?php FlowControl::echoHomePageLink();?>" style="padding-top:3px; padding-bottom:3px!important; margin-left:40px!important"><img class="pt-1" src="/images/whitelogo.png" alt="FuNinja" style="height:45px;"></a>
     <a id="js-logo-color" href="<?php FlowControl::echoHomePageLink();?>" style="padding-top:3px; padding-bottom:3px!important; margin-left:40px!important"><img class="pt-1" img src="/images/logo.png" alt="FuNinja" style="height:45px;"></a>
 
     <!-- everything in here will be collapsed on smaller devices -->
@@ -306,15 +305,8 @@ include_once ROOT_DIR."/includes/auto_login.php";
 
 
 
-  <script>
-  // set the padding on load to space the body correctly below the navbar
+    <script>
 
-
-
-    $(window).resize(function () {
-
-       $('body').css('padding-top', parseInt($('#main-navbar').css("height")));
-    });
 
     // set the margins on body so that contents don't overlap the footer
       $(document).ready(function() {
@@ -389,7 +381,7 @@ include_once ROOT_DIR."/includes/auto_login.php";
 <div class="row">
 <div class="col"  style="color:white" align="center">
 
-
+<br><br><br>
 <p class="mb-3 mt-3 mb-md-4 mt-md-4 mainTitle">STAY HOME & GET FIT, LADIES! </p>
       <p class="pb-2 pb-md-3 heroSubFont">Get healthy and look your very best from the safety and comfort of your home</p>
       <?php

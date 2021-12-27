@@ -92,7 +92,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </button>
     <!-- /burger" -->
 
-    <a id="js-logo-white" href="<?php FlowControl::echoHomePageLink();?>" style="padding-top:3px; padding-bottom:3px!important; margin-left:40px!important"><img class="pt-1" src="/images/whitelogo.png" alt="FuNinja" style="height:45px;"></a>
     <a id="js-logo-color" href="<?php FlowControl::echoHomePageLink();?>" style="padding-top:3px; padding-bottom:3px!important; margin-left:40px!important"><img class="pt-1" img src="/images/logo.png" alt="FuNinja" style="height:45px;"></a>
 
 
@@ -278,10 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 
-  $(window).resize(function () {
 
-     $('body').css('padding-top', parseInt($('#main-navbar').css("height")));
-  });
 
   // set the margins on body so that contents don't overlap the footer
     $(document).ready(function() {
